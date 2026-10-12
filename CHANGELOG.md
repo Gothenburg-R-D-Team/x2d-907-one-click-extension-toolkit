@@ -1,5 +1,10 @@
 # Changelog
 
+## Documentation update — Community discussion and contributions (2026-10-12)
+
+- Replace fundraising entry points with invitations to discuss findings, open Issues and submit Pull Requests. This is a documentation-only update; published application packages and license terms are unchanged.
+- 将项目入口改为欢迎交流、通过 Issue 反馈问题与建议，以及提交 PR 改进代码、文档和测试；仅更新文档，已发布软件包与许可条款不变。
+
 ## [0.4.17](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17) — 2026-10-10
 
 - Provide three selectable Focus Speed levels, giving older-lens users a gentler acceleration option: Low 1.5/1.5/1.5, Medium (default) 2.5/2/1.5, High 3/3/2 for Type 0/1/2. These are motor-control multipliers, not measured overall autofocus gains or a lens-safety guarantee.

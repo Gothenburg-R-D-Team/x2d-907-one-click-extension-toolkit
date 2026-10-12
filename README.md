@@ -1,5 +1,11 @@
 # X2D/907 One-Click Extension Toolkit
 
+## 欢迎交流 / Discussion and contributions
+
+欢迎交流、分享研究发现和使用反馈。欢迎通过 [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) 讨论问题与建议，也欢迎提交 [Pull Requests](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) 改进代码、文档和测试。
+
+Discussion, research findings and feedback are welcome. Please use [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) for questions and suggestions, and submit [Pull Requests](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) to improve code, documentation and tests.
+
 **Stable release: 0.4.17.** Adds Low / Medium / High focus speed selection to the original 0.4.12 stable baseline, offering gentler acceleration choices for older lenses. Version 0.5.0 remains a private beta with separate development and updates; it will not receive this stable update.
 
 **稳定版：0.4.17。** 基于原始 0.4.12 新增低／中／高三档对焦速度可选，提供对老镜头更友好的温和加速选择。0.5.0 内测版继续使用独立更新库，不会收到此次稳定版更新。[验证记录](docs/STABLE-SPEED-TEST.md)。
@@ -11,14 +17,6 @@
 [![Download toolkit](https://img.shields.io/badge/Download-Windows%20%2F%20macOS-0969da?style=for-the-badge)](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/latest)
 
 [平台下载及更新说明 / Downloads & release notes](#download--下载软件) · [中文使用说明](#中文说明) · [English setup](#getting-started)
-
-## 赞助开发 / Support development
-
-**[PayPal 赞助 →](https://paypal.me/RadiumWang) · [支付宝收款码 →](#support-development)**
-
-[![Support via PayPal](https://img.shields.io/badge/Support-PayPal-0070ba?style=for-the-badge)](https://paypal.me/RadiumWang)
-
-赞助完全自愿，用于支持持续研究、工具开发和维护；获取工具与使用功能不以付款为条件。 Donations are voluntary and support ongoing research, development and maintenance.
 
 ---
 
@@ -87,17 +85,9 @@ This is an independent project, not an official Hasselblad product. Eye recognit
 
 ## License
 
-New versions carrying the [X2D/907 Noncommercial Distribution License 1.0](LICENSE) allow use, study, modification and free redistribution. **Professional photography, including paid shoots and selling photographs, is allowed. Selling the software or modified versions, charging for software access, and paid installation/setup services require separate written permission.** Truly voluntary donations are allowed; access, features or installation must not depend on payment.
+New versions carrying the [X2D/907 Noncommercial Distribution License 1.0](LICENSE) allow use, study, modification and free redistribution. **Professional photography, including paid shoots and selling photographs, is allowed. Selling the software or modified versions, charging for software access, and paid installation/setup services require separate written permission.**
 
 This is a **source-available** project with restrictions on software commercialization; the license is not OSI-approved open source. Previously released MIT versions keep their original permissions. Third-party components keep their own licenses; see [third-party notices](THIRD_PARTY_NOTICES.md). Existing published 0.4.2 archives are unchanged by this repository license update.
-
-## Support development
-
-If this toolkit helps you, you can support its development via [PayPal](https://paypal.me/RadiumWang) or Alipay. Donations are voluntary. Thank you for supporting ongoing development and maintenance!
-
-**Alipay:** scan the QR code below with Alipay, or save the image and open it in Alipay's scanner.
-
-<img src="docs/images/alipay-donation.png" alt="Alipay donation QR code" width="280">
 
 ---
 
@@ -154,14 +144,6 @@ X2D 的功能入口在第 **12** 格；907 默认第 **11** 格，勾选彩蛋�
 
 ### 许可
 
-后续携带 [X2D/907 非商业分发许可证 1.0](LICENSE) 的版本允许使用、研究、修改和免费分享。**允许用于收费拍摄、摄影工作室及出售摄影作品；出售软件或改版、收费提供软件访问，以及收费安装、设置服务须另获作者书面授权。** 允许自愿赞助，但不得把付款作为获取软件、使用功能或获得安装服务的条件。
+后续携带 [X2D/907 非商业分发许可证 1.0](LICENSE) 的版本允许使用、研究、修改和免费分享。**允许用于收费拍摄、摄影工作室及出售摄影作品；出售软件或改版、收费提供软件访问，以及收费安装、设置服务须另获作者书面授权。**
 
 这是限制软件商业化的**源码公开（source-available）**项目，许可证不属于 OSI 认可的开源许可证。此前已按 MIT 发布的版本仍保留原许可；第三方组件沿用各自许可，见 [第三方说明](THIRD_PARTY_NOTICES.md)。本次仓库许可更新不修改已发布的 0.4.2 安装包。
-
-### 支持开发
-
-如果这个工具对你有帮助，欢迎通过 [PayPal](https://paypal.me/RadiumWang) 或支付宝自愿赞助，支持后续开发与维护。感谢支持！
-
-**支付宝：**打开支付宝扫一扫，扫描下方收款码；也可以保存图片，在扫一扫中从相册选择。
-
-<img src="docs/images/alipay-donation.png" alt="支付宝自愿赞助收款码" width="280">
