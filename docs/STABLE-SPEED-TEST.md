@@ -8,9 +8,9 @@ Update behavior: the public updater uses numeric version comparison. Published 0
 
 Local checks use actual stock Qt 6.4.1 widgets/shaders, with native hardware/constants and loopback backend proxied. AArch64 instruction checks use substituted hardware getters. These checks do not establish Windows physical execution, camera touch/GPU or optical autofocus performance. Do not install, restore or reboot a camera as part of building/checking packages.
 
-The Windows and Mac release ZIPs are generated in ignored output directories. Extract the complete ZIP before use. If the camera has a 0.5.0 beta installed, first restore it using its matching beta app, then use this stable release. The stable app cannot overwrite unknown/private-beta camera modifications.
+The Windows and Mac release ZIPs are generated in ignored output directories. Extract the complete ZIP before use. **Before upgrading any existing toolkit installation, restore the camera extension using the original computer and original Software version, confirm completion, then upgrade the desktop app and install this release.** Same-version recovery on another computer is supported, but use the original computer/version first to avoid unnecessary problems. If the camera has a 0.5.0 beta installed, perform that restoration with its original beta app on its original computer before installing this stable release. The stable app cannot overwrite unknown/private-beta camera modifications. See [Upgrade procedure](UPGRADING.md) and [Risk notice](../DISCLAIMER.md).
 
-0.4.17 公开稳定包仅在原始 0.4.12 上增加低／中／高三档速度；保持原有三项功能，不包含内测眼部识别／AFT。0.4.17 低于 0.5.0，内测用户不会收到此更新。相机若装有 0.5.0，请先用对应内测 App 恢复原状，再试装稳定包。
+0.4.17 公开稳定包仅在原始 0.4.12 上增加低／中／高三档速度；保持原有三项功能，不包含内测眼部识别／AFT。0.4.17 低于 0.5.0，内测用户不会收到此更新。**任何已有本工具扩展的相机，升级前务必先使用原电脑原软件版本恢复；同版本跨电脑恢复的支持不改变这一要求。**相机若装有 0.5.0，请先在原电脑使用安装当前扩展的原内测 App 恢复原状，确认完成后，再升级电脑端及试装稳定包。详见[升级顺序](UPGRADING.md)与[中文免责声明](DISCLAIMER.zh-CN.md)。
 
 Validation: 215 full offline tests without skips, 4,206 exact machine-code cases, 14 executed Restore scenarios (all seven masks for original and new stable bundles), native stock-widget checks in three languages, eight real Mac desktop selections, and 15 final copy/update regressions. Hardware/backend inputs are substituted; Windows/CFV device and optical validation remain pending.
 

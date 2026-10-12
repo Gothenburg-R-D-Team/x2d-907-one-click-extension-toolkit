@@ -1,0 +1,65 @@
+供后续 App 接入的提示文案 / Proposed prompt copy for future App integration
+本文档不代表已发布 App 已显示这些提示。/ This document does not establish that released apps display these prompts.
+
+【简体中文：安装／更新相机扩展前】
+
+标题：实验性相机扩展：请确认设备与数据风险
+
+如相机已安装本工具扩展，升级前务必、务必、务必先使用原电脑、原软件版本执行“恢复原状”，确认完成后再升级软件、重新安装扩展。虽然支持同版本跨电脑恢复，为避免不必要的麻烦，升级时仍务必先用原电脑原版本恢复。完成前不要卸载、覆盖或删除原软件及备份。
+
+这是独立开发的非官方相机工具。继续操作会改变相机的配置或运行状态，可能导致无法启动、设备损坏、照片丢失、对焦或拍摄失败，并可能产生维修、重拍及业务损失。
+
+备份和“恢复原状”不能保证修复所有故障或找回照片。请先备份重要数据，核实本版本支持您的机型及固件，并准备稳定电源与可靠连接。重要拍摄前应先验证当前设备组合。
+
+在适用法律允许的范围内，软件按现状提供，作者、贡献者及版权人的担保和赔偿责任依完整声明受到限制。该限制不排除故意、重大过失、因过失造成的人身伤害或其他依法不得排除的责任，也不取消您依法享有的消费者及数据保护权利。
+
+完整声明入口：查看全球用户风险告知与免责声明
+
+默认未勾选：
+□ 我已阅读完整声明，理解设备及数据风险、“恢复原状”的限制，以及依法允许的责任限制，并自愿继续本次操作。
+
+按钮：取消 | 确认风险并继续安装
+更新相机扩展时：取消 | 确认风险并继续更新
+
+
+【English: before installing / updating the camera extension】
+
+Title: Experimental camera extension: equipment and data risks
+
+If the camera already has this toolkit's extension, you must run “Restore original” using the original computer and original Software version before upgrading. Confirm completion, then upgrade the Software and reinstall the extension. Recovery on another computer is supported with the same Software version, but always restore on the original computer with the original version before upgrading to avoid unnecessary problems. Do not uninstall, overwrite or delete the original Software or backups before recovery is complete.
+
+This is an independently developed, unofficial camera tool. Proceeding changes camera configuration or runtime state and may cause boot failure, equipment damage, lost photographs, missed focus or failed capture, and repair costs, reshoots or business losses.
+
+Backups and “Restore original” cannot guarantee repair of every fault or recovery of photographs. Back up important data, check that this release supports your camera and firmware, and prepare stable power and a reliable connection. Validate your equipment combination before important work.
+
+Where permitted by applicable law, the Software is supplied in its existing condition, and warranties and liability of the authors, contributors and copyright holders are limited as explained in the full notice. These limits do not exclude wilful misconduct, gross negligence, personal injury caused by negligence or other non-excludable liability, or remove statutory consumer or data protection rights.
+
+Full notice link: Read the Global Risk Notice and Disclaimer
+
+Unchecked by default:
+□ I have read the full notice and understand the equipment and data risks, the limits of “Restore original”, and the liability limits permitted by law. I voluntarily choose to continue this operation.
+
+Buttons: Cancel | Acknowledge risks and install
+For a camera-extension update: Cancel | Acknowledge risks and update
+
+
+【简体中文：恢复操作前】
+
+标题：确认恢复本工具管理的改动
+
+升级前请务必使用原电脑、原软件版本执行此次恢复。虽然支持同版本跨电脑恢复，为避免不必要的麻烦，请优先使用原电脑及安装当前扩展的原版本。
+
+恢复操作可能改变相机配置并重启设备。“恢复原状”仅用于撤回本工具管理的改动，不保证修复全部故障或恢复照片。恢复过程中也存在设备异常、数据丢失及操作失败的风险；请确保稳定电源与可靠连接。完整免责声明及其中保留的法定权利同样适用。
+
+按钮：取消 | 确认风险并恢复
+
+
+【English: before recovery】
+
+Title: Confirm recovery of changes managed by this tool
+
+Before upgrading, use the original computer and the original Software version for this recovery. Recovery on another computer is supported with the same Software version; use the original computer and version that installed the current extension to avoid unnecessary problems.
+
+Recovery may change camera configuration and restart the device. “Restore original” withdraws changes managed by this tool; it does not guarantee repair of every fault or recovery of photographs. Recovery also carries risks of equipment problems, data loss and failure. Ensure stable power and a reliable connection. The full disclaimer and its protection of statutory rights also apply.
+
+Buttons: Cancel | Acknowledge risks and restore

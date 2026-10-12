@@ -1,5 +1,13 @@
 # X2D/907 One-Click Extension Toolkit
 
+## 升级前必读 / Read before upgrading
+
+**相机已安装本工具扩展时，升级软件前务必、务必、务必先使用原电脑、原软件版本执行“一键恢复原状”，确认恢复完成后，再升级电脑端软件并重新安装相机扩展。**虽然本软件支持相同软件版本下跨电脑恢复，为避免一切不必要的麻烦，升级时仍请务必先用原电脑原版本恢复。恢复完成前，不要卸载、覆盖或删除原软件及备份。
+
+**If your camera already has this toolkit's extension, you must run “Restore original” using the original computer and the original Software version before upgrading the desktop Software. Confirm recovery has completed, then upgrade and reinstall the camera extension.** Recovery on another computer is supported with the same Software version, but always restore first on the original computer with the original version to avoid unnecessary problems. Keep the original Software and backups until recovery is complete.
+
+[升级顺序与原电脑不可用时的处理 / Upgrade procedure](docs/UPGRADING.md) · [English risk notice and disclaimer](DISCLAIMER.md) · [中文风险告知与免责声明](docs/DISCLAIMER.zh-CN.md)
+
 ## 欢迎交流 / Discussion and contributions
 
 欢迎交流、分享研究发现和使用反馈。欢迎通过 [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) 讨论问题与建议，也欢迎提交 [Pull Requests](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) 改进代码、文档和测试。
@@ -34,11 +42,11 @@ Camera menu text follows the app language at install time: English installs **Tw
 - [**Download for Windows 10/11 (64-bit) / 下载 Windows 版 (.zip)**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/x2d-907-extension-toolkit-Windows-x64-0.4.17.zip)
 - [**Download for macOS 13+ (Apple silicon and Intel) / 下载 Mac 版 (.zip)**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/x2d-907-extension-toolkit-macOS-Universal-0.4.17.zip)
 
-Extract the entire ZIP before opening the app. 下载后请完整解压，再启动软件。 [Release notes / 更新说明](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17) · [SHA-256 checksums / 校验文件](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/SHA256SUMS)
+Extract the entire ZIP before opening the app. **Existing camera-extension users must restore with the original computer and original Software version before upgrading.** 下载后请完整解压，再启动软件。**已有相机扩展的用户，务必先使用原电脑原软件版本恢复，再升级。** [Upgrade procedure / 升级顺序](docs/UPGRADING.md) · [Release notes / 更新说明](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17) · [SHA-256 checksums / 校验文件](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/SHA256SUMS)
 
-Version 0.4.17 adds a native vertical Low / Medium / High selector below Focus Speed Boost, with orange highlighting and a gray disabled row when boost is off. Low uses 1.5/1.5/1.5, Medium (default) 2.5/2/1.5, and High 3/3/2 for Type 0/1/2. The saved level survives disabling and reboot; Restore removes it. After updating the desktop app, use **Connected → Install** to update the camera menu. See [release notes](CHANGELOG.md).
+Version 0.4.17 adds a native vertical Low / Medium / High selector below Focus Speed Boost, with orange highlighting and a gray disabled row when boost is off. Low uses 1.5/1.5/1.5, Medium (default) 2.5/2/1.5, and High 3/3/2 for Type 0/1/2. The saved level survives disabling and reboot; Restore removes it. **First restore the installed extension using the original computer and original Software version, then update the desktop app and use Connected → Install to install the new camera menu.** See [release notes](CHANGELOG.md).
 
-0.4.17 在对焦加速开关下加入原厂上下滑动的低／中／高选择，橙色高亮；加速关闭时灰色不可用。低为 1.5／1.5／1.5，中（默认）2.5／2／1.5，高为 3／3／2，依次对应 Type 0／1／2。关闭及重启保留档位，恢复原状清除档位。电脑端升级后，点击 **已连接 → 一键安装** 更新相机菜单，详见[更新说明](CHANGELOG.md)。
+0.4.17 在对焦加速开关下加入原厂上下滑动的低／中／高选择，橙色高亮；加速关闭时灰色不可用。低为 1.5／1.5／1.5，中（默认）2.5／2／1.5，高为 3／3／2，依次对应 Type 0／1／2。关闭及重启保留档位，恢复原状清除档位。**先使用原电脑原软件版本恢复原有扩展，再升级电脑端，最后点击已连接 → 一键安装安装新版相机菜单。**详见[升级顺序](docs/UPGRADING.md)与[更新说明](CHANGELOG.md)。
 
 ## Features
 
@@ -46,7 +54,7 @@ Version 0.4.17 adds a native vertical Low / Medium / High selector below Focus S
 - **Focus speed buff:** Low / Medium / High acceleration, with stock speed restored when disabled.
 - **Auto Brightness (0.4.3):** enable “Add Auto Brightness to Menu” in Tweaks, then control Auto in Display → Brightness. The rear slider sets the maximum; the knob stays there while its white fill tracks current output. The master switch controls availability; default off.
 - **Install / Restore original:** checks the camera and package, saves the original startup configuration, then restarts and verifies the result.
-- **Settings and updates:** in Settings, startup checks default to on and can be disabled; the choice is remembered. Manual checking remains available when automatic checks are off. A separate Download and Install Update action fetches the latest stable GitHub Release for your platform, verifies its SHA-256 digest, then installs and relaunches the app. Camera operations and app updates cannot run together. The previous app is retained beside the installation. Updates change the desktop app; updating an installed camera extension still requires **Connected → Install**.
+- **Settings and updates:** in Settings, startup checks default to on and can be disabled; the choice is remembered. Manual checking remains available when automatic checks are off. **Before Download and Install Update, restore any installed camera extension using the original computer and original Software version.** The update action fetches the latest stable GitHub Release for your platform, verifies its SHA-256 digest, then installs and relaunches the app. Camera operations and app updates cannot run together. The previous app is retained beside the installation; this is not a substitute for restoring first. After restoration and the desktop update, install the new camera extension using **Connected → Install**. See [Upgrade procedure](docs/UPGRADING.md).
 - **Simplified Chinese / Traditional Chinese / English (0.4.7):** switch the desktop interface and logs in Settings; the preference survives app restarts. **Install** writes matching camera menu text. Changing the camera language requires another install.
 - **Windows connection and exit fixes (0.4.6):** correct the private ADB listener address that prevented installation in 0.4.5. Closing during a read-only update check cancels the check. Camera install/restore uses an owned private ADB process that is cleaned up afterward; camera/driver work and update installation retain exit protection.
 - **Windows interface (0.4.4):** Mac-aligned feature cards, rounded buttons and Settings, with bilingual typography, per-monitor DPI scaling and scrolling on short displays. The camera payload is unchanged from 0.4.3, so existing 0.4.3 camera installations do not need reinstallation.
@@ -56,6 +64,8 @@ Focus acceleration changes lens motor-control parameters according to the select
 
 ## Getting started
 
+**For an upgrade, follow the [original-computer/original-version restoration procedure](docs/UPGRADING.md) before replacing the desktop app or reinstalling the extension.** A first installation on a camera without this toolkit's extension does not require this restoration step. Read the [full risk notice](DISCLAIMER.md) before device operations.
+
 1. Extract the complete application package. macOS requires 13 or later (Apple silicon / Intel); Windows requires 64-bit Windows 10 / 11.
 2. Turn on the camera and connect a USB data cable. Tap **Skip** if shown on the camera. A camera-side **Mass storage** selection can also retain the factory connection.
 3. Click **Connected**. Install and Restore remain disabled until connection and firmware checks pass. Windows requests administrator access and attempts to prepare the supported camera factory interface automatically; the ADB interface is separate.
@@ -63,7 +73,7 @@ Focus acceleration changes lens motor-control parameters according to the select
 5. Disconnect only when the app reports completion. Open **Tweaks** (English install) or **耍起功能** (Chinese install) at the end of the camera menu, enable its master switch, then choose AF-C or the focus buff. Select Traditional Chinese in Settings before installing to get Traditional Chinese camera text.
 6. To remove the extension, reconnect, click **Connected**, then **Restore original**. This reverses this application's changes; it is not a complete firmware recovery tool.
 
-X2D uses tile **12**. The 907 uses tile **11** normally, or **12** with the optional Easter egg installed. Changing the Easter egg choice or the camera menu language requires another installation; recognized older packages are restored before upgrade.
+X2D uses tile **12**. The 907 uses tile **11** normally, or **12** with the optional Easter egg installed. Changing the Easter egg choice or the camera menu language requires another installation. For a Software upgrade, first perform restoration with the original computer and original Software version; do not rely on the newer app's recognition of older packages as a substitute for this step.
 
 When an existing extension must be restored before reinstallation, the app asks for confirmation in the **target camera menu language**. The dialog explains restoration, disabled feature switches and restarts. Cancel leaves the camera unchanged. A first installation or an unchanged installation does not need this dialog.
 
@@ -99,13 +109,15 @@ This is a **source-available** project with restrictions on software commerciali
 
 **下载安装包：**[Windows 10/11（64 位）](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/x2d-907-extension-toolkit-Windows-x64-0.4.17.zip) · [macOS 13 及以上（Apple 芯片 / Intel）](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/x2d-907-extension-toolkit-macOS-Universal-0.4.17.zip)。下载后请完整解压，再启动软件。
 
+**已有相机扩展的用户，务必先使用原电脑、原软件版本恢复，确认完成后再升级；同版本跨电脑恢复的支持不改变此要求。**[完整升级顺序](docs/UPGRADING.md) · [风险告知与免责声明](docs/DISCLAIMER.zh-CN.md)
+
 ### 当前功能
 
 - **AF-C 连续自动对焦**：在相机上控制连续对焦入口；关闭后恢复原厂 AF-S / 手动对焦布局。
 - **对焦加速**：低／中／高三档可选，关闭后恢复原厂速度。
 - **后屏自动亮度（0.4.3）**：在耍起功能中开启“在亮度菜单中加入自动亮度”，之后在显示 → 亮度中控制自动模式。滑块圆球设置最高亮度，白线跟随当前输出；受总开关控制、默认关闭。
 - **一键安装 / 一键恢复原状**：检查连接与文件，保存原厂启动配置，并在重启后校验结果。
-- **设置与更新**：在设置页选择语言、关闭或开启启动自动检查更新（默认开启并保存选择）；关闭后仍能手动检查。下载安装需另行点击，从 GitHub Release 获取对应系统的稳定版，校验 SHA-256 后安装并重新打开；保留上一版 App，更新与相机操作互斥。更新只替换电脑端软件；相机上的扩展需再点击 **已连接 → 一键安装** 更新。
+- **设置与更新**：在设置页选择语言、关闭或开启启动自动检查更新（默认开启并保存选择）；关闭后仍能手动检查。**点击下载安装更新前，务必使用原电脑、原软件版本恢复已安装的相机扩展。**更新需另行点击，从 GitHub Release 获取对应系统的稳定版，校验 SHA-256 后安装并重新打开；保留上一版 App，更新与相机操作互斥。保留上一版 App 不能替代升级前恢复。完成恢复及电脑端升级后，再点击 **已连接 → 一键安装** 安装新版相机扩展，详见[升级顺序](docs/UPGRADING.md)。
 - **简体中文／繁體中文／English（0.4.7）**：在设置中选择语言，桌面界面、操作提示和日志随语言切换，重启 App 后保留选择；**一键安装** 会写入对应语言的相机菜单文案，更换相机语言需重新安装。
 - **Windows 连接与退出修复（0.4.6）**：修正 0.4.5 导致安装无法开始的独立 ADB 监听地址；普通检查更新期间可关闭窗口并取消检查。相机安装/恢复使用本软件管理的独立 ADB 进程，操作结束后回收；相机/驱动操作及更新安装期间仍保留退出保护。
 - **Windows 界面（0.4.4）**：功能卡片、圆角按钮和设置页对齐 Mac，适配中英文字体、显示器 DPI 缩放及小屏幕滚动。相机载荷与 0.4.3 相同，已有 0.4.3 相机安装无需重装。
@@ -115,6 +127,8 @@ This is a **source-available** project with restrictions on software commerciali
 
 ### 使用方法
 
+**升级用户必须先按[原电脑、原版本恢复流程](docs/UPGRADING.md)恢复，再替换电脑端 App 或重新安装扩展。**相机没有本工具扩展、属于首次安装时，无需先恢复已有安装。设备操作前请阅读[完整免责声明](docs/DISCLAIMER.zh-CN.md)。
+
 1. 完整解压软件。Mac 支持 macOS 13 及以上、Apple 芯片与 Intel；Windows 支持 64 位 Windows 10 / 11。
 2. 开机并插入 USB 数据线；相机出现“跳过”时点击“跳过”。在相机屏幕选择“大容量存储”也可能保留工厂通信连接。
 3. 点击 **已连接**。检查通过后才启用安装和恢复按钮。Windows 会请求管理员权限，并尝试自动准备支持的相机工厂接口驱动；ADB 是另一个独立接口。
@@ -122,7 +136,7 @@ This is a **source-available** project with restrictions on software commerciali
 5. App 提示完成后才拔线。在相机主菜单末尾进入 **耍起功能**，先开启主开关，再选择 AF-C 或对焦加速。若希望相机使用繁体中文，请在安装前到设置页选“繁體中文”。
 6. 需要撤回时重新连接，点击 **已连接 → 一键恢复原状**。恢复仅撤回本软件的改动，不是整机固件救援。
 
-X2D 的功能入口在第 **12** 格；907 默认第 **11** 格，勾选彩蛋后移到第 **12** 格。改变彩蛋选项或相机菜单语言后需重新安装；已识别旧版会先恢复再升级。
+X2D 的功能入口在第 **12** 格；907 默认第 **11** 格，勾选彩蛋后移到第 **12** 格。改变彩蛋选项或相机菜单语言后需重新安装。升级软件时，务必先使用原电脑原软件版本恢复，不要用新版对旧包的识别或自动恢复流程替代这一步。
 
 需要先恢复再安装时，App 会按 **目标相机菜单语言** 弹出确认，说明恢复、功能开关关闭和重启流程。取消后不修改相机。首次安装或现有安装配置未变化时不弹此确认。
 
