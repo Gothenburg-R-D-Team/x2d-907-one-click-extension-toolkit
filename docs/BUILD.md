@@ -1,5 +1,7 @@
 # Build and test
 
+[Mac-specific build guide / Mac 工具编译与构建](BUILD-macOS.md) covers the current 0.4.17 Cocoa UI, universal runtime inputs, packaging gates, exact CLI arguments and output verification.
+
 Commands below run from the repository root. Python 3.9+ and `requirements-dev.txt` are needed for development; desktop distributions embed Python 3.13.15. No command below connects to a camera unless the explicit runtime actions at the end are used.
 
 ## Source map

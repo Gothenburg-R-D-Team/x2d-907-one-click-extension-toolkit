@@ -33,7 +33,7 @@ Discussion, research findings and feedback are welcome. Please use [Issues](http
 
 Camera menu text follows the app language at install time: English installs **Tweaks**; Simplified and Traditional Chinese install **耍起功能** with their respective feature labels and messages.
 
-[中文说明](#中文说明) · [Changelog / 更新日志](CHANGELOG.md) · [Build and test](docs/BUILD.md) · [Validation](docs/VALIDATION.md)
+[中文说明](#中文说明) · [Changelog / 更新日志](CHANGELOG.md) · [Build and test](docs/BUILD.md) · [Mac 编译构建](docs/BUILD-macOS.md) · [Validation](docs/VALIDATION.md)
 
 ## Download / 下载软件
 
