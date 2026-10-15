@@ -1,0 +1,203 @@
+/*
+ * vim: tabstop=4 softtabstop=4 shiftwidth=4 expandtab fileencoding=utf-8
+ * encoding: utf-8
+ * -*- coding: utf-8 -*-
+ *
+ * Copyright 2020 Victor Hasselblad AB.
+ *
+ * All information contained in or disclosed by this document is confidential
+ * and proprietary of Victor Hasselblad AB. By accepting this material the
+ * recipient agrees that this material and the information contained therein
+ * will be held in confidence and will not be reproduced in whole or in part
+ * without written permission from Victor Hasselblad AB.
+*/
+
+import QtQuick
+import com.hasselblad.proxies
+import com.hasselblad.valueformatter
+import com.hasselblad.constants
+import com.hasselblad.keys
+import com.hasselblad.menumodel
+import com.hasselblad.types
+
+import "qrc:/app/qml/scripts/Keys.js" as MKeys
+import "qrc:/app/qml/components"
+
+PopupBackground {
+    objectName: "NativePixelSelector"
+    id: root
+
+    property var proxy: GuiTypes.E_Proxy_None
+    property string propName: ""
+    property var propValue: null
+    property bool externalMenu: false
+    property var controller: null
+    property var viewModel: null
+    property string kind: "frames"
+    readonly property var values: kind === "sound" ? [0,1,2,3] : kind === "frames" ? [1,2,3] : kind === "initial" ? [0].concat(Array.from({length:59}, function(_,i) { return i+2 })) : [0,500,1000,2000,5000]
+    readonly property var labels: kind === "sound" ? Array.from(ValueFormatter.getVariableListModel("selftimer_sound_level"), function(value) { return ValueFormatter.stringTranslated("selftimer_sound_level",value) }) : kind === "frames" ? ["4 张","6 张","16 张"] : kind === "initial" ? ["关闭"].concat(Array.from(ValueFormatter.getVariableListModel("selftimer_delay"), function(value) { return ValueFormatter.stringTranslated("selftimer_delay", value) })) : ["0 秒","0.5 秒","1 秒","2 秒","5 秒"]
+    readonly property bool canEdit: controller && controller.pixelParametersReady && controller.pixelCanChange &&
+                                   controller.pendingPixelMode === 0 && controller.pendingPixelWait < 0 && controller.pendingPixelInitial < 0 && controller.pendingPixelSound < 0
+    readonly property bool preventSwipe: true
+    property bool interactive: viewModel && !viewModel.screenEVF
+    readonly property int keyOverride: externalMenu ? HblmTypes.E_CameraKeyOption_OverrideHalfPress :
+                                                      HblmTypes.E_CameraKeyOption_Listen // Used by KeyFocusHandler.cpp
+
+    signal close()
+    signal closeExternal()
+    signal valueSaved();
+
+    popupMarginY: (root.height - Constants.menuDropDownHeight) / 2
+    popupAnchor {
+        leftMargin: 320 * Constants.scaleFactorX
+        topMargin: 131.2 * Constants.scaleFactorY
+        rightMargin: 40 * Constants.scaleFactorX
+        bottomMargin: 131.2 * Constants.scaleFactorY
+    }
+
+    QtObject {
+        id: d
+        property int startIndex: 0
+    }
+
+    function setup()
+    {
+        // Set focus on currently selected value
+        // We do not want it to slowly "roll" to position, so we set duration
+        // temporarily to 0
+        var oldHighlightMoveDuration = list.highlightMoveDuration;
+        list.highlightMoveDuration = 0;
+        var currentValue = labels[Math.max(0, values.indexOf(kind === "sound" ? controller.pixelSoundLevel : kind === "frames" ? controller.pixelMode : kind === "initial" ? controller.pixelInitialDelay : controller.pixelWait))];
+        console.info("currentValue", currentValue)
+        list.currentIndex = list.model.indexOf(currentValue);
+        d.startIndex = list.currentIndex
+        list.highlightMoveDuration = oldHighlightMoveDuration;
+        list.visible = true
+    }
+
+    // Called when the user clicked in the list, not necessarily on the selected item,
+    // then the clicked item will be set
+    function itemSelected(ix)
+    {
+        list.highlightMoveDuration = 0
+        list.currentIndex = ix
+        root.setSelected()
+        root.close()
+    }
+
+    // Called from parent to set selected value when the user clicked outside of the list,
+    // then the selected (highlighted) item will be set
+    function setSelected()
+    {
+        if (root.canEdit && list.currentIndex >= 0 && list.currentIndex < root.values.length) {
+            console.info("selected", list.model[list.currentIndex])
+
+            if (list.currentIndex !== d.startIndex) {
+                root.valueSaved()
+            }
+            if (root.kind === "sound") root.controller.choosePixelSound(root.values[list.currentIndex]);
+            else if (root.kind === "frames") root.controller.choosePixelMode(root.values[list.currentIndex]);
+            else if (root.kind === "initial") root.controller.choosePixelInitialDelay(root.values[list.currentIndex]);
+            else root.controller.choosePixelWait(root.values[list.currentIndex]);
+        }
+    }
+
+    Keys.onPressed: (event)=> {
+        if (MKeys.pressedFnAcc(KeyFn.HalfPress, event)) {
+            // Halfpress should save and close external popup (i.e. drive mode)
+            setSelected()
+            if (root.externalMenu) {
+                root.closeExternal()
+            } else {
+                root.close()
+            }
+        } else if (MKeys.pressedFnAcc(KeyFn.PopAccept, event)) {
+            setSelected()
+            root.close()
+        } else if (MKeys.pressedFnListAcc([KeyFn.ListUp, KeyFn.JstkLeft], event)) {
+            list.decrementCurrentIndex()
+        } else if (MKeys.pressedFnListAcc([KeyFn.ListDown, KeyFn.JstkRight], event)) {
+            list.incrementCurrentIndex()
+        } else if (MKeys.pressedFnAcc(KeyFn.Abort, event)) {
+            root.close()
+        } else if (MKeys.pressedFnAcc(KeyFn.NavKey, event)) {
+            event.accepted = true //Prevent other navigation keys from propagating
+        }
+    }
+
+    content: FocusScope {
+        anchors {
+            fill: parent
+            margins: Constants.defaultBorderWidth
+        }
+        focus: true
+
+        Rectangle {
+            anchors {
+                left: parent.left
+                right: parent.right
+                verticalCenter: parent.verticalCenter
+            }
+            color: Constants.highlightColor
+            height: list.height / Constants.numberOfItemsVisibleInList
+        }
+
+        HblListView {
+            id: list
+            objectName: "NativePixelChoiceList"
+            clip: true
+            focus: true
+            anchors.fill: parent
+            visible: false
+
+            orientation: ListView.Vertical
+            interactive: root.interactive
+            highlightRangeMode: ListView.StrictlyEnforceRange
+            preferredHighlightBegin: list.height / 2 - list.height / Constants.numberOfItemsVisibleInList / 2
+            preferredHighlightEnd: list.height / 2 + list.height / Constants.numberOfItemsVisibleInList / 2
+            boundsBehavior: Flickable.StopAtBounds
+            highlightMoveVelocity: 1280 * Constants.scaleFactor
+
+            model: root.labels
+
+            delegate: ScaledDelegate {
+                listView: list
+                readonly property bool choiceEnabled: true
+                objectName: "NativePixelChoice" + index
+
+                Text {
+                    id: textItem
+                    anchors.centerIn: parent
+                    anchors.verticalCenterOffset: 0.05 * height
+                    text: modelData
+                    font.family: Constants.menuItemFontName
+                    opacity: parent.choiceEnabled ? 1.0 : Constants.menuItemDisabledTextOpacity
+                    color: parent.ListView.isCurrentItem ? Constants.highlightItemColor: Constants.itemColor
+                    font.pixelSize: parent.height * 0.6 * parent.scaleFactor
+                    width: parent.width - 2 * Constants.settingsMenuSettingDropDownTextMargin
+                    height: textMetrics.tightBoundingRect.height
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    fontSizeMode: Text.HorizontalFit
+                }
+
+                MouseArea {
+                    id: mouseArea
+                    enabled: parent.choiceEnabled
+                    anchors.fill: parent
+                    onClicked: root.itemSelected(index)
+                }
+
+                TextMetrics {
+                    id: textMetrics
+                    font: textItem.font
+                    text: modelData
+                }
+            }
+
+            ListGradient {
+                anchors.fill: list
+            }
+        }
+    }
+}

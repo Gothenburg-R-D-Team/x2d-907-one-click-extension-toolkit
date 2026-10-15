@@ -1,0 +1,589 @@
+#!/system/bin/sh
+# Build-time wrapper around the reviewed v0.4.12/Eye worker and scoped Eye pause.
+set -eu
+export PATH=/system/bin:/system/xbin:/sbin
+# Android mksh materializes the embedded baseline here-document before its
+# child starts. Set this in the outer worker, not only inside the baseline.
+export TMPDIR=/tmp
+D=/tmp/x2d-speed-buff
+ROOT=/blackbox/.x2d-play-software
+PREF=$ROOT/aft-enabled
+BLOCK=$ROOT/aft-restoring
+FACE=$ROOT/aft-face-before
+MASK=${X2D_INSTALLED_FEATURE_MASK:-${X2D_FEATURE_MASK:-7}}
+case "$MASK" in ''|*[!0-9]*) exit 38;; esac
+[ "$MASK" -ge 1 ] && [ "$MASK" -le 255 ] || exit 38
+ACTION=${1:-status}
+# Outer guards use the full installation mask before legacy fallback is applied.
+case "$ACTION" in
+ afc_on) [ "$((MASK&1))" != 0 ] || exit 38;;
+ enable|speed_low|speed_medium|speed_high) [ "$((MASK&2))" != 0 ] || exit 38;;
+ eye_on|eye_resume) [ "$((MASK&8))" != 0 ] || exit 38;;
+ aft_on) [ "$((MASK&16))" != 0 ] || exit 38;;
+esac
+[ ! -L "$D" ] || exit 39
+mkdir -p "$D";chmod 700 "$D"
+aftReady=false; aftActive=false; aftIdle=false; aftSaved=false
+aftFacePriority=false; eyeSuppressed=false
+eyeModeKnown=true
+aft_memory() {
+ P=$(pidof camera-service);case "$P" in ''|*[!0-9]*) return 1;; esac
+ X2D_FEATURE_MASK="$((MASK&63))" LD_PRELOAD=/system/lib64/libx2d_speed_server.so X2D_AFT_MEMORY_COMMAND="$1" X2D_AFT_MEMORY_PID="$P" \
+  /system/bin/sh -c : >"$D/aft-result" || return 1
+ read aftReady aftActive aftIdle <"$D/aft-result"
+ [ "$aftReady" = true ]
+}
+preference() {
+ for path in "$D" "$D/aft-memory" "$D/aft-memory.next" "$ROOT" "$PREF" "$PREF.next" "$BLOCK" "$BLOCK.next" "$FACE" "$FACE.next"; do [ ! -L "$path" ] || return 1; done
+ aftSaved=false
+ if [ -e "$PREF" ]; then
+  [ -f "$PREF" ] || return 1
+  saved_hash=$(sha256sum "$PREF") || return 1
+  [ "${saved_hash%% *}" = 3d4cc0e6d4997dc46091370a9cca24c44a9646db3d35b0890ae8c4404aade264 ] || return 1
+  aftSaved=true
+ fi
+ if [ -e "$BLOCK" ]; then
+  [ -f "$BLOCK" ] && [ "$(cat "$BLOCK")" = X2D_AFT_RESTORE_V1 ] || return 1
+ fi
+ if [ -e "$FACE" ]; then
+  [ -f "$FACE" ] || return 1
+  old=$(cat "$FACE");case "$old" in Off|Single|Multi) ;; *) return 1;; esac
+ fi
+}
+focus() { odindb-send -s camera -p focus_mode | sed -n 's/^focus_mode = E_FocusModes_\([A-Za-z]*\)([0-9]*)$/\1/p'; }
+face() { odindb-send -s camera -p face_detection | sed -n 's/^face_detection = E_FaceDetection_\([A-Za-z]*\)([0-9]*)$/\1/p'; }
+set_focus() { odindb-send -s camera -p focus_mode -- "E_FocusModes_$1" >/dev/null && [ "$(focus)" = "$1" ]; }
+set_face() { odindb-send -s camera -p face_detection -- "E_FaceDetection_$1" >/dev/null && [ "$(face)" = "$1" ]; }
+update_eye_priority() {
+ aftFacePriority=false;eyeModeKnown=true
+ [ "$((MASK&16))" != 0 ] || return 0
+ case "$(focus)" in
+ Aft) aftFacePriority=true;;
+ Afs|Afc|Man) ;;
+ *) aftFacePriority=true;eyeModeKnown=false;; # Unknown mode: never resume Eye.
+ esac
+}
+eye_priority_verified() {
+ [ "$((MASK&8))" = 0 ] ||
+  grep -q '"eyeReady":true,"eyeActive":false' "$D/base-ui.json"
+}
+eye_layout_verified() {
+ [ "$((MASK&8))" = 0 ] || grep -q '"eyeReady":true,' "$D/base-ui.json"
+}
+cancel() {
+ [ ! -L "$D/afc-tracking" ] || return 1
+ rm -f "$D/afc-tracking" "$D/afc-tracking.next"
+ preference || return 1
+ rm -f "$PREF" "$PREF.next";sync;aftSaved=false
+ if [ -e "$D/aft-memory" ] || [ -e "$D/aft-memory.next" ]; then
+  aft_memory status && [ "$aftIdle" = true ] || return 1
+  current=$(focus);[ "$current" != Aft ] || set_focus Afs || return 1
+  aft_memory off || return 1
+ fi
+ if [ -e "$FACE" ]; then
+  old=$(cat "$FACE");case "$old" in Off|Single|Multi) ;; *) return 1;; esac
+  set_face "$old" || return 1
+  rm -f "$FACE" "$FACE.next"
+ fi
+ [ ! -e "$D/aft-memory" ] && [ ! -e "$D/aft-memory.next" ]
+}
+enable_aft() {
+ [ "$((MASK&16))" != 0 ] && [ -e /blackbox/x2d-speed-buff.master ] && [ ! -e "$BLOCK" ] || return 1
+ preference && aft_memory status && [ "$aftIdle" = true ] || return 1
+ old_mode=$(focus);case "$old_mode" in Afs|Afc|Aft|Man) ;; *) return 1;; esac
+ # Availability never selects a mode. Eye remains active in AF-S / AF-C.
+ update_eye_priority
+ base status && eye_layout_verified || return 1
+ if [ "$aftFacePriority" = true ];then eye_priority_verified || return 1;fi
+ if [ ! -e "$FACE" ]; then
+  old_face=$(face);case "$old_face" in Off|Single|Multi) ;; *) return 1;; esac
+  (umask 077; printf '%s\n' "$old_face" >"$FACE.next";mv "$FACE.next" "$FACE") || return 1
+ fi
+ aft_memory on || return 1
+ # Manual ON and boot/status reapplication both preserve the selected mode.
+ if ! set_face Multi; then
+  cancel || return 1
+  return 1
+ fi
+ if [ "$aftSaved" = false ]; then
+  if ! (umask 077; printf 'X2D_AFT_ENABLED_V1\n' >"$PREF.next";mv "$PREF.next" "$PREF";sync); then
+   cancel || return 1;return 1
+  fi
+ fi
+ preference && aft_memory status && [ "$aftActive" = true ]
+}
+# Automatic AF-C face tracking. First-generation hardware has only physical
+# spot AF; gray area/subject placeholders never enter this worker.
+tracking_owned() {
+ [ ! -L "$D/afc-tracking" ] && [ ! -L "$D/afc-tracking.next" ] || return 1
+ [ ! -e "$D/afc-tracking" ] || {
+  [ -f "$D/afc-tracking" ] && [ "$(cat "$D/afc-tracking")" = X2D_AFC_TRACKING_V1 ]
+ }
+}
+stop_afc_tracking() {
+ tracking_owned || return 1
+ [ -e "$D/afc-tracking" ] || return 0
+ aft_memory status || return 1
+ [ "$aftIdle" = true ] || return 0 # Never patch while exposure/AF is busy.
+ mode=$(focus)
+ if [ "$mode" = Aft ]; then set_focus "$1" || return 1; fi
+ # Availability is already supported in AF-S/MF by the explicit AFT switch.
+ # Keep the verified owned RAM capability across mode changes. Only cancel /
+ # master_off / Restore withdraw it. This avoids stopping camera-service again
+ # after every AF-S -> AF-C transition or electronic exposure.
+ rm -f "$D/afc-tracking" "$D/afc-tracking.next"
+ update_eye_priority
+}
+reconcile_afc_tracking() {
+ tracking_owned || return 1
+ [ "$((MASK&17))" = 17 ] || return 0
+ [ -e /blackbox/x2d-speed-buff.master ] && [ -e /blackbox/x2d-play-afc.enabled ] && [ ! -e "$BLOCK" ] || {
+  stop_afc_tracking Afs; return $?
+ }
+ mode=$(focus);subject=$(face)
+ # A camera/GUI restart clears transient ownership, but the stock parameter
+ # may retain AFT. Under the enabled AF-C feature, reclaim that known mode only
+ # after the existing helper verifies the current process/layout and idle state.
+ # Never claim a legacy explicit AFT preference.
+ if [ "$mode" = Aft ] && [ ! -e "$D/afc-tracking" ]; then
+  [ "$aftSaved" != true ] || return 0
+  aft_memory status || return 1
+  [ "$aftIdle" = true ] || return 0
+  (umask 077;printf 'X2D_AFC_TRACKING_V1\n' >"$D/afc-tracking.next";mv "$D/afc-tracking.next" "$D/afc-tracking") || return 1
+ fi
+ case "$mode:$subject" in
+ Afc:Multi|Aft:Multi) ;;
+ Afc:Off|Afc:Single|Aft:Off|Aft:Single) stop_afc_tracking Afc; return $?;;
+ Afs:*|Man:*) stop_afc_tracking Afs; return $?;;
+ *) return 1;;
+ esac
+ # An unowned AFT selection belongs to the legacy action, not this adapter.
+ [ "$mode" != Aft ] || [ -e "$D/afc-tracking" ] || return 0
+ aft_memory status || return 1
+ [ "$aftIdle" = true ] || return 0
+ # Pause Eye before applying the existing face-only AFT helper.
+ aftFacePriority=true
+ if [ "$((MASK&8))" != 0 ]; then
+  base status && eye_layout_verified && eye_priority_verified || return 1
+ fi
+ if [ "$aftActive" != true ]; then aft_memory on || return 1; fi
+ [ "$aftActive" = true ] || return 1
+ # Re-read both parameters after the helper, so stale UI/poll state cannot
+ # overwrite an AF-S/MF or face-Off choice made during this request.
+ fresh_mode=$(focus);fresh_subject=$(face)
+ case "$fresh_mode:$fresh_subject" in
+ Afc:Multi)
+  (umask 077;printf 'X2D_AFC_TRACKING_V1\n' >"$D/afc-tracking.next";mv "$D/afc-tracking.next" "$D/afc-tracking") || return 1
+  set_focus Aft || return 1;;
+ Aft:Multi) [ -e "$D/afc-tracking" ] || return 1;;
+ *)
+  if [ -e "$D/afc-tracking" ]; then stop_afc_tracking Afc || return 1
+  else aft_memory off || return 1; update_eye_priority; fi
+  return 0;;
+ esac
+ update_eye_priority
+}
+
+# BASE_FUNCTION is inserted by the offline builder, from hash-verified input.
+base() {
+ legacy=$((MASK&15));[ "$legacy" != 0 ] || legacy=1
+ X2D_AFT_FACE_PRIORITY="$aftFacePriority" X2D_FEATURE_MASK="$legacy" /system/bin/sh -s -- "$1" <<'AFT_BASE_WORKER_END'
+#!/system/bin/sh
+set -eu
+export PATH=/system/bin:/system/xbin:/sbin
+export TMPDIR=/tmp
+BASE=/system/etc/x2d-speed-buff
+D=/tmp/x2d-speed-buff
+MASTER=/blackbox/x2d-speed-buff.master
+ENABLED=/blackbox/x2d-speed-buff.enabled
+AFC=/blackbox/x2d-play-afc.enabled
+EYE_ROOT=/blackbox/.x2d-play-software
+EYE_PREF=$EYE_ROOT/eye-enabled
+EYE_BLOCK=$EYE_ROOT/eye-restoring
+FEATURE_MASK=${X2D_FEATURE_MASK:-7}
+case "$FEATURE_MASK" in 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15) ;; *) exit 38;; esac
+action=${1:-status}
+case "$action" in
+ enable|speed_low|speed_medium|speed_high) [ "$((FEATURE_MASK & 2))" != 0 ] || exit 38;;
+ afc_on) [ "$((FEATURE_MASK & 1))" != 0 ] || exit 38;;
+ eye_on|eye_resume) [ "$((FEATURE_MASK & 8))" != 0 ] || exit 38;;
+esac
+mkdir -p "$D"; chmod 700 "$D"
+# The loopback server and the USB restore action share a single transaction lock.
+n=0
+while ! mkdir "$D/lock" 2>/dev/null; do
+ n=$((n+1)); [ "$n" -lt 15 ] || exit 36
+ sleep 1
+done
+trap 'rmdir "$D/lock"' EXIT
+trap 'exit 37' HUP INT TERM
+ORIGINAL=c8b5407c615b60c05078bc7ba9ada8cf53c905bac17faa59561f948feac0d430
+# App-owned speed selection; known complete functions only, default Medium.
+LEVEL=/blackbox/x2d-speed-buff.level
+speedLevel=medium
+for path in "$LEVEL" "$LEVEL.next"; do [ ! -L "$path" ] || exit 39; done
+if [ -e "$LEVEL" ]; then
+ [ -f "$LEVEL" ] || exit 39
+ speedLevel=$(cat "$LEVEL")
+ case "$speedLevel" in low|medium|high) ;; *) exit 39;; esac
+fi
+speed_config() {
+ case "$1" in
+ low) CANDIDATE=a1d78a28e832e8561e71a88f11077ee562b8660eae7419ee9bb440d30da29491; SPEED_FILE=$BASE/candidate-low;;
+ medium) CANDIDATE=be7857c38593b7ed049319ce4429706f6c12ce19f3dc5cfd58ea1514a29463d0; SPEED_FILE=$BASE/candidate-medium;;
+ high) CANDIDATE=4eb555dc16ad54bdcfecd244b63bfea7ee691ce67b8274a1244644392ba15e13; SPEED_FILE=$BASE/candidate;;
+ *) return 1;;
+ esac
+}
+speed_config "$speedLevel"
+speed_known() {
+ case "$1" in a1d78a28e832e8561e71a88f11077ee562b8660eae7419ee9bb440d30da29491|be7857c38593b7ed049319ce4429706f6c12ce19f3dc5cfd58ea1514a29463d0|4eb555dc16ad54bdcfecd244b63bfea7ee691ce67b8274a1244644392ba15e13) return 0;; *) return 1;; esac
+}
+speed_save() {
+ (umask 077; printf '%s\n' "$speedLevel" >"$LEVEL.next" && mv -f "$LEVEL.next" "$LEVEL" && sync)
+}
+speed_select() {
+ [ "$master" = true ] && [ "$ready" = true ] && [ "$active" = true ] || return 1
+ target=${action#speed_}
+ case "$target" in low|medium|high) ;; *) return 1;; esac
+ if [ "$target" = "$speedLevel" ] && { [ "$active" = false ] || [ "$CURRENT" = "$CANDIDATE" ]; }; then return 0; fi
+ was_active=$active
+ # Cancel boot intent before withdrawing the old function. On interruption or
+ # failure remain OFF rather than apply an unconfirmed profile on next boot.
+ if [ "$was_active" = true ]; then rm -f "$ENABLED"; sync; restore || return 1; fi
+ old_level=$speedLevel
+ speedLevel=$target; speed_config "$speedLevel"
+ if [ "$was_active" = true ]; then
+  if ! speed_install; then speedLevel=$old_level; speed_config "$speedLevel"; return 1; fi
+ fi
+ if ! speed_save; then
+  if [ "$was_active" = true ]; then restore || return 1; fi
+  speedLevel=$old_level; speed_config "$speedLevel"; return 1
+ fi
+ if [ "$was_active" = true ]; then : >"$ENABLED"; sync; fi
+}
+LENGTH=1068
+file_sha() { sha256sum "$1" | awk '{print $1}'; }
+u64() { dd if=/proc/"$P"/mem bs=1 skip="$1" count=8 2>/dev/null | od -An -tu8 | tr -d ' \n'; }
+[ "$(getprop ro.product.device)" = eagle2_ec1706_native ] || exit 30
+P=$(pidof camera-service)
+case "$P" in ''|*[!0-9]*) exit 31;; esac
+START=$(awk '{print $22}' /proc/"$P"/stat)
+BOOT=$(cat /proc/sys/kernel/random/boot_id)
+BIAS=$(awk '$2=="r-xp"&&$3=="00000000"&&$NF=="/system/lib64/libaaa.so" {split($1,a,"-");printf "%.0f",("0x"a[1])+0-4096}' /proc/"$P"/maps)
+case "$BIAS" in ''|*[!0-9]*) exit 32;; esac
+ADDRESS=$(awk -v b="$BIAS" 'BEGIN{printf "%.0f",b+705408}')
+CURRENT=$(dd if=/proc/"$P"/mem bs=1 skip="$ADDRESS" count="$LENGTH" 2>/dev/null | sha256sum | awk '{print $1}')
+# Saved prefix is generated only locally; never accept a foreign process candidate.
+if speed_known "$CURRENT"; then
+ [ -f "$D/identity" ] && [ "$(cat "$D/identity")" = "$BOOT:$P:$START" ] || exit 33
+fi
+prankIbis=false
+[ ! -f /blackbox/.x2d-play-software/prank-ibis ] || prankIbis=true
+ready=true; active=false; master=false; afc=false; message='实验室功能已关闭'
+[ ! -e "$MASTER" ] || master=true
+[ ! -e "$AFC" ] || afc=true
+if speed_known "$CURRENT"; then active=true; fi
+if [ "$CURRENT" != "$ORIGINAL" ] && ! speed_known "$CURRENT"; then ready=false; message='速度函数未知，拒绝写入'; fi
+restore() {
+ [ "$CURRENT" = "$ORIGINAL" ] || {
+  speed_known "$CURRENT" && [ "$(file_sha "$D/candidate")" = "$CURRENT" ] || return 1
+  sh "$D/restore" >"$D/restore.log" 2>&1
+  CURRENT=$(dd if=/proc/"$P"/mem bs=1 skip="$ADDRESS" count="$LENGTH" 2>/dev/null | sha256sum | awk '{print $1}')
+  [ "$CURRENT" = "$ORIGINAL" ]
+ }
+ [ "$CURRENT" = "$ORIGINAL" ]
+ active=false
+}
+eyeReady=false; eyeActive=false; eyeWithdrawn=false
+eye_memory() {
+ eyeReady=false; eyeActive=false
+ # Stock Toybox grep stops at NUL in ordinary line mode; ELF strings need -z.
+ grep -zq X2D_EYE_MEMORY_COMMAND /system/lib64/libx2d_speed_server.so || return 1
+ LD_PRELOAD=/system/lib64/libx2d_speed_server.so X2D_EYE_MEMORY_COMMAND="$1" X2D_EYE_MEMORY_PID="$P" \
+  /system/bin/sh -c : >"$D/eye-result" || return 1
+ read eyeReady eyeActive <"$D/eye-result" || return 1
+ [ "$eyeReady" = true ]
+}
+speed_install() {
+ [ "$CURRENT" = "$ORIGINAL" ] || [ "$CURRENT" = "$CANDIDATE" ] || return 1
+  if [ "$CURRENT" = "$ORIGINAL" ]; then
+   [ "$(file_sha /system/lib64/libaaa.so)" = feef8a8dc3a27395e47232c2b25a5da7a7ab335922fbb527e637c439e35bcec7 ] || return 1
+   AF_PTR_ADDR=$(awk -v b="$BIAS" 'BEGIN{printf "%.0f",b+10680832}') || return 1
+   AF=$(u64 "$AF_PTR_ADDR") || return 1
+   case "$AF" in ''|*[!0-9]*) exit 34;; esac
+   for offset in 2464 2512 2560; do
+    ptr=$(awk -v a="$AF" -v o="$offset" 'BEGIN{printf "%.0f",a+o}') || return 1
+    # Positive finite IEEE754 double <= 1.5 (low word first).
+    dd if=/proc/"$P"/mem bs=1 skip="$ptr" count=8 2>/dev/null | od -An -tu4 | awk 'NF==2 {ok=($2<1073217536||($2==1073217536&&$1==0));n++} END{exit(!(n==1&&ok))}' || return 1
+   done
+   cp "$BASE/original" "$D/original"; [ "$(file_sha "$SPEED_FILE")" = "$CANDIDATE" ] || return 1
+   cp "$SPEED_FILE" "$D/candidate" || return 1
+   printf 'P=%s\nSTART=%s\nBOOT=%s\nADDRESS=%s\nLENGTH=%s\nORIGINAL=%s\nCANDIDATE=%s\nD=%s\n' "$P" "$START" "$BOOT" "$ADDRESS" "$LENGTH" "$ORIGINAL" "$CANDIDATE" "$D" >"$D/prefix" || return 1
+   cat "$D/prefix" "$BASE/backend" "$BASE/transaction" >"$D/restore" || return 1
+   cat >>"$D/restore" <<'RESTORE' || return 1
+backend_same || exit 81
+if backend_is_original; then exit 0; fi
+backend_is_candidate || exit 82
+tx_dirty=1
+trap tx_finish EXIT
+trap 'exit 97' HUP INT TERM
+tx_restore
+exit $?
+RESTORE
+   cat "$D/prefix" "$BASE/backend" "$BASE/transaction" >"$D/install" || return 1
+   printf '\ntx_install_until_restart\nexit $?\n' >>"$D/install" || return 1
+   printf '%s' "$BOOT:$P:$START" >"$D/identity" || return 1
+   sh "$D/install" >"$D/install.log" 2>&1 || return 1
+   CURRENT=$(dd if=/proc/"$P"/mem bs=1 skip="$ADDRESS" count="$LENGTH" 2>/dev/null | sha256sum | awk '{print $1}') || return 1
+   [ "$CURRENT" = "$CANDIDATE" ] || return 1
+  fi
+  active=true
+}
+# BEGIN EYE PREFERENCE POLICY: fixed app-owned files, serialized by this worker's lock.
+eye_preference() {
+ eyeSaved=false; eyeRestoring=false
+ for path in "$EYE_ROOT" "$EYE_ROOT/installed" "$EYE_PREF" "$EYE_PREF.next" "$EYE_BLOCK" "$EYE_BLOCK.next"; do
+  [ ! -L "$path" ] || return 1
+ done
+ if [ -e "$EYE_PREF" ]; then
+  [ -f "$EYE_PREF" ] && [ "$(file_sha "$EYE_PREF")" = cd1283200ffe66e4a765ae33c5050fe3cedab38d4726103690808522e34f1b9d ] || return 1
+  eyeSaved=true
+ fi
+ if [ -e "$EYE_BLOCK" ]; then
+  [ -f "$EYE_BLOCK" ] && [ "$(file_sha "$EYE_BLOCK")" = fa65230cd626631e6a76172f630b9ad152ae625251f86cf2fbf05cde9415691c ] || return 1
+  eyeRestoring=true
+ fi
+}
+eye_installation_ready() {
+ [ "$((FEATURE_MASK & 8))" != 0 ] && [ -f "$EYE_ROOT/installed" ] && [ "$(cat "$EYE_ROOT/installed")" = INSTALLED ] &&
+ [ "$eyeRestoring" = false ] && [ "$master" = true ] && [ "$ready" = true ]
+}
+eye_enable_without_aft() {
+ eye_preference && eye_installation_ready || return 1
+ eye_memory status || return 1
+ previous_active=$eyeActive
+ eye_memory on || return 1
+ if [ "$eyeSaved" = false ]; then
+  # Commit the ON choice only after the three RAM bytes have been verified.
+  if ! (umask 077; printf 'X2D_EYE_ENABLED_V1\n' >"$EYE_PREF.next" &&
+        mv -f "$EYE_PREF.next" "$EYE_PREF" && sync); then
+   rm -f "$EYE_PREF" "$EYE_PREF.next"
+   sync || true
+   if [ "$previous_active" = false ]; then eye_memory off || return 1; fi
+   return 1
+  fi
+ fi
+ eye_preference && [ "$eyeSaved" = true ]
+}
+eye_cancel_saved() {
+ eye_preference || return 1
+ # Remove boot intent first, so interrupted OFF/Restore cannot enable it later.
+ rm -f "$EYE_PREF" "$EYE_PREF.next" && sync || return 1
+ eyeSaved=false
+ # The native helper records ownership BEFORE any write and only removes it
+ # after verified OFF/rollback. A never-enabled, unsupported layout therefore
+ # needs no native OFF; a remaining ownership record always requires withdrawal.
+ for path in "$D/eye-memory" "$D/eye-memory.next"; do [ ! -L "$path" ] || return 1; done
+ if [ -e "$D/eye-memory" ] || [ -e "$D/eye-memory.next" ]; then
+  if grep -zq X2D_EYE_MEMORY_COMMAND /system/lib64/libx2d_speed_server.so; then
+  eye_memory off || return 1
+  elif [ -f "$D/eye-memory" ]; then
+  return 1
+  fi
+ fi
+ [ ! -e "$EYE_PREF" ] && [ ! -e "$EYE_PREF.next" ] &&
+ [ ! -e "$D/eye-memory" ] && [ ! -e "$D/eye-memory.next" ] || return 1
+ eyeWithdrawn=true
+}
+eye_begin_restore() {
+ eye_preference || return 1
+ if [ "$eyeRestoring" = false ]; then
+  (umask 077; printf 'X2D_EYE_RESTORE_V1\n' >"$EYE_BLOCK.next" &&
+   mv -f "$EYE_BLOCK.next" "$EYE_BLOCK" && sync) || return 1
+ fi
+ eye_preference && [ "$eyeRestoring" = true ] && eye_cancel_saved
+}
+eye_reconcile_without_aft() {
+ eye_preference || return 1
+ # Fresh installs, master OFF and recovery transactions never reapply ON.
+ if [ "$eyeSaved" = true ] && eye_installation_ready; then
+  eye_memory status && { [ "$eyeActive" = true ] || eye_memory on; }
+ else
+  eye_memory status
+ fi
+}
+# END EYE PREFERENCE POLICY
+# BEGIN AFT FACE PRIORITY
+# Selected-AFT-mode override of the verified fresh Eye worker. No new AF algorithm.
+# The builder renames the two original functions; Eye-only packages are unchanged.
+eye_priority_suspend() {
+ eye_preference && eye_memory off || return 1
+ [ "$eyeReady" = true ] && [ "$eyeActive" = false ]
+}
+eye_enable_saved() {
+ if [ "${X2D_AFT_FACE_PRIORITY:-false}" != true ]; then
+  eye_enable_without_aft;return $?
+ fi
+ eye_preference && eye_installation_ready && eye_priority_suspend || return 1
+ # Save the ON choice without enabling Eye while AFT is the selected mode.
+ if [ "$eyeSaved" = false ]; then
+  if ! (umask 077;printf 'X2D_EYE_ENABLED_V1\n' >"$EYE_PREF.next" &&
+        mv -f "$EYE_PREF.next" "$EYE_PREF" && sync); then
+   rm -f "$EYE_PREF" "$EYE_PREF.next";sync || true;return 1
+  fi
+ fi
+ eye_preference && [ "$eyeSaved" = true ] && [ "$eyeActive" = false ]
+}
+eye_reconcile() {
+ if [ "${X2D_AFT_FACE_PRIORITY:-false}" = true ]; then
+  # Also covers boot/restart/status retries: saved Eye intent must not flash ON.
+  eye_priority_suspend
+ else
+  eye_reconcile_without_aft
+ fi
+}
+# END AFT FACE PRIORITY
+case "$action" in
+ master_on) [ "$ready" = true ]; : >"$MASTER"; master=true;;
+ master_off|restore_all)
+  if [ "$action" = restore_all ]; then eye_begin_restore; else eye_cancel_saved; fi
+  rm -f "$ENABLED"; sync
+  restore
+  if [ "$action" = restore_all ]; then rm -f "$LEVEL" "$LEVEL.next"; speedLevel=medium; speed_config "$speedLevel"; fi
+  if [ "$afc" = true ]; then
+   odindb-send -s camera -p focus_mode -- E_FocusModes_Afs >/dev/null
+   odindb-send -s camera -p focus_mode | grep -q 'E_FocusModes_Afs(1)'
+  fi
+  rm -f "$MASTER" "$ENABLED" "$AFC" /blackbox/x2d-play-auto-brightness.enabled /blackbox/x2d-play-auto-brightness.available; master=false; afc=false;;
+ afc_on)
+  [ "$master" = true ]
+  odindb-send -s camera -p focus_mode -- E_FocusModes_Afc >/dev/null
+  odindb-send -s camera -p focus_mode | grep -q 'E_FocusModes_Afc(2)'
+  : >"$AFC"; afc=true;;
+ afc_off)
+  odindb-send -s camera -p focus_mode -- E_FocusModes_Afs >/dev/null
+  odindb-send -s camera -p focus_mode | grep -q 'E_FocusModes_Afs(1)'
+  rm -f "$AFC"; afc=false;;
+ disable) rm -f "$ENABLED"; sync; restore;;
+ eye_on) eye_enable_saved;;
+ eye_off) eye_cancel_saved;;
+ eye_resume) eye_reconcile;;
+ enable)
+  [ "$master" = true ] && [ "$ready" = true ]
+  if [ "$active" = true ] && [ "$CURRENT" != "$CANDIDATE" ]; then restore; fi
+  speed_install
+  : >"$ENABLED"; active=true;;
+ speed_low|speed_medium|speed_high) speed_select;;
+ status) ;;
+ *) exit 35;;
+esac
+eyeSaved=false; eyeRestoring=false
+if [ "$((FEATURE_MASK & 8))" != 0 ]; then
+ if ! eye_reconcile; then eyeReady=false; eyeActive=false; fi
+elif [ "$action" = restore_all ]; then
+ eye_preference || exit 39
+ if ! eye_memory status; then eyeReady=false; eyeActive=false; fi
+fi
+eyeOwned=false
+[ ! -f "$D/eye-memory" ] || eyeOwned=true
+if [ "$active" = true ]; then message="对焦加速已开启：$speedLevel"
+elif [ "$master" = true ] && [ "$ready" = true ]; then message='原厂速度；可开启对焦加速 buff'; fi
+printf '{"ready":%s,"active":%s,"master":%s,"afc":%s,"prankIbis":%s,"featureMask":%s,"eyeReady":%s,"eyeActive":%s,"eyeOwned":%s,"eyeSaved":%s,"eyeRestoring":%s,"eyeWithdrawn":%s,"speedLevel":"%s","message":"%s"}\n' "$ready" "$active" "$master" "$afc" "$prankIbis" "$FEATURE_MASK" "$eyeReady" "$eyeActive" "$eyeOwned" "$eyeSaved" "$eyeRestoring" "$eyeWithdrawn" "$speedLevel" "$message" >"$D/base-ui.json"
+
+AFT_BASE_WORKER_END
+}
+
+# The same outer lock serializes AFT, original worker, Eye and HTTP requests.
+n=0
+while ! mkdir "$D/aft-lock" 2>/dev/null; do n=$((n+1));[ "$n" -lt 15 ] || exit 36;sleep 1;done
+trap 'rmdir "$D/aft-lock"' EXIT
+trap 'exit 37' HUP INT TERM
+preference || exit 39
+# Compute mode-based priority before any base worker/boot reconciliation.
+if [ "$((MASK&16))" != 0 ]; then
+ if ! aft_memory status; then aftReady=false; aftActive=false; fi
+fi
+update_eye_priority
+case "$ACTION" in
+ aft_on) enable_aft manual; base status;;
+ aft_off) cancel; update_eye_priority; base status;;
+ aft_resume)
+  [ "$aftSaved" = true ] && [ ! -e "$BLOCK" ] && [ -e /blackbox/x2d-speed-buff.master ] || exit 40
+  enable_aft;base status;;
+ master_off|restore_all)
+  if [ "$ACTION" = restore_all ]; then
+   (umask 077;printf 'X2D_AFT_RESTORE_V1\n' >"$BLOCK.next";mv "$BLOCK.next" "$BLOCK";sync)
+  fi
+  cancel;update_eye_priority;base "$ACTION";;
+ afc_on) [ "$((MASK&1))" != 0 ] || exit 38;base "$ACTION";;
+ afc_off) [ "$((MASK&1))" != 0 ] || exit 38; stop_afc_tracking Afs; base "$ACTION";;
+ *) base "$ACTION";;
+esac
+if [ "$((MASK&16))" != 0 ]; then
+ if ! aft_memory status; then aftReady=false; aftActive=false; fi
+ if [ "$aftSaved" = true ] && [ "$aftActive" = false ] && [ "$aftIdle" = true ] &&
+    [ ! -e "$BLOCK" ] && [ -e /blackbox/x2d-speed-buff.master ]; then
+  if ! enable_aft; then aftReady=false;fi
+ fi
+fi
+preference || exit 39
+# Reconcile from fresh camera parameters, including HalfPress/busy checks.
+reconcile_afc_tracking || exit 42
+# AF-C switches/cancel may change mode inside the base action. Reconcile again
+# if that happened; also catches a mode change concurrent with the first read.
+previousPriority=$aftFacePriority
+update_eye_priority
+if [ "$previousPriority" != "$aftFacePriority" ];then base status;fi
+if [ "$aftFacePriority" = true ] && [ "$((MASK&8))" != 0 ]; then
+ eye_priority_verified || exit 41
+ if grep -q '"eyeSaved":true' "$D/base-ui.json"; then eyeSuppressed=true;fi
+fi
+# Missing preference means the integrated menu is available by default.
+subjectMenuRequested=false
+if [ "$((MASK&64))" != 0 ]; then
+ [ ! -L "$ROOT/subject-menu" ] && [ ! -L "$ROOT/subject-menu.next" ] && [ ! -L "$D/subject-menu.request" ] || exit 39
+ if [ "$ACTION" = restore_all ]; then rm -f "$D/subject-menu.request";fi
+ if [ -e "$D/subject-menu.request" ] && [ "$ACTION" != restore_all ] &&
+    [ ! -L "$ROOT/installed" ] && [ -f "$ROOT/installed" ] && [ "$(cat "$ROOT/installed")" = INSTALLED ] &&
+    [ ! -L /blackbox/x2d-speed-buff.master ] && [ -e /blackbox/x2d-speed-buff.master ]; then
+  [ -f "$D/subject-menu.request" ] || exit 39
+  pending=$(cat "$D/subject-menu.request")
+  case "$pending" in
+   X2D_SUBJECT_MENU_ON_V1|X2D_SUBJECT_MENU_OFF_V1)
+    if [ "$(wc -c <"$D/subject-menu.request")" = "$(( ${#pending}+1 ))" ]; then
+     (umask 077;printf '%s\n' "$pending" >"$ROOT/subject-menu.next";mv "$ROOT/subject-menu.next" "$ROOT/subject-menu";sync)
+     rm -f "$D/subject-menu.request"
+    fi;;
+   *) ;; # A Qt PUT can be observed before all bytes are written.
+  esac
+ fi
+ subjectMenuRequested=true
+ if [ -e "$ROOT/subject-menu" ]; then
+  [ -f "$ROOT/subject-menu" ] || exit 39
+  case "$(cat "$ROOT/subject-menu")" in
+   X2D_SUBJECT_MENU_ON_V1) ;;
+   X2D_SUBJECT_MENU_OFF_V1) subjectMenuRequested=false;;
+   *) exit 39;;
+  esac
+ fi
+fi
+focusAreasInstalled=false
+if [ "$((MASK&64))" != 0 ] && [ -f "$ROOT/focus-areas-installed" ] && [ ! -L "$ROOT/focus-areas-installed" ] &&
+   [ "$(cat "$ROOT/focus-areas-installed")" = X2D_FOCUS_AREAS_V1 ];then focusAreasInstalled=true;fi
+# Keep base JSON fields untouched, add the AFT readback and full selected mask.
+sed "s/\"featureMask\":[0-9]*/\"featureMask\":$MASK/;s/\"message\":/\"focusAreasInstalled\":$focusAreasInstalled,\"subjectMenuRequested\":$subjectMenuRequested,\"aftReady\":$aftReady,\"aftActive\":$aftActive,\"aftSaved\":$aftSaved,\"eyeSuppressed\":$eyeSuppressed,\"eyeModeKnown\":$eyeModeKnown,\"message\":/" \
+ "$D/base-ui.json" >"$D/aft-ui.next"
+mv "$D/aft-ui.next" "$D/ui.json"
+
+# Only the verified installed audio capability can launch this fixed child.
+# The existing native service has a permitted entrypoint; inherited shell
+# execution needs execute_no_trans, not the forbidden init -> shell entrypoint.
+# Recovery marks RESTORING before withdrawal, preventing a concurrent restart.
+if [ "$((MASK&128))" != 0 ] && [ ! -L "$ROOT/installed" ] &&
+   [ -f "$ROOT/installed" ] && [ "$(cat "$ROOT/installed")" = INSTALLED ]; then
+ case "$ACTION" in
+ restore_all) ;;
+ *) /system/bin/sh /system/etc/x2d-shutter-sound/worker ensure >/dev/null 2>&1 || true;;
+ esac
+fi

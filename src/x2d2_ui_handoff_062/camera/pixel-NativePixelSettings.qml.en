@@ -1,0 +1,151 @@
+import QtQuick
+import com.hasselblad.constants
+import com.hasselblad.proxies
+import com.hasselblad.keys
+import com.hasselblad.types
+import com.hasselblad.valueformatter
+import "qrc:/app/qml/components" as Components
+import "qrc:/app/qml/mainmenu" as StockMenu
+import "qrc:/app/qml/scripts/Keys.js" as MKeys
+
+FocusScope {
+    id: root
+    objectName: "NativePixelSettingsPage"
+    property var controller: null
+    property var viewModel: null
+    property bool externalMenu: true
+    readonly property int keyOverride: HblmTypes.E_CameraKeyOption_OverrideHalfPress
+    readonly property bool popupActive: selector.active
+    readonly property bool preventSwipe: selector.active
+    readonly property bool canEdit: controller && controller.pixelParametersReady && controller.pixelCanChange &&
+                                   controller.pendingPixelMode === 0 && controller.pendingPixelWait < 0 && controller.pendingPixelInitial < 0 && controller.pendingPixelSound < 0
+    signal close()
+    signal closeExternal()
+    focus: true
+    function closePopup() { selector.closeSubDialog() }
+    QtObject {
+        id: framesModel
+        objectName: "NativePixelFramesRow"
+        property string kind: "frames"
+        property bool itemEnabled: root.canEdit
+        property int options: 0
+        property string itemName: "multishot_control_mode"
+        property int propValue: controller ? controller.pixelMode : 0
+        property string displayValue: controller && controller.pixelParametersReady ? controller.pixelFrames() + " frames" : "Reading…"
+        property string text1: "Frames"
+        property string text2: ""
+        property string description: "Save original RAWs; merge on a computer\nUse a tripod and keep camera and subject still"
+    }
+    QtObject {
+        id: initialModel
+        objectName: "NativePixelInitialDelayRow"
+        property string kind: "initial"
+        property bool itemEnabled: root.canEdit
+        property int options: 0
+        property string itemName: "pixel_initial_delay"
+        property int propValue: controller ? controller.pixelInitialDelay : 0
+        property string displayValue: controller && controller.pixelParametersReady ? (propValue === 0 ? "Off" : propValue + " s") : "Reading…"
+        property string text1: "Initial Delay"
+        property string text2: ""
+        property string description: ""
+    }
+    QtObject {
+        id: waitModel
+        objectName: "NativePixelWaitRow"
+        property string kind: "wait"
+        property bool itemEnabled: root.canEdit
+        property int options: 0
+        property string itemName: "flash_recharge_delay"
+        property int propValue: controller ? controller.pixelWait : 0
+        property string displayValue: controller && controller.pixelParametersReady ? (controller.pixelWait / 1000).toFixed(1) + " s" : "Reading…"
+        property string text1: "Frame Interval"
+        property string text2: ""
+        property string description: ""
+    }
+    QtObject {
+        id: soundModel
+        objectName: "NativePixelSoundRow"
+        property string kind: "sound"
+        property bool itemEnabled: root.canEdit
+        property int options: 0
+        property string itemName: "selftimer_sound_level"
+        property int propValue: controller ? controller.pixelSoundLevel : 0
+        property string displayValue: controller && controller.pixelParametersReady ?
+            ValueFormatter.getDisplayValue(itemName, propValue) : "Reading…"
+        property string text1: qsTranslate("MENUS", "Volume")
+        property string text2: ""
+        property string description: ""
+    }
+    Rectangle { anchors.fill: parent; color: Constants.menuBackgroundColor }
+    StockMenu.MenuHeader {
+        id: header
+        anchors { top: parent.top; left: parent.left; right: parent.right }
+        externalMenu: true
+        showSeparator: !settingsList.atYBeginning
+        text: [{ "text": "Pixel Shift", "color": Constants.settingsMenuHeaderSuffixFontColor }]
+        onClose: root.close()
+    }
+    Keys.forwardTo: [settingsList]
+    Keys.onPressed: (event)=> {
+        if (MKeys.pressedFnListAcc([KeyFn.Abort, KeyFn.JstkEscape], event)) {
+            if (selector.active) closePopup(); else close()
+        } else if (MKeys.pressedFnAcc(KeyFn.HalfPress, event)) closeExternal()
+    }
+    Components.CustomListView {
+        id: settingsList
+        objectName: "NativePixelSettingsList"
+        anchors {
+            top: header.bottom; left: parent.left; right: parent.right; bottom: parent.bottom
+            bottomMargin: viewModel ? viewModel.menuSwipeAreaHeight : 0
+        }
+        interactive: contentHeight > height && viewModel && !viewModel.screenEVF
+        clip: true; focus: true; maximumFlickVelocity: 8000
+        model: [framesModel,initialModel,soundModel,waitModel]
+        currentIndex: -1
+        highlightMoveDuration: -1; highlightMoveVelocity: -1
+        highlight: Rectangle {
+            color: settingsList.highlighting ? Constants.highlightColor : Constants.popupBackgroundColor
+        }
+        delegate: NativePixelDropdown {
+            required property var modelData
+            required property int index
+            model: modelData; itemIndex: index
+            list: settingsList; viewModel: root.viewModel
+            externalMenu: true; subDialog: selector; controller: root.controller
+            defaultHeight: Constants.menuListItemDefaultHeight
+        }
+        Keys.onPressed: (event)=> {
+            if (MKeys.pressedFnAcc(KeyFn.ListUp,event)) decrementCurrentIndex()
+            else if (MKeys.pressedFnAcc(KeyFn.ListDown,event)) incrementCurrentIndex()
+            else if (MKeys.pressedFnListAcc([KeyFn.Enter,KeyFn.JstkCenter],event) && currentItem) currentItem.gotSelected(false)
+            else event.accepted = false
+        }
+    }
+    Components.HblLoader {
+        id: selector
+        objectName: "NativePixelSelectorLoader"
+        anchors.fill: parent
+        asynchronous: true
+        property string owner: ""
+        property bool animatePopupOpen: false
+        property bool delayedClose: false
+        function showLoader(value) {
+            if (value) Qt.callLater(function() { selector.active = true })
+            else active = false
+        }
+        function closeSubDialog() {
+            if (delayedClose) { delayedClose = false; closeTimer.start(); return }
+            active = false; owner = ""; arguments = null
+            settingsList.stopHighlight(); settingsList.forceActiveFocus()
+            closeTimer.stop()
+        }
+        onLoaded: item.forceActiveFocus()
+        Timer { id: closeTimer; interval: 300; onTriggered: selector.closeSubDialog() }
+        Connections {
+            target: selector.item; ignoreUnknownSignals: true
+            function onClose() { selector.closeSubDialog() }
+            function onClosePopup() { selector.closeSubDialog() }
+            function onCloseExternal() { selector.closeSubDialog(); root.closeExternal() }
+        }
+    }
+}

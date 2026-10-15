@@ -1,0 +1,195 @@
+#!/system/bin/sh
+# Installed, optional X2D 4.2.0 capture bridge. Never starts an exposure.
+set -eu
+export PATH=/system/bin:/system/xbin:/sbin
+BASE=/system/etc/x2d-multishot
+R=/tmp/x2d-native-multishot
+P=/blackbox/.x2d-play-software
+BLOCK=$P/pixel-restoring
+OWNER=x2d-toolkit-pixel-0.5.0-1
+action=${1:-run}
+case "$action" in run|restore) ;; *) exit 38;; esac
+mask=${X2D_FEATURE_MASK:-0}
+case "$mask" in ''|*[!0-9]*) exit 38;; esac
+[ "$mask" -ge 1 ] && [ "$mask" -le 63 ] && [ "$((mask & 32))" -ne 0 ] || exit 38
+for path in "$R" "$P" "$BLOCK" "$P/pixel-baseline" "$P/pixel-baseline.next" "$P/pixel-initial" "$P/pixel-initial.next"; do
+ [ ! -L "$path" ] || exit 39
+done
+get() {
+ timeout 3 dbus-send --system --print-reply --dest=com.hasselblad."$1" /"$1" org.freedesktop.DBus.Properties.Get "string:com.hasselblad.$1" "string:$2" |
+ awk '/variant[[:space:]]+int32[[:space:]]/{print $NF}'
+}
+number() { case "$1" in ''|*[!0-9]*) return 1;; esac; [ "${#1}" -le 6 ] && [ "$1" -le 600000 ]; }
+gui_pid() {
+ selected=
+ for candidate in $(pidof camera-gui || true); do
+  number "$candidate" || continue
+  [ "$(readlink /proc/"$candidate"/exe 2>/dev/null)" = /system/bin/camera-gui ] || continue
+  tr '\000' '\n' </proc/"$candidate"/environ 2>/dev/null | grep -qx X2D_NATIVE_MENU=1 || continue
+  # The fixed loopback server shares the original executable name. Never
+  # mistake it for the Qt scene, and refuse ambiguous UI ownership.
+  if tr '\000' '\n' </proc/"$candidate"/environ 2>/dev/null | grep -qx X2D_SPEED_SERVER=1; then continue; fi
+  [ -z "$selected" ] || return 1
+  selected=$candidate
+ done
+ [ -n "$selected" ] || return 1
+ printf '%s\n' "$selected"
+}
+idle() { v=$(get camera exposure_status); number "$v" && [ "$((v & 1299))" -eq 0 ]; }
+owned_pid() {
+ [ ! -L "$R/$1.pid" ] && [ -f "$R/$1.pid" ] || return 1
+ read -r pid stamp extra <"$R/$1.pid"
+ [ -z "${extra:-}" ] && number "$pid" || return 1
+ case "$stamp" in ''|*[!0-9]*) return 1;; esac
+ [ "$(awk '{print $22}' /proc/"$pid"/stat 2>/dev/null)" = "$stamp" ] || return 1
+ tr '\000' '\n' </proc/"$pid"/environ | grep -qx "$2=1"
+}
+stop_child() {
+ if owned_pid "$1" "$2"; then
+  kill "$pid" || return 1
+  wait "$pid" 2>/dev/null || true
+  n=0
+  while [ "$(awk '{print $22}' /proc/"$pid"/stat 2>/dev/null)" = "$stamp" ]; do
+   n=$((n+1)); [ "$n" -lt 50 ] || return 1; sleep .1
+  done
+ fi
+ rm -f "$R/$1.pid"
+}
+baseline() {
+ if [ ! -e "$P/pixel-baseline" ]; then
+  idle || return 1
+  (umask 077
+   printf 'PIXEL_BASELINE_1\n' >"$P/pixel-baseline.next"
+   for key in drive_mode multishot_control_mode image_format flash_recharge_delay exposures_in_multishot_session selftimer_sound_level capture_storage_mode; do
+    interface=camera; [ "$key" != capture_storage_mode ] || interface=storage
+    value=$(get "$interface" "$key"); number "$value" || exit 1
+    printf '%s %s\n' "$key" "$value" >>"$P/pixel-baseline.next"
+   done
+   mv "$P/pixel-baseline.next" "$P/pixel-baseline"; sync
+  ) || return 1
+ fi
+ [ "$(wc -l <"$P/pixel-baseline" | tr -d ' ')" = 8 ] && [ "$(head -n 1 "$P/pixel-baseline")" = PIXEL_BASELINE_1 ] || return 1
+ index=2
+ for key in drive_mode multishot_control_mode image_format flash_recharge_delay exposures_in_multishot_session selftimer_sound_level capture_storage_mode; do
+  line=$(sed -n "${index}p" "$P/pixel-baseline")
+  set -- $line
+  [ "$#" = 2 ] && [ "$1" = "$key" ] && number "$2" || return 1
+  index=$((index+1))
+ done
+}
+restore_parameters() {
+ [ -e "$P/pixel-baseline" ] || return 0
+ baseline && idle || return 1
+ index=2
+ for key in drive_mode multishot_control_mode image_format flash_recharge_delay exposures_in_multishot_session selftimer_sound_level capture_storage_mode; do
+  line=$(sed -n "${index}p" "$P/pixel-baseline")
+  set -- $line
+  [ "$#" = 2 ] && [ "$1" = "$key" ] && number "$2" || return 1
+  value=$2; interface=camera; [ "$key" != capture_storage_mode ] || interface=storage
+  timeout 3 dbus-send --system --print-reply --dest=com.hasselblad."$interface" /"$interface" org.freedesktop.DBus.Properties.Set "string:com.hasselblad.$interface" "string:$key" "variant:int32:$value" >/dev/null || return 1
+  [ "$(get "$interface" "$key")" = "$value" ] || return 1
+  index=$((index+1))
+ done
+}
+withdraw_timer() {
+ [ -f "$R/initial-delay.target" ] || return 0
+ IFS='|' read -r service address stamp extra <"$R/initial-delay.target" || return 1
+ [ -z "${extra:-}" ] && number "$service" || return 1
+ if [ "$(awk '{print $22}' /proc/"$service"/stat 2>/dev/null)" = "$stamp" ]; then
+  [ "$(sha256sum "$R/pixel-initial-delay.sh" | awk '{print $1}')" = 229b7d8e9af38b6e8e83ddac149572858a5fb9311cebc1a80779370d9cc860ad ] || return 1
+  sh "$R/pixel-initial-delay.sh" restore || return 1
+ fi
+ rm -f "$R/initial-delay.target"
+}
+if [ "$action" = restore ]; then
+ (umask 077; printf 'RESTORING\n' >"$BLOCK"; sync)
+ if [ -d "$R" ]; then
+  [ ! -L "$R/owner" ] && [ "$(cat "$R/owner")" = "$OWNER" ] || exit 40
+  stop_child service X2D_PIXEL_SERVICE || exit 41
+  stop_child parameters X2D_NATIVE_PIXEL_PARAMETERS || exit 41
+  stop_child countdown-audio X2D_PIXEL_STOCK_AUDIO || exit 41
+  withdraw_timer || exit 42
+ fi
+ restore_parameters || exit 43
+ rm -f "$P/pixel-baseline" "$P/pixel-baseline.next" "$P/pixel-initial" "$P/pixel-initial.next"
+ # Only an app-owned, non-symlink private runtime is eligible for cleanup.
+ if [ -d "$R" ]; then rm -rf "$R"; fi
+ echo PIXEL_WITHDRAWN
+ exit 0
+fi
+[ ! -e "$BLOCK" ] || exit 44
+[ "$(sha256sum /system/bin/camera-service | awk '{print $1}')" = fbcf828f73bca13f0c8b95e7dd0b95ac483ae36954ec06179098c8a1a65f9f82 ] || exit 45
+if [ -e "$R" ]; then
+ [ -d "$R" ] && [ ! -L "$R/owner" ] && [ "$(cat "$R/owner")" = "$OWNER" ] || exit 40
+ if owned_pid service X2D_PIXEL_SERVICE; then exit 0; fi
+else mkdir "$R"; chmod 700 "$R"; printf '%s\n' "$OWNER" >"$R/owner"; fi
+[ "${X2D_PIXEL_SERVICE:-}" = 1 ] || exit 46
+printf '%s %s\n' "$$" "$(awk '{print $22}' /proc/$$/stat)" >"$R/service.pid"
+cleanup() {
+ trap - EXIT
+ rm -f "$R/service.ready"
+ stop_child parameters X2D_NATIVE_PIXEL_PARAMETERS || true
+ stop_child countdown-audio X2D_PIXEL_STOCK_AUDIO || true
+ rm -f "$R/service.pid"
+}
+trap cleanup EXIT
+trap 'exit 143' HUP INT TERM
+(cd "$BASE"; sha256sum -c assets.sha256) >/dev/null || exit 47
+while IFS= read -r name; do
+ [ ! -L "$R/$name" ] || exit 39
+ cp "$BASE/$name" "$R/$name"
+done <"$BASE/assets.list"
+n=0
+while ! baseline; do
+ # Camera DBus may start after the GUI. Retry only a fresh baseline;
+ # a malformed existing ownership record must never be overwritten.
+ [ ! -e "$P/pixel-baseline" ] || exit 48
+ [ ! -e "$BLOCK" ] || exit 44
+ n=$((n+1)); [ "$n" -lt 30 ] || exit 48
+ sleep 1
+done
+ previous=
+while [ ! -e "$BLOCK" ]; do
+ service=$(pidof camera-service || true)
+ identity=
+ case "$service" in ''|*[!0-9]*) ;; *) identity="$service:$(awk '{print $22}' /proc/$service/stat 2>/dev/null)";; esac
+ if [ -n "$identity" ] && [ "$identity" != "$previous" ]; then
+  rm -f "$R/service.ready"
+  stop_child parameters X2D_NATIVE_PIXEL_PARAMETERS || exit 41
+  stop_child countdown-audio X2D_PIXEL_STOCK_AUDIO || exit 41
+  # A worker failure must never withdraw/rewrite native timing during capture.
+  # Only a new camera-service identity needs native preparation.
+  if ! idle; then sleep 1; continue; fi
+  if [ -f "$R/initial-delay.target" ]; then withdraw_timer || exit 42; fi
+  if sh "$R/pixel-initial-delay.sh" prepare; then
+   value=0
+   if [ -f "$P/pixel-initial" ]; then value=$(cat "$P/pixel-initial"); fi
+   case "$value" in ''|*[!0-9]*) exit 49;; esac
+   sh "$R/pixel-initial-delay.sh" set "$value" || exit 49
+   previous=$identity
+  fi
+ fi
+ if [ -n "$previous" ] && [ "$identity" = "$previous" ]; then
+   gui=$(gui_pid || true)
+   case "$gui" in ''|*[!0-9]*) sleep 1; continue;; esac
+   printf '%s\n' "$gui" >"$R/gui.pid"
+   if ! owned_pid parameters X2D_NATIVE_PIXEL_PARAMETERS; then
+    stop_child parameters X2D_NATIVE_PIXEL_PARAMETERS || exit 41
+    X2D_NATIVE_PIXEL_PARAMETERS=1 sh "$R/pixel-parameters.sh" >"$R/parameters.log" 2>&1 &
+    child=$!; printf '%s %s\n' "$child" "$(awk '{print $22}' /proc/$child/stat)" >"$R/parameters.pid"
+   fi
+   if ! owned_pid countdown-audio X2D_PIXEL_STOCK_AUDIO; then
+    stop_child countdown-audio X2D_PIXEL_STOCK_AUDIO || exit 41
+    rm -f "$R/countdown-audio.ready"
+    X2D_PIXEL_STOCK_AUDIO=1 sh "$R/pixel-stock-countdown-audio.sh" >"$R/countdown-audio.log" 2>&1 &
+    child=$!; printf '%s %s\n' "$child" "$(awk '{print $22}' /proc/$child/stat)" >"$R/countdown-audio.pid"
+   fi
+ fi
+ if [ -n "$previous" ] && [ "$identity" = "$previous" ] && owned_pid parameters X2D_NATIVE_PIXEL_PARAMETERS && owned_pid countdown-audio X2D_PIXEL_STOCK_AUDIO && [ -f "$R/countdown-audio.ready" ]; then
+  printf '%s\n' "$previous" >"$R/service.ready"
+ else rm -f "$R/service.ready"; fi
+ # GUI restarts are independent of the service's timing identity.
+ gui=$(gui_pid || true)
+ case "$gui" in ''|*[!0-9]*) ;; *) printf '%s\n' "$gui" >"$R/gui.pid";; esac
+ sleep 1
+done

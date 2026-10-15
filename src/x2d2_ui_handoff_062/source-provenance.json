@@ -1,0 +1,1424 @@
+[
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/ic_main_menu_play.svg",
+    "sourceRelative": "native-package/ic_main_menu_play.svg",
+    "sourceSha256": "5842614688303878e152a9e51ed0eff400d5ec563714d030de6ccb34378785ec",
+    "exportSha256": "5842614688303878e152a9e51ed0eff400d5ec563714d030de6ccb34378785ec",
+    "sourceBytes": 789,
+    "exportBytes": 789,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-ic_drive_mode_multishot.svg",
+    "sourceRelative": "native-package/pixel-ic_drive_mode_multishot.svg",
+    "sourceSha256": "2d043adf0bc0e26a2a417d1e8785c3c82b297f0ba4dfba2e4f0a99032bb1a180",
+    "exportSha256": "2d043adf0bc0e26a2a417d1e8785c3c82b297f0ba4dfba2e4f0a99032bb1a180",
+    "sourceBytes": 12464,
+    "exportBytes": 12464,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-ic_drive_mode_multishot_disable.svg",
+    "sourceRelative": "native-package/pixel-ic_drive_mode_multishot_disable.svg",
+    "sourceSha256": "fc36561b6e11689dd2de07c0d730fb91316204b3c6f2c7a76e113f419bc9f886",
+    "exportSha256": "fc36561b6e11689dd2de07c0d730fb91316204b3c6f2c7a76e113f419bc9f886",
+    "sourceBytes": 12464,
+    "exportBytes": 12464,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativeDriveMode.qml",
+    "sourceRelative": "native-package/pixel-NativeDriveMode.qml",
+    "sourceSha256": "945a74fa23d18b05626bb37bb36d4cf639677760ee7e8cd2fff79a03e5859363",
+    "exportSha256": "945a74fa23d18b05626bb37bb36d4cf639677760ee7e8cd2fff79a03e5859363",
+    "sourceBytes": 37849,
+    "exportBytes": 37849,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativeDriveMode.qml.en",
+    "sourceRelative": "native-package/pixel-NativeDriveMode.qml.en",
+    "sourceSha256": "529c0f0cae016c11981f0849a98c48e71d6d1b8adeda4a1bb64fb0c6fba0f7a9",
+    "exportSha256": "529c0f0cae016c11981f0849a98c48e71d6d1b8adeda4a1bb64fb0c6fba0f7a9",
+    "sourceBytes": 37782,
+    "exportBytes": 37782,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativeDriveMode.qml.zh-Hant",
+    "sourceRelative": "native-package/pixel-NativeDriveMode.qml.zh-Hant",
+    "sourceSha256": "c29f40c18ad0ee0f542c0014fa6d940df387a52b0bbe227b0f1ec7f3048ea32d",
+    "exportSha256": "c29f40c18ad0ee0f542c0014fa6d940df387a52b0bbe227b0f1ec7f3048ea32d",
+    "sourceBytes": 37849,
+    "exportBytes": 37849,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelBackend.qml",
+    "sourceRelative": "native-package/pixel-NativePixelBackend.qml",
+    "sourceSha256": "0af18b474a2b4eab8961b02084659c09a503abbca6cfb6f0fa2b1c89c0bff8c4",
+    "exportSha256": "0af18b474a2b4eab8961b02084659c09a503abbca6cfb6f0fa2b1c89c0bff8c4",
+    "sourceBytes": 5412,
+    "exportBytes": 5412,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelBackend.qml.en",
+    "sourceRelative": "native-package/pixel-NativePixelBackend.qml.en",
+    "sourceSha256": "0af18b474a2b4eab8961b02084659c09a503abbca6cfb6f0fa2b1c89c0bff8c4",
+    "exportSha256": "0af18b474a2b4eab8961b02084659c09a503abbca6cfb6f0fa2b1c89c0bff8c4",
+    "sourceBytes": 5412,
+    "exportBytes": 5412,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelBackend.qml.zh-Hant",
+    "sourceRelative": "native-package/pixel-NativePixelBackend.qml.zh-Hant",
+    "sourceSha256": "0af18b474a2b4eab8961b02084659c09a503abbca6cfb6f0fa2b1c89c0bff8c4",
+    "exportSha256": "0af18b474a2b4eab8961b02084659c09a503abbca6cfb6f0fa2b1c89c0bff8c4",
+    "sourceBytes": 5412,
+    "exportBytes": 5412,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControl.js",
+    "sourceRelative": "native-package/pixel-NativePixelControl.js",
+    "sourceSha256": "f2401663f9fce7fcce856681b73afd13137ce0ead95d02e9b6b3d98d84423205",
+    "exportSha256": "f2401663f9fce7fcce856681b73afd13137ce0ead95d02e9b6b3d98d84423205",
+    "sourceBytes": 537,
+    "exportBytes": 537,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControl.js.en",
+    "sourceRelative": "native-package/pixel-NativePixelControl.js.en",
+    "sourceSha256": "f2401663f9fce7fcce856681b73afd13137ce0ead95d02e9b6b3d98d84423205",
+    "exportSha256": "f2401663f9fce7fcce856681b73afd13137ce0ead95d02e9b6b3d98d84423205",
+    "sourceBytes": 537,
+    "exportBytes": 537,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControl.js.zh-Hant",
+    "sourceRelative": "native-package/pixel-NativePixelControl.js.zh-Hant",
+    "sourceSha256": "f2401663f9fce7fcce856681b73afd13137ce0ead95d02e9b6b3d98d84423205",
+    "exportSha256": "f2401663f9fce7fcce856681b73afd13137ce0ead95d02e9b6b3d98d84423205",
+    "sourceBytes": 537,
+    "exportBytes": 537,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControlBridge.qml",
+    "sourceRelative": "native-package/pixel-NativePixelControlBridge.qml",
+    "sourceSha256": "57bf373392df3ca70f3945da25da6da39f4f8b427fb21b0025fdc2ef43c85a5d",
+    "exportSha256": "57bf373392df3ca70f3945da25da6da39f4f8b427fb21b0025fdc2ef43c85a5d",
+    "sourceBytes": 4494,
+    "exportBytes": 4494,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControlBridge.qml.en",
+    "sourceRelative": "native-package/pixel-NativePixelControlBridge.qml.en",
+    "sourceSha256": "57bf373392df3ca70f3945da25da6da39f4f8b427fb21b0025fdc2ef43c85a5d",
+    "exportSha256": "57bf373392df3ca70f3945da25da6da39f4f8b427fb21b0025fdc2ef43c85a5d",
+    "sourceBytes": 4494,
+    "exportBytes": 4494,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControlBridge.qml.zh-Hant",
+    "sourceRelative": "native-package/pixel-NativePixelControlBridge.qml.zh-Hant",
+    "sourceSha256": "57bf373392df3ca70f3945da25da6da39f4f8b427fb21b0025fdc2ef43c85a5d",
+    "exportSha256": "57bf373392df3ca70f3945da25da6da39f4f8b427fb21b0025fdc2ef43c85a5d",
+    "sourceBytes": 4494,
+    "exportBytes": 4494,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdown.qml",
+    "sourceRelative": "native-package/pixel-NativePixelCountdown.qml",
+    "sourceSha256": "bf2e3a3d2b1275b5db83667d1f8098cc6931a4f2b098f7adb8f0bca60681b854",
+    "exportSha256": "bf2e3a3d2b1275b5db83667d1f8098cc6931a4f2b098f7adb8f0bca60681b854",
+    "sourceBytes": 1913,
+    "exportBytes": 1913,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdown.qml.en",
+    "sourceRelative": "native-package/pixel-NativePixelCountdown.qml.en",
+    "sourceSha256": "00b3d723ccc30c54bd3323819d9d9cd2f5d83dbfa35aab5f878009f419594fdd",
+    "exportSha256": "00b3d723ccc30c54bd3323819d9d9cd2f5d83dbfa35aab5f878009f419594fdd",
+    "sourceBytes": 1920,
+    "exportBytes": 1920,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdown.qml.zh-Hant",
+    "sourceRelative": "native-package/pixel-NativePixelCountdown.qml.zh-Hant",
+    "sourceSha256": "95635f52fe2a20101ba38d676d4d8c41b242d8ccc601857852ac559a6c3725f4",
+    "exportSha256": "95635f52fe2a20101ba38d676d4d8c41b242d8ccc601857852ac559a6c3725f4",
+    "sourceBytes": 1913,
+    "exportBytes": 1913,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdownController.qml",
+    "sourceRelative": "native-package/pixel-NativePixelCountdownController.qml",
+    "sourceSha256": "168b8e90a6b48c988c407df4f14245b3359774bd71305ee73f72784af79c491a",
+    "exportSha256": "168b8e90a6b48c988c407df4f14245b3359774bd71305ee73f72784af79c491a",
+    "sourceBytes": 7697,
+    "exportBytes": 7697,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdownController.qml.en",
+    "sourceRelative": "native-package/pixel-NativePixelCountdownController.qml.en",
+    "sourceSha256": "168b8e90a6b48c988c407df4f14245b3359774bd71305ee73f72784af79c491a",
+    "exportSha256": "168b8e90a6b48c988c407df4f14245b3359774bd71305ee73f72784af79c491a",
+    "sourceBytes": 7697,
+    "exportBytes": 7697,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdownController.qml.zh-Hant",
+    "sourceRelative": "native-package/pixel-NativePixelCountdownController.qml.zh-Hant",
+    "sourceSha256": "168b8e90a6b48c988c407df4f14245b3359774bd71305ee73f72784af79c491a",
+    "exportSha256": "168b8e90a6b48c988c407df4f14245b3359774bd71305ee73f72784af79c491a",
+    "sourceBytes": 7697,
+    "exportBytes": 7697,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelDropdown.qml",
+    "sourceRelative": "native-package/pixel-NativePixelDropdown.qml",
+    "sourceSha256": "9d8aa695acc3f24dd7b51d8179e379c314420828faad8a25c6d15f6dda68f909",
+    "exportSha256": "9d8aa695acc3f24dd7b51d8179e379c314420828faad8a25c6d15f6dda68f909",
+    "sourceBytes": 8412,
+    "exportBytes": 8412,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelDropdown.qml.en",
+    "sourceRelative": "native-package/pixel-NativePixelDropdown.qml.en",
+    "sourceSha256": "9d8aa695acc3f24dd7b51d8179e379c314420828faad8a25c6d15f6dda68f909",
+    "exportSha256": "9d8aa695acc3f24dd7b51d8179e379c314420828faad8a25c6d15f6dda68f909",
+    "sourceBytes": 8412,
+    "exportBytes": 8412,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelDropdown.qml.zh-Hant",
+    "sourceRelative": "native-package/pixel-NativePixelDropdown.qml.zh-Hant",
+    "sourceSha256": "9d8aa695acc3f24dd7b51d8179e379c314420828faad8a25c6d15f6dda68f909",
+    "exportSha256": "9d8aa695acc3f24dd7b51d8179e379c314420828faad8a25c6d15f6dda68f909",
+    "sourceBytes": 8412,
+    "exportBytes": 8412,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSelector.qml",
+    "sourceRelative": "native-package/pixel-NativePixelSelector.qml",
+    "sourceSha256": "4fac3df8106776edfe79845a5f08737573becebeccede880165d137929e843dd",
+    "exportSha256": "4fac3df8106776edfe79845a5f08737573becebeccede880165d137929e843dd",
+    "sourceBytes": 8547,
+    "exportBytes": 8547,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSelector.qml.en",
+    "sourceRelative": "native-package/pixel-NativePixelSelector.qml.en",
+    "sourceSha256": "23428e060afe179c5916dc9999779a7251aed8f5dca0fefd2bebb52e453ee610",
+    "exportSha256": "23428e060afe179c5916dc9999779a7251aed8f5dca0fefd2bebb52e453ee610",
+    "sourceBytes": 8543,
+    "exportBytes": 8543,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSelector.qml.zh-Hant",
+    "sourceRelative": "native-package/pixel-NativePixelSelector.qml.zh-Hant",
+    "sourceSha256": "b2d7744e26451aa21bc6b1714597d65b544b6fc9b6b2b82bd40733ac7be659e4",
+    "exportSha256": "b2d7744e26451aa21bc6b1714597d65b544b6fc9b6b2b82bd40733ac7be659e4",
+    "sourceBytes": 8547,
+    "exportBytes": 8547,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSettings.qml",
+    "sourceRelative": "native-package/pixel-NativePixelSettings.qml",
+    "sourceSha256": "91903079707cf9f3dc2bf00d823348b1a769ac1428641c3740c9a2b6b90b7252",
+    "exportSha256": "91903079707cf9f3dc2bf00d823348b1a769ac1428641c3740c9a2b6b90b7252",
+    "sourceBytes": 7013,
+    "exportBytes": 7013,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSettings.qml.en",
+    "sourceRelative": "native-package/pixel-NativePixelSettings.qml.en",
+    "sourceSha256": "156295c9ff4f0f2e1f0655c1aa16122613e47b2014dbe8f0c1e6f1dd3cca86eb",
+    "exportSha256": "156295c9ff4f0f2e1f0655c1aa16122613e47b2014dbe8f0c1e6f1dd3cca86eb",
+    "sourceBytes": 6987,
+    "exportBytes": 6987,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSettings.qml.zh-Hant",
+    "sourceRelative": "native-package/pixel-NativePixelSettings.qml.zh-Hant",
+    "sourceSha256": "a53b26e912e4ad423804f2bb88747e5d0fb5b40422cfd58cc35662c24c024882",
+    "exportSha256": "a53b26e912e4ad423804f2bb88747e5d0fb5b40422cfd58cc35662c24c024882",
+    "sourceBytes": 7013,
+    "exportBytes": 7013,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelTrace.js",
+    "sourceRelative": "native-package/pixel-NativePixelTrace.js",
+    "sourceSha256": "eb0b5a22bd9265d261b4b3cbb3f61b4496853a3d0c37795656770551aaa679d5",
+    "exportSha256": "eb0b5a22bd9265d261b4b3cbb3f61b4496853a3d0c37795656770551aaa679d5",
+    "sourceBytes": 1184,
+    "exportBytes": 1184,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelTrace.js.en",
+    "sourceRelative": "native-package/pixel-NativePixelTrace.js.en",
+    "sourceSha256": "eb0b5a22bd9265d261b4b3cbb3f61b4496853a3d0c37795656770551aaa679d5",
+    "exportSha256": "eb0b5a22bd9265d261b4b3cbb3f61b4496853a3d0c37795656770551aaa679d5",
+    "sourceBytes": 1184,
+    "exportBytes": 1184,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelTrace.js.zh-Hant",
+    "sourceRelative": "native-package/pixel-NativePixelTrace.js.zh-Hant",
+    "sourceSha256": "eb0b5a22bd9265d261b4b3cbb3f61b4496853a3d0c37795656770551aaa679d5",
+    "exportSha256": "eb0b5a22bd9265d261b4b3cbb3f61b4496853a3d0c37795656770551aaa679d5",
+    "sourceBytes": 1184,
+    "exportBytes": 1184,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dAfcMenuController.en.qml",
+    "sourceRelative": "native-package/X2dAfcMenuController.en.qml",
+    "sourceSha256": "9586f2fea81b5486a92b1344c30a24f6c956a7b0f6afbfa9a8e22cd11295a657",
+    "exportSha256": "9586f2fea81b5486a92b1344c30a24f6c956a7b0f6afbfa9a8e22cd11295a657",
+    "sourceBytes": 15106,
+    "exportBytes": 15106,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dAfcMenuController.qml",
+    "sourceRelative": "native-package/X2dAfcMenuController.qml",
+    "sourceSha256": "fd6854c7b3cd980875b3c9f05917b89a199d7469eb90866ed27285d317aea9bd",
+    "exportSha256": "fd6854c7b3cd980875b3c9f05917b89a199d7469eb90866ed27285d317aea9bd",
+    "sourceBytes": 15124,
+    "exportBytes": 15124,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dAfcMenuController.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dAfcMenuController.zh-Hant.qml",
+    "sourceSha256": "0b6b6b2d64040198cb948f5c86a5ca2137a63c816230e568600729ba0e7dd756",
+    "exportSha256": "0b6b6b2d64040198cb948f5c86a5ca2137a63c816230e568600729ba0e7dd756",
+    "sourceBytes": 15124,
+    "exportBytes": 15124,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dAutoBrightnessController.qml",
+    "sourceRelative": "native-package/X2dAutoBrightnessController.qml",
+    "sourceSha256": "27f42ff45f3bf4d61b532cd2e96354b48c5068b918c9f7e4fbcc1e844aa6c4fa",
+    "exportSha256": "27f42ff45f3bf4d61b532cd2e96354b48c5068b918c9f7e4fbcc1e844aa6c4fa",
+    "sourceBytes": 2730,
+    "exportBytes": 2730,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dBrightnessSlider.qml",
+    "sourceRelative": "native-package/X2dBrightnessSlider.qml",
+    "sourceSha256": "f51ae1d3bd72f9295a7e60a2ae51142190b51b487e7b9ebd0ac086b16dd5ffad",
+    "exportSha256": "f51ae1d3bd72f9295a7e60a2ae51142190b51b487e7b9ebd0ac086b16dd5ffad",
+    "sourceBytes": 5436,
+    "exportBytes": 5436,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dConnectionMenu.en.qml",
+    "sourceRelative": "native-package/X2dConnectionMenu.en.qml",
+    "sourceSha256": "8a0463984770ea45db7b77b10340f293d5aa7da5400b6285fe417964f6a4d39a",
+    "exportSha256": "8967c1dff3a1d31b5c509ad29500df5af3337e7a9d543e442aab7c0956334cb5",
+    "sourceBytes": 2834,
+    "exportBytes": 2766,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dConnectionMenu.qml",
+    "sourceRelative": "native-package/X2dConnectionMenu.qml",
+    "sourceSha256": "04c26201691a7a3090e988774737583317947022f451c1294789c3b5427f74b9",
+    "exportSha256": "04c26201691a7a3090e988774737583317947022f451c1294789c3b5427f74b9",
+    "sourceBytes": 2761,
+    "exportBytes": 2761,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dConnectionMenu.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dConnectionMenu.zh-Hant.qml",
+    "sourceSha256": "1ca88597129ffad936221f27671b56566482d61bed21a52860abdd7db6db1314",
+    "exportSha256": "73097d869cc4de936d4a05c4e7925d14b89f1fef024cb12f6307249a5699bc52",
+    "sourceBytes": 2829,
+    "exportBytes": 2761,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dConnectionMenuIcon.svg",
+    "sourceRelative": "native-package/X2dConnectionMenuIcon.svg",
+    "sourceSha256": "a10338a059e866a5cfdb11f2a70cf9f6ed1f8d5c945ed7dd3ad77b5e5fc8514c",
+    "exportSha256": "a10338a059e866a5cfdb11f2a70cf9f6ed1f8d5c945ed7dd3ad77b5e5fc8514c",
+    "sourceBytes": 1059,
+    "exportBytes": 1059,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dDisplayRearBrightness.en.qml",
+    "sourceRelative": "native-package/X2dDisplayRearBrightness.en.qml",
+    "sourceSha256": "c07fb391de1629d6d2e2175d9817c55ec017d3532b009e8abe03ca490a23488f",
+    "exportSha256": "c07fb391de1629d6d2e2175d9817c55ec017d3532b009e8abe03ca490a23488f",
+    "sourceBytes": 7616,
+    "exportBytes": 7616,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dDisplayRearBrightness.qml",
+    "sourceRelative": "native-package/X2dDisplayRearBrightness.qml",
+    "sourceSha256": "58d7c06fd43fc534eae6685a52628ccbc359d7bfc031b8461394bf9bdc0d307b",
+    "exportSha256": "58d7c06fd43fc534eae6685a52628ccbc359d7bfc031b8461394bf9bdc0d307b",
+    "sourceBytes": 7609,
+    "exportBytes": 7609,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dDisplayRearBrightness.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dDisplayRearBrightness.zh-Hant.qml",
+    "sourceSha256": "97fdeecd72b5d32369782e9203600029007b5ae35267b6b9bfbd2f8a465d2706",
+    "exportSha256": "97fdeecd72b5d32369782e9203600029007b5ae35267b6b9bfbd2f8a465d2706",
+    "sourceBytes": 7609,
+    "exportBytes": 7609,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dDisplaySettings.qml",
+    "sourceRelative": "native-package/X2dDisplaySettings.qml",
+    "sourceSha256": "4b8a91a5df6ea7c71748f668bdb0ea447ee77874d0f435d5f171bb3cc013275e",
+    "exportSha256": "4b8a91a5df6ea7c71748f668bdb0ea447ee77874d0f435d5f171bb3cc013275e",
+    "sourceBytes": 23392,
+    "exportBytes": 23392,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dExposureMenuModel.en.qml",
+    "sourceRelative": "native-package/X2dExposureMenuModel.en.qml",
+    "sourceSha256": "f694762b191d0c33f8f5f3f8680f6e22d787a90669fda0ba159463c1c272a2fb",
+    "exportSha256": "f694762b191d0c33f8f5f3f8680f6e22d787a90669fda0ba159463c1c272a2fb",
+    "sourceBytes": 4039,
+    "exportBytes": 4039,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dExposureMenuModel.qml",
+    "sourceRelative": "native-package/X2dExposureMenuModel.qml",
+    "sourceSha256": "8201d9307d37e4495925a4251546771680c6b6fcab8385047eaaa9673ce76a33",
+    "exportSha256": "8201d9307d37e4495925a4251546771680c6b6fcab8385047eaaa9673ce76a33",
+    "sourceBytes": 4031,
+    "exportBytes": 4031,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dExposureMenuModel.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dExposureMenuModel.zh-Hant.qml",
+    "sourceSha256": "7634f315edc94db8e8825c62b454fccd795fba2fe808e955e6399a4d66562274",
+    "exportSha256": "7634f315edc94db8e8825c62b454fccd795fba2fe808e955e6399a4d66562274",
+    "sourceBytes": 4031,
+    "exportBytes": 4031,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dExposureSettings.en.qml",
+    "sourceRelative": "native-package/X2dExposureSettings.en.qml",
+    "sourceSha256": "56a506c6677e32da1d40866dda2948c01f9c18e9d1d4e54a6e609a15849418c4",
+    "exportSha256": "56a506c6677e32da1d40866dda2948c01f9c18e9d1d4e54a6e609a15849418c4",
+    "sourceBytes": 24313,
+    "exportBytes": 24313,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dExposureSettings.qml",
+    "sourceRelative": "native-package/X2dExposureSettings.qml",
+    "sourceSha256": "56a506c6677e32da1d40866dda2948c01f9c18e9d1d4e54a6e609a15849418c4",
+    "exportSha256": "56a506c6677e32da1d40866dda2948c01f9c18e9d1d4e54a6e609a15849418c4",
+    "sourceBytes": 24313,
+    "exportBytes": 24313,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dExposureSettings.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dExposureSettings.zh-Hant.qml",
+    "sourceSha256": "56a506c6677e32da1d40866dda2948c01f9c18e9d1d4e54a6e609a15849418c4",
+    "exportSha256": "56a506c6677e32da1d40866dda2948c01f9c18e9d1d4e54a6e609a15849418c4",
+    "sourceBytes": 24313,
+    "exportBytes": 24313,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dFaceFrames.qml",
+    "sourceRelative": "native-package/X2dFaceFrames.qml",
+    "sourceSha256": "a0905765bd614de35e5df2f039eff223c82992ef7e9c7e06303cf8c4783487ef",
+    "exportSha256": "a0905765bd614de35e5df2f039eff223c82992ef7e9c7e06303cf8c4783487ef",
+    "sourceBytes": 6285,
+    "exportBytes": 6285,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dFocusAreaController.en.qml",
+    "sourceRelative": "native-package/X2dFocusAreaController.en.qml",
+    "sourceSha256": "b7215a46c321312f4a4e5ce63e75de2599d4713b5a4f4ab57e32b37ca68701e3",
+    "exportSha256": "4d4518c69c8c0ebf4b2af91840e868e1de666ae324399b6e5b309f4f3c6a6ce4",
+    "sourceBytes": 7660,
+    "exportBytes": 7656,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dFocusAreaController.qml",
+    "sourceRelative": "native-package/X2dFocusAreaController.qml",
+    "sourceSha256": "1d194158f85a0ba1b2c0d733f393866bffefe4d801f5a6daa797e0c71e1fd4a7",
+    "exportSha256": "16dfcc7c8cdddfc0059b89457c57ccbe4ad4068c63a3936013c89351e6561983",
+    "sourceBytes": 7698,
+    "exportBytes": 7694,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dFocusAreaController.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dFocusAreaController.zh-Hant.qml",
+    "sourceSha256": "c04b16608254cb975e8c72fb845c95baa09d0ee4ac4d26a3366e7775ed513149",
+    "exportSha256": "c59a0c7da9f4ca227a6edd6e40f306006cc6c29c4ccc4946f3bad65c1010d2aa",
+    "sourceBytes": 7692,
+    "exportBytes": 7688,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dFocusModePopup.qml",
+    "sourceRelative": "native-package/X2dFocusModePopup.qml",
+    "sourceSha256": "ab5825c45d51ad72b1ad4ae048ff8c49f9d45e089bd1f7588de99f6d9cde627a",
+    "exportSha256": "ab5825c45d51ad72b1ad4ae048ff8c49f9d45e089bd1f7588de99f6d9cde627a",
+    "sourceBytes": 5613,
+    "exportBytes": 5613,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuBootstrap.en.qml",
+    "sourceRelative": "native-package/X2dNativeMenuBootstrap.en.qml",
+    "sourceSha256": "1d0a06137b301ba20713284a918dd6c07f256355f878c028e4df84da09486526",
+    "exportSha256": "670459557037da4fbd1ee970fa9a387cba5685debad492a18ad12eda0e996667",
+    "sourceBytes": 13808,
+    "exportBytes": 13536,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuBootstrap.qml",
+    "sourceRelative": "native-package/X2dNativeMenuBootstrap.qml",
+    "sourceSha256": "ead280613b91249e37c791325e7f3443a3292b9c4fe7cd03ab6c8dfbdaf06950",
+    "exportSha256": "f1f4cb90caaeff0550481698783e08c90e542efe1a1ac3d049dc2c1ffb489d45",
+    "sourceBytes": 13804,
+    "exportBytes": 13532,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuBootstrap.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dNativeMenuBootstrap.zh-Hant.qml",
+    "sourceSha256": "1b07ec16758a5ba2ce3c3a3d95d247b8f1b38b6692ba8ff4adcdecd78d678da4",
+    "exportSha256": "9dabbcc310b30a34cc6d75f0eb83e5d00bc97e121633e14b78f23bfd7076ae7a",
+    "sourceBytes": 13804,
+    "exportBytes": 13532,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuHost.qml",
+    "sourceRelative": "native-package/X2dNativeMenuHost.qml",
+    "sourceSha256": "7e75e91cc66ef906d83a8ff60aecc393c0f57cca46b8fdc682cd7f97b5fc29c9",
+    "exportSha256": "7e75e91cc66ef906d83a8ff60aecc393c0f57cca46b8fdc682cd7f97b5fc29c9",
+    "sourceBytes": 1542,
+    "exportBytes": 1542,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuModel.en.qml",
+    "sourceRelative": "native-package/X2dNativeMenuModel.en.qml",
+    "sourceSha256": "cbcf67a509e97cc4058d0e7c2a2c04ed77f2bc95cf9b6b5b1386230c58594813",
+    "exportSha256": "cbcf67a509e97cc4058d0e7c2a2c04ed77f2bc95cf9b6b5b1386230c58594813",
+    "sourceBytes": 5441,
+    "exportBytes": 5441,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuModel.qml",
+    "sourceRelative": "native-package/X2dNativeMenuModel.qml",
+    "sourceSha256": "56a850cae7cae8eaa84e1cf1ebaf231920ea6a402fec8606930e404e81586090",
+    "exportSha256": "56a850cae7cae8eaa84e1cf1ebaf231920ea6a402fec8606930e404e81586090",
+    "sourceBytes": 5439,
+    "exportBytes": 5439,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuModel.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dNativeMenuModel.zh-Hant.qml",
+    "sourceSha256": "f76b881011eb1aded9bb5f7c286ef81549053edcf3ca81847082730cddcfe41c",
+    "exportSha256": "f76b881011eb1aded9bb5f7c286ef81549053edcf3ca81847082730cddcfe41c",
+    "sourceBytes": 5439,
+    "exportBytes": 5439,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuRoute.qml",
+    "sourceRelative": "native-package/X2dNativeMenuRoute.qml",
+    "sourceSha256": "d8d9015e02000fed518d62f504c26c3fbb402816444108fdb938ebc0cd409f04",
+    "exportSha256": "d8d9015e02000fed518d62f504c26c3fbb402816444108fdb938ebc0cd409f04",
+    "sourceBytes": 2177,
+    "exportBytes": 2177,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dPlayPage.en.qml",
+    "sourceRelative": "native-package/X2dPlayPage.en.qml",
+    "sourceSha256": "89b5fae3140e74546647e180dcc0fa03d3f3374aca016ad9983476a2771262e3",
+    "exportSha256": "15bf46ebbf284d85e7f1329ce7ba2261969a37c6521b2e59d2578525e7509311",
+    "sourceBytes": 23895,
+    "exportBytes": 23431,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dPlayPage.qml",
+    "sourceRelative": "native-package/X2dPlayPage.qml",
+    "sourceSha256": "7a617fc38f407d6ffb780ecf34503f96fe8f866598b27773979b49932539bdf6",
+    "exportSha256": "48820a48c4134e545de709cccdaf63541741b7fcecb35543c17436c89eb93833",
+    "sourceBytes": 23876,
+    "exportBytes": 23412,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dPlayPage.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dPlayPage.zh-Hant.qml",
+    "sourceSha256": "05ef01ab4379ce3d1e5e648c3a0a4707ef3e4fb7a8b1ad2e8d6395adcec6970b",
+    "exportSha256": "a30bb90d57adf79bd21582f3e8d6b34b59ead7a0733335c82dd12d869688bf44",
+    "sourceBytes": 23876,
+    "exportBytes": 23412,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dPrankIbisPage.en.qml",
+    "sourceRelative": "native-package/X2dPrankIbisPage.en.qml",
+    "sourceSha256": "125127f5e88d00e5e8a96965b8b3e8a29bf2078289c06959fec560a36f6e34ae",
+    "exportSha256": "125127f5e88d00e5e8a96965b8b3e8a29bf2078289c06959fec560a36f6e34ae",
+    "sourceBytes": 1215,
+    "exportBytes": 1215,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dPrankIbisPage.qml",
+    "sourceRelative": "native-package/X2dPrankIbisPage.qml",
+    "sourceSha256": "fdea5bc01e6117f38e3f5f4d0f6a02494c6493ca43b84619562a113cd0a27a43",
+    "exportSha256": "fdea5bc01e6117f38e3f5f4d0f6a02494c6493ca43b84619562a113cd0a27a43",
+    "sourceBytes": 1250,
+    "exportBytes": 1250,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dPrankIbisPage.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dPrankIbisPage.zh-Hant.qml",
+    "sourceSha256": "13c660e14bcc3497e13bfad48a399be4daad154c806124434a79c12b72ce37dc",
+    "exportSha256": "13c660e14bcc3497e13bfad48a399be4daad154c806124434a79c12b72ce37dc",
+    "sourceBytes": 1253,
+    "exportBytes": 1253,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dShutterPolicy.js",
+    "sourceRelative": "native-package/X2dShutterPolicy.js",
+    "sourceSha256": "0ac46a8941937ea0210cf06bfb01b2d4c6fec2f131c4f9abaddb725f6387b0bb",
+    "exportSha256": "0ac46a8941937ea0210cf06bfb01b2d4c6fec2f131c4f9abaddb725f6387b0bb",
+    "sourceBytes": 695,
+    "exportBytes": 695,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dShutterSoundCapture.qml",
+    "sourceRelative": "native-package/X2dShutterSoundCapture.qml",
+    "sourceSha256": "59ddd0092a26e618126d0450764e9c9dfe3bd2e40b2561f7dc076eb9986f9524",
+    "exportSha256": "59ddd0092a26e618126d0450764e9c9dfe3bd2e40b2561f7dc076eb9986f9524",
+    "sourceBytes": 5026,
+    "exportBytes": 5026,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dShutterSoundController.qml",
+    "sourceRelative": "native-package/X2dShutterSoundController.qml",
+    "sourceSha256": "c21736a42175f5a0e3f38a9e9eb50a8075d0ee8e7bd68d59d052e5abb2e4acac",
+    "exportSha256": "c21736a42175f5a0e3f38a9e9eb50a8075d0ee8e7bd68d59d052e5abb2e4acac",
+    "sourceBytes": 3059,
+    "exportBytes": 3059,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dShutterSoundSwitch.en.qml",
+    "sourceRelative": "native-package/X2dShutterSoundSwitch.en.qml",
+    "sourceSha256": "77306d00413dcb08fd2d847753d7a9ff79fbb194932eadb8757a2a312b480ea9",
+    "exportSha256": "77306d00413dcb08fd2d847753d7a9ff79fbb194932eadb8757a2a312b480ea9",
+    "sourceBytes": 1619,
+    "exportBytes": 1619,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dShutterSoundSwitch.qml",
+    "sourceRelative": "native-package/X2dShutterSoundSwitch.qml",
+    "sourceSha256": "89d080d58ddc1412124aa8b34dac1bb05ea4f22a55def749355cf4fa239c1a84",
+    "exportSha256": "89d080d58ddc1412124aa8b34dac1bb05ea4f22a55def749355cf4fa239c1a84",
+    "sourceBytes": 1745,
+    "exportBytes": 1745,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dShutterSoundSwitch.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dShutterSoundSwitch.zh-Hant.qml",
+    "sourceSha256": "eb8031300e94a368e96ef45ba4a984ccc4efad195514081413a6d8c8b9bc3533",
+    "exportSha256": "eb8031300e94a368e96ef45ba4a984ccc4efad195514081413a6d8c8b9bc3533",
+    "sourceBytes": 1611,
+    "exportBytes": 1611,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSpeedBuffController.qml",
+    "sourceRelative": "native-package/X2dSpeedBuffController.qml",
+    "sourceSha256": "2e8fa693ddcfa780e8bbe170f8257bd13bf68025b54a7f15493603c76c9baeac",
+    "exportSha256": "2e8fa693ddcfa780e8bbe170f8257bd13bf68025b54a7f15493603c76c9baeac",
+    "sourceBytes": 10739,
+    "exportBytes": 10739,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSpeedBuffController.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dSpeedBuffController.zh-Hant.qml",
+    "sourceSha256": "4a4adb57515ba3db46bd305e405a5341abeee2d36e97dc37815b2d5f4803eb5e",
+    "exportSha256": "4a4adb57515ba3db46bd305e405a5341abeee2d36e97dc37815b2d5f4803eb5e",
+    "sourceBytes": 10739,
+    "exportBytes": 10739,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-custom-human.svg",
+    "sourceRelative": "native-package/X2dSubject-control-custom-human.svg",
+    "sourceSha256": "824ca715ede96274995274e32793e3954ab3c4b4b9ae460103909229ef7d5999",
+    "exportSha256": "824ca715ede96274995274e32793e3954ab3c4b4b9ae460103909229ef7d5999",
+    "sourceBytes": 1875,
+    "exportBytes": 1875,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-custom-off.svg",
+    "sourceRelative": "native-package/X2dSubject-control-custom-off.svg",
+    "sourceSha256": "9f7450a915321128f7be997a572f2201b3b323aef7aac43fa7464ac0aaa5caed",
+    "exportSha256": "9f7450a915321128f7be997a572f2201b3b323aef7aac43fa7464ac0aaa5caed",
+    "sourceBytes": 787,
+    "exportBytes": 787,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-custom-pet.svg",
+    "sourceRelative": "native-package/X2dSubject-control-custom-pet.svg",
+    "sourceSha256": "68ec61da81aad24f594a66ba7eb247b053af7f5a58cd0fb98f7303c2984f6f9b",
+    "exportSha256": "68ec61da81aad24f594a66ba7eb247b053af7f5a58cd0fb98f7303c2984f6f9b",
+    "sourceBytes": 12139,
+    "exportBytes": 12139,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-custom-vehicle.svg",
+    "sourceRelative": "native-package/X2dSubject-control-custom-vehicle.svg",
+    "sourceSha256": "3dada196dd6e803fedf8e961181eb3dd11551e1904f7f04de3ad4d8023b5f9d4",
+    "exportSha256": "3dada196dd6e803fedf8e961181eb3dd11551e1904f7f04de3ad4d8023b5f9d4",
+    "sourceBytes": 1992,
+    "exportBytes": 1992,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-disabled.svg",
+    "sourceRelative": "native-package/X2dSubject-control-disabled.svg",
+    "sourceSha256": "92778f566dc4d3d2def6ca881a6f449b4b0d4ccf85f5f54acc67003c15b146c5",
+    "exportSha256": "92778f566dc4d3d2def6ca881a6f449b4b0d4ccf85f5f54acc67003c15b146c5",
+    "sourceBytes": 656,
+    "exportBytes": 656,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-human.svg",
+    "sourceRelative": "native-package/X2dSubject-control-human.svg",
+    "sourceSha256": "3079c515ed780b0c4c825e3428e04d32eeb3ee318b3e34afb750f2300a64c6fb",
+    "exportSha256": "3079c515ed780b0c4c825e3428e04d32eeb3ee318b3e34afb750f2300a64c6fb",
+    "sourceBytes": 1923,
+    "exportBytes": 1923,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-off.svg",
+    "sourceRelative": "native-package/X2dSubject-control-off.svg",
+    "sourceSha256": "26c28ebad9d9ec27ed932e24e76f2c26a91944f9cb26f2778997671c1556ad58",
+    "exportSha256": "26c28ebad9d9ec27ed932e24e76f2c26a91944f9cb26f2778997671c1556ad58",
+    "sourceBytes": 585,
+    "exportBytes": 585,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-human.svg",
+    "sourceRelative": "native-package/X2dSubject-control-spot-human.svg",
+    "sourceSha256": "3079c515ed780b0c4c825e3428e04d32eeb3ee318b3e34afb750f2300a64c6fb",
+    "exportSha256": "3079c515ed780b0c4c825e3428e04d32eeb3ee318b3e34afb750f2300a64c6fb",
+    "sourceBytes": 1923,
+    "exportBytes": 1923,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-off.svg",
+    "sourceRelative": "native-package/X2dSubject-control-spot-off.svg",
+    "sourceSha256": "26c28ebad9d9ec27ed932e24e76f2c26a91944f9cb26f2778997671c1556ad58",
+    "exportSha256": "26c28ebad9d9ec27ed932e24e76f2c26a91944f9cb26f2778997671c1556ad58",
+    "sourceBytes": 585,
+    "exportBytes": 585,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-pet.svg",
+    "sourceRelative": "native-package/X2dSubject-control-spot-pet.svg",
+    "sourceSha256": "b55f9432f02f37fbb7bf4c66949cb8470e063c16e706b76547b5a9ed73606158",
+    "exportSha256": "b55f9432f02f37fbb7bf4c66949cb8470e063c16e706b76547b5a9ed73606158",
+    "sourceBytes": 12058,
+    "exportBytes": 12058,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-plus-human.svg",
+    "sourceRelative": "native-package/X2dSubject-control-spot-plus-human.svg",
+    "sourceSha256": "89f2907bbe03a610e4a3ba82b43f5606012772cddb9d0675b8198a517280a323",
+    "exportSha256": "89f2907bbe03a610e4a3ba82b43f5606012772cddb9d0675b8198a517280a323",
+    "sourceBytes": 2110,
+    "exportBytes": 2110,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-plus-off.svg",
+    "sourceRelative": "native-package/X2dSubject-control-spot-plus-off.svg",
+    "sourceSha256": "c6bb1a5fe7b6f5ce9940dfd238a7313e02a271ae7006c4962493323221a28a0f",
+    "exportSha256": "c6bb1a5fe7b6f5ce9940dfd238a7313e02a271ae7006c4962493323221a28a0f",
+    "sourceBytes": 1475,
+    "exportBytes": 1475,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-plus-pet.svg",
+    "sourceRelative": "native-package/X2dSubject-control-spot-plus-pet.svg",
+    "sourceSha256": "79d7ecaebf369d82b057f32a76aa6d902ecfc211fdc03435dc93d9be502d4162",
+    "exportSha256": "79d7ecaebf369d82b057f32a76aa6d902ecfc211fdc03435dc93d9be502d4162",
+    "sourceBytes": 12374,
+    "exportBytes": 12374,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-plus-vehicle.svg",
+    "sourceRelative": "native-package/X2dSubject-control-spot-plus-vehicle.svg",
+    "sourceSha256": "c3eb47169569bc4bf60120beece13ef0eac6ac37a498b3eda73b5bb139f4d620",
+    "exportSha256": "c3eb47169569bc4bf60120beece13ef0eac6ac37a498b3eda73b5bb139f4d620",
+    "sourceBytes": 2227,
+    "exportBytes": 2227,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-vehicle.svg",
+    "sourceRelative": "native-package/X2dSubject-control-spot-vehicle.svg",
+    "sourceSha256": "94be51664cffd4f83a5e3e3cafcb8d7ed3c23b2c16f109494af9a50a95bb977c",
+    "exportSha256": "94be51664cffd4f83a5e3e3cafcb8d7ed3c23b2c16f109494af9a50a95bb977c",
+    "sourceBytes": 1911,
+    "exportBytes": 1911,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-wide-human.svg",
+    "sourceRelative": "native-package/X2dSubject-control-wide-human.svg",
+    "sourceSha256": "eee185b8baa581c97b1d663001042e149c2c21b8125cf5608a965481b3c7ae58",
+    "exportSha256": "eee185b8baa581c97b1d663001042e149c2c21b8125cf5608a965481b3c7ae58",
+    "sourceBytes": 1682,
+    "exportBytes": 1682,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-wide-off.svg",
+    "sourceRelative": "native-package/X2dSubject-control-wide-off.svg",
+    "sourceSha256": "89d60fc0b2caa8cd3b79248dff692e8db2bcd8bf078a7383c67843be2809bf61",
+    "exportSha256": "89d60fc0b2caa8cd3b79248dff692e8db2bcd8bf078a7383c67843be2809bf61",
+    "sourceBytes": 647,
+    "exportBytes": 647,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-wide-pet.svg",
+    "sourceRelative": "native-package/X2dSubject-control-wide-pet.svg",
+    "sourceSha256": "c690195fd2545e53d0590d6b10c96b5ecc0f6354694d56255a63dad9cbf4f295",
+    "exportSha256": "c690195fd2545e53d0590d6b10c96b5ecc0f6354694d56255a63dad9cbf4f295",
+    "sourceBytes": 12003,
+    "exportBytes": 12003,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-wide-vehicle.svg",
+    "sourceRelative": "native-package/X2dSubject-control-wide-vehicle.svg",
+    "sourceSha256": "af27970731c812364d4b9699f6a270c01a2b2f468d7d758331516f8d67ee1607",
+    "exportSha256": "af27970731c812364d4b9699f6a270c01a2b2f468d7d758331516f8d67ee1607",
+    "sourceBytes": 1859,
+    "exportBytes": 1859,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-custom.svg",
+    "sourceRelative": "native-package/X2dSubject-custom.svg",
+    "sourceSha256": "9f7450a915321128f7be997a572f2201b3b323aef7aac43fa7464ac0aaa5caed",
+    "exportSha256": "9f7450a915321128f7be997a572f2201b3b323aef7aac43fa7464ac0aaa5caed",
+    "sourceBytes": 787,
+    "exportBytes": 787,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-human.svg",
+    "sourceRelative": "native-package/X2dSubject-human.svg",
+    "sourceSha256": "c60e59d37a847c11cba3d520f2135c81e4f40759c5abfbad2a1f22084de498bd",
+    "exportSha256": "c60e59d37a847c11cba3d520f2135c81e4f40759c5abfbad2a1f22084de498bd",
+    "sourceBytes": 1401,
+    "exportBytes": 1401,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-live-human.svg",
+    "sourceRelative": "native-package/X2dSubject-live-human.svg",
+    "sourceSha256": "b66827a9d561caaa4bc9d39c46c53da93972642623f7c7ca9a85e9f348df2a49",
+    "exportSha256": "b66827a9d561caaa4bc9d39c46c53da93972642623f7c7ca9a85e9f348df2a49",
+    "sourceBytes": 2651,
+    "exportBytes": 2651,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-off.svg",
+    "sourceRelative": "native-package/X2dSubject-off.svg",
+    "sourceSha256": "e38c9794c57f5bd0351dc475d94286b5b0557c9440670898688ace5618447f02",
+    "exportSha256": "e38c9794c57f5bd0351dc475d94286b5b0557c9440670898688ace5618447f02",
+    "sourceBytes": 417,
+    "exportBytes": 417,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-pet.svg",
+    "sourceRelative": "native-package/X2dSubject-pet.svg",
+    "sourceSha256": "5970fd4db2c43e0ca3b683a7c00710bf2b1b88ca8392aa568f14314206b6a597",
+    "exportSha256": "5970fd4db2c43e0ca3b683a7c00710bf2b1b88ca8392aa568f14314206b6a597",
+    "sourceBytes": 11592,
+    "exportBytes": 11592,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-spot-plus.svg",
+    "sourceRelative": "native-package/X2dSubject-spot-plus.svg",
+    "sourceSha256": "c6bb1a5fe7b6f5ce9940dfd238a7313e02a271ae7006c4962493323221a28a0f",
+    "exportSha256": "c6bb1a5fe7b6f5ce9940dfd238a7313e02a271ae7006c4962493323221a28a0f",
+    "sourceBytes": 1475,
+    "exportBytes": 1475,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-spot.svg",
+    "sourceRelative": "native-package/X2dSubject-spot.svg",
+    "sourceSha256": "26c28ebad9d9ec27ed932e24e76f2c26a91944f9cb26f2778997671c1556ad58",
+    "exportSha256": "26c28ebad9d9ec27ed932e24e76f2c26a91944f9cb26f2778997671c1556ad58",
+    "sourceBytes": 585,
+    "exportBytes": 585,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-vehicle.svg",
+    "sourceRelative": "native-package/X2dSubject-vehicle.svg",
+    "sourceSha256": "831684061c85f408e7f6f502a9a04288aee8302afc483dd94162d33007545d3c",
+    "exportSha256": "831684061c85f408e7f6f502a9a04288aee8302afc483dd94162d33007545d3c",
+    "sourceBytes": 1611,
+    "exportBytes": 1611,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubject-wide.svg",
+    "sourceRelative": "native-package/X2dSubject-wide.svg",
+    "sourceSha256": "89d60fc0b2caa8cd3b79248dff692e8db2bcd8bf078a7383c67843be2809bf61",
+    "exportSha256": "89d60fc0b2caa8cd3b79248dff692e8db2bcd8bf078a7383c67843be2809bf61",
+    "sourceBytes": 647,
+    "exportBytes": 647,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubjectDetectionController.qml",
+    "sourceRelative": "native-package/X2dSubjectDetectionController.qml",
+    "sourceSha256": "1057800c5bc9c86552ecd79c1d42454a336218ca0f911aeab2b866c81c261466",
+    "exportSha256": "1057800c5bc9c86552ecd79c1d42454a336218ca0f911aeab2b866c81c261466",
+    "sourceBytes": 8613,
+    "exportBytes": 8613,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubjectDetectionPopup.en.qml",
+    "sourceRelative": "native-package/X2dSubjectDetectionPopup.en.qml",
+    "sourceSha256": "aac96667b2da7ee90bb3c3d1008206f17ea1dd98bc180333c296ab4dd28a26be",
+    "exportSha256": "aac96667b2da7ee90bb3c3d1008206f17ea1dd98bc180333c296ab4dd28a26be",
+    "sourceBytes": 9419,
+    "exportBytes": 9419,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubjectDetectionPopup.qml",
+    "sourceRelative": "native-package/X2dSubjectDetectionPopup.qml",
+    "sourceSha256": "25452bb220bddb659eb326edd958fcd18ac628ae7cd51d32ef22ac44a3ecbb10",
+    "exportSha256": "25452bb220bddb659eb326edd958fcd18ac628ae7cd51d32ef22ac44a3ecbb10",
+    "sourceBytes": 9394,
+    "exportBytes": 9394,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubjectDetectionPopup.zh-Hant.qml",
+    "sourceRelative": "native-package/X2dSubjectDetectionPopup.zh-Hant.qml",
+    "sourceSha256": "609d9515c40c434ed3831250613854ed91e1c01eafbfeab8f998945c9ad93862",
+    "exportSha256": "609d9515c40c434ed3831250613854ed91e1c01eafbfeab8f998945c9ad93862",
+    "sourceBytes": 9391,
+    "exportBytes": 9391,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/camera/X2dSubjectPolicy.js",
+    "sourceRelative": "native-package/X2dSubjectPolicy.js",
+    "sourceSha256": "d1f3b54eb78a490cdaac9cbc6d439f5b931fca5315d89bad066d30be9d235a63",
+    "exportSha256": "d1f3b54eb78a490cdaac9cbc6d439f5b931fca5315d89bad066d30be9d235a63",
+    "sourceBytes": 1141,
+    "exportBytes": 1141,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/app_settings.py",
+    "sourceRelative": "app_settings.py",
+    "sourceSha256": "283ca87a885abb2857392bf590fc79dda3807191fd869846bebe17c9f494da17",
+    "exportSha256": "283ca87a885abb2857392bf590fc79dda3807191fd869846bebe17c9f494da17",
+    "sourceBytes": 887,
+    "exportBytes": 887,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/app_updates.py",
+    "sourceRelative": "app_updates.py",
+    "sourceSha256": "ec505cdb445a2947a300fdde7eba96ed6d862a9d6ef33eaac70022c08830a43d",
+    "exportSha256": "ec505cdb445a2947a300fdde7eba96ed6d862a9d6ef33eaac70022c08830a43d",
+    "sourceBytes": 16607,
+    "exportBytes": 16607,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/app_version.py",
+    "sourceRelative": "app_version.py",
+    "sourceSha256": "c83a2c1f2d4230d0b46af677d1d536d49d4b99ff2defd6699d67382dc2223e4e",
+    "exportSha256": "73b16988df91a705f3e32825dd643daffadb1b71b88d246aa078b75afd3bf134",
+    "sourceBytes": 63,
+    "exportBytes": 61,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/collect_x2d_af_usb.py",
+    "sourceRelative": "collect_x2d_af_usb.py",
+    "sourceSha256": "23b38c435f13c91b93e3e52ae985cf47272175163a9c755845e34dc544bc43c3",
+    "exportSha256": "23b38c435f13c91b93e3e52ae985cf47272175163a9c755845e34dc544bc43c3",
+    "sourceBytes": 58884,
+    "exportBytes": 58884,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/focus_areas.py",
+    "sourceRelative": "focus_areas.py",
+    "sourceSha256": "8c3ef2a4ba4036097a99de66aaabed694c7d4ad2f313a3afb8a80e5f01adddba",
+    "exportSha256": "8c3ef2a4ba4036097a99de66aaabed694c7d4ad2f313a3afb8a80e5f01adddba",
+    "sourceBytes": 3371,
+    "exportBytes": 3371,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/localization.py",
+    "sourceRelative": "localization.py",
+    "sourceSha256": "b3211dcd16275432adeb5a54ac78e015cc3b4e4752fbaa748c2815d29e6de950",
+    "exportSha256": "b3211dcd16275432adeb5a54ac78e015cc3b4e4752fbaa748c2815d29e6de950",
+    "sourceBytes": 1797,
+    "exportBytes": 1797,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/pixel_shift.py",
+    "sourceRelative": "pixel_shift.py",
+    "sourceSha256": "c8fa2590f0426a770cec3cd42c70063cd05be1b92cf491d944b5e16c5a82ac14",
+    "exportSha256": "c8fa2590f0426a770cec3cd42c70063cd05be1b92cf491d944b5e16c5a82ac14",
+    "sourceBytes": 4102,
+    "exportBytes": 4102,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/reinstall_confirmation.py",
+    "sourceRelative": "reinstall_confirmation.py",
+    "sourceSha256": "462bee0c22a922b6346740bf00d7bcad9916f52e555730a5eb78cb5cdcda4757",
+    "exportSha256": "462bee0c22a922b6346740bf00d7bcad9916f52e555730a5eb78cb5cdcda4757",
+    "sourceBytes": 1846,
+    "exportBytes": 1846,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/shutter_sound.py",
+    "sourceRelative": "shutter_sound.py",
+    "sourceSha256": "174130f4f9acb9174ce2dcf2ffae183693a459d395d9b7a292f362a545c73aaa",
+    "exportSha256": "174130f4f9acb9174ce2dcf2ffae183693a459d395d9b7a292f362a545c73aaa",
+    "sourceBytes": 8645,
+    "exportBytes": 8645,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/sound_customization.py",
+    "sourceRelative": "sound_customization.py",
+    "sourceSha256": "3bdd02e4709957256c634aaa94edffe818b6ae3405dac25bb3bf7ea734eb67c8",
+    "exportSha256": "f52969edd9437774300305785f6fc3df3dde97bfbd1b545b35f1449b747d26c6",
+    "sourceBytes": 9789,
+    "exportBytes": 9618,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/sound_profile_pins.py",
+    "sourceRelative": "sound_profile_pins.py",
+    "sourceSha256": "c4bfca2f72aad2847dfc9822511dab60a52a58c2bc7146758084c1804dbcd598",
+    "exportSha256": "f28ca077032c61617dbad288d1a781ebb2205d9a46aeb7ac46aa5f38ea06bfe2",
+    "sourceBytes": 2929,
+    "exportBytes": 2927,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/windows_app.py",
+    "sourceRelative": "windows_app.py",
+    "sourceSha256": "6b9ea3165180105e2d4a6d37dd043d102782ad4bc878cd0ff8fd7663d44f233f",
+    "exportSha256": "93a2de269e3482c196a6821a381c0c36dc73f77f106a8d402a62b42208a01ea6",
+    "sourceBytes": 43196,
+    "exportBytes": 42490,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/windows_connection.py",
+    "sourceRelative": "windows_connection.py",
+    "sourceSha256": "bebba68fa776361fe39a955539f7308b66dd8235efbfbf08b9fd3bcb2dd5da98",
+    "exportSha256": "fec79680e3775c9d19e153e3712645aeaa3ade1b22281f009cb2e9f34e650ca0",
+    "sourceBytes": 4314,
+    "exportBytes": 4247,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/windows_factory_usb.py",
+    "sourceRelative": "windows_factory_usb.py",
+    "sourceSha256": "a8bd79d93f0c27b5f2732a884906260686cb17fe51697ca17d289929b53d1c40",
+    "exportSha256": "a8bd79d93f0c27b5f2732a884906260686cb17fe51697ca17d289929b53d1c40",
+    "sourceBytes": 13301,
+    "exportBytes": 13301,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/windows_processes.py",
+    "sourceRelative": "windows_processes.py",
+    "sourceSha256": "7eb95daad48be31d66acd23c8e7f79052f59aca3fbd6ee207960468ae1d0d796",
+    "exportSha256": "7eb95daad48be31d66acd23c8e7f79052f59aca3fbd6ee207960468ae1d0d796",
+    "sourceBytes": 6370,
+    "exportBytes": 6370,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/windows_ui.py",
+    "sourceRelative": "windows_ui.py",
+    "sourceSha256": "070033b0cf7bdbd673977b2b4ad66e0da74cf12d2271eed021a6082d9eb3197d",
+    "exportSha256": "070033b0cf7bdbd673977b2b4ad66e0da74cf12d2271eed021a6082d9eb3197d",
+    "sourceBytes": 16829,
+    "exportBytes": 16829,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/x2d_play_software.py",
+    "sourceRelative": "x2d_play_software.py",
+    "sourceSha256": "78ffd924c148b6e6f732dce1569793c4f4f50afa81ae5c2f6b262870701d2a04",
+    "exportSha256": "90d73680cfe9ca85814730cd1b15413cb98f676e47a77c40ad37e9143dc9fc69",
+    "sourceBytes": 98883,
+    "exportBytes": 97337,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/translations.json",
+    "sourceRelative": "translations.json",
+    "sourceSha256": "82d292da79dfa1b71d54da5a4cf125f0912c81df857b1749e534e89891fe71e1",
+    "exportSha256": "1141e23fa08d9c1392a3c8e7e346ccd73808dc6b03c4609bc4a7f2dbdb715a2f",
+    "sourceBytes": 66622,
+    "exportBytes": 66089,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/translations_zh_hant.json",
+    "sourceRelative": "translations_zh_hant.json",
+    "sourceSha256": "9e0621b54c0756db217aa8db2f96d9a730c8490532727010f4e7cad7e5b7f3b5",
+    "exportSha256": "7549d23ddbe70b73f44b02107abce7e2504c825683fb8cbc73b9c2e16700f077",
+    "sourceBytes": 65359,
+    "exportBytes": 64794,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/host/desktop-ui.json",
+    "sourceRelative": "desktop-ui.json",
+    "sourceSha256": "2a507d7eca272bfcc0c9e26d244d08d9cce50df52ea0ce3165be8a958aea3250",
+    "exportSha256": "2a507d7eca272bfcc0c9e26d244d08d9cce50df52ea0ce3165be8a958aea3250",
+    "sourceBytes": 4529,
+    "exportBytes": 4529,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/native_menu_preload.c",
+    "sourceRelative": "upstream/src/native_menu_preload.c",
+    "sourceSha256": "5b354bc10de32cf23165b0ef82c5afbb98d7e104fd4a8887ee35bbd3bf0e0909",
+    "exportSha256": "5b354bc10de32cf23165b0ef82c5afbb98d7e104fd4a8887ee35bbd3bf0e0909",
+    "sourceBytes": 8735,
+    "exportBytes": 8735,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/build_native_preload.py",
+    "sourceRelative": "upstream/src/build_native_preload.py",
+    "sourceSha256": "092546ce164f1e3b75f579a999446f9b4bb0db765f7b24fc738b73d7230ec053",
+    "exportSha256": "092546ce164f1e3b75f579a999446f9b4bb0db765f7b24fc738b73d7230ec053",
+    "sourceBytes": 10496,
+    "exportBytes": 10496,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/prepare_focus_ui.py",
+    "sourceRelative": "upstream/src/prepare_focus_ui.py",
+    "sourceSha256": "35ae370519745629980f6f8cb54f2d3ed5b129e3abee73ddb09a1f43020fc3fc",
+    "exportSha256": "35ae370519745629980f6f8cb54f2d3ed5b129e3abee73ddb09a1f43020fc3fc",
+    "sourceBytes": 7043,
+    "exportBytes": 7043,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/camera_ui_strings.py",
+    "sourceRelative": "upstream/src/camera_ui_strings.py",
+    "sourceSha256": "6a806a7ef0ebb55d9462a9a649a361dc1160c4a634cbdf49ecbddafe098c027e",
+    "exportSha256": "6a806a7ef0ebb55d9462a9a649a361dc1160c4a634cbdf49ecbddafe098c027e",
+    "sourceBytes": 2194,
+    "exportBytes": 2194,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/brightness/abi.h",
+    "sourceRelative": "upstream/src/brightness/abi.h",
+    "sourceSha256": "01f3ccf2eaeacf4c4587c3807699275ba179375804df023269829aa916334146",
+    "exportSha256": "01f3ccf2eaeacf4c4587c3807699275ba179375804df023269829aa916334146",
+    "sourceBytes": 1699,
+    "exportBytes": 1699,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/brightness/brightness_policy.c",
+    "sourceRelative": "upstream/src/brightness/brightness_policy.c",
+    "sourceSha256": "ce84ccd2815a6f9c3baadd61139cc0ca477af164b79b87b38fed3cd14ab98cf6",
+    "exportSha256": "ce84ccd2815a6f9c3baadd61139cc0ca477af164b79b87b38fed3cd14ab98cf6",
+    "sourceBytes": 1798,
+    "exportBytes": 1798,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/brightness/brightness_policy.h",
+    "sourceRelative": "upstream/src/brightness/brightness_policy.h",
+    "sourceSha256": "23aba235f44533f809ae4d0d8155986ab62ebc8b66b98d5840bfc866cbd0019b",
+    "exportSha256": "23aba235f44533f809ae4d0d8155986ab62ebc8b66b98d5840bfc866cbd0019b",
+    "sourceBytes": 590,
+    "exportBytes": 590,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/brightness/build.py",
+    "sourceRelative": "upstream/src/brightness/build.py",
+    "sourceSha256": "086e59773ceebe9f868ebec0c1e93e8ac8da2b9a3aec9734a3349839108cca6a",
+    "exportSha256": "086e59773ceebe9f868ebec0c1e93e8ac8da2b9a3aec9734a3349839108cca6a",
+    "sourceBytes": 3673,
+    "exportBytes": 3673,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/brightness/display_bridge.py",
+    "sourceRelative": "upstream/src/brightness/display_bridge.py",
+    "sourceSha256": "4ef2b0ef851190a3af71b2c78f93868924f27c65ff15013ba4a240b26110f4fe",
+    "exportSha256": "4ef2b0ef851190a3af71b2c78f93868924f27c65ff15013ba4a240b26110f4fe",
+    "sourceBytes": 2465,
+    "exportBytes": 2465,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/brightness/display_runtime.c",
+    "sourceRelative": "upstream/src/brightness/display_runtime.c",
+    "sourceSha256": "40800936a83380d8940457ab5b21a55adce4465e8febb6f29b2a21af8c252b94",
+    "exportSha256": "40800936a83380d8940457ab5b21a55adce4465e8febb6f29b2a21af8c252b94",
+    "sourceBytes": 18329,
+    "exportBytes": 18329,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/brightness/LICENSE",
+    "sourceRelative": "upstream/src/brightness/LICENSE",
+    "sourceSha256": "01253586afc8addb13c994da1f191ddcc12b0aa80f51baf877a7105cd65f53a3",
+    "exportSha256": "440d50a8985a66ce54b1d6ebb243f2a8494488b391ec49bceaa2846c6bdf6b82",
+    "sourceBytes": 1120,
+    "exportBytes": 1099,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/brightness/menu_patch.py",
+    "sourceRelative": "upstream/src/brightness/menu_patch.py",
+    "sourceSha256": "30311ece7a3c252af2b7b93771f32386d098d76138a763826b56f3f380f31ddd",
+    "exportSha256": "30311ece7a3c252af2b7b93771f32386d098d76138a763826b56f3f380f31ddd",
+    "sourceBytes": 6208,
+    "exportBytes": 6208,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/brightness/sha256.c",
+    "sourceRelative": "upstream/src/brightness/sha256.c",
+    "sourceSha256": "e8dceea8e29380748b84b51f04485c64551c107160ce477d1e6ebe5379c09a00",
+    "exportSha256": "e8dceea8e29380748b84b51f04485c64551c107160ce477d1e6ebe5379c09a00",
+    "sourceBytes": 2447,
+    "exportBytes": 2447,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/loader-reference/brightness/sha256.h",
+    "sourceRelative": "upstream/src/brightness/sha256.h",
+    "sourceSha256": "d4e5f86780b5ec0959d616b4c8b56d71102ada3b3c619b8ce98af0415801da77",
+    "exportSha256": "d4e5f86780b5ec0959d616b4c8b56d71102ada3b3c619b8ce98af0415801da77",
+    "sourceBytes": 76,
+    "exportBytes": 76,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/native-reference/focus_area_service.c",
+    "sourceRelative": "development/focus_area_service.c",
+    "sourceSha256": "aea03e0fe95b7f253271a32ce6d5a580b74a533af0aac0f88f53835f0f0c37d1",
+    "exportSha256": "aea03e0fe95b7f253271a32ce6d5a580b74a533af0aac0f88f53835f0f0c37d1",
+    "sourceBytes": 9129,
+    "exportBytes": 9129,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/native-reference/shutter_audio_factory.c",
+    "sourceRelative": "development/shutter_audio_factory.c",
+    "sourceSha256": "b4a28160f20e4968cbc37762d58f6102807d1cc94a81b0149bbefbcaf2032d16",
+    "exportSha256": "b4a28160f20e4968cbc37762d58f6102807d1cc94a81b0149bbefbcaf2032d16",
+    "sourceBytes": 8571,
+    "exportBytes": 8571,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/native-reference/build_focus_areas.py",
+    "sourceRelative": "development/build_focus_areas.py",
+    "sourceSha256": "66c2a27ef54b287b3754554fe40ad86af82be76ff102facda1bf18f088d30fac",
+    "exportSha256": "0c2909d5cac9f684df3bd42c167c5149d559fc2c2f44dd2394b81e2d1065564d",
+    "sourceBytes": 6067,
+    "exportBytes": 6068,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/native-reference/build_factory_audio.py",
+    "sourceRelative": "development/build_factory_audio.py",
+    "sourceSha256": "3641945de08e75e059be1f2c55b9bdf7733d128956d9e3bd0e25f1f287610e58",
+    "exportSha256": "5ae259fa64543abe2d29662be3036b6ec5b9a2e8d4fb4fa98e733061045b82ec",
+    "sourceBytes": 2950,
+    "exportBytes": 2951,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/service-reference/speed-worker",
+    "sourceRelative": "native-package/speed-worker",
+    "sourceSha256": "667f989c55a6c94620c3c14b2cddbbde248c69e83e8687e3ea321a295618c7aa",
+    "exportSha256": "667f989c55a6c94620c3c14b2cddbbde248c69e83e8687e3ea321a295618c7aa",
+    "sourceBytes": 26598,
+    "exportBytes": 26598,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/service-reference/speed-backend",
+    "sourceRelative": "native-package/speed-backend",
+    "sourceSha256": "c77f1beef2a8d5e0e0b3dfdecda236670dd210e9eb629008fd3d77eb1614e3e0",
+    "exportSha256": "c77f1beef2a8d5e0e0b3dfdecda236670dd210e9eb629008fd3d77eb1614e3e0",
+    "sourceBytes": 2191,
+    "exportBytes": 2191,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/service-reference/speed-transaction",
+    "sourceRelative": "native-package/speed-transaction",
+    "sourceSha256": "e4d93486254237e1e78987071325a2b7f4532b1d84e7aa8bc7a138ee39e86f29",
+    "exportSha256": "e4d93486254237e1e78987071325a2b7f4532b1d84e7aa8bc7a138ee39e86f29",
+    "sourceBytes": 2909,
+    "exportBytes": 2909,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/service-reference/pixel-service",
+    "sourceRelative": "native-package/pixel-service",
+    "sourceSha256": "d125351f482eb18b3374474ce4f18f9fdb9857b919a5c1b12ea417beffc02b44",
+    "exportSha256": "d125351f482eb18b3374474ce4f18f9fdb9857b919a5c1b12ea417beffc02b44",
+    "sourceBytes": 8910,
+    "exportBytes": 8910,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/service-reference/X2dShutter-worker",
+    "sourceRelative": "native-package/X2dShutter-worker",
+    "sourceSha256": "e87bef42dd6cb2992b5739e6e07a85c201e5f090f9b9b22613831fa3c82c92f7",
+    "exportSha256": "0764145dc13dd71c55d0e4b61c23276e3dc471d4edb1887424bd5e5af20cc172",
+    "sourceBytes": 13766,
+    "exportBytes": 13492,
+    "transformed": true
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/service-reference/pixel-pixel-parameters.sh",
+    "sourceRelative": "native-package/pixel-pixel-parameters.sh",
+    "sourceSha256": "50231165bb76edf53f635d48c5c13ed6b58903733f2c32ca2f2bd38a75f8935d",
+    "exportSha256": "50231165bb76edf53f635d48c5c13ed6b58903733f2c32ca2f2bd38a75f8935d",
+    "sourceBytes": 8002,
+    "exportBytes": 8002,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/service-reference/pixel-pixel-initial-delay.sh",
+    "sourceRelative": "native-package/pixel-pixel-initial-delay.sh",
+    "sourceSha256": "229b7d8e9af38b6e8e83ddac149572858a5fb9311cebc1a80779370d9cc860ad",
+    "exportSha256": "229b7d8e9af38b6e8e83ddac149572858a5fb9311cebc1a80779370d9cc860ad",
+    "sourceBytes": 29628,
+    "exportBytes": 29628,
+    "transformed": false
+  },
+  {
+    "path": "src/x2d2_ui_handoff_062/service-reference/pixel-pixel-stock-countdown-audio.sh",
+    "sourceRelative": "native-package/pixel-pixel-stock-countdown-audio.sh",
+    "sourceSha256": "9595635d91c0e8415cc34bc2258760fe38e7ad88fcc5b48814282594be769998",
+    "exportSha256": "9595635d91c0e8415cc34bc2258760fe38e7ad88fcc5b48814282594be769998",
+    "sourceBytes": 1825,
+    "exportBytes": 1825,
+    "transformed": false
+  }
+]

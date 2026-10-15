@@ -1,0 +1,274 @@
+#!/system/bin/sh
+# Optional audio-only service. No camera parameters, service RAM or stock WAV writes.
+set -eu
+export PATH=/system/bin:/system/xbin:/sbin TMPDIR=/tmp
+D=/tmp/x2d-shutter-sound
+ROOT=/blackbox/.x2d-play-software
+MENU=$ROOT/shutter-menu
+ENABLED=$ROOT/shutter-enabled
+BLOCK=$ROOT/shutter-restoring
+PLAYER=/system/bin/test_audio_client
+WAV=/system/etc/x2d-shutter-sound/custom.wav
+WAV_SHA=b699c558e4aaaa8acee440bb6bd14c117b705154d26652beb6d76ae10553fe07
+PLAYER_SHA=a2ce6fd55b5e2b92b194995483520aeae482a90a42c0ebc439d5488d51c38950
+SPEAKER=/system/bin/tinyplay
+SPEAKER_SHA=082664d404e2bd5798ed8543be78c9ef8a880bf65694b994f1c10e7499abdeb7
+CACHE=$D/playback.wav
+CACHE_SHA=b699c558e4aaaa8acee440bb6bd14c117b705154d26652beb6d76ae10553fe07
+BRIDGE=/system/lib64/libx2d_shutter_audio.so
+BRIDGE_SHA=bdad677d36b0a4db598758333769ae375b5b3906076d8d48813f62fb5cd02f5d
+SLEEP_PLAYER=/system/bin/toybox
+SLEEP_SHA=999a0669ef654efbda54bc585c0f3c00643d1af61c985bfb7968cfd2f9aed840
+FACTORY=/system/lib64/libaudioclient.so
+FACTORY_SHA=1a196a3f3c9095042999c429aaf38bcfa2e800f12d4121a6f465cbc4ca18000c
+LIBC=/system/lib64/libc.so
+LIBC_SHA=40e9ea6efccfe8757b4afac57972c9a5cce745224d2dcf34ecddf3dfc0a3f7a6
+SELF=/system/etc/x2d-shutter-sound/worker
+DAEMON=$D/daemon.pid
+LOCK=$D/daemon.lock
+daemonOwned=false;daemonIdentity=
+safe_paths() {
+ for p in "$D" "$ROOT" "$MENU" "$MENU.next" "$ENABLED" "$ENABLED.next" "$BLOCK" "$BLOCK.next" \
+   "$D/state.json" "$D/state.next" "$D/settings.request" "$D/capture.request" "$D/capture.ack" "$D/ready" "$D/ui.ready" "$D/player.pid" "$D/player.log" "$D/play.request" "$D/play.next" \
+   "$BRIDGE" "$FACTORY" "$LIBC" "$SLEEP_PLAYER" "$DAEMON" "$DAEMON.next" "$LOCK" "$D/service.log" "$ROOT/installed" "$CACHE" "$CACHE.next"; do
+  [ ! -L "$p" ] || return 1
+ done
+}
+preferences() {
+ safe_paths || return 1
+ menu=false;enabled=false
+ if [ -e "$MENU" ];then [ -f "$MENU" ] && [ "$(cat "$MENU")" = XS_SOUND_MENU_V1 ] || return 1;menu=true;fi
+ if [ -e "$ENABLED" ];then [ -f "$ENABLED" ] && [ "$(cat "$ENABLED")" = XS_SOUND_ENABLED_V1 ] || return 1;enabled=true;fi
+ if [ -e "$BLOCK" ];then [ -f "$BLOCK" ] && [ "$(cat "$BLOCK")" = XS_SOUND_RESTORING_V1 ] || return 1;fi
+}
+master_enabled() { [ -f /blackbox/x2d-speed-buff.master ] && [ ! -L /blackbox/x2d-speed-buff.master ]; }
+write_state() {
+ master=false;master_enabled && master=true
+ stateKey="$master|$menu|$enabled|$ack|$lastAudio"
+ [ "$stateKey" != "${publishedState:-}" ] || return 0
+ publishedState=$stateKey
+ printf '{"ready":true,"master":%s,"menu":%s,"enabled":%s,"ack":"%s","lastAudio":"%s"}\n' \
+  "$master" "$menu" "$enabled" "$ack" "$lastAudio" >"$D/state.next"
+ mv "$D/state.next" "$D/state.json"
+}
+token_valid() { case "$1" in ''|*[!0-9-]*|-*|*-) return 1;;esac;[ "${#1}" -le 40 ]; }
+number_valid() { case "$1" in ''|*[!0-9]*) return 1;;esac;[ "${#1}" -le 8 ]; }
+daemon_load() {
+ [ -f "$DAEMON" ] && [ ! -L "$DAEMON" ] || return 1
+ read -r magic daemonPid daemonStart daemonBoot extra <"$DAEMON" || return 1
+ [ "$magic" = XS_SOUND_DAEMON_V2 ] && [ -z "$extra" ] && number_valid "$daemonPid" || return 1
+ case "$daemonStart" in ''|*[!0-9]*) return 1;;esac
+ [ "${#daemonStart}" -le 20 ] && [ "${#daemonBoot}" = 36 ]
+}
+daemon_alive() {
+ daemon_load || return 1
+ [ "$daemonBoot" = "$(cat /proc/sys/kernel/random/boot_id)" ] && [ -r /proc/"$daemonPid"/stat ] || return 1
+ [ "$(awk '{print $22}' /proc/"$daemonPid"/stat)" = "$daemonStart" ] || return 1
+ [ "$(readlink /proc/"$daemonPid"/exe)" = /system/bin/sh ] || return 1
+ [ "$(tr '\000' '|' </proc/"$daemonPid"/cmdline)" = "/system/bin/sh|$SELF|service|" ]
+}
+ensure_daemon() {
+ preferences || return 1
+ [ -f "$ROOT/installed" ] && [ "$(cat "$ROOT/installed")" = INSTALLED ] && [ ! -e "$BLOCK" ] || return 0
+ daemon_alive && return 0
+ if [ -e "$DAEMON" ];then
+  daemon_load || return 1
+  [ ! -e "$D/player.pid" ] || return 1
+  [ ! -e "$D/ready" ] || [ "$(cat "$D/ready")" = XS_SOUND_READY_V1 ] || return 1
+  rm -f "$DAEMON" "$DAEMON.next" "$D/ready" "$D/ui.ready" "$D/state.json" "$D/state.next"
+  [ ! -d "$LOCK" ] || rmdir "$LOCK" || return 1
+ fi
+ [ ! -e "$LOCK" ] || return 0
+ mkdir -p "$D";chmod 700 "$D"
+ ( unset LD_PRELOAD X2D_SPEED_SERVER
+   exec 3>&- 4>&- 5>&- 6>&- 7>&- 8>&- 9>&-
+   exec /system/bin/sh "$SELF" service
+ ) </dev/null >"$D/service.log" 2>&1 &
+}
+health() {
+ safe_paths && daemon_alive && [ -f "$D/ready" ] && [ "$(cat "$D/ready")" = XS_SOUND_READY_V1 ] &&
+ [ -f "$D/state.json" ] && [ -f "$CACHE" ] && [ "$(sha256sum "$CACHE" | awk '{print $1}')" = "$CACHE_SHA" ] || return 1
+ printf 'XS_SOUND_HEALTHY_V2\n'
+}
+prepare_playback() {
+ safe_paths || return 1
+ [ -f "$WAV" ] && [ ! -L "$WAV" ] && [ "$(sha256sum "$WAV" | awk '{print $1}')" = "$WAV_SHA" ] || return 1
+ if [ -e "$CACHE" ];then
+  [ -f "$CACHE" ] && [ "$(sha256sum "$CACHE" | awk '{print $1}')" = "$CACHE_SHA" ];return $?
+ fi
+ # Copy the validated, authored PCM buffer. Trim and resampling are prepared
+ # offline; playback never rewrites stock audio, camera parameters or volume.
+ (umask 077; cat "$WAV" >"$CACHE.next") || return 1
+ [ "$(sha256sum "$CACHE.next" | awk '{print $1}')" = "$CACHE_SHA" ] || return 1
+ mv "$CACHE.next" "$CACHE"
+}
+request_valid() { [ -f "$1" ] && [ ! -L "$1" ] && [ "$(wc -c <"$1")" -le 128 ] && [ "$(wc -l <"$1")" = 1 ]; }
+set_preference() {
+ if [ "$2" = 1 ];then
+  (umask 077;printf '%s\n' "$3" >"$1.next";mv "$1.next" "$1") || return 1
+ else rm -f "$1" "$1.next";fi
+ sync
+}
+process_settings() {
+ [ -e "$D/settings.request" ] || return 0
+ request_valid "$D/settings.request" || return 1
+ read -r magic token setting value end extra <"$D/settings.request" || return 1
+ [ "$magic" = XS1 ] && [ "$end" = END ] && [ -z "$extra" ] && token_valid "$token" || return 1
+ [ "$token" != "$lastSetting" ] || return 0
+ case "$value" in 0|1) ;; *) return 1;;esac
+ case "$setting" in menu|sound) ;; *) return 1;;esac
+ lastSetting=$token;ack=$token
+ rm -f "$D/settings.request"
+ if [ "$value" = 0 ];then
+  if [ "$setting" = menu ];then set_preference "$MENU" 0 XS_SOUND_MENU_V1;else set_preference "$ENABLED" 0 XS_SOUND_ENABLED_V1;fi
+  stop_voice "$token";preferences;return 0
+ fi
+ master_enabled || return 0
+ if [ "$setting" = menu ];then set_preference "$MENU" "$value" XS_SOUND_MENU_V1
+ elif [ "$menu" = true ];then set_preference "$ENABLED" "$value" XS_SOUND_ENABLED_V1;fi
+ preferences
+}
+factory_child() {
+ [ -n "$audioPid" ] && [ -r /proc/"$audioPid"/environ ] || return 1
+ [ "$(readlink /proc/"$audioPid"/exe)" = "$SLEEP_PLAYER" ] || return 1
+ childCommand=$(tr '\000' '|' </proc/"$audioPid"/cmdline)
+ case "$childCommand" in "$SLEEP_PLAYER|sleep|0|"|'/system/bin/sleep|0|') ;; *) return 1;;esac
+ tr '\000' '\n' </proc/"$audioPid"/environ | grep -Fx 'X2D_SHUTTER_AUDIO_CHILD=1' >/dev/null || return 1
+ tr '\000' '\n' </proc/"$audioPid"/environ | grep -Fx "LD_PRELOAD=$BRIDGE" >/dev/null
+}
+process_identity() {
+ [ -n "$audioPid" ] && [ -r /proc/"$audioPid"/stat ] || return 1
+ read -r processPid processComm processState processRest </proc/"$audioPid"/stat || return 1
+ case "$processComm" in '(toybox)'|'(sleep)'|'(sh)') ;; *) return 1;;esac
+ [ "$processState" != Z ] && [ "$processState" != X ] || return 1
+ set -- $processRest
+ [ "$#" -ge 19 ] || return 1
+ shift 18;processStart=$1
+ [ "$processStart" = "$audioStart" ]
+}
+player_alive() { process_identity; }
+play_record() {
+ playExpiry=$(( ($(date +%s)+3)*1000 ))
+ (umask 077;printf 'XSP1 %s %s %s END\n' "$1" "$2" "$playExpiry" >"$D/play.next";mv "$D/play.next" "$D/play.request")
+}
+stop_voice() { [ -n "$audioPid" ] && player_alive || return 0;play_record "$1" STOP; }
+ensure_player() {
+ if player_alive;then return 0;fi
+ if [ -n "$audioPid" ];then wait "$audioPid" 2>/dev/null || true;fi
+ rm -f "$D/play.request" "$D/play.next" "$D/player.pid"
+ ( unset LD_PRELOAD X2D_SPEED_SERVER
+   export LD_PRELOAD="$BRIDGE" X2D_SHUTTER_AUDIO_CHILD=1 X2D_SHUTTER_AUDIO_PERSIST=1
+   exec "$SLEEP_PLAYER" sleep 0
+ ) >"$D/player.log" 2>&1 &
+ audioPid=$!;audioStart=$(awk '{print $22}' /proc/"$audioPid"/stat 2>/dev/null || true)
+ [ -n "$audioStart" ] || { wait "$audioPid" 2>/dev/null || true;audioPid=;lastAudio=helper-start-failed;return 1; }
+ printf '%s %s\n' "$audioPid" "$audioStart" >"$D/player.pid"
+}
+cleanup() {
+ cleanup_status=$?
+ printf 'XS_SOUND_EXIT_%s\n' "$cleanup_status" >&2
+ trap - EXIT HUP INT TERM
+ set +e
+ if player_alive && factory_child;then kill -TERM "$audioPid" || true;fi
+ n=0
+ while player_alive && [ "$n" -lt 150 ];do sleep .02;n=$((n+1));done
+ if player_alive && factory_child;then kill -KILL "$audioPid" || true;fi
+ if [ -n "$audioPid" ];then wait "$audioPid" 2>/dev/null || true;fi
+ rm -f "$CACHE" "$CACHE.next" "$D/ready" "$D/ui.ready" "$D/player.pid" "$D/state.json" "$D/state.next" "$D/settings.request" "$D/capture.request" "$D/capture.ack" "$D/play.request" "$D/play.next"
+ if [ "${daemonOwned:-false}" = true ];then
+  if [ -f "$DAEMON" ] && [ "$(cat "$DAEMON")" = "$daemonIdentity" ];then rm -f "$DAEMON" "$DAEMON.next";fi
+  rmdir "$LOCK" 2>/dev/null || true
+ fi
+}
+process_capture() {
+ [ -e "$D/capture.request" ] || return 0
+ request_valid "$D/capture.request" || return 1
+ read -r magic token frame electronic end extra <"$D/capture.request" || return 1
+ [ "$magic" = XS1 ] && [ "$end" = END ] && [ -z "$extra" ] && token_valid "$token" && number_valid "$frame" || return 1
+ [ "$token" != "$lastCapture" ] || { rm -f "$D/capture.request";return 0; }
+ lastCapture=$token
+ rm -f "$D/capture.request"
+ printf '%s\n' "$token" >"$D/capture.ack"
+ [ "$electronic" = 1 ] && [ "$frame" -ge 1 ] || return 0
+ [ "$menu" = true ] && [ "$enabled" = true ] && master_enabled && [ ! -e "$BLOCK" ] || return 0
+ # Playback is a separate persistent child. Control/ACK handling never
+ # waits for Binder stream closure or restarts the player for each frame.
+ [ -f "$CACHE" ] && [ ! -L "$CACHE" ] || return 1
+ ensure_player || return 0
+ play_record "$token" PLAY || return 1
+ lastAudio=dispatched
+
+}
+restore_audio() {
+ preferences || return 1
+ (umask 077;printf 'XS_SOUND_RESTORING_V1\n' >"$BLOCK.next";mv "$BLOCK.next" "$BLOCK";sync) || return 1
+ # init owns this fixed service. Stop it before deleting audio/configuration.
+ state=$(getprop init.svc.x2d-shutter-sound)
+ if [ "$state" = running ] || [ "$state" = restarting ];then stop x2d-shutter-sound;fi
+ n=0
+ while [ -e "$D/ready" ] || [ -e "$D/player.pid" ] || daemon_alive || [ "$(getprop init.svc.x2d-shutter-sound)" = running ];do
+  state=$(getprop init.svc.x2d-shutter-sound)
+  if [ "$state" = stopped ] || [ -z "$state" ];then
+   # A killed daemon can leave a stale receipt. Never kill an arbitrary PID;
+   # wait for a still-owned audio child, otherwise remove only our stale files.
+   [ ! -e "$D/ready" ] || [ "$(cat "$D/ready")" = XS_SOUND_READY_V1 ] || return 1
+   audioPid=;audioStart=
+   if [ -e "$D/player.pid" ];then
+    read -r audioPid audioStart extra <"$D/player.pid" || true
+    number_valid "$audioPid" && [ -z "${extra:-}" ] || return 1
+    case "$audioStart" in *[!0-9]*) return 1;;esac
+   fi
+   if ! player_alive && ! daemon_alive;then
+    if [ -e "$DAEMON" ];then daemon_load || return 1;rm -f "$DAEMON" "$DAEMON.next";[ ! -d "$LOCK" ] || rmdir "$LOCK" || return 1;fi
+    rm -f "$D/ready" "$D/ui.ready" "$D/player.pid" "$D/state.json" "$D/state.next" "$D/settings.request" "$D/capture.request" "$D/capture.ack"
+   fi
+  fi
+  n=$((n+1));[ "$n" -lt 150 ] || return 1;sleep .1
+ done
+ rm -f "$CACHE" "$CACHE.next" "$MENU" "$MENU.next" "$ENABLED" "$ENABLED.next"
+ printf 'SHUTTER_SOUND_WITHDRAWN\n'
+}
+case "${1:-}" in
+ restore) restore_audio;exit $?;;
+ ensure) ensure_daemon;exit $?;;
+ health) health;exit $?;;
+ service) ;;
+ *) exit 30;;
+esac
+preferences || exit 31
+[ ! -e "$BLOCK" ] || exit 32
+[ -x "$PLAYER" ] && [ ! -L "$PLAYER" ] && [ "$(sha256sum "$PLAYER" | awk '{print $1}')" = "$PLAYER_SHA" ] || exit 33
+[ -f "$WAV" ] && [ ! -L "$WAV" ] && [ "$(sha256sum "$WAV" | awk '{print $1}')" = "$WAV_SHA" ] || exit 34
+for item in "$BRIDGE:$BRIDGE_SHA" "$SLEEP_PLAYER:$SLEEP_SHA" "$FACTORY:$FACTORY_SHA" "$LIBC:$LIBC_SHA";do
+ checkPath=${item%:*};checkSha=${item##*:}
+ [ -f "$checkPath" ] && [ ! -L "$checkPath" ] && [ "$(sha256sum "$checkPath" | awk '{print $1}')" = "$checkSha" ] || exit 34
+done
+mkdir -p "$D";chmod 700 "$D"
+mkdir "$LOCK" || exit 35
+daemonOwned=true
+audioPid=;audioStart=;lastSetting=;lastCapture=;ack=;lastAudio=none
+trap cleanup EXIT
+trap 'exit 36' HUP INT TERM
+daemonIdentity="XS_SOUND_DAEMON_V2 $$ $(awk '{print $22}' /proc/$$/stat) $(cat /proc/sys/kernel/random/boot_id)"
+(umask 077;printf '%s\n' "$daemonIdentity" >"$DAEMON.next";mv "$DAEMON.next" "$DAEMON")
+prepare_playback || exit 34
+[ ! -e "$D/ready" ] || exit 35
+rm -f "$D/settings.request" "$D/capture.request" "$D/capture.ack" "$D/ui.ready" "$D/state.json" "$D/state.next"
+printf 'XS_SOUND_READY_V1\n' >"$D/ready"
+while :;do
+ preferences || exit 37
+ [ ! -e "$BLOCK" ] || exit 0
+ # File-based QML requests can briefly be empty or incomplete while written.
+ # Reject incomplete requests without stopping the service. Preferences and
+ # restore-block validation above remain fail-closed on every loop.
+ process_settings || true
+ preferences || exit 37
+ process_capture || true
+ if ! master_enabled || [ "$menu" != true ] || [ "$enabled" != true ];then
+  if [ "${voiceEnabled:-false}" = true ];then stop_voice "$(date +%s)-0";fi
+  voiceEnabled=false
+ else voiceEnabled=true;fi
+ if [ -n "$audioPid" ] && ! player_alive;then wait "$audioPid" 2>/dev/null || true;audioPid=;audioStart=;rm -f "$D/player.pid";lastAudio=helper-exited;fi
+ write_state
+ sleep .04
+done
