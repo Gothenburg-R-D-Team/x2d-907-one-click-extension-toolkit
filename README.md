@@ -1,174 +1,135 @@
 # X2D/907 One-Click Extension Toolkit
 
+面向第一代 **X2D 100C / 907X & CFV 100C**、原厂固件 **4.2.0** 的实验性 Mac / Windows 扩展工具。本项目完全免费。
+
+An independent, experimental camera-extension utility for the first-generation **X2D 100C / 907X & CFV 100C**, running stock firmware **4.2.0**. Free to download and use.
+
 ## 升级前必读 / Read before upgrading
 
-**相机已安装本工具扩展时，升级软件前务必、务必、务必先使用原电脑、原软件版本执行“一键恢复原状”，确认恢复完成后，再升级电脑端软件并重新安装相机扩展。**虽然本软件支持相同软件版本下跨电脑恢复，为避免一切不必要的麻烦，升级时仍请务必先用原电脑原版本恢复。恢复完成前，不要卸载、覆盖或删除原软件及备份。
+**相机已安装本工具扩展时，升级软件前务必、务必、务必先使用原电脑、原软件版本执行“一键恢复原状”，确认恢复完成后，再升级电脑端软件并重新安装相机扩展。** 恢复完成前，不要卸载、覆盖或删除原软件及备份。同版本跨电脑恢复的支持，不代表可以任意跨版本恢复。
 
-**If your camera already has this toolkit's extension, you must run “Restore original” using the original computer and the original Software version before upgrading the desktop Software. Confirm recovery has completed, then upgrade and reinstall the camera extension.** Recovery on another computer is supported with the same Software version, but always restore first on the original computer with the original version to avoid unnecessary problems. Keep the original Software and backups until recovery is complete.
+**If your camera already has this toolkit's extension, restore it using the original computer and original app version, and confirm completion before upgrading the desktop app and reinstalling the extension.** Keep the original app and backups until recovery is complete. Same-version recovery on another computer does not imply arbitrary cross-version recovery.
 
-[升级顺序与原电脑不可用时的处理 / Upgrade procedure](docs/UPGRADING.md) · [English risk notice and disclaimer](DISCLAIMER.md) · [中文风险告知与免责声明](docs/DISCLAIMER.zh-CN.md)
+[完整升级顺序 / Upgrade procedure](docs/UPGRADING.md) · [中文风险告知与免责声明](docs/DISCLAIMER.zh-CN.md) · [English risk notice and disclaimer](DISCLAIMER.md)
 
-## 欢迎交流 / Discussion and contributions
+## 下载 0.5.6 / Download 0.5.6
 
-欢迎交流、分享研究发现和使用反馈。欢迎通过 [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) 讨论问题与建议，也欢迎提交 [Pull Requests](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) 改进代码、文档和测试。
+**当前公开版本：0.5.6（预发布）。** 包含像素位移、追踪自动对焦、人眼识别、三档对焦加速、AF-C 和后屏自动亮度，支持按需选择安装。
 
-Discussion, research findings and feedback are welcome. Please use [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) for questions and suggestions, and submit [Pull Requests](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) to improve code, documentation and tests.
+**Current public release: 0.5.6 (prerelease).** Select the features you want to install: Pixel Shift, Tracking Autofocus, Eye Recognition, three-level Focus Speed Boost, AF-C and Auto Rear Brightness.
 
-**Stable release: 0.4.17.** Adds Low / Medium / High focus speed selection to the original 0.4.12 stable baseline, offering gentler acceleration choices for older lenses. The 0.5.0 Mac Test3 and Windows Test4 test packages are now publicly downloadable below; development and updates remain separate from the stable channel.
+| 平台 / Platform | 安装包 / Download |
+| --- | --- |
+| macOS 13+ · Apple silicon / Intel | [**Mac 通用版 / macOS Universal · 0.5.6**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-macOS-Universal-0.5.6.zip) |
+| Windows 10 / 11 · x64 | [**Windows x64 · 0.5.6**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-Windows-x64-0.5.6.zip) |
 
-**稳定版：0.4.17。** 基于原始 0.4.12 新增低／中／高三档对焦速度可选，提供对老镜头更友好的温和加速选择。0.5.0 Mac Test3 与 Windows Test4 测试包现已公开下载，开发和更新仍与稳定版分开。[验证记录](docs/STABLE-SPEED-TEST.md)。
+下载后请**完整解压**再启动。Extract the **entire ZIP** before opening the app.
 
-## 0.5.0 测试版下载 / Test builds
+[0.5.6 发行说明 / Release notes](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) · [SHA-256 校验 / Checksums](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/SHA256SUMS) · [0.5.6 验证记录 / Validation record](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json)
 
-- **Mac 0.5.0 Test3：** [macOS 13+，Apple Silicon / Intel 通用包](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.0-pixel-shift-test/x2d-907-extension-toolkit-macOS-Universal-0.5.0-pixel-shift-test-3.zip)
-- **Windows 0.5.0 Test4：** [Windows 10 / 11 x64 完整包](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.0-pixel-shift-test/x2d-907-extension-toolkit-Windows-x64-0.5.0-pixel-shift-test-4.zip)
+**稳定版仍为 [0.4.17](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17)**，保留原有更新入口。0.5.6 从本页手动下载；启动时检查更新不会自动下载安装 0.5.6。
 
-**已知 Bug（正在修复中）：使用像素位移后，照片格式会被调整为 RAW，且不会自动恢复原来的照片格式。**
+**[0.4.17 remains the stable release](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17)** with its existing update channel. Download 0.5.6 manually from this page; startup update checks do not automatically download or install it.
 
-**Known bug — fix in progress:** after using Pixel Shift, the photo format is changed to RAW and does not automatically return to the previous format.
+[中文使用说明](#中文使用说明) · [English setup](#english-setup) · [更新日志 / Changelog](CHANGELOG.md) · [交流与参与 / Contributing](#交流与参与--contributing)
 
-[测试版发行说明、验证范围与 SHA-256 / Test release notes and checksums](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.0-pixel-shift-test)。升级前请先按上方要求使用原电脑、原软件版本恢复。These are test builds; follow the restoration procedure above before upgrading.
+## 0.5.6 更新 / What changed
 
-## 一键工具包 · 下载 / One-click toolkit
+- **像素位移仅限 X2D 100C。** 检测为 907X／CFV 100C，或尚未完成型号核验时，选项自动取消勾选并置灰；安装前再次核验实际型号。
+- **使用像素位移前手动选择纯 RAW。** JPEG、RAW+JPEG 均不满足此要求；非 RAW 时参数及设置入口变灰，保留提示文字。软件不再自动修改照片格式。
+- **完整免责声明接入 Mac／Windows 三语言界面。** 采用放大的滚动弹窗，必须滚动至末尾，再手动勾选确认才能安装；取消不启动相机操作。恢复使用独立提示。
 
-**[下载 Windows / macOS 最新版 →](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/latest)**
+- **Pixel Shift is available only on X2D 100C.** The option is cleared and disabled on 907X / CFV 100C and until model verification completes. Installation checks the actual model again.
+- **Select RAW manually before Pixel Shift.** JPEG and RAW+JPEG do not satisfy the RAW-only requirement. Parameters and settings are disabled for non-RAW formats while the guidance remains visible. The app no longer changes the photo format automatically.
+- **The full risk notice is integrated into both desktop apps in three languages.** The larger dialog requires scrolling to the end and then explicitly checking the acknowledgement before installation. Cancel starts no camera operation; Restore uses a separate prompt.
 
-[![Download toolkit](https://img.shields.io/badge/Download-Windows%20%2F%20macOS-0969da?style=for-the-badge)](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/latest)
+## 功能 / Features
 
-[平台下载及更新说明 / Downloads & release notes](#download--下载软件) · [中文使用说明](#中文说明) · [English setup](#getting-started)
+| 功能 / Feature | 说明 / Behavior |
+| --- | --- |
+| AF-C 连续自动对焦 / Continuous Autofocus | 在相机中提供可选的连续对焦模式。Adds continuous autofocus as a selectable camera mode. |
+| 追踪自动对焦 / Tracking Autofocus | 提供 AF-T 人脸追踪对焦模式。Adds an AF-T face-tracking focus mode. |
+| 人眼识别 / Eye Recognition | 提供独立的人眼识别开关；选择 AF-T 时暂停该识别状态，返回 AF-S／AF-C 后按原开关选择恢复。Independent Eye switch; selected AF-T pauses Eye, while AF-S / AF-C resumes it according to the saved choice. |
+| 对焦加速 / Focus Speed Boost | 低／中／高三档可选，关闭后恢复原厂速度。Low / Medium / High levels; disabling restores stock speed. |
+| 后屏自动亮度 / Auto Rear Brightness | 根据环境光调整后屏亮度，可设置最高亮度。Adjusts rear-display brightness to ambient light, with a configurable maximum. |
+| 像素位移 / Pixel Shift | **仅 X2D 100C**，通过驱动模式使用，支持 4／6／16 张 RAW 序列、初始延迟、帧间等待与倒计时提示；电脑合成需另行进行。**X2D 100C only**: Drive Mode entry for 4 / 6 / 16 RAW sequences, initial delay, frame interval and countdown; desktop merging is separate. |
 
----
+像素位移默认不勾选。未选择安装的功能不会出现在相机对应菜单中。相机菜单文案随安装时 App 语言变化：英文为 **Tweaks**，简体／繁体中文为 **耍起功能**。
 
+Pixel Shift is unchecked by default. Unselected features are omitted from the corresponding camera menus. Camera text follows the app language at installation: **Tweaks** in English, **耍起功能** in Simplified or Traditional Chinese.
 
-**X2D/907 One-Click Extension Toolkit (x2d/907一键扩展功能-工具包)** is an experimental macOS and Windows utility for the first-generation **X2D 100C** and **907X & CFV 100C**, targeting stock firmware **4.2.0**.
+对焦加速可安装，但不建议老镜头用户在相机内开启该功能。档位倍率描述镜头电机控制参数，不代表实测整体对焦速度提升或镜头安全保证。
 
-Camera menu text follows the app language at install time: English installs **Tweaks**; Simplified and Traditional Chinese install **耍起功能** with their respective feature labels and messages.
+Focus Speed Boost can be installed, but users of older lenses are advised against enabling it in the camera. Its multipliers describe motor-control parameters, not measured overall autofocus gains or a lens-safety guarantee.
 
-[中文说明](#中文说明) · [Changelog / 更新日志](CHANGELOG.md) · [Build and test](docs/BUILD.md) · [Validation](docs/VALIDATION.md)
+907 用户在机型核验后仍可选择原有彩蛋入口。The existing optional 907 Easter egg remains available after model verification.
 
-## Download / 下载软件
+## 中文使用说明
 
-**Latest stable version: 0.4.17 / 最新稳定版：0.4.17**
+1. **升级用户先恢复。** 按[升级流程](docs/UPGRADING.md)使用原电脑、原安装版本恢复并确认完成，再替换电脑端软件。首次安装无需先恢复本工具的旧安装。
+2. 完整解压对应平台安装包，开机并连接 USB 数据线；相机出现 **“跳过”** 时点击“跳过”。
+3. 点击 **“已连接”**，等待型号、固件和文件检查完成。Windows 若出现管理员授权提示，请按提示处理。
+4. 选择要安装的功能。907X／CFV 100C 不可选择像素位移；X2D 的像素位移默认不勾选。
+5. 点击 **“安装所选功能”**，将完整风险声明滚动至末尾，阅读后手动勾选并确认。安装、重启和校验期间保持相机供电和数据线连接，直到 App 明确提示完成。
+6. 在相机主菜单末尾打开 **“耍起功能”**，开启总开关及所需功能。像素位移从**驱动模式**进入，使用前手动选择**纯 RAW**；其序列需另在电脑合成。
+7. 撤回时连接相机，点击 **“已连接 → 一键恢复原状”**，按独立恢复提示操作并等待完成。
 
-- [**Download for Windows 10/11 (64-bit) / 下载 Windows 版 (.zip)**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/x2d-907-extension-toolkit-Windows-x64-0.4.17.zip)
-- [**Download for macOS 13+ (Apple silicon and Intel) / 下载 Mac 版 (.zip)**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/x2d-907-extension-toolkit-macOS-Universal-0.4.17.zip)
+App 在设置中提供简体中文、繁體中文、English；更换相机菜单语言需要按升级／重新安装流程处理。
 
-Extract the entire ZIP before opening the app. **Existing camera-extension users must restore with the original computer and original Software version before upgrading.** 下载后请完整解压，再启动软件。**已有相机扩展的用户，务必先使用原电脑原软件版本恢复，再升级。** [Upgrade procedure / 升级顺序](docs/UPGRADING.md) · [Release notes / 更新说明](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17) · [SHA-256 checksums / 校验文件](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/SHA256SUMS)
+恢复只撤回本工具管理且可核验的改动，不能覆盖任意第三方补丁。若检查未通过或恢复未完成，保留原软件、安装记录和备份，通过 [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) 反馈；公开日志前请移除个人信息。
 
-Version 0.4.17 adds a native vertical Low / Medium / High selector below Focus Speed Boost, with orange highlighting and a gray disabled row when boost is off. Low uses 1.5/1.5/1.5, Medium (default) 2.5/2/1.5, and High 3/3/2 for Type 0/1/2. The saved level survives disabling and reboot; Restore removes it. **First restore the installed extension using the original computer and original Software version, then update the desktop app and use Connected → Install to install the new camera menu.** See [release notes](CHANGELOG.md).
+## English setup
 
-0.4.17 在对焦加速开关下加入原厂上下滑动的低／中／高选择，橙色高亮；加速关闭时灰色不可用。低为 1.5／1.5／1.5，中（默认）2.5／2／1.5，高为 3／3／2，依次对应 Type 0／1／2。关闭及重启保留档位，恢复原状清除档位。**先使用原电脑原软件版本恢复原有扩展，再升级电脑端，最后点击已连接 → 一键安装安装新版相机菜单。**详见[升级顺序](docs/UPGRADING.md)与[更新说明](CHANGELOG.md)。
+1. **Restore before upgrading.** Follow the [upgrade procedure](docs/UPGRADING.md) with the original computer and original installer, and confirm completion before replacing the desktop app. A first installation does not require restoring a previous toolkit installation.
+2. Extract the complete package for your platform. Turn on the camera, connect a USB data cable and tap **Skip** if shown on the camera.
+3. Click **Connected** and wait for model, firmware and file checks. Handle administrator prompts on Windows if requested.
+4. Select the features to install. Pixel Shift is disabled on 907X / CFV 100C and unchecked by default on X2D.
+5. Click **Install selected features**. Scroll to the end of the full risk notice, read it, then explicitly check the acknowledgement and confirm. Keep stable camera power and USB connection through installation, restart and verification until the app reports completion.
+6. Open **Tweaks** at the end of the camera's main menu, enable the master switch and choose the required features. Pixel Shift is accessed through **Drive Mode** and requires manually selected **RAW**, without JPEG. Merge the resulting sequence separately on a computer.
+7. To withdraw the extension, reconnect and use **Connected → Restore original**, following the separate recovery prompt until completion.
 
-## Features
+Settings offers Simplified Chinese, Traditional Chinese and English. Changing camera-menu text requires the restoration/reinstallation procedure.
 
-- **AF-C continuous autofocus:** adds a camera-side availability switch. The stock AF-S / MF layout returns when disabled.
-- **Focus speed buff:** Low / Medium / High acceleration, with stock speed restored when disabled.
-- **Auto Brightness (0.4.3):** enable “Add Auto Brightness to Menu” in Tweaks, then control Auto in Display → Brightness. The rear slider sets the maximum; the knob stays there while its white fill tracks current output. The master switch controls availability; default off.
-- **Install / Restore original:** checks the camera and package, saves the original startup configuration, then restarts and verifies the result.
-- **Settings and updates:** in Settings, startup checks default to on and can be disabled; the choice is remembered. Manual checking remains available when automatic checks are off. **Before Download and Install Update, restore any installed camera extension using the original computer and original Software version.** The update action fetches the latest stable GitHub Release for your platform, verifies its SHA-256 digest, then installs and relaunches the app. Camera operations and app updates cannot run together. The previous app is retained beside the installation; this is not a substitute for restoring first. After restoration and the desktop update, install the new camera extension using **Connected → Install**. See [Upgrade procedure](docs/UPGRADING.md).
-- **Simplified Chinese / Traditional Chinese / English (0.4.7):** switch the desktop interface and logs in Settings; the preference survives app restarts. **Install** writes matching camera menu text. Changing the camera language requires another install.
-- **Windows connection and exit fixes (0.4.6):** correct the private ADB listener address that prevented installation in 0.4.5. Closing during a read-only update check cancels the check. Camera install/restore uses an owned private ADB process that is cleaned up afterward; camera/driver work and update installation retain exit protection.
-- **Windows interface (0.4.4):** Mac-aligned feature cards, rounded buttons and Settings, with bilingual typography, per-monitor DPI scaling and scrolling on short displays. The camera payload is unchanged from 0.4.3, so existing 0.4.3 camera installations do not need reinstallation.
-- **907 IBIS entry (Easter egg):** available after a verified 907 connection; its menu label follows the installed language.
+Restore withdraws changes managed and verified by this tool; it cannot overwrite arbitrary third-party patches. If checks or recovery fail, keep the original app, installation records and backups, and report through [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues). Remove personal information before sharing logs publicly.
 
-Focus acceleration changes lens motor-control parameters according to the selected level. Low offers gentler acceleration; the multipliers do not establish overall autofocus gains or lens safety. The original older-lens caution remains in the desktop app.
+## 声明弹窗 / Risk notice dialog
 
-## Getting started
+0.5.6 的 Mac 原生弹窗，来自离线界面检查；截图展示尚未滚动至末尾时的禁用状态。软件界面检查不代表相机安装验证。Windows 同样要求滚动到底并手动勾选，原生显示验证仍待完成。
 
-**For an upgrade, follow the [original-computer/original-version restoration procedure](docs/UPGRADING.md) before replacing the desktop app or reinstalling the extension.** A first installation on a camera without this toolkit's extension does not require this restoration step. Read the [full risk notice](DISCLAIMER.md) before device operations.
+Native Mac 0.5.6 dialogs captured during offline UI checks, before the end-of-document gate unlocks. These are desktop UI checks, not camera-installation evidence. Windows uses the same scroll-and-acknowledge requirement; native Windows display validation remains pending.
 
-1. Extract the complete application package. macOS requires 13 or later (Apple silicon / Intel); Windows requires 64-bit Windows 10 / 11.
-2. Turn on the camera and connect a USB data cable. Tap **Skip** if shown on the camera. A camera-side **Mass storage** selection can also retain the factory connection.
-3. Click **Connected**. Install and Restore remain disabled until connection and firmware checks pass. Windows requests administrator access and attempts to prepare the supported camera factory interface automatically; the ADB interface is separate.
-4. Optionally select the 907 IBIS entry (Easter egg), then click **Install**. Keep the camera powered and connected through restart and verification.
-5. Disconnect only when the app reports completion. Open **Tweaks** (English install) or **耍起功能** (Chinese install) at the end of the camera menu, enable its master switch, then choose AF-C or the focus buff. Select Traditional Chinese in Settings before installing to get Traditional Chinese camera text.
-6. To remove the extension, reconnect, click **Connected**, then **Restore original**. This reverses this application's changes; it is not a complete firmware recovery tool.
+<img src="docs/images/risk-notice-0.5.6-zh.png" alt="0.5.6 Mac 简体中文风险声明弹窗，尚未滚动到底，确认框禁用" width="620">
 
-X2D uses tile **12**. The 907 uses tile **11** normally, or **12** with the optional Easter egg installed. Changing the Easter egg choice or the camera menu language requires another installation. For a Software upgrade, first perform restoration with the original computer and original Software version; do not rely on the newer app's recognition of older packages as a substitute for this step.
+<img src="docs/images/risk-notice-0.5.6-en.png" alt="0.5.6 native Mac English risk notice with acknowledgement disabled before reaching the end" width="620">
 
-When an existing extension must be restored before reinstallation, the app asks for confirmation in the **target camera menu language**. The dialog explains restoration, disabled feature switches and restarts. Cancel leaves the camera unchanged. A first installation or an unchanged installation does not need this dialog.
+[中文完整声明](docs/DISCLAIMER.zh-CN.md) · [Full English notice](DISCLAIMER.md)
 
-The repository contains application source, tests and screenshots. Vendor firmware, extracted compiled QML, runtime libraries, generated camera payloads and desktop installation archives are excluded. Desktop packages are available from [GitHub Releases](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/latest). Updates require a writable application folder; if needed, move the complete app to a folder you own. The Mac build uses an ad-hoc signature and is not notarized; the Windows launcher is unsigned.
+## 验证范围 / Validation
 
-## Screenshot — English
+0.5.6 通过 **364 项离线回归，零跳过**，并完成 Mac 原生功能选择、三语言声明弹窗及解压包核验。Windows 解压包通过 112 项回归；Windows 原生运行、真实驱动安装、相机安装／恢复／拍摄和光学效果仍待相应实机验证。具体记录与限制见 [0.5.6.json](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json)。
 
-Native macOS 0.4.3 window rendered in an offline UI check with a disconnected state. The 907 checkbox is intentionally disabled until identification succeeds.
+Version 0.5.6 passes **364 offline regressions with zero skips**, native Mac selection and three-language notice-dialog checks, and extracted-package verification. The extracted Windows package passes 112 regressions. Native Windows execution, actual driver installation, camera installation / restoration / capture and optical results still require the respective device validation. See [0.5.6.json](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json) for the exact evidence and limits.
 
-<img src="docs/images/app-en.jpg" alt="X2D/907 One-Click Extension Toolkit 0.4.3 English macOS interface" width="580">
+本项目为独立研究工具，非哈苏官方软件。仅适配明确列出的机型与固件。Mac App 使用临时签名、未经公证；Windows 启动器未经代码签名。
 
-<img src="docs/images/settings-en.jpg" alt="English Settings window" width="450">
+This is an independent project, not an official Hasselblad product. Only the stated camera models and firmware are supported. The Mac app uses an ad-hoc signature and is not notarized; the Windows launcher is unsigned.
 
-## Verification status
+Git 中保存源码、测试、文档和软件截图；原厂固件、编译后的厂商组件、运行库与安装压缩包不提交到 Git。安装包以对应 [Release 附件](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6)为准；公开仓库当前源码与 0.5.6 安装包的构建源码并不同步。
 
-Earlier X2D installations, menu behavior and restoration have device/user evidence. Version 0.4.8 passed 173 offline tests with local payloads and three-language focus-guidance layout/touch checks. Traditional Chinese desktop text, confirmation and camera overlays have offline checks; native Windows display and physical camera installation in Traditional Chinese remain unverified. The 0.4.3 camera functionality has Qt menu/brightness checks and native Mac layout evidence. Native Windows ADB startup, shutdown/directory release, rendering and accessibility, auto brightness on the physical display, X2D/CFV boot and restoration, the 907 menu/Easter egg, AF-S retention across power cycles and automatic Windows driver preparation still require native/device validation. A desktop test is not a camera test. See [the evidence boundaries](docs/VALIDATION.md).
+Git contains source, tests, documentation and software screenshots; vendor firmware, compiled vendor components, runtimes and installer archives are excluded. Use the corresponding [Release assets](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) for installers; the public repository's current source does not yet match the 0.5.6 package build source.
 
-This is an independent project, not an official Hasselblad product. Eye recognition is not included. Other camera generations and firmware versions are unsupported.
+## 交流与参与 / Contributing
 
-## License
+欢迎分享使用反馈、研究发现，并通过 [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) 讨论问题，或提交 [Pull Requests](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) 改进代码、文档与测试。
 
-New versions carrying the [X2D/907 Noncommercial Distribution License 1.0](LICENSE) allow use, study, modification and free redistribution. **Professional photography, including paid shoots and selling photographs, is allowed. Selling the software or modified versions, charging for software access, and paid installation/setup services require separate written permission.**
+Feedback, research findings and developer contributions are welcome. Open an [Issue](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) or submit a [Pull Request](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) to improve code, documentation and tests.
 
-This is a **source-available** project with restrictions on software commercialization; the license is not OSI-approved open source. Previously released MIT versions keep their original permissions. Third-party components keep their own licenses; see [third-party notices](THIRD_PARTY_NOTICES.md). Existing published 0.4.2 archives are unchanged by this repository license update.
+## 许可 / License
 
----
+携带 [X2D/907 非商业分发许可证 1.0](LICENSE) 的版本允许使用、研究、修改和免费分享。**允许收费拍摄及出售摄影作品；出售软件或改版、收费提供软件访问，以及收费安装／设置服务须另获作者书面授权。**
 
-## 中文说明
+Releases carrying the [X2D/907 Noncommercial Distribution License 1.0](LICENSE) allow use, study, modification and free redistribution. **Professional photography, paid shoots and selling photographs are allowed. Selling the software or modified versions, charging for software access, and paid installation / setup services require separate written permission.**
 
-**x2d/907一键扩展功能-工具包** 是面向第一代 **X2D 100C** 和 **907X & CFV 100C** 的实验性 Mac / Windows 工具，仅适配经过校验的原厂 **4.2.0** 固件。
+本项目属于带有商业分发限制的 source-available 软件，许可证并非 OSI 认可的开源许可证。历史 MIT 版本保留原有权限；第三方组件保留各自许可，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
-相机菜单文案随安装时的 App 语言：简体、繁体中文安装为“耍起功能”（功能名称与提示使用所选字形），英文安装为 Tweaks。
-
-**下载安装包：**[Windows 10/11（64 位）](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/x2d-907-extension-toolkit-Windows-x64-0.4.17.zip) · [macOS 13 及以上（Apple 芯片 / Intel）](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.4.17/x2d-907-extension-toolkit-macOS-Universal-0.4.17.zip)。下载后请完整解压，再启动软件。
-
-**已有相机扩展的用户，务必先使用原电脑、原软件版本恢复，确认完成后再升级；同版本跨电脑恢复的支持不改变此要求。**[完整升级顺序](docs/UPGRADING.md) · [风险告知与免责声明](docs/DISCLAIMER.zh-CN.md)
-
-### 当前功能
-
-- **AF-C 连续自动对焦**：在相机上控制连续对焦入口；关闭后恢复原厂 AF-S / 手动对焦布局。
-- **对焦加速**：低／中／高三档可选，关闭后恢复原厂速度。
-- **后屏自动亮度（0.4.3）**：在耍起功能中开启“在亮度菜单中加入自动亮度”，之后在显示 → 亮度中控制自动模式。滑块圆球设置最高亮度，白线跟随当前输出；受总开关控制、默认关闭。
-- **一键安装 / 一键恢复原状**：检查连接与文件，保存原厂启动配置，并在重启后校验结果。
-- **设置与更新**：在设置页选择语言、关闭或开启启动自动检查更新（默认开启并保存选择）；关闭后仍能手动检查。**点击下载安装更新前，务必使用原电脑、原软件版本恢复已安装的相机扩展。**更新需另行点击，从 GitHub Release 获取对应系统的稳定版，校验 SHA-256 后安装并重新打开；保留上一版 App，更新与相机操作互斥。保留上一版 App 不能替代升级前恢复。完成恢复及电脑端升级后，再点击 **已连接 → 一键安装** 安装新版相机扩展，详见[升级顺序](docs/UPGRADING.md)。
-- **简体中文／繁體中文／English（0.4.7）**：在设置中选择语言，桌面界面、操作提示和日志随语言切换，重启 App 后保留选择；**一键安装** 会写入对应语言的相机菜单文案，更换相机语言需重新安装。
-- **Windows 连接与退出修复（0.4.6）**：修正 0.4.5 导致安装无法开始的独立 ADB 监听地址；普通检查更新期间可关闭窗口并取消检查。相机安装/恢复使用本软件管理的独立 ADB 进程，操作结束后回收；相机/驱动操作及更新安装期间仍保留退出保护。
-- **Windows 界面（0.4.4）**：功能卡片、圆角按钮和设置页对齐 Mac，适配中英文字体、显示器 DPI 缩放及小屏幕滚动。相机载荷与 0.4.3 相同，已有 0.4.3 相机安装无需重装。
-- **907 防抖入口（彩蛋）**：识别到 907 后可选择添加；入口名称随安装语言变化。
-
-对焦加速按所选档位调整镜头电机控制参数，低档提供更温和的加速选择；倍率不代表整体对焦时间同比缩短或已验证镜头安全。App 仍保留原有老镜头使用提醒。
-
-### 使用方法
-
-**升级用户必须先按[原电脑、原版本恢复流程](docs/UPGRADING.md)恢复，再替换电脑端 App 或重新安装扩展。**相机没有本工具扩展、属于首次安装时，无需先恢复已有安装。设备操作前请阅读[完整免责声明](docs/DISCLAIMER.zh-CN.md)。
-
-1. 完整解压软件。Mac 支持 macOS 13 及以上、Apple 芯片与 Intel；Windows 支持 64 位 Windows 10 / 11。
-2. 开机并插入 USB 数据线；相机出现“跳过”时点击“跳过”。在相机屏幕选择“大容量存储”也可能保留工厂通信连接。
-3. 点击 **已连接**。检查通过后才启用安装和恢复按钮。Windows 会请求管理员权限，并尝试自动准备支持的相机工厂接口驱动；ADB 是另一个独立接口。
-4. 907 用户可选勾防抖入口（彩蛋），然后点击 **一键安装**。重启及校验期间保持供电和连接。
-5. App 提示完成后才拔线。在相机主菜单末尾进入 **耍起功能**，先开启主开关，再选择 AF-C 或对焦加速。若希望相机使用繁体中文，请在安装前到设置页选“繁體中文”。
-6. 需要撤回时重新连接，点击 **已连接 → 一键恢复原状**。恢复仅撤回本软件的改动，不是整机固件救援。
-
-X2D 的功能入口在第 **12** 格；907 默认第 **11** 格，勾选彩蛋后移到第 **12** 格。改变彩蛋选项或相机菜单语言后需重新安装。升级软件时，务必先使用原电脑原软件版本恢复，不要用新版对旧包的识别或自动恢复流程替代这一步。
-
-需要先恢复再安装时，App 会按 **目标相机菜单语言** 弹出确认，说明恢复、功能开关关闭和重启流程。取消后不修改相机。首次安装或现有安装配置未变化时不弹此确认。
-
-### 软件截图 — 中文
-
-这是通过离线界面检查渲染的 macOS 0.4.3 原生窗口，展示未连接状态，因此 907 勾选项和写入按钮处于禁用状态。
-
-<img src="docs/images/app-zh.jpg" alt="x2d/907一键扩展功能-工具包 0.4.3 中文 macOS 界面" width="580">
-
-<img src="docs/images/settings-zh.jpg" alt="中文设置页" width="450">
-
-### 验证与源码范围
-
-早期 X2D 安装、菜单和恢复已有实机或用户反馈；0.4.8 通过 173 项带本地载荷的离线测试及三种语言的对焦提示布局/触控检查。繁体桌面文案、确认弹窗和相机菜单文件已离线校验；Windows 原生繁体显示与相机实装仍待验证。0.4.3 相机功能另有 Qt 菜单/亮度检查和 Mac 原生布局证据。**Windows 原生 ADB 启动、退出与目录释放、显示与可访问性、实际后屏自动亮度、X2D/CFV 启动与恢复、907 菜单/彩蛋、关机后保留 AF-S，以及 Windows 自动驱动准备仍待原生或实机验证。** 具体范围见 [验证说明](docs/VALIDATION.md)。
-
-本库只收录应用源码、测试和软件截图，不包含原厂固件、提取的编译 QML、运行库、生成的相机载荷或桌面安装压缩包。桌面安装包见 [GitHub Releases](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/latest)。更新需要应用目录可写；如提示权限不足，请将完整 App 移到自己的可写目录后重试。Mac 使用临时签名、未经公证；Windows 启动器未经代码签名。构建输入见 [构建说明](docs/BUILD.md)。
-
-本项目为独立研究工具，非哈苏官方软件。目前不含眼部识别；不适配其他代机型或固件。
-
-### 许可
-
-后续携带 [X2D/907 非商业分发许可证 1.0](LICENSE) 的版本允许使用、研究、修改和免费分享。**允许用于收费拍摄、摄影工作室及出售摄影作品；出售软件或改版、收费提供软件访问，以及收费安装、设置服务须另获作者书面授权。**
-
-这是限制软件商业化的**源码公开（source-available）**项目，许可证不属于 OSI 认可的开源许可证。此前已按 MIT 发布的版本仍保留原许可；第三方组件沿用各自许可，见 [第三方说明](THIRD_PARTY_NOTICES.md)。本次仓库许可更新不修改已发布的 0.4.2 安装包。
+This is a source-available project with commercialization restrictions, not an OSI-approved open-source license. Historical MIT releases keep their original permissions; third-party components retain their own licenses. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

@@ -7,6 +7,17 @@
 - 新增中英双语全球用户风险告知与免责声明，以及供接入的安装／更新／恢复提示文案；保留适用法定权利及各发行版原有许可。
 - 已安装相机扩展的用户，在手动或 App 内升级电脑端软件前，务必、务必、务必先使用原电脑原软件版本恢复。说明同版本跨电脑恢复的支持、升级顺序及原环境不可用时的处理，并同步首页、升级指南及最新版发行说明。本次仅更新文档，不改变 App、安装包或相机。
 
+## [0.5.6](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) — 2026-10-15
+
+- Publicly distribute the verified macOS Universal and Windows x64 0.5.6 packages, with SHA-256 checksums and their validation record. Keep 0.4.17 as the stable updater entry. The new public release is marked as a prerelease and is downloaded manually.
+- Limit Pixel Shift to verified X2D 100C cameras and require manually selected RAW, excluding RAW+JPEG. Disable non-RAW settings without changing the photo format automatically. Both desktop apps include the full three-language version 1.1 notice in a larger dialog, with end-of-document and explicit acknowledgement gates; Restore uses a separate notice.
+- The published build record reports 364 offline regressions with zero skips, native Mac UI checks and extracted-package verification, including 112 Windows package regressions. Native Windows, actual drivers and camera validation remain pending.
+- Update the README's primary downloads, feature descriptions, upgrade procedure and native Mac notice screenshots. Remove superseded test-build links and outdated RAW-bug/Eye-absence claims from the current guide. This documentation update does not rebuild or replace installers, change camera state or publish the private build source; the public source remains distinct from the package build source.
+- 公开提供已核验的 0.5.6 Mac 通用版、Windows x64 安装包、SHA-256 及验证记录。0.4.17 继续作为稳定更新入口，0.5.6 标记为预发布并通过页面手动下载。
+- 像素位移仅限型号核验通过的 X2D 100C，要求用户手动选择纯 RAW，RAW+JPEG 不满足要求；非 RAW 时参数变灰，不再自动修改照片格式。两平台加入三语言完整 1.1 版风险声明及放大弹窗，必须滚动到底并手动勾选后才能安装；恢复使用独立提示。
+- 发布包构建记录为 364 项离线回归零跳过、Mac 原生界面与解压包核验，其中 Windows 解压包回归 112 项；Windows 原生、真实驱动和相机验证仍待完成。
+- 同步 README 的主要下载、功能说明、升级顺序与 Mac 原生声明截图，移除当前指南中的旧测试包链接及过时的 RAW Bug／不含人眼识别表述。本次文档更新不重建或替换安装包、不操作相机，也不公开私有构建源码；公开源码与安装包构建源码仍分别说明。
+
 ## [0.5.0 test builds — macOS Test3 / Windows Test4](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.0-pixel-shift-test) — 2026-10-15
 
 - Publish the existing macOS Universal Test3 and Windows x64 Test4 packages as a prerelease, preserving the original archives and adding SHA-256 checksums. Keep 0.4.17 as the stable release. Recheck archive SHA-256, byte counts and ZIP CRC for publication; historical build checks and device-validation limits are stated separately in the release notes.
