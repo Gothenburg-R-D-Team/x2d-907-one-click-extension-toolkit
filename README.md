@@ -14,9 +14,20 @@
 
 Discussion, research findings and feedback are welcome. Please use [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) for questions and suggestions, and submit [Pull Requests](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) to improve code, documentation and tests.
 
-**Stable release: 0.4.17.** Adds Low / Medium / High focus speed selection to the original 0.4.12 stable baseline, offering gentler acceleration choices for older lenses. Version 0.5.0 remains a private beta with separate development and updates; it will not receive this stable update.
+**Stable release: 0.4.17.** Adds Low / Medium / High focus speed selection to the original 0.4.12 stable baseline, offering gentler acceleration choices for older lenses. The 0.5.0 Mac Test3 and Windows Test4 test packages are now publicly downloadable below; development and updates remain separate from the stable channel.
 
-**稳定版：0.4.17。** 基于原始 0.4.12 新增低／中／高三档对焦速度可选，提供对老镜头更友好的温和加速选择。0.5.0 内测版继续使用独立更新库，不会收到此次稳定版更新。[验证记录](docs/STABLE-SPEED-TEST.md)。
+**稳定版：0.4.17。** 基于原始 0.4.12 新增低／中／高三档对焦速度可选，提供对老镜头更友好的温和加速选择。0.5.0 Mac Test3 与 Windows Test4 测试包现已公开下载，开发和更新仍与稳定版分开。[验证记录](docs/STABLE-SPEED-TEST.md)。
+
+## 0.5.0 测试版下载 / Test builds
+
+- **Mac 0.5.0 Test3：** [macOS 13+，Apple Silicon / Intel 通用包](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.0-pixel-shift-test/x2d-907-extension-toolkit-macOS-Universal-0.5.0-pixel-shift-test-3.zip)
+- **Windows 0.5.0 Test4：** [Windows 10 / 11 x64 完整包](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.0-pixel-shift-test/x2d-907-extension-toolkit-Windows-x64-0.5.0-pixel-shift-test-4.zip)
+
+**已知 Bug（正在修复中）：使用像素位移后，照片格式会被调整为 RAW，且不会自动恢复原来的照片格式。**
+
+**Known bug — fix in progress:** after using Pixel Shift, the photo format is changed to RAW and does not automatically return to the previous format.
+
+[测试版发行说明、验证范围与 SHA-256 / Test release notes and checksums](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.0-pixel-shift-test)。升级前请先按上方要求使用原电脑、原软件版本恢复。These are test builds; follow the restoration procedure above before upgrading.
 
 ## 一键工具包 · 下载 / One-click toolkit
 

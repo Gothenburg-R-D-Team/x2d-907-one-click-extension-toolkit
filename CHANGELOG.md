@@ -7,6 +7,13 @@
 - 新增中英双语全球用户风险告知与免责声明，以及供接入的安装／更新／恢复提示文案；保留适用法定权利及各发行版原有许可。
 - 已安装相机扩展的用户，在手动或 App 内升级电脑端软件前，务必、务必、务必先使用原电脑原软件版本恢复。说明同版本跨电脑恢复的支持、升级顺序及原环境不可用时的处理，并同步首页、升级指南及最新版发行说明。本次仅更新文档，不改变 App、安装包或相机。
 
+## [0.5.0 test builds — macOS Test3 / Windows Test4](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.0-pixel-shift-test) — 2026-10-15
+
+- Publish the existing macOS Universal Test3 and Windows x64 Test4 packages as a prerelease, preserving the original archives and adding SHA-256 checksums. Keep 0.4.17 as the stable release. Recheck archive SHA-256, byte counts and ZIP CRC for publication; historical build checks and device-validation limits are stated separately in the release notes.
+- Document the known Pixel Shift bug below both platform downloads: photo format changes to RAW and does not automatically return to its previous setting; a fix is in progress. No application rebuild or bug fix is included in this publication.
+- 以预发布形式公开现有 macOS 通用 Test3 与 Windows x64 Test4 安装包，保留原始 ZIP 并提供 SHA-256，0.4.17 继续作为稳定版。本次重新核对原包 SHA-256、字节数及 ZIP CRC；历史构建检查和实机验证限制分别记在发行说明中。
+- 在两个平台下载链接下方注明已知 Bug：使用像素位移后照片格式被调整为 RAW，且不会自动恢复原设置，正在修复中。本次发布不重建软件，也不包含该 Bug 的修复。
+
 ## Documentation update — Community discussion and contributions (2026-10-12)
 
 - Replace fundraising entry points with invitations to discuss findings, open Issues and submit Pull Requests. This is a documentation-only update; published application packages and license terms are unchanged.
