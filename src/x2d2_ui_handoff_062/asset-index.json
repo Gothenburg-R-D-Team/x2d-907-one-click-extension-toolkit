@@ -1,0 +1,993 @@
+{
+  "sourceBuild": "0.6.2 / connection-menu1",
+  "targetModel": "X2D 100C",
+  "targetFirmware": "4.2.0",
+  "guiSha256": "16391452abdc69de9e0807e065c0f4ab3f1ccb5fc288f6fc4e6f5cb3bdca12e0",
+  "connectionIcon": {
+    "originalResource": "X2D II 1.3.16.2 / icons/ic_menu_connection.svg",
+    "sha256": "a10338a059e866a5cfdb11f2a70cf9f6ed1f8d5c945ed7dd3ad77b5e5fc8514c"
+  },
+  "assets": [
+    {
+      "source": "libx2d_native_menu.so",
+      "target": "/system/lib64/libx2d_native_menu.so",
+      "sha256": "04d7962c0b238467f17e8852b0aa8e328581b6ed50dc31f87a5ad5533b5d2660",
+      "bytes": 249200,
+      "publicSource": null
+    },
+    {
+      "source": "X2dNativeMenuBootstrap.qml",
+      "target": "/system/etc/X2dNativeMenuBootstrap.qml",
+      "sha256": "ead280613b91249e37c791325e7f3443a3292b9c4fe7cd03ab6c8dfbdaf06950",
+      "bytes": 13804,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuBootstrap.qml"
+    },
+    {
+      "source": "X2dNativeMenuModel.qml",
+      "target": "/system/etc/X2dNativeMenuModel.qml",
+      "sha256": "56a850cae7cae8eaa84e1cf1ebaf231920ea6a402fec8606930e404e81586090",
+      "bytes": 5439,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuModel.qml"
+    },
+    {
+      "source": "X2dNativeMenuRoute.qml",
+      "target": "/system/etc/X2dNativeMenuRoute.qml",
+      "sha256": "d8d9015e02000fed518d62f504c26c3fbb402816444108fdb938ebc0cd409f04",
+      "bytes": 2177,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuRoute.qml"
+    },
+    {
+      "source": "X2dNativeMenuHost.qml",
+      "target": "/system/etc/X2dNativeMenuHost.qml",
+      "sha256": "7e75e91cc66ef906d83a8ff60aecc393c0f57cca46b8fdc682cd7f97b5fc29c9",
+      "bytes": 1542,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuHost.qml"
+    },
+    {
+      "source": "X2dPrankIbisPage.qml",
+      "target": "/system/etc/X2dPrankIbisPage.qml",
+      "sha256": "fdea5bc01e6117f38e3f5f4d0f6a02494c6493ca43b84619562a113cd0a27a43",
+      "bytes": 1250,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dPrankIbisPage.qml"
+    },
+    {
+      "source": "X2dPlayPage.qml",
+      "target": "/system/etc/X2dPlayPage.qml",
+      "sha256": "7a617fc38f407d6ffb780ecf34503f96fe8f866598b27773979b49932539bdf6",
+      "bytes": 23876,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dPlayPage.qml"
+    },
+    {
+      "source": "X2dAfcMenuController.qml",
+      "target": "/system/etc/X2dAfcMenuController.qml",
+      "sha256": "fd6854c7b3cd980875b3c9f05917b89a199d7469eb90866ed27285d317aea9bd",
+      "bytes": 15124,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dAfcMenuController.qml"
+    },
+    {
+      "source": "X2dSpeedBuffController.qml",
+      "target": "/system/etc/X2dSpeedBuffController.qml",
+      "sha256": "2e8fa693ddcfa780e8bbe170f8257bd13bf68025b54a7f15493603c76c9baeac",
+      "bytes": 10739,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSpeedBuffController.qml"
+    },
+    {
+      "source": "X2dAutoBrightnessController.qml",
+      "target": "/system/etc/X2dAutoBrightnessController.qml",
+      "sha256": "27f42ff45f3bf4d61b532cd2e96354b48c5068b918c9f7e4fbcc1e844aa6c4fa",
+      "bytes": 2730,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dAutoBrightnessController.qml"
+    },
+    {
+      "source": "X2dDisplaySettings.qml",
+      "target": "/system/etc/X2dDisplaySettings.qml",
+      "sha256": "4b8a91a5df6ea7c71748f668bdb0ea447ee77874d0f435d5f171bb3cc013275e",
+      "bytes": 23392,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dDisplaySettings.qml"
+    },
+    {
+      "source": "X2dDisplayRearBrightness.qml",
+      "target": "/system/etc/X2dDisplayRearBrightness.qml",
+      "sha256": "58d7c06fd43fc534eae6685a52628ccbc359d7bfc031b8461394bf9bdc0d307b",
+      "bytes": 7609,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dDisplayRearBrightness.qml"
+    },
+    {
+      "source": "X2dBrightnessSlider.qml",
+      "target": "/system/etc/X2dBrightnessSlider.qml",
+      "sha256": "f51ae1d3bd72f9295a7e60a2ae51142190b51b487e7b9ebd0ac086b16dd5ffad",
+      "bytes": 5436,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dBrightnessSlider.qml"
+    },
+    {
+      "source": "X2dFocusModePopup.qml",
+      "target": "/system/etc/X2dFocusModePopup.qml",
+      "sha256": "ab5825c45d51ad72b1ad4ae048ff8c49f9d45e089bd1f7588de99f6d9cde627a",
+      "bytes": 5613,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dFocusModePopup.qml"
+    },
+    {
+      "source": "ic_main_menu_play.svg",
+      "target": "/system/etc/X2dPlayIcon.svg",
+      "sha256": "5842614688303878e152a9e51ed0eff400d5ec563714d030de6ccb34378785ec",
+      "bytes": 789,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/ic_main_menu_play.svg"
+    },
+    {
+      "source": "libx2d_play_brightness.so",
+      "target": "/system/lib64/libx2d_play_brightness.so",
+      "sha256": "1c8b90139c8e84868f62b08c389f4a9769696484598b95f697681199334fb7eb",
+      "bytes": 20768,
+      "publicSource": null
+    },
+    {
+      "source": "libx2d_speed_server.so",
+      "target": "/system/lib64/libx2d_speed_server.so",
+      "sha256": "68dc4e282d0700d6c695baf9502183c7f3bd4f9278d114d2c1be766cc0adf117",
+      "bytes": 30872,
+      "publicSource": null
+    },
+    {
+      "source": "speed-worker",
+      "target": "/system/etc/x2d-speed-buff/worker",
+      "sha256": "667f989c55a6c94620c3c14b2cddbbde248c69e83e8687e3ea321a295618c7aa",
+      "bytes": 26598,
+      "publicSource": null
+    },
+    {
+      "source": "speed-backend",
+      "target": "/system/etc/x2d-speed-buff/backend",
+      "sha256": "c77f1beef2a8d5e0e0b3dfdecda236670dd210e9eb629008fd3d77eb1614e3e0",
+      "bytes": 2191,
+      "publicSource": null
+    },
+    {
+      "source": "speed-transaction",
+      "target": "/system/etc/x2d-speed-buff/transaction",
+      "sha256": "e4d93486254237e1e78987071325a2b7f4532b1d84e7aa8bc7a138ee39e86f29",
+      "bytes": 2909,
+      "publicSource": null
+    },
+    {
+      "source": "speed-original",
+      "target": "/system/etc/x2d-speed-buff/original",
+      "sha256": "c8b5407c615b60c05078bc7ba9ada8cf53c905bac17faa59561f948feac0d430",
+      "bytes": 1068,
+      "publicSource": null
+    },
+    {
+      "source": "speed-candidate",
+      "target": "/system/etc/x2d-speed-buff/candidate",
+      "sha256": "4eb555dc16ad54bdcfecd244b63bfea7ee691ce67b8274a1244644392ba15e13",
+      "bytes": 1068,
+      "publicSource": null
+    },
+    {
+      "source": "speed-candidate-low",
+      "target": "/system/etc/x2d-speed-buff/candidate-low",
+      "sha256": "a1d78a28e832e8561e71a88f11077ee562b8660eae7419ee9bb440d30da29491",
+      "bytes": 1068,
+      "publicSource": null
+    },
+    {
+      "source": "speed-candidate-medium",
+      "target": "/system/etc/x2d-speed-buff/candidate-medium",
+      "sha256": "be7857c38593b7ed049319ce4429706f6c12ce19f3dc5cfd58ea1514a29463d0",
+      "bytes": 1068,
+      "publicSource": null
+    },
+    {
+      "source": "pixel-NativeDriveMode.qml",
+      "target": "/system/etc/x2d-multishot/NativeDriveMode.qml",
+      "sha256": "945a74fa23d18b05626bb37bb36d4cf639677760ee7e8cd2fff79a03e5859363",
+      "bytes": 37849,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativeDriveMode.qml"
+    },
+    {
+      "source": "pixel-NativePixelSettings.qml",
+      "target": "/system/etc/x2d-multishot/NativePixelSettings.qml",
+      "sha256": "91903079707cf9f3dc2bf00d823348b1a769ac1428641c3740c9a2b6b90b7252",
+      "bytes": 7013,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSettings.qml"
+    },
+    {
+      "source": "pixel-NativePixelDropdown.qml",
+      "target": "/system/etc/x2d-multishot/NativePixelDropdown.qml",
+      "sha256": "9d8aa695acc3f24dd7b51d8179e379c314420828faad8a25c6d15f6dda68f909",
+      "bytes": 8412,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelDropdown.qml"
+    },
+    {
+      "source": "pixel-NativePixelSelector.qml",
+      "target": "/system/etc/x2d-multishot/NativePixelSelector.qml",
+      "sha256": "4fac3df8106776edfe79845a5f08737573becebeccede880165d137929e843dd",
+      "bytes": 8547,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSelector.qml"
+    },
+    {
+      "source": "pixel-NativePixelBackend.qml",
+      "target": "/system/etc/x2d-multishot/NativePixelBackend.qml",
+      "sha256": "0af18b474a2b4eab8961b02084659c09a503abbca6cfb6f0fa2b1c89c0bff8c4",
+      "bytes": 5412,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelBackend.qml"
+    },
+    {
+      "source": "pixel-pixel-parameters.sh",
+      "target": "/system/etc/x2d-multishot/pixel-parameters.sh",
+      "sha256": "50231165bb76edf53f635d48c5c13ed6b58903733f2c32ca2f2bd38a75f8935d",
+      "bytes": 8002,
+      "publicSource": null
+    },
+    {
+      "source": "pixel-NativePixelControlBridge.qml",
+      "target": "/system/etc/x2d-multishot/NativePixelControlBridge.qml",
+      "sha256": "57bf373392df3ca70f3945da25da6da39f4f8b427fb21b0025fdc2ef43c85a5d",
+      "bytes": 4494,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControlBridge.qml"
+    },
+    {
+      "source": "pixel-NativePixelControl.js",
+      "target": "/system/etc/x2d-multishot/NativePixelControl.js",
+      "sha256": "f2401663f9fce7fcce856681b73afd13137ce0ead95d02e9b6b3d98d84423205",
+      "bytes": 537,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControl.js"
+    },
+    {
+      "source": "pixel-pixel-initial-delay.sh",
+      "target": "/system/etc/x2d-multishot/pixel-initial-delay.sh",
+      "sha256": "229b7d8e9af38b6e8e83ddac149572858a5fb9311cebc1a80779370d9cc860ad",
+      "bytes": 29628,
+      "publicSource": null
+    },
+    {
+      "source": "pixel-NativePixelCountdown.qml",
+      "target": "/system/etc/x2d-multishot/NativePixelCountdown.qml",
+      "sha256": "bf2e3a3d2b1275b5db83667d1f8098cc6931a4f2b098f7adb8f0bca60681b854",
+      "bytes": 1913,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdown.qml"
+    },
+    {
+      "source": "pixel-NativePixelCountdownController.qml",
+      "target": "/system/etc/x2d-multishot/NativePixelCountdownController.qml",
+      "sha256": "168b8e90a6b48c988c407df4f14245b3359774bd71305ee73f72784af79c491a",
+      "bytes": 7697,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdownController.qml"
+    },
+    {
+      "source": "pixel-NativePixelTrace.js",
+      "target": "/system/etc/x2d-multishot/NativePixelTrace.js",
+      "sha256": "eb0b5a22bd9265d261b4b3cbb3f61b4496853a3d0c37795656770551aaa679d5",
+      "bytes": 1184,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelTrace.js"
+    },
+    {
+      "source": "pixel-pixel-stock-countdown-audio.sh",
+      "target": "/system/etc/x2d-multishot/pixel-stock-countdown-audio.sh",
+      "sha256": "9595635d91c0e8415cc34bc2258760fe38e7ad88fcc5b48814282594be769998",
+      "bytes": 1825,
+      "publicSource": null
+    },
+    {
+      "source": "pixel-ic_drive_mode_multishot.svg",
+      "target": "/system/etc/x2d-multishot/ic_drive_mode_multishot.svg",
+      "sha256": "2d043adf0bc0e26a2a417d1e8785c3c82b297f0ba4dfba2e4f0a99032bb1a180",
+      "bytes": 12464,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-ic_drive_mode_multishot.svg"
+    },
+    {
+      "source": "pixel-ic_drive_mode_multishot_disable.svg",
+      "target": "/system/etc/x2d-multishot/ic_drive_mode_multishot_disable.svg",
+      "sha256": "fc36561b6e11689dd2de07c0d730fb91316204b3c6f2c7a76e113f419bc9f886",
+      "bytes": 12464,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-ic_drive_mode_multishot_disable.svg"
+    },
+    {
+      "source": "pixel-assets.list",
+      "target": "/system/etc/x2d-multishot/assets.list",
+      "sha256": "a4dfdf3002b8fd008ea2068db54c4c4d7d8a38c6608a8229a626cecd059e801a",
+      "bytes": 384,
+      "publicSource": null
+    },
+    {
+      "source": "pixel-assets.sha256",
+      "target": "/system/etc/x2d-multishot/assets.sha256",
+      "sha256": "85ce8986d147e938ab6b4bc30d17f8c24a992bd7395e26956461e4a265b31745",
+      "bytes": 1374,
+      "publicSource": null
+    },
+    {
+      "source": "pixel-service",
+      "target": "/system/etc/x2d-multishot/service",
+      "sha256": "d125351f482eb18b3374474ce4f18f9fdb9857b919a5c1b12ea417beffc02b44",
+      "bytes": 8910,
+      "publicSource": null
+    },
+    {
+      "source": "X2dSubjectDetectionController.qml",
+      "target": "/system/etc/X2dSubjectDetectionController.qml",
+      "sha256": "1057800c5bc9c86552ecd79c1d42454a336218ca0f911aeab2b866c81c261466",
+      "bytes": 8613,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubjectDetectionController.qml"
+    },
+    {
+      "source": "X2dSubjectDetectionPopup.qml",
+      "target": "/system/etc/X2dSubjectDetectionPopup.qml",
+      "sha256": "25452bb220bddb659eb326edd958fcd18ac628ae7cd51d32ef22ac44a3ecbb10",
+      "bytes": 9394,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubjectDetectionPopup.qml"
+    },
+    {
+      "source": "X2dSubjectPolicy.js",
+      "target": "/system/etc/X2dSubjectPolicy.js",
+      "sha256": "d1f3b54eb78a490cdaac9cbc6d439f5b931fca5315d89bad066d30be9d235a63",
+      "bytes": 1141,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubjectPolicy.js"
+    },
+    {
+      "source": "X2dSubject-control-disabled.svg",
+      "target": "/system/etc/X2dSubject-control-disabled.svg",
+      "sha256": "92778f566dc4d3d2def6ca881a6f449b4b0d4ccf85f5f54acc67003c15b146c5",
+      "bytes": 656,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-disabled.svg"
+    },
+    {
+      "source": "X2dSubject-control-human.svg",
+      "target": "/system/etc/X2dSubject-control-human.svg",
+      "sha256": "3079c515ed780b0c4c825e3428e04d32eeb3ee318b3e34afb750f2300a64c6fb",
+      "bytes": 1923,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-human.svg"
+    },
+    {
+      "source": "X2dSubject-control-off.svg",
+      "target": "/system/etc/X2dSubject-control-off.svg",
+      "sha256": "26c28ebad9d9ec27ed932e24e76f2c26a91944f9cb26f2778997671c1556ad58",
+      "bytes": 585,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-off.svg"
+    },
+    {
+      "source": "X2dSubject-custom.svg",
+      "target": "/system/etc/X2dSubject-custom.svg",
+      "sha256": "9f7450a915321128f7be997a572f2201b3b323aef7aac43fa7464ac0aaa5caed",
+      "bytes": 787,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-custom.svg"
+    },
+    {
+      "source": "X2dSubject-human.svg",
+      "target": "/system/etc/X2dSubject-human.svg",
+      "sha256": "c60e59d37a847c11cba3d520f2135c81e4f40759c5abfbad2a1f22084de498bd",
+      "bytes": 1401,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-human.svg"
+    },
+    {
+      "source": "X2dSubject-off.svg",
+      "target": "/system/etc/X2dSubject-off.svg",
+      "sha256": "e38c9794c57f5bd0351dc475d94286b5b0557c9440670898688ace5618447f02",
+      "bytes": 417,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-off.svg"
+    },
+    {
+      "source": "X2dSubject-pet.svg",
+      "target": "/system/etc/X2dSubject-pet.svg",
+      "sha256": "5970fd4db2c43e0ca3b683a7c00710bf2b1b88ca8392aa568f14314206b6a597",
+      "bytes": 11592,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-pet.svg"
+    },
+    {
+      "source": "X2dSubject-spot-plus.svg",
+      "target": "/system/etc/X2dSubject-spot-plus.svg",
+      "sha256": "c6bb1a5fe7b6f5ce9940dfd238a7313e02a271ae7006c4962493323221a28a0f",
+      "bytes": 1475,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-spot-plus.svg"
+    },
+    {
+      "source": "X2dSubject-spot.svg",
+      "target": "/system/etc/X2dSubject-spot.svg",
+      "sha256": "26c28ebad9d9ec27ed932e24e76f2c26a91944f9cb26f2778997671c1556ad58",
+      "bytes": 585,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-spot.svg"
+    },
+    {
+      "source": "X2dSubject-vehicle.svg",
+      "target": "/system/etc/X2dSubject-vehicle.svg",
+      "sha256": "831684061c85f408e7f6f502a9a04288aee8302afc483dd94162d33007545d3c",
+      "bytes": 1611,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-vehicle.svg"
+    },
+    {
+      "source": "X2dSubject-wide.svg",
+      "target": "/system/etc/X2dSubject-wide.svg",
+      "sha256": "89d60fc0b2caa8cd3b79248dff692e8db2bcd8bf078a7383c67843be2809bf61",
+      "bytes": 647,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-wide.svg"
+    },
+    {
+      "source": "X2dSubject-control-spot-human.svg",
+      "target": "/system/etc/X2dSubject-control-spot-human.svg",
+      "sha256": "3079c515ed780b0c4c825e3428e04d32eeb3ee318b3e34afb750f2300a64c6fb",
+      "bytes": 1923,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-human.svg"
+    },
+    {
+      "source": "X2dSubject-control-spot-pet.svg",
+      "target": "/system/etc/X2dSubject-control-spot-pet.svg",
+      "sha256": "b55f9432f02f37fbb7bf4c66949cb8470e063c16e706b76547b5a9ed73606158",
+      "bytes": 12058,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-pet.svg"
+    },
+    {
+      "source": "X2dSubject-control-spot-vehicle.svg",
+      "target": "/system/etc/X2dSubject-control-spot-vehicle.svg",
+      "sha256": "94be51664cffd4f83a5e3e3cafcb8d7ed3c23b2c16f109494af9a50a95bb977c",
+      "bytes": 1911,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-vehicle.svg"
+    },
+    {
+      "source": "X2dSubject-control-spot-off.svg",
+      "target": "/system/etc/X2dSubject-control-spot-off.svg",
+      "sha256": "26c28ebad9d9ec27ed932e24e76f2c26a91944f9cb26f2778997671c1556ad58",
+      "bytes": 585,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-off.svg"
+    },
+    {
+      "source": "X2dSubject-control-spot-plus-human.svg",
+      "target": "/system/etc/X2dSubject-control-spot-plus-human.svg",
+      "sha256": "89f2907bbe03a610e4a3ba82b43f5606012772cddb9d0675b8198a517280a323",
+      "bytes": 2110,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-plus-human.svg"
+    },
+    {
+      "source": "X2dSubject-control-spot-plus-pet.svg",
+      "target": "/system/etc/X2dSubject-control-spot-plus-pet.svg",
+      "sha256": "79d7ecaebf369d82b057f32a76aa6d902ecfc211fdc03435dc93d9be502d4162",
+      "bytes": 12374,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-plus-pet.svg"
+    },
+    {
+      "source": "X2dSubject-control-spot-plus-vehicle.svg",
+      "target": "/system/etc/X2dSubject-control-spot-plus-vehicle.svg",
+      "sha256": "c3eb47169569bc4bf60120beece13ef0eac6ac37a498b3eda73b5bb139f4d620",
+      "bytes": 2227,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-plus-vehicle.svg"
+    },
+    {
+      "source": "X2dSubject-control-spot-plus-off.svg",
+      "target": "/system/etc/X2dSubject-control-spot-plus-off.svg",
+      "sha256": "c6bb1a5fe7b6f5ce9940dfd238a7313e02a271ae7006c4962493323221a28a0f",
+      "bytes": 1475,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-spot-plus-off.svg"
+    },
+    {
+      "source": "X2dSubject-control-custom-human.svg",
+      "target": "/system/etc/X2dSubject-control-custom-human.svg",
+      "sha256": "824ca715ede96274995274e32793e3954ab3c4b4b9ae460103909229ef7d5999",
+      "bytes": 1875,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-custom-human.svg"
+    },
+    {
+      "source": "X2dSubject-control-custom-pet.svg",
+      "target": "/system/etc/X2dSubject-control-custom-pet.svg",
+      "sha256": "68ec61da81aad24f594a66ba7eb247b053af7f5a58cd0fb98f7303c2984f6f9b",
+      "bytes": 12139,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-custom-pet.svg"
+    },
+    {
+      "source": "X2dSubject-control-custom-vehicle.svg",
+      "target": "/system/etc/X2dSubject-control-custom-vehicle.svg",
+      "sha256": "3dada196dd6e803fedf8e961181eb3dd11551e1904f7f04de3ad4d8023b5f9d4",
+      "bytes": 1992,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-custom-vehicle.svg"
+    },
+    {
+      "source": "X2dSubject-control-custom-off.svg",
+      "target": "/system/etc/X2dSubject-control-custom-off.svg",
+      "sha256": "9f7450a915321128f7be997a572f2201b3b323aef7aac43fa7464ac0aaa5caed",
+      "bytes": 787,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-custom-off.svg"
+    },
+    {
+      "source": "X2dSubject-control-wide-human.svg",
+      "target": "/system/etc/X2dSubject-control-wide-human.svg",
+      "sha256": "eee185b8baa581c97b1d663001042e149c2c21b8125cf5608a965481b3c7ae58",
+      "bytes": 1682,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-wide-human.svg"
+    },
+    {
+      "source": "X2dSubject-control-wide-pet.svg",
+      "target": "/system/etc/X2dSubject-control-wide-pet.svg",
+      "sha256": "c690195fd2545e53d0590d6b10c96b5ecc0f6354694d56255a63dad9cbf4f295",
+      "bytes": 12003,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-wide-pet.svg"
+    },
+    {
+      "source": "X2dSubject-control-wide-vehicle.svg",
+      "target": "/system/etc/X2dSubject-control-wide-vehicle.svg",
+      "sha256": "af27970731c812364d4b9699f6a270c01a2b2f468d7d758331516f8d67ee1607",
+      "bytes": 1859,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-wide-vehicle.svg"
+    },
+    {
+      "source": "X2dSubject-control-wide-off.svg",
+      "target": "/system/etc/X2dSubject-control-wide-off.svg",
+      "sha256": "89d60fc0b2caa8cd3b79248dff692e8db2bcd8bf078a7383c67843be2809bf61",
+      "bytes": 647,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-control-wide-off.svg"
+    },
+    {
+      "source": "X2dShutterSoundController.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dShutterSoundController.qml",
+      "sha256": "c21736a42175f5a0e3f38a9e9eb50a8075d0ee8e7bd68d59d052e5abb2e4acac",
+      "bytes": 3059,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dShutterSoundController.qml"
+    },
+    {
+      "source": "X2dShutterSoundCapture.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dShutterSoundCapture.qml",
+      "sha256": "59ddd0092a26e618126d0450764e9c9dfe3bd2e40b2561f7dc076eb9986f9524",
+      "bytes": 5026,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dShutterSoundCapture.qml"
+    },
+    {
+      "source": "X2dShutterPolicy.js",
+      "target": "/system/etc/x2d-shutter-sound/X2dShutterPolicy.js",
+      "sha256": "0ac46a8941937ea0210cf06bfb01b2d4c6fec2f131c4f9abaddb725f6387b0bb",
+      "bytes": 695,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dShutterPolicy.js"
+    },
+    {
+      "source": "X2dExposureMenuModel.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dExposureMenuModel.qml",
+      "sha256": "8201d9307d37e4495925a4251546771680c6b6fcab8385047eaaa9673ce76a33",
+      "bytes": 4031,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dExposureMenuModel.qml"
+    },
+    {
+      "source": "X2dExposureSettings.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dExposureSettings.qml",
+      "sha256": "56a506c6677e32da1d40866dda2948c01f9c18e9d1d4e54a6e609a15849418c4",
+      "bytes": 24313,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dExposureSettings.qml"
+    },
+    {
+      "source": "X2dShutterSoundSwitch.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dShutterSoundSwitch.qml",
+      "sha256": "89d080d58ddc1412124aa8b34dac1bb05ea4f22a55def749355cf4fa239c1a84",
+      "bytes": 1745,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dShutterSoundSwitch.qml"
+    },
+    {
+      "source": "X2dShutter-exposure_finished.wav",
+      "target": "/system/etc/x2d-shutter-sound/exposure_finished.wav",
+      "sha256": "43e2c75fdf54ebf36ba1bdcb3185204a32f44e30a6093e7ee3283a1c7b10f8f4",
+      "bytes": 36352,
+      "publicSource": null
+    },
+    {
+      "source": "X2dShutter-worker",
+      "target": "/system/etc/x2d-shutter-sound/worker",
+      "sha256": "e87bef42dd6cb2992b5739e6e07a85c201e5f090f9b9b22613831fa3c82c92f7",
+      "bytes": 13766,
+      "publicSource": null
+    },
+    {
+      "source": "X2dSubject-live-human.svg",
+      "target": "/system/etc/X2dSubject-live-human.svg",
+      "sha256": "b66827a9d561caaa4bc9d39c46c53da93972642623f7c7ca9a85e9f348df2a49",
+      "bytes": 2651,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubject-live-human.svg"
+    },
+    {
+      "source": "libx2d_shutter_audio.so",
+      "target": "/system/lib64/libx2d_shutter_audio.so",
+      "sha256": "bdad677d36b0a4db598758333769ae375b5b3906076d8d48813f62fb5cd02f5d",
+      "bytes": 8776,
+      "publicSource": null
+    },
+    {
+      "source": "libx2d_focus_area.so",
+      "target": "/system/lib64/libx2d_focus_area.so",
+      "sha256": "b3cc4da6fcfa3640f20c9542bdccaf8e64fba6c87446dddb18693ca1ce7d72ce",
+      "bytes": 30760,
+      "publicSource": null
+    },
+    {
+      "source": "X2dFocusAreaController.qml",
+      "target": "/system/etc/X2dFocusAreaController.qml",
+      "sha256": "1d194158f85a0ba1b2c0d733f393866bffefe4d801f5a6daa797e0c71e1fd4a7",
+      "bytes": 7698,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dFocusAreaController.qml"
+    },
+    {
+      "source": "X2dFaceFrames.qml",
+      "target": "/system/etc/X2dFaceFrames.qml",
+      "sha256": "a0905765bd614de35e5df2f039eff223c82992ef7e9c7e06303cf8c4783487ef",
+      "bytes": 6285,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dFaceFrames.qml"
+    },
+    {
+      "source": "X2dShutter-custom.wav",
+      "target": "/system/etc/x2d-shutter-sound/custom.wav",
+      "sha256": "b699c558e4aaaa8acee440bb6bd14c117b705154d26652beb6d76ae10553fe07",
+      "bytes": 43980,
+      "publicSource": null
+    },
+    {
+      "source": "X2dConnectionMenu.qml",
+      "target": "/system/etc/X2dConnectionMenu.qml",
+      "sha256": "04c26201691a7a3090e988774737583317947022f451c1294789c3b5427f74b9",
+      "bytes": 2761,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dConnectionMenu.qml"
+    },
+    {
+      "source": "X2dConnectionMenuIcon.svg",
+      "target": "/system/etc/X2dConnectionMenuIcon.svg",
+      "sha256": "a10338a059e866a5cfdb11f2a70cf9f6ed1f8d5c945ed7dd3ad77b5e5fc8514c",
+      "bytes": 1059,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dConnectionMenuIcon.svg"
+    },
+    {
+      "source": "X2dNativeMenuBootstrap.en.qml",
+      "target": "/system/etc/X2dNativeMenuBootstrap.qml",
+      "sha256": "1d0a06137b301ba20713284a918dd6c07f256355f878c028e4df84da09486526",
+      "bytes": 13808,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuBootstrap.en.qml"
+    },
+    {
+      "source": "X2dNativeMenuModel.en.qml",
+      "target": "/system/etc/X2dNativeMenuModel.qml",
+      "sha256": "cbcf67a509e97cc4058d0e7c2a2c04ed77f2bc95cf9b6b5b1386230c58594813",
+      "bytes": 5441,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuModel.en.qml"
+    },
+    {
+      "source": "X2dPrankIbisPage.en.qml",
+      "target": "/system/etc/X2dPrankIbisPage.qml",
+      "sha256": "125127f5e88d00e5e8a96965b8b3e8a29bf2078289c06959fec560a36f6e34ae",
+      "bytes": 1215,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dPrankIbisPage.en.qml"
+    },
+    {
+      "source": "X2dPlayPage.en.qml",
+      "target": "/system/etc/X2dPlayPage.qml",
+      "sha256": "89b5fae3140e74546647e180dcc0fa03d3f3374aca016ad9983476a2771262e3",
+      "bytes": 23895,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dPlayPage.en.qml"
+    },
+    {
+      "source": "X2dAfcMenuController.en.qml",
+      "target": "/system/etc/X2dAfcMenuController.qml",
+      "sha256": "9586f2fea81b5486a92b1344c30a24f6c956a7b0f6afbfa9a8e22cd11295a657",
+      "bytes": 15106,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dAfcMenuController.en.qml"
+    },
+    {
+      "source": "X2dDisplayRearBrightness.en.qml",
+      "target": "/system/etc/X2dDisplayRearBrightness.qml",
+      "sha256": "c07fb391de1629d6d2e2175d9817c55ec017d3532b009e8abe03ca490a23488f",
+      "bytes": 7616,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dDisplayRearBrightness.en.qml"
+    },
+    {
+      "source": "pixel-NativeDriveMode.qml.en",
+      "target": "/system/etc/x2d-multishot/NativeDriveMode.qml",
+      "sha256": "529c0f0cae016c11981f0849a98c48e71d6d1b8adeda4a1bb64fb0c6fba0f7a9",
+      "bytes": 37782,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativeDriveMode.qml.en"
+    },
+    {
+      "source": "pixel-NativePixelSettings.qml.en",
+      "target": "/system/etc/x2d-multishot/NativePixelSettings.qml",
+      "sha256": "156295c9ff4f0f2e1f0655c1aa16122613e47b2014dbe8f0c1e6f1dd3cca86eb",
+      "bytes": 6987,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSettings.qml.en"
+    },
+    {
+      "source": "pixel-NativePixelDropdown.qml.en",
+      "target": "/system/etc/x2d-multishot/NativePixelDropdown.qml",
+      "sha256": "9d8aa695acc3f24dd7b51d8179e379c314420828faad8a25c6d15f6dda68f909",
+      "bytes": 8412,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelDropdown.qml.en"
+    },
+    {
+      "source": "pixel-NativePixelSelector.qml.en",
+      "target": "/system/etc/x2d-multishot/NativePixelSelector.qml",
+      "sha256": "23428e060afe179c5916dc9999779a7251aed8f5dca0fefd2bebb52e453ee610",
+      "bytes": 8543,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSelector.qml.en"
+    },
+    {
+      "source": "pixel-NativePixelBackend.qml.en",
+      "target": "/system/etc/x2d-multishot/NativePixelBackend.qml",
+      "sha256": "0af18b474a2b4eab8961b02084659c09a503abbca6cfb6f0fa2b1c89c0bff8c4",
+      "bytes": 5412,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelBackend.qml.en"
+    },
+    {
+      "source": "pixel-NativePixelControlBridge.qml.en",
+      "target": "/system/etc/x2d-multishot/NativePixelControlBridge.qml",
+      "sha256": "57bf373392df3ca70f3945da25da6da39f4f8b427fb21b0025fdc2ef43c85a5d",
+      "bytes": 4494,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControlBridge.qml.en"
+    },
+    {
+      "source": "pixel-NativePixelControl.js.en",
+      "target": "/system/etc/x2d-multishot/NativePixelControl.js",
+      "sha256": "f2401663f9fce7fcce856681b73afd13137ce0ead95d02e9b6b3d98d84423205",
+      "bytes": 537,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControl.js.en"
+    },
+    {
+      "source": "pixel-NativePixelCountdown.qml.en",
+      "target": "/system/etc/x2d-multishot/NativePixelCountdown.qml",
+      "sha256": "00b3d723ccc30c54bd3323819d9d9cd2f5d83dbfa35aab5f878009f419594fdd",
+      "bytes": 1920,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdown.qml.en"
+    },
+    {
+      "source": "pixel-NativePixelCountdownController.qml.en",
+      "target": "/system/etc/x2d-multishot/NativePixelCountdownController.qml",
+      "sha256": "168b8e90a6b48c988c407df4f14245b3359774bd71305ee73f72784af79c491a",
+      "bytes": 7697,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdownController.qml.en"
+    },
+    {
+      "source": "pixel-NativePixelTrace.js.en",
+      "target": "/system/etc/x2d-multishot/NativePixelTrace.js",
+      "sha256": "eb0b5a22bd9265d261b4b3cbb3f61b4496853a3d0c37795656770551aaa679d5",
+      "bytes": 1184,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelTrace.js.en"
+    },
+    {
+      "source": "pixel-assets.sha256.en",
+      "target": "/system/etc/x2d-multishot/assets.sha256",
+      "sha256": "1db346963b5f5ccfa5f64cfa3b4091d03ee1652f02a34b9e04ce201795c5a527",
+      "bytes": 1374,
+      "publicSource": null
+    },
+    {
+      "source": "X2dSubjectDetectionPopup.en.qml",
+      "target": "/system/etc/X2dSubjectDetectionPopup.qml",
+      "sha256": "aac96667b2da7ee90bb3c3d1008206f17ea1dd98bc180333c296ab4dd28a26be",
+      "bytes": 9419,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubjectDetectionPopup.en.qml"
+    },
+    {
+      "source": "X2dExposureSettings.en.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dExposureSettings.qml",
+      "sha256": "56a506c6677e32da1d40866dda2948c01f9c18e9d1d4e54a6e609a15849418c4",
+      "bytes": 24313,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dExposureSettings.en.qml"
+    },
+    {
+      "source": "X2dExposureMenuModel.en.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dExposureMenuModel.qml",
+      "sha256": "f694762b191d0c33f8f5f3f8680f6e22d787a90669fda0ba159463c1c272a2fb",
+      "bytes": 4039,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dExposureMenuModel.en.qml"
+    },
+    {
+      "source": "X2dShutterSoundSwitch.en.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dShutterSoundSwitch.qml",
+      "sha256": "77306d00413dcb08fd2d847753d7a9ff79fbb194932eadb8757a2a312b480ea9",
+      "bytes": 1619,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dShutterSoundSwitch.en.qml"
+    },
+    {
+      "source": "X2dFocusAreaController.en.qml",
+      "target": "/system/etc/X2dFocusAreaController.qml",
+      "sha256": "b7215a46c321312f4a4e5ce63e75de2599d4713b5a4f4ab57e32b37ca68701e3",
+      "bytes": 7660,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dFocusAreaController.en.qml"
+    },
+    {
+      "source": "X2dConnectionMenu.en.qml",
+      "target": "/system/etc/X2dConnectionMenu.qml",
+      "sha256": "8a0463984770ea45db7b77b10340f293d5aa7da5400b6285fe417964f6a4d39a",
+      "bytes": 2834,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dConnectionMenu.en.qml"
+    },
+    {
+      "source": "X2dPrankIbisPage.zh-Hant.qml",
+      "target": "/system/etc/X2dPrankIbisPage.qml",
+      "sha256": "13c660e14bcc3497e13bfad48a399be4daad154c806124434a79c12b72ce37dc",
+      "bytes": 1253,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dPrankIbisPage.zh-Hant.qml"
+    },
+    {
+      "source": "X2dPlayPage.zh-Hant.qml",
+      "target": "/system/etc/X2dPlayPage.qml",
+      "sha256": "05ef01ab4379ce3d1e5e648c3a0a4707ef3e4fb7a8b1ad2e8d6395adcec6970b",
+      "bytes": 23876,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dPlayPage.zh-Hant.qml"
+    },
+    {
+      "source": "X2dAfcMenuController.zh-Hant.qml",
+      "target": "/system/etc/X2dAfcMenuController.qml",
+      "sha256": "0b6b6b2d64040198cb948f5c86a5ca2137a63c816230e568600729ba0e7dd756",
+      "bytes": 15124,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dAfcMenuController.zh-Hant.qml"
+    },
+    {
+      "source": "X2dSpeedBuffController.zh-Hant.qml",
+      "target": "/system/etc/X2dSpeedBuffController.qml",
+      "sha256": "4a4adb57515ba3db46bd305e405a5341abeee2d36e97dc37815b2d5f4803eb5e",
+      "bytes": 10739,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSpeedBuffController.zh-Hant.qml"
+    },
+    {
+      "source": "X2dDisplayRearBrightness.zh-Hant.qml",
+      "target": "/system/etc/X2dDisplayRearBrightness.qml",
+      "sha256": "97fdeecd72b5d32369782e9203600029007b5ae35267b6b9bfbd2f8a465d2706",
+      "bytes": 7609,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dDisplayRearBrightness.zh-Hant.qml"
+    },
+    {
+      "source": "pixel-NativeDriveMode.qml.zh-Hant",
+      "target": "/system/etc/x2d-multishot/NativeDriveMode.qml",
+      "sha256": "c29f40c18ad0ee0f542c0014fa6d940df387a52b0bbe227b0f1ec7f3048ea32d",
+      "bytes": 37849,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativeDriveMode.qml.zh-Hant"
+    },
+    {
+      "source": "pixel-NativePixelSettings.qml.zh-Hant",
+      "target": "/system/etc/x2d-multishot/NativePixelSettings.qml",
+      "sha256": "a53b26e912e4ad423804f2bb88747e5d0fb5b40422cfd58cc35662c24c024882",
+      "bytes": 7013,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSettings.qml.zh-Hant"
+    },
+    {
+      "source": "pixel-NativePixelDropdown.qml.zh-Hant",
+      "target": "/system/etc/x2d-multishot/NativePixelDropdown.qml",
+      "sha256": "9d8aa695acc3f24dd7b51d8179e379c314420828faad8a25c6d15f6dda68f909",
+      "bytes": 8412,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelDropdown.qml.zh-Hant"
+    },
+    {
+      "source": "pixel-NativePixelSelector.qml.zh-Hant",
+      "target": "/system/etc/x2d-multishot/NativePixelSelector.qml",
+      "sha256": "b2d7744e26451aa21bc6b1714597d65b544b6fc9b6b2b82bd40733ac7be659e4",
+      "bytes": 8547,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelSelector.qml.zh-Hant"
+    },
+    {
+      "source": "pixel-NativePixelBackend.qml.zh-Hant",
+      "target": "/system/etc/x2d-multishot/NativePixelBackend.qml",
+      "sha256": "0af18b474a2b4eab8961b02084659c09a503abbca6cfb6f0fa2b1c89c0bff8c4",
+      "bytes": 5412,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelBackend.qml.zh-Hant"
+    },
+    {
+      "source": "pixel-NativePixelControlBridge.qml.zh-Hant",
+      "target": "/system/etc/x2d-multishot/NativePixelControlBridge.qml",
+      "sha256": "57bf373392df3ca70f3945da25da6da39f4f8b427fb21b0025fdc2ef43c85a5d",
+      "bytes": 4494,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControlBridge.qml.zh-Hant"
+    },
+    {
+      "source": "pixel-NativePixelControl.js.zh-Hant",
+      "target": "/system/etc/x2d-multishot/NativePixelControl.js",
+      "sha256": "f2401663f9fce7fcce856681b73afd13137ce0ead95d02e9b6b3d98d84423205",
+      "bytes": 537,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelControl.js.zh-Hant"
+    },
+    {
+      "source": "pixel-NativePixelCountdown.qml.zh-Hant",
+      "target": "/system/etc/x2d-multishot/NativePixelCountdown.qml",
+      "sha256": "95635f52fe2a20101ba38d676d4d8c41b242d8ccc601857852ac559a6c3725f4",
+      "bytes": 1913,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdown.qml.zh-Hant"
+    },
+    {
+      "source": "pixel-NativePixelCountdownController.qml.zh-Hant",
+      "target": "/system/etc/x2d-multishot/NativePixelCountdownController.qml",
+      "sha256": "168b8e90a6b48c988c407df4f14245b3359774bd71305ee73f72784af79c491a",
+      "bytes": 7697,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelCountdownController.qml.zh-Hant"
+    },
+    {
+      "source": "pixel-NativePixelTrace.js.zh-Hant",
+      "target": "/system/etc/x2d-multishot/NativePixelTrace.js",
+      "sha256": "eb0b5a22bd9265d261b4b3cbb3f61b4496853a3d0c37795656770551aaa679d5",
+      "bytes": 1184,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/pixel-NativePixelTrace.js.zh-Hant"
+    },
+    {
+      "source": "pixel-assets.sha256.zh-Hant",
+      "target": "/system/etc/x2d-multishot/assets.sha256",
+      "sha256": "a9e26c4832f35dcccead8c08d1959dba0328ead50c4e4ffaa2549bad077ead46",
+      "bytes": 1374,
+      "publicSource": null
+    },
+    {
+      "source": "X2dNativeMenuBootstrap.zh-Hant.qml",
+      "target": "/system/etc/X2dNativeMenuBootstrap.qml",
+      "sha256": "1b07ec16758a5ba2ce3c3a3d95d247b8f1b38b6692ba8ff4adcdecd78d678da4",
+      "bytes": 13804,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuBootstrap.zh-Hant.qml"
+    },
+    {
+      "source": "X2dNativeMenuModel.zh-Hant.qml",
+      "target": "/system/etc/X2dNativeMenuModel.qml",
+      "sha256": "f76b881011eb1aded9bb5f7c286ef81549053edcf3ca81847082730cddcfe41c",
+      "bytes": 5439,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dNativeMenuModel.zh-Hant.qml"
+    },
+    {
+      "source": "X2dSubjectDetectionPopup.zh-Hant.qml",
+      "target": "/system/etc/X2dSubjectDetectionPopup.qml",
+      "sha256": "609d9515c40c434ed3831250613854ed91e1c01eafbfeab8f998945c9ad93862",
+      "bytes": 9391,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dSubjectDetectionPopup.zh-Hant.qml"
+    },
+    {
+      "source": "X2dExposureSettings.zh-Hant.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dExposureSettings.qml",
+      "sha256": "56a506c6677e32da1d40866dda2948c01f9c18e9d1d4e54a6e609a15849418c4",
+      "bytes": 24313,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dExposureSettings.zh-Hant.qml"
+    },
+    {
+      "source": "X2dExposureMenuModel.zh-Hant.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dExposureMenuModel.qml",
+      "sha256": "7634f315edc94db8e8825c62b454fccd795fba2fe808e955e6399a4d66562274",
+      "bytes": 4031,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dExposureMenuModel.zh-Hant.qml"
+    },
+    {
+      "source": "X2dShutterSoundSwitch.zh-Hant.qml",
+      "target": "/system/etc/x2d-shutter-sound/X2dShutterSoundSwitch.qml",
+      "sha256": "eb8031300e94a368e96ef45ba4a984ccc4efad195514081413a6d8c8b9bc3533",
+      "bytes": 1611,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dShutterSoundSwitch.zh-Hant.qml"
+    },
+    {
+      "source": "X2dFocusAreaController.zh-Hant.qml",
+      "target": "/system/etc/X2dFocusAreaController.qml",
+      "sha256": "c04b16608254cb975e8c72fb845c95baa09d0ee4ac4d26a3366e7775ed513149",
+      "bytes": 7692,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dFocusAreaController.zh-Hant.qml"
+    },
+    {
+      "source": "X2dConnectionMenu.zh-Hant.qml",
+      "target": "/system/etc/X2dConnectionMenu.qml",
+      "sha256": "1ca88597129ffad936221f27671b56566482d61bed21a52860abdd7db6db1314",
+      "bytes": 2829,
+      "publicSource": "src/x2d2_ui_handoff_062/camera/X2dConnectionMenu.zh-Hant.qml"
+    }
+  ],
+  "nativeLibraries": [
+    {
+      "source": "libx2d_native_menu.so",
+      "target": "/system/lib64/libx2d_native_menu.so",
+      "bytes": 249200,
+      "sha256": "04d7962c0b238467f17e8852b0aa8e328581b6ed50dc31f87a5ad5533b5d2660"
+    },
+    {
+      "source": "libx2d_play_brightness.so",
+      "target": "/system/lib64/libx2d_play_brightness.so",
+      "sha256": "1c8b90139c8e84868f62b08c389f4a9769696484598b95f697681199334fb7eb",
+      "bytes": 20768
+    },
+    {
+      "source": "libx2d_speed_server.so",
+      "target": "/system/lib64/libx2d_speed_server.so",
+      "sha256": "68dc4e282d0700d6c695baf9502183c7f3bd4f9278d114d2c1be766cc0adf117",
+      "bytes": 30872
+    },
+    {
+      "source": "libx2d_shutter_audio.so",
+      "target": "/system/lib64/libx2d_shutter_audio.so",
+      "bytes": 8776,
+      "sha256": "bdad677d36b0a4db598758333769ae375b5b3906076d8d48813f62fb5cd02f5d"
+    },
+    {
+      "source": "libx2d_focus_area.so",
+      "target": "/system/lib64/libx2d_focus_area.so",
+      "bytes": 30760,
+      "sha256": "b3cc4da6fcfa3640f20c9542bdccaf8e64fba6c87446dddb18693ca1ce7d72ce"
+    }
+  ],
+  "deploymentQualified": false,
+  "hardwareTestedThisHandoff": false,
+  "recoveryFailureQualificationComplete": false,
+  "credentialPolicy": "Runtime area tokens are not included; provision a new private token when rebuilding. Exact private manifests remain in the local handoff archive."
+}

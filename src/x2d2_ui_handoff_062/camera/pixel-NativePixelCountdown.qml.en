@@ -1,0 +1,51 @@
+import QtQuick
+import com.hasselblad.constants
+import "qrc:/app/qml/exposescreen" as Stock
+
+// Reuse the factory screen, status bar, icon and typography.
+Stock.ExposeScreen {
+    id: root
+    objectName: "NativePixelCountdown"
+    property var controller: null
+    headerText: "Capture Countdown"
+    showButtons: false
+    // The factory base handler must defer to this page's any-key cancellation.
+    passButtons: true
+    Keys.onPressed: (event) => {
+        if (controller && controller.countdownActive) {
+            controller.cancelCountdown()
+            event.accepted=true
+        } else event.accepted=false
+    }
+    onAbortPressed: if (controller) controller.cancelCountdown()
+    Rectangle {
+        objectName: "NativePixelCountdownBackground"
+        anchors.fill: parent
+        z: -1
+        color: Constants.colorBlack
+        opacity: 1
+    }
+    Stock.ExposeIconText {
+        id: countdownText
+        objectName: "NativePixelCountdownText"
+        anchors.fill: parent
+        text1.text: controller && controller.countdownActive ? viewModel.tdur(controller.remainingSeconds) : ""
+        text1.objectName: "NativePixelCountdownValue"
+        text1.font.pixelSize: 100 * 1.6 * Constants.scaleFactor
+        iconSpacing: 16 * 1.6 * Constants.scaleFactorX
+        icon.source: "image://svg/ic_drive_mode_self_timer_big"
+        icon.objectName: "NativePixelCountdownIcon"
+    }
+    Text {
+        objectName: "NativePixelCountdownExitHint"
+        text: "Press any key to cancel"
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.verticalCenter
+        anchors.topMargin: Math.max(countdownText.text1.height,countdownText.icon.height)/2 + 16*1.6*Constants.scaleFactor
+        color: Constants.colorWhite
+        opacity:0.8
+        font.pixelSize:24*1.6*Constants.scaleFactor
+        font.weight:Font.Normal
+        horizontalAlignment:Text.AlignHCenter
+    }
+}

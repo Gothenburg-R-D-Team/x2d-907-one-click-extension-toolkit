@@ -1,0 +1,36 @@
+{
+  "languages": [
+    {
+      "language": "zh",
+      "label": "连接",
+      "stockActionUnchanged": true,
+      "stockModelUnchanged": true,
+      "offAndDestructionRestoreLiveBindings": true
+    },
+    {
+      "language": "en",
+      "label": "Connections",
+      "stockActionUnchanged": true,
+      "stockModelUnchanged": true,
+      "offAndDestructionRestoreLiveBindings": true
+    },
+    {
+      "language": "zh-Hant",
+      "label": "連線",
+      "stockActionUnchanged": true,
+      "stockModelUnchanged": true,
+      "offAndDestructionRestoreLiveBindings": true
+    }
+  ],
+  "stockFramedImageAndPressHandlersUnmodified": true,
+  "sourceLabelsRefreshAfterDisable": true,
+  "rowReorderingHandled": true,
+  "cfvTenOriginalItemsLayoutHandled": true,
+  "unsupportedLayoutRestoresStock": true,
+  "unreadyRestoresStock": true,
+  "shadersAndConstantsSimulated": true,
+  "productionConnectionControllerExecuted": true,
+  "cameraAccess": false,
+  "qmlErrors": [],
+  "hardwareAppearanceVerified": false
+}
