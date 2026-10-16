@@ -18,7 +18,7 @@
 
 ### 原电脑或原版本无法使用时
 
-暂停升级，保留现有软件、安装记录和备份，通过 [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) 确认恢复方案。不要先用新版本覆盖、强行安装或尝试跨版本恢复。同版本跨电脑恢复可作为需要核实条件的替代方案，不应将其理解为任意电脑、任意安装包都能恢复。
+暂停功能升级，保留现有软件、安装记录和备份。针对已识别旧版的恢复失败，维护者提供了 [0.5.6 · 恢复修复版 1](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6)：可直接检查连接并选择恢复，无需安装新版功能。它仍核验已收录安装清单、原始备份、运行归属及文件哈希，不覆盖未知修改；故障相机实测仍待完成。无法识别或仍失败时，通过 [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) 确认方案，勿强行安装或删除恢复记录。这是针对已知清单的恢复路径，不代表任意版本、任意补丁均可恢复。
 
 首次安装、相机没有本工具扩展时，无需先恢复已有安装。从内测版转向稳定版也必须先使用**原电脑及原内测版本**恢复，再安装稳定版。
 
@@ -42,7 +42,7 @@ Recovery on another computer is supported when using the **same Software version
 
 ### If the original computer or version is unavailable
 
-Pause the upgrade, retain existing Software, installation records and backups, and ask through [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) for a confirmed recovery approach. Do not overwrite the old version, force an installation or attempt cross-version recovery first. Same-version recovery on another computer is a possible alternative whose conditions must be checked; it is not a promise that any computer or package can restore an installation.
+Pause feature upgrades and retain existing Software, installation records and backups. For failed restoration of recognized older installations, the maintainer provides [0.5.6 · Restore fix 1](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6): check the connection and choose Restore without first installing newer features. Registered manifests, original backups, runtime ownership and file hashes must still validate; unknown modifications are refused, and physical-camera validation remains pending. If the installation is unrecognized or recovery still fails, ask through [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues); do not force installation or delete recovery records. This known-manifest recovery path does not promise restoration of arbitrary versions or patches.
 
 A first installation on a camera without this toolkit's extension does not require restoration of an existing installation. Moving from a private beta to stable also requires restoration using the **original computer and original beta version** before stable installation.
 

@@ -12,16 +12,20 @@ An independent, experimental camera-extension utility for the first-generation *
 
 [完整升级顺序 / Upgrade procedure](docs/UPGRADING.md) · [中文风险告知与免责声明](docs/DISCLAIMER.zh-CN.md) · [English risk notice and disclaimer](DISCLAIMER.md)
 
-## 下载 0.5.6 / Download 0.5.6
+## 下载 0.5.6 · 恢复修复版 1 / Download 0.5.6 · Restore fix 1
 
-**当前公开版本：0.5.6（预发布）。** 包含像素位移、追踪自动对焦、人眼识别、三档对焦加速、AF-C 和后屏自动亮度，支持按需选择安装。
+**当前公开版本：0.5.6 · 恢复修复版 1（预发布）。** 针对已识别旧版安装的恢复失败，先等待拍摄结束、安全退出连续对焦并确认空闲，再执行严格撤回。旧版恢复失败时，可用本版检查连接后直接恢复，无需先安装新版功能；仅支持已收录清单及完好、可核验的备份。
 
-**Current public release: 0.5.6 (prerelease).** Select the features you want to install: Pixel Shift, Tracking Autofocus, Eye Recognition, three-level Focus Speed Boost, AF-C and Auto Rear Brightness.
+**Current public release: 0.5.6 · Restore fix 1 (prerelease).** Wait for capture to finish, safely leave continuous AF and verify idle before guarded withdrawal. If an older toolkit cannot restore, this revision can check the connection and restore directly without installing new features; only registered manifests and intact, verifiable backups are supported.
+
+**已知未修复：眼部布局校验失败可能连带阻止追踪自动对焦开启。本次仅修恢复流程，相机载荷未改动；请勿反复重装同一版本尝试解决该问题。相机恢复实测及 Windows 原生验证仍待完成。**
+
+**Known unresolved issue: Eye layout validation failure can also block Tracking Autofocus activation. This revision fixes recovery preparation only; camera payloads are unchanged. Reinstalling the same build does not fix that issue. Physical-camera recovery and native Windows validation remain pending.**
 
 | 平台 / Platform | 安装包 / Download |
 | --- | --- |
-| macOS 13+ · Apple silicon / Intel | [**Mac 通用版 / macOS Universal · 0.5.6**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-macOS-Universal-0.5.6.zip) |
-| Windows 10 / 11 · x64 | [**Windows x64 · 0.5.6**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-Windows-x64-0.5.6.zip) |
+| macOS 13+ · Apple silicon / Intel | [**Mac 通用版 / macOS Universal · Restore fix 1**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-macOS-Universal-0.5.6-restore-fix-1.zip) |
+| Windows 10 / 11 · x64 | [**Windows x64 · Restore fix 1**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-Windows-x64-0.5.6-restore-fix-1.zip) |
 
 下载后请**完整解压**再启动。Extract the **entire ZIP** before opening the app.
 
@@ -106,9 +110,9 @@ Native Mac 0.5.6 dialogs captured during offline UI checks, before the end-of-do
 
 ## 验证范围 / Validation
 
-0.5.6 通过 **364 项离线回归，零跳过**，并完成 Mac 原生功能选择、三语言声明弹窗及解压包核验。Windows 解压包通过 112 项回归；Windows 原生运行、真实驱动安装、相机安装／恢复／拍摄和光学效果仍待相应实机验证。具体记录与限制见 [0.5.6.json](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json)。
+恢复修复版 1 的 382 项离线回归中 **380 项通过、两项原厂区域仿真不可用**，未将跳过项计为通过；另有 23 项界面／本地化回归、Mac 原生界面检查和 Windows 解压包 130 项回归通过。补充验证 49 项恢复回归、1,369 个当前／旧版清单组合，以及 108 个桌面／文件恢复替身用例。Windows 原生运行、真实驱动安装、相机安装／恢复／拍摄和光学效果仍待相应实机验证。具体记录与限制见 [0.5.6.json](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json)。
 
-Version 0.5.6 passes **364 offline regressions with zero skips**, native Mac selection and three-language notice-dialog checks, and extracted-package verification. The extracted Windows package passes 112 regressions. Native Windows execution, actual driver installation, camera installation / restoration / capture and optical results still require the respective device validation. See [0.5.6.json](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json) for the exact evidence and limits.
+Restore fix 1 passes **380 of 382 offline regressions; two unavailable stock-region simulations are not counted as passes**, plus 23 UI/localization regressions, native Mac UI checks and 130 extracted Windows regressions. Additional checks cover 49 focused recovery regressions, 1,369 current/older manifest combinations and 108 host/file-restore fixture cases. Native Windows execution, actual driver installation, camera installation / restoration / capture and optical results still require the respective device validation. See [0.5.6.json](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json) for the exact evidence and limits.
 
 本项目为独立研究工具，非哈苏官方软件。仅适配明确列出的机型与固件。Mac App 使用临时签名、未经公证；Windows 启动器未经代码签名。
 

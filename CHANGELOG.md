@@ -7,6 +7,15 @@
 - 新增中英双语全球用户风险告知与免责声明，以及供接入的安装／更新／恢复提示文案；保留适用法定权利及各发行版原有许可。
 - 已安装相机扩展的用户，在手动或 App 内升级电脑端软件前，务必、务必、务必先使用原电脑原软件版本恢复。说明同版本跨电脑恢复的支持、升级顺序及原环境不可用时的处理，并同步首页、升级指南及最新版发行说明。本次仅更新文档，不改变 App、安装包或相机。
 
+## [0.5.6 · Restore fix 1](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) — 2026-10-16
+
+- Replace the earlier 0.5.6 Mac/Windows archives with Restore fix 1 and refresh checksums and validation metadata. Wait for capture, leave continuous AF through the stock interface and verify idle before the existing guarded withdrawal. Preserve exact camera payloads, known recovery catalogues, backups and incomplete-operation records; report R01–R12 diagnostics and avoid automatic redispatch after a lost USB reply.
+- Recognized older installations can restore directly without installing newer features. Pass 380 of 382 offline regressions (two stock-region simulations unavailable), additional UI/package checks, 49 recovery regressions, 1,369 recognition combinations and 108 host/file-restore fixture cases. Physical-camera and native Windows/driver validation remain pending.
+- Eye layout refusal and its dependency blocking Tracking Autofocus activation remain unresolved. Keep the release a manual prerelease and preserve the stable update channel. Public source remains separate from the package build source.
+- 用恢复修复版 1 替换原 0.5.6 Mac／Windows 包，同步校验值和验证记录。等待拍摄完成，通过原厂接口退出连续对焦并确认空闲，再执行原有严格撤回；相机载荷、已知恢复清单保持相同，失败保留备份和未完成记录，提供 R01–R12，USB 回包丢失时不自动启动第二次写入。
+- 已识别旧版可直接恢复，无需安装新版功能。382 项离线回归中 380 项通过（两项原厂区域仿真不可用），另有界面／解压包检查、49 项恢复回归、1,369 个识别组合、108 个桌面／文件恢复替身用例通过；相机和 Windows 原生／驱动实测待完成。
+- 眼部布局拒绝及其连带阻止追踪自动对焦开启的问题尚未解决。继续手动预发布，稳定更新通道不变；公开源码与安装包构建源码仍分别说明。
+
 ## [0.5.6](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) — 2026-10-15
 
 - Publicly distribute the verified macOS Universal and Windows x64 0.5.6 packages, with SHA-256 checksums and their validation record. Keep 0.4.17 as the stable updater entry. The new public release is marked as a prerelease and is downloaded manually.
