@@ -1,13 +1,9 @@
 # X2D/907 One-Click Extension Toolkit — Contributing / 贡献规则
 
-**Review draft — 18 October 2026. Not adopted.**
-
-**供审阅草案——2026 年 10 月 18 日，尚未生效。**
-
-These proposed rules apply to contributions to the
+These rules apply to contributions to the
 [X2D/907 One-Click Extension Toolkit](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit).
 
-本规则拟用于上述仓库中的 X2D/907 一键扩展功能工具包的项目贡献。
+本规则用于上述仓库中的 X2D/907 一键扩展功能工具包的项目贡献。
 
 ## 中文
 
@@ -19,7 +15,7 @@ These proposed rules apply to contributions to the
 
 ### 2. 新贡献的明确授权
 
-本规则正式采用后，拟以项目许可证发布的新原创贡献，应在 PR 中明确确认以下声明。
+以项目许可证发布的新原创贡献，应在 PR 中明确确认以下声明。
 声明针对该次贡献，不代表转让版权，也不授权维护者在未来任意更换许可证：
 
 > 我有权提交本次贡献。对于本 PR 中我原创且未另行标注许可的材料，我同意以
@@ -28,7 +24,7 @@ These proposed rules apply to contributions to the
 
 贡献者应先阅读完整 [LICENSE](LICENSE) 和 [PROJECT_POLICY.md](PROJECT_POLICY.md)。
 若贡献者不同意或需要另作约定，应在合并前提出并解决。未作明确声明不视为已同意
-本草案；贡献审核和合并应等待许可澄清。
+新许可条款；贡献审核和合并应等待许可澄清。
 
 不得提交无权授权的他人代码、厂商固件、专有组件或其他受限材料。
 引用或修改第三方材料时，须标明来源、版本、许可及必要声明；不应将第三方材料
@@ -79,8 +75,7 @@ of contributions and third-party materials.
 
 ### 2. Explicit licensing for new contributions
 
-After these rules are adopted, a new original contribution intended for
-release under the project license should include the following explicit PR
+A new original contribution intended for release under the project license should include the following explicit PR
 statement. It applies to that contribution, does not transfer copyright and
 does not authorize arbitrary future relicensing:
 
@@ -94,7 +89,7 @@ does not authorize arbitrary future relicensing:
 Please read the complete [LICENSE](LICENSE) and
 [PROJECT_POLICY.md](PROJECT_POLICY.md) first. Any disagreement or need for
 different terms must be resolved before merge. The absence of an explicit
-statement is not consent to this draft; licensing must be clarified before
+statement is not consent to the new licensing terms; licensing must be clarified before
 review proceeds to merge.
 
 Do not submit code, vendor firmware, proprietary components or other materials

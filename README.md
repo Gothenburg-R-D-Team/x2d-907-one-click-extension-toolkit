@@ -128,15 +128,15 @@ Git contains source, tests, documentation and software screenshots; vendor firmw
 
 Feedback, research findings and developer contributions are welcome. Open an [Issue](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) or submit a [Pull Request](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) to improve code, documentation and tests.
 
-贡献者保留各自贡献的版权，不要求版权转让。拟议贡献授权、既有贡献许可和许可变更规则见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+贡献者保留各自贡献的版权，不要求版权转让。贡献授权、既有贡献许可和许可变更规则见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-Contributors retain copyright; no assignment is required. Proposed contribution licensing, existing-contribution and license-change rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
+Contributors retain copyright; no assignment is required. Contribution licensing, existing-contribution and license-change rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 许可 / License
 
-**审阅草案，尚未采用。** 本分支提议采用 X2D/907 No-Charge Distribution License 1.1 及配套项目与贡献规则。现有发行版继续适用各自携带的许可；本草案不代表已有贡献者已经同意改用新版许可，也不追溯改变现有权限。
+本仓库采用下述 1.1 版许可；既有发行版继续适用其各自携带的许可。更新根目录许可不追溯改变历史权限或自动更改既有贡献的授权。
 
-**Review draft, not yet adopted.** This branch proposes X2D/907 No-Charge Distribution License 1.1 and accompanying project and contribution policies. Existing releases retain their accompanying licenses. The proposal does not establish contributor consent or retroactively change existing permissions.
+This repository uses the version 1.1 license below. Existing releases retain their accompanying licenses. Updating the root license does not retroactively change historical permissions or automatically relicense existing contributions.
 
 ### 中文说明
 

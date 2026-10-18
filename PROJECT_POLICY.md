@@ -1,14 +1,10 @@
 # X2D/907 One-Click Extension Toolkit — Project Policy / 项目政策
 
-**Review draft — 18 October 2026. Not adopted.**
-
-**供审阅草案——2026 年 10 月 18 日，尚未生效。**
-
 ## 中文
 
 ### 1. 整个官方项目持续免费
 
-本政策拟适用于 [X2D/907 One-Click Extension Toolkit（X2D/907 一键扩展功能工具包）](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit)
+本政策适用于 [X2D/907 One-Click Extension Toolkit（X2D/907 一键扩展功能工具包）](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit)
 的官方维护工作，覆盖本项目的全部软件、安装工具及未来功能。
 
 官方承诺现在和未来持续免费提供项目软件，不出售软件、不收费下载或访问，
@@ -70,7 +66,7 @@
 
 ### 1. The entire official project remains free
 
-This policy is proposed for the official maintenance of the
+This policy applies to the official maintenance of the
 [X2D/907 One-Click Extension Toolkit](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit),
 covering all software, installation tools and future features of this project.
 
