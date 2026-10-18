@@ -128,12 +128,67 @@ Git contains source, tests, documentation and software screenshots; vendor firmw
 
 Feedback, research findings and developer contributions are welcome. Open an [Issue](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) or submit a [Pull Request](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) to improve code, documentation and tests.
 
+贡献者保留各自贡献的版权，不要求版权转让。贡献授权、既有贡献许可和许可变更规则见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+Contributors retain copyright; no assignment is required. Contribution licensing, existing-contribution and license-change rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## 许可 / License
 
-携带 [X2D/907 非商业分发许可证 1.0](LICENSE) 的版本允许使用、研究、修改和免费分享。**允许收费拍摄及出售摄影作品；出售软件或改版、收费提供软件访问，以及收费安装／设置服务须另获作者书面授权。**
+本仓库采用下述 1.1 版许可；既有发行版继续适用其各自携带的许可。更新根目录许可不追溯改变历史权限或自动更改既有贡献的授权。
 
-Releases carrying the [X2D/907 Noncommercial Distribution License 1.0](LICENSE) allow use, study, modification and free redistribution. **Professional photography, paid shoots and selling photographs are allowed. Selling the software or modified versions, charging for software access, and paid installation / setup services require separate written permission.**
+This repository uses the version 1.1 license below. Existing releases retain their accompanying licenses. Updating the root license does not retroactively change historical permissions or automatically relicense existing contributions.
 
-本项目属于带有商业分发限制的 source-available 软件，许可证并非 OSI 认可的开源许可证。历史 MIT 版本保留原有权限；第三方组件保留各自许可，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+### 中文说明
 
-This is a source-available project with commercialization restrictions, not an OSI-approved open-source license. Historical MIT releases keep their original permissions; third-party components retain their own licenses. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+对于明确采用 [X2D/907 免费分发许可证 1.1](LICENSE) 的版本，允许免费使用、
+研究、修改、构建和分享。禁止出售软件或改版、收费下载或访问、订阅、付费解锁、
+付费专享或提前访问，以及收费安装、设置、配置或部署；不保留书面批准收费的例外。
+
+**允许商业摄影、收费拍摄、影棚工作及出售摄影作品。** 照片及其他摄影成果不会
+仅因使用本软件而受本许可证约束，也无需向项目支付费用或分成。
+
+公开发布二进制安装包时，须同时免费公开对应版本的完整项目源码、构建脚本、
+依赖信息和构建说明。通过链接提供源码的，应在最后一次分发该版本后至少保留三年。
+内部开发和测试可以暂不公开；向测试者分发二进制时，仍须向其提供对应源码。
+第三方组件和厂商固件保留各自许可，不因此承诺公开或再分发无权提供的材料。
+
+官方承诺整个项目及未来功能持续免费，不提供收费授权。完全自愿且不换取软件权益
+的捐赠可以接受。详见 [项目政策](PROJECT_POLICY.md)。
+
+本项目属于带有收费分发限制的 **source-available（源码可获取）软件**，
+并非采用 OSI 认可许可证的开源软件。历史 MIT 材料保留原有许可权限。
+英文 [LICENSE](LICENSE) 为正式许可正文；本摘要仅供说明。
+
+### English
+
+Versions expressly released under the [X2D/907 No-Charge Distribution
+License 1.1](LICENSE) may be used, studied, modified, built and shared without
+charge. Selling the Software or modified versions, paid downloads or access,
+subscriptions, paid unlocks, paid exclusive or early access, and paid
+installation, setup, configuration or deployment are prohibited. There is no
+written-permission exception for those charges under this license.
+
+**Professional photography, paid shoots, studio work and selling photographs
+are permitted.** Photographs and other photographic deliverables do not
+become subject to this license merely through use of the Software, and no
+project fee or revenue share is required.
+
+Public binary releases must be accompanied by freely available corresponding
+project source, build scripts, dependency information and build instructions.
+Source provided through a link must remain available for at least three years
+after the distributor's last distribution of that version. Private development
+and testing need not be public, but recipients of private binaries must still
+receive corresponding source. Third-party components and vendor firmware
+retain their own licenses; this does not promise disclosure or redistribution
+of materials the project has no right to provide.
+
+The official project commits to keeping all its software and future features
+free and to offering no paid software licenses. Fully voluntary donations that
+purchase no software privileges are permitted. See [Project Policy](PROJECT_POLICY.md).
+
+This is **source-available software with restrictions on software charges**,
+not software under an OSI-approved open-source license. Historical MIT
+materials retain their original permissions. The English [LICENSE](LICENSE)
+is authoritative; this summary is informational.
+
+第三方组件的许可与来源见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。Third-party licenses and provenance are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

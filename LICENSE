@@ -1,72 +1,151 @@
-X2D/907 Noncommercial Distribution License 1.0
+X2D/907 No-Charge Distribution License 1.1
 
-Copyright (c) 2026 Radium Wang
+Copyright (c) 2026 Radium Wang.
+Other contributors retain copyright in their respective contributions.
 
-1. Scope
+1. Scope and existing rights
 
-"Software" means the source code, binaries and documentation to which the
-copyright holder applies this license. This license grants only rights that
-the copyright holder has authority to grant. Separately licensed third-party
-components remain governed by their own licenses; see THIRD_PARTY_NOTICES.md
-and component license notices.
+"Software" means the source code, binaries, scripts and documentation of the
+X2D/907 One-Click Extension Toolkit expressly distributed under this license,
+including modifications to those materials. The project repository is:
+https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit
 
-This license applies to versions distributed with this notice. It does not
-revoke or change permissions already granted for earlier versions under the
-MIT license or any other license. Earlier MIT-licensed versions remain MIT
-licensed. Third-party notices and permissions must not be removed.
+Each copyright holder grants only rights they have authority to grant.
+Separately licensed components remain governed by their own licenses. Their
+copyright notices, license texts and applicable permissions must be preserved.
 
-2. Permission
+This license applies only to materials distributed under it. It does not
+revoke, replace or restrict permissions previously granted under MIT or another
+license. Materials previously available under MIT remain usable under MIT.
 
-Subject to the conditions below, permission is granted, free of charge, to
-use, study, copy, modify, build and distribute the Software, including modified
-versions, in source or binary form.
+2. Permission and contributor ownership
 
-Using the Software in professional or commercial photography is expressly
-permitted, including paid shoots, studio work and selling photographs or
-other photographic deliverables. Personal and internal business use is also
-permitted. Charging for photographic work does not constitute selling the
-Software or charging for its installation.
+Subject to the conditions below, each copyright holder grants you a worldwide,
+royalty-free, non-exclusive license to use, study, copy, modify, build and
+distribute their covered contributions.
 
-Copies and modified versions must be distributed under this license, retain
-the applicable copyright and third-party notices, and include this license.
-Modified versions must identify that they have been modified and must not
-claim endorsement by the original author.
+These permissions have no expiration date and remain effective while you
+comply with this license.
 
-3. No sale or paid installation
+Personal use, internal business use, private development and private testing
+are permitted.
 
-Without separate written permission from the copyright holder, you may not:
+Contributors retain ownership of their contributions. This license does not
+require or effect any copyright assignment.
 
-a. Sell, rent, or charge for copies of, licenses to, downloads of, or access
-   to the Software, including modified versions, or include the Software as
-   part of a paid software product or paid software bundle.
-b. Provide installation, setup, configuration or deployment of the Software
-   to others for a fee or other required compensation, whether the Software
-   itself is described as free or not.
-c. Evade these conditions by making payment for another item or service a
-   condition of receiving, using or installing the Software.
+3. Commercial photography is permitted
 
-Free sharing of original or modified versions and free installation help
-are permitted. Voluntary donations are permitted only when they are not a
-condition of receiving, using or installing the Software and do not purchase
-exclusive software access, features or installation services.
+You may use the Software for professional photography, paid shoots, studio
+work, client commissions and the creation or sale of photographs and other
+photographic deliverables.
 
-4. Other rights and disclaimer
+No project fee, royalty or revenue share is required for those activities.
+Photographic output does not become subject to this license merely because
+the Software was used to create it.
 
-No trademark or endorsement rights are granted. Rights and exceptions
-provided by applicable law are not limited by this license. Permissions for
-uses excluded above may be requested from the copyright holder.
+Charging for photographic work is permitted. Charging for the Software or its
+installation is subject to Section 4.
 
-The permissions granted by this license terminate automatically if you
-violate its conditions. All rights not expressly granted are reserved.
+4. No software charges or paid installation
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW.
+You may not:
 
-This is a custom source-available license with restrictions on software sale
-and paid installation. It is not an OSI-approved open-source license. The
-English text in this file is authoritative; summaries are informational.
+a. Sell, rent or charge for copies, licenses, downloads, updates or access to
+   the Software, including modified versions.
+b. Require payment for activation, feature unlocks, subscriptions, premium
+   editions or exclusive or early access to the Software or its features.
+c. Include the Software in a paid software product or paid software bundle.
+d. Charge others for installing, setting up, configuring or deploying the
+   Software, including where the Software itself is described as free.
+e. Make payment for another item or service a condition of receiving,
+   accessing, using or installing the Software.
+
+These restrictions apply to direct and indirect charges and to required
+non-monetary compensation.
+
+Free redistribution and free installation assistance are permitted.
+
+Genuinely voluntary donations are permitted only if they are not required to
+receive, access, use or install the Software and do not purchase exclusive or
+early software access, features or installation services.
+
+This license provides no written-permission exception to these restrictions.
+
+5. Distribution and corresponding source
+
+Every distributed copy or modified version must include this license and
+preserve applicable copyright, attribution and third-party notices.
+
+Modifications must be clearly identified. Modified versions must not falsely
+claim official status or endorsement.
+
+When distributing the Software in binary or another non-source form, you must
+provide each recipient, without charge, with its complete corresponding source
+under this license.
+
+"Complete corresponding source" means the preferred form for modifying the
+covered Software, including the changes, project build scripts, dependency
+information and instructions reasonably necessary to build that version.
+
+For a public distribution, the corresponding source must be publicly
+downloadable without charge no later than the binary release. A release tag or
+commit and its source archive must identify the exact version used. Source for
+a different version does not satisfy this requirement.
+
+If the source is provided through a download link, it must remain available for
+at least three years after your last distribution of that version.
+
+You may not impose additional terms that prevent recipients from exercising
+the rights granted by this license.
+
+Private development and testing do not by themselves require public release.
+Privately distributed binaries must nevertheless be accompanied by
+corresponding source for their recipients.
+
+Separately licensed third-party components, general-purpose development tools
+and vendor firmware are excluded from this source requirement to the extent
+they are not covered by this license. Necessary dependencies must be
+identified, together with their applicable licenses and lawful acquisition
+instructions. This exclusion does not permit withholding covered project
+source or modifications.
+
+6. Other rights
+
+No trademark, endorsement or express patent license is granted by this license.
+
+Rights, limitations and exceptions provided by applicable law are unaffected.
+
+All rights not expressly granted are reserved.
+
+7. Termination
+
+Your permissions terminate automatically if you violate this license.
+
+If you cease the violation and fully remedy it within 30 days after discovering
+it or receiving notice, whichever occurs first, your permissions are
+automatically reinstated unless you previously received reinstatement for the
+same type of violation.
+
+Termination of your permissions does not terminate the permissions of
+recipients who remain in compliance.
+
+8. Disclaimer
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SOFTWARE IS PROVIDED
+"AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES OF ANY KIND, INCLUDING
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+
+THE SOFTWARE IS AN INDEPENDENT, EXPERIMENTAL PROJECT. NO WARRANTY IS GIVEN
+THAT IT IS SAFE FOR ANY PARTICULAR CAMERA, FIRMWARE VERSION OR WORKFLOW, OR
+THAT IT WILL PREVENT DEVICE DAMAGE, DATA LOSS OR INTERRUPTION.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE COPYRIGHT HOLDERS AND
+CONTRIBUTORS ARE NOT LIABLE FOR DAMAGES OR OTHER LIABILITY ARISING FROM THE
+SOFTWARE OR ITS USE.
+
+9. License status and language
+
+This is a custom source-available license restricting software charges and
+paid installation. It is not an OSI-approved open-source license.
+
+The English text is authoritative. Translations and summaries are informational.

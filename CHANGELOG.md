@@ -2,8 +2,10 @@
 
 ## Unreleased
 
+- Adopt X2D/907 No-Charge Distribution License 1.1 and project/contribution policies. Remove the written-permission exception for software charges, specify paid-feature restrictions and corresponding-source duties, and preserve commercial photography, historical permissions and contributor ownership. No retroactive relicensing is implied; existing release packages are unchanged.
 - Add English and Chinese global risk notices, plus proposed installation/update/recovery prompt text. Preserve applicable statutory rights and each release's existing license.
 - Require users with an installed camera extension to restore it using the original computer and original Software version before either manual or in-app desktop upgrades. Explain same-version recovery on another computer, the required upgrade sequence and what to do if the original setup is unavailable. Update the README, upgrade guide and latest release notes. Documentation only; no application, installer or camera changes.
+- 采用 X2D/907 免费分发许可证 1.1、项目政策和贡献规则；删除软件收费的书面例外，明确付费功能限制和对应源码义务，保留商业摄影、历史许可和贡献者版权。不追溯改变既有授权，不修改既有安装包。
 - 新增中英双语全球用户风险告知与免责声明，以及供接入的安装／更新／恢复提示文案；保留适用法定权利及各发行版原有许可。
 - 已安装相机扩展的用户，在手动或 App 内升级电脑端软件前，务必、务必、务必先使用原电脑原软件版本恢复。说明同版本跨电脑恢复的支持、升级顺序及原环境不可用时的处理，并同步首页、升级指南及最新版发行说明。本次仅更新文档，不改变 App、安装包或相机。
 
