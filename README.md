@@ -124,6 +124,10 @@ Git contains source, tests, documentation and software screenshots; vendor firmw
 
 ## 交流与参与 / Contributing
 
+AF-C 失败恢复的独立源码与离线测试见 [策略接入说明](docs/AFC-FAILURE-RECOVERY.md)，当前未接入 App 或相机载荷。
+
+See the [AF-C failure-recovery policy and adapter contract](docs/AFC-FAILURE-RECOVERY.md) for standalone source and host tests. This contribution is not enabled in the app or camera payload.
+
 欢迎分享使用反馈、研究发现，并通过 [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) 讨论问题，或提交 [Pull Requests](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) 改进代码、文档与测试。
 
 Feedback, research findings and developer contributions are welcome. Open an [Issue](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) or submit a [Pull Request](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) to improve code, documentation and tests.
