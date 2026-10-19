@@ -24,16 +24,16 @@ An independent, experimental camera-extension utility for the first-generation *
 
 | 平台 / Platform | 安装包 / Download |
 | --- | --- |
-| macOS 13+ · Apple silicon / Intel | [**Mac 通用版 / macOS Universal · Restore fix 1**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-macOS-Universal-0.5.6-restore-fix-1.zip) |
-| Windows 10 / 11 · x64 | [**Windows x64 · Restore fix 1**](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-Windows-x64-0.5.6-restore-fix-1.zip) |
+| macOS 13+ · Apple silicon / Intel | [**Mac 通用版 / macOS Universal · Restore fix 1**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-macOS-Universal-0.5.6-restore-fix-1.zip) |
+| Windows 10 / 11 · x64 | [**Windows x64 · Restore fix 1**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-Windows-x64-0.5.6-restore-fix-1.zip) |
 
 下载后请**完整解压**再启动。Extract the **entire ZIP** before opening the app.
 
-[0.5.6 发行说明 / Release notes](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) · [SHA-256 校验 / Checksums](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/SHA256SUMS) · [0.5.6 验证记录 / Validation record](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json)
+[0.5.6 发行说明 / Release notes](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) · [SHA-256 校验 / Checksums](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/SHA256SUMS) · [0.5.6 验证记录 / Validation record](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json)
 
-**稳定版仍为 [0.4.17](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17)**，保留原有更新入口。0.5.6 从本页手动下载；启动时检查更新不会自动下载安装 0.5.6。
+**稳定版仍为 [0.4.17](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17)**，保留原有更新入口。0.5.6 从本页手动下载；启动时检查更新不会自动下载安装 0.5.6。
 
-**[0.4.17 remains the stable release](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17)** with its existing update channel. Download 0.5.6 manually from this page; startup update checks do not automatically download or install it.
+**[0.4.17 remains the stable release](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17)** with its existing update channel. Download 0.5.6 manually from this page; startup update checks do not automatically download or install it.
 
 [中文使用说明](#中文使用说明) · [English setup](#english-setup) · [更新日志 / Changelog](CHANGELOG.md) · [交流与参与 / Contributing](#交流与参与--contributing)
 
@@ -80,7 +80,7 @@ Focus Speed Boost can be installed, but users of older lenses are advised agains
 
 App 在设置中提供简体中文、繁體中文、English；更换相机菜单语言需要按升级／重新安装流程处理。
 
-恢复只撤回本工具管理且可核验的改动，不能覆盖任意第三方补丁。若检查未通过或恢复未完成，保留原软件、安装记录和备份，通过 [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) 反馈；公开日志前请移除个人信息。
+恢复只撤回本工具管理且可核验的改动，不能覆盖任意第三方补丁。若检查未通过或恢复未完成，保留原软件、安装记录和备份，通过 [Issues](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/issues) 反馈；公开日志前请移除个人信息。
 
 ## English setup
 
@@ -94,7 +94,7 @@ App 在设置中提供简体中文、繁體中文、English；更换相机菜单
 
 Settings offers Simplified Chinese, Traditional Chinese and English. Changing camera-menu text requires the restoration/reinstallation procedure.
 
-Restore withdraws changes managed and verified by this tool; it cannot overwrite arbitrary third-party patches. If checks or recovery fail, keep the original app, installation records and backups, and report through [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues). Remove personal information before sharing logs publicly.
+Restore withdraws changes managed and verified by this tool; it cannot overwrite arbitrary third-party patches. If checks or recovery fail, keep the original app, installation records and backups, and report through [Issues](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/issues). Remove personal information before sharing logs publicly.
 
 ## 声明弹窗 / Risk notice dialog
 
@@ -110,23 +110,23 @@ Native Mac 0.5.6 dialogs captured during offline UI checks, before the end-of-do
 
 ## 验证范围 / Validation
 
-恢复修复版 1 的 382 项离线回归中 **380 项通过、两项原厂区域仿真不可用**，未将跳过项计为通过；另有 23 项界面／本地化回归、Mac 原生界面检查和 Windows 解压包 130 项回归通过。补充验证 49 项恢复回归、1,369 个当前／旧版清单组合，以及 108 个桌面／文件恢复替身用例。Windows 原生运行、真实驱动安装、相机安装／恢复／拍摄和光学效果仍待相应实机验证。具体记录与限制见 [0.5.6.json](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json)。
+恢复修复版 1 的 382 项离线回归中 **380 项通过、两项原厂区域仿真不可用**，未将跳过项计为通过；另有 23 项界面／本地化回归、Mac 原生界面检查和 Windows 解压包 130 项回归通过。补充验证 49 项恢复回归、1,369 个当前／旧版清单组合，以及 108 个桌面／文件恢复替身用例。Windows 原生运行、真实驱动安装、相机安装／恢复／拍摄和光学效果仍待相应实机验证。具体记录与限制见 [0.5.6.json](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json)。
 
-Restore fix 1 passes **380 of 382 offline regressions; two unavailable stock-region simulations are not counted as passes**, plus 23 UI/localization regressions, native Mac UI checks and 130 extracted Windows regressions. Additional checks cover 49 focused recovery regressions, 1,369 current/older manifest combinations and 108 host/file-restore fixture cases. Native Windows execution, actual driver installation, camera installation / restoration / capture and optical results still require the respective device validation. See [0.5.6.json](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json) for the exact evidence and limits.
+Restore fix 1 passes **380 of 382 offline regressions; two unavailable stock-region simulations are not counted as passes**, plus 23 UI/localization regressions, native Mac UI checks and 130 extracted Windows regressions. Additional checks cover 49 focused recovery regressions, 1,369 current/older manifest combinations and 108 host/file-restore fixture cases. Native Windows execution, actual driver installation, camera installation / restoration / capture and optical results still require the respective device validation. See [0.5.6.json](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json) for the exact evidence and limits.
 
 本项目为独立研究工具，非哈苏官方软件。仅适配明确列出的机型与固件。Mac App 使用临时签名、未经公证；Windows 启动器未经代码签名。
 
 This is an independent project, not an official Hasselblad product. Only the stated camera models and firmware are supported. The Mac app uses an ad-hoc signature and is not notarized; the Windows launcher is unsigned.
 
-Git 中保存源码、测试、文档和软件截图；原厂固件、编译后的厂商组件、运行库与安装压缩包不提交到 Git。安装包以对应 [Release 附件](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6)为准；公开仓库当前源码与 0.5.6 安装包的构建源码并不同步。
+Git 中保存源码、测试、文档和软件截图；原厂固件、编译后的厂商组件、运行库与安装压缩包不提交到 Git。安装包以对应 [Release 附件](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6)为准；公开仓库当前源码与 0.5.6 安装包的构建源码并不同步。
 
-Git contains source, tests, documentation and software screenshots; vendor firmware, compiled vendor components, runtimes and installer archives are excluded. Use the corresponding [Release assets](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) for installers; the public repository's current source does not yet match the 0.5.6 package build source.
+Git contains source, tests, documentation and software screenshots; vendor firmware, compiled vendor components, runtimes and installer archives are excluded. Use the corresponding [Release assets](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) for installers; the public repository's current source does not yet match the 0.5.6 package build source.
 
 ## 交流与参与 / Contributing
 
-欢迎分享使用反馈、研究发现，并通过 [Issues](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) 讨论问题，或提交 [Pull Requests](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) 改进代码、文档与测试。
+欢迎分享使用反馈、研究发现，并通过 [Issues](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/issues) 讨论问题，或提交 [Pull Requests](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/pulls) 改进代码、文档与测试。
 
-Feedback, research findings and developer contributions are welcome. Open an [Issue](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/issues) or submit a [Pull Request](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/pulls) to improve code, documentation and tests.
+Feedback, research findings and developer contributions are welcome. Open an [Issue](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/issues) or submit a [Pull Request](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/pulls) to improve code, documentation and tests.
 
 贡献者保留各自贡献的版权，不要求版权转让。贡献授权、既有贡献许可和许可变更规则见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
