@@ -1,0 +1,97 @@
+{
+  "migration_date": "2026-10-23",
+  "source_repository": "Gothenburg-R-D-Team/hasselblad-one-click-installer-beta",
+  "source_commit": "0343a6e8eb9004d61c7143e0df50ca203c4027dc",
+  "public_repository": "Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit",
+  "case_directory": "docs/cases/2026-10-14-x2d-ii-wifi-firmware-recovery",
+  "operational_code": "Copied byte-for-byte; no new device verification",
+  "files": [
+    {
+      "source": "src/tools/x2d2_wifi_firmware/x2d2_wifi_upgrade.py",
+      "destination": "src/tools/x2d2_wifi_firmware/x2d2_wifi_upgrade.py",
+      "sha256": "1b9e0d4cab7a6144502326058d17d72ede8e42317294d6c922fbd78fc847aba9",
+      "unchanged": true,
+      "source_sha256": "1b9e0d4cab7a6144502326058d17d72ede8e42317294d6c922fbd78fc847aba9"
+    },
+    {
+      "source": "src/tools/x2d2_wifi_firmware/collect_phocus_client_id.py",
+      "destination": "src/tools/x2d2_wifi_firmware/collect_phocus_client_id.py",
+      "sha256": "3df4a95a265ef798f041fa4ba6e57b40f2f269103f8f9731495199fbc475c157",
+      "unchanged": true,
+      "source_sha256": "3df4a95a265ef798f041fa4ba6e57b40f2f269103f8f9731495199fbc475c157"
+    },
+    {
+      "source": "src/tools/x2d2_wifi_firmware/collect_iphone_usb_id.py",
+      "destination": "src/tools/x2d2_wifi_firmware/collect_iphone_usb_id.py",
+      "sha256": "19f84df361d5f3fb20f733cdb4226f30e609a84a4679a68f2993618f99190ed3",
+      "unchanged": true,
+      "source_sha256": "19f84df361d5f3fb20f733cdb4226f30e609a84a4679a68f2993618f99190ed3"
+    },
+    {
+      "source": "src/tools/x2d2_wifi_firmware/x2d2_reuse_session.py",
+      "destination": "src/tools/x2d2_wifi_firmware/x2d2_reuse_session.py",
+      "sha256": "43fd175e2525661ff8c14cd8859af973f1beb5db835a6cea2619feb0db7093f4",
+      "unchanged": true,
+      "source_sha256": "43fd175e2525661ff8c14cd8859af973f1beb5db835a6cea2619feb0db7093f4"
+    },
+    {
+      "source": "src/tools/x2d2_wifi_firmware/validation/check_http_simulation.py",
+      "destination": "src/tools/x2d2_wifi_firmware/validation/check_http_simulation.py",
+      "sha256": "83d13ea95dd16b4f71df9a597d789a121413bdd3f8b2f62f0a79f29eb16a12f4",
+      "unchanged": true,
+      "source_sha256": "83d13ea95dd16b4f71df9a597d789a121413bdd3f8b2f62f0a79f29eb16a12f4"
+    },
+    {
+      "source": "src/tools/x2d2_wifi_firmware/analysis/annotate_elf.py",
+      "destination": "src/tools/x2d2_wifi_firmware/analysis/annotate_elf.py",
+      "sha256": "f20f7977a00220619d632f35c9c04ea1a1589827ce07e9a7d40f779b57b32200",
+      "unchanged": true,
+      "source_sha256": "f20f7977a00220619d632f35c9c04ea1a1589827ce07e9a7d40f779b57b32200"
+    },
+    {
+      "source": "src/tools/x2d2_wifi_firmware/analysis/app_field_xrefs.py",
+      "destination": "src/tools/x2d2_wifi_firmware/analysis/app_field_xrefs.py",
+      "sha256": "ccfc759d2acecfb1aa29ac957ef0a549e496b1823e1b2aed4fb41e3a53b4d084",
+      "unchanged": true,
+      "source_sha256": "ccfc759d2acecfb1aa29ac957ef0a549e496b1823e1b2aed4fb41e3a53b4d084"
+    },
+    {
+      "source": "src/tools/x2d2_wifi_firmware/analysis/app_index.py",
+      "destination": "src/tools/x2d2_wifi_firmware/analysis/app_index.py",
+      "sha256": "e3be0e982bbd56ff4a23ef322f4f32e6a921b3ad4aba8b34c1c9741f57591ed9",
+      "unchanged": true,
+      "source_sha256": "e3be0e982bbd56ff4a23ef322f4f32e6a921b3ad4aba8b34c1c9741f57591ed9"
+    },
+    {
+      "source": "src/tools/x2d2_wifi_firmware/analysis/dump_app.py",
+      "destination": "src/tools/x2d2_wifi_firmware/analysis/dump_app.py",
+      "sha256": "bf9ea3e5b7d61d2a830350d88d4ab80ec5a1effa5cd69b354889c76b79f356b4",
+      "unchanged": true,
+      "source_sha256": "bf9ea3e5b7d61d2a830350d88d4ab80ec5a1effa5cd69b354889c76b79f356b4"
+    },
+    {
+      "source": "src/tools/x2d2_wifi_firmware/analysis/recover_app_methods.py",
+      "destination": "src/tools/x2d2_wifi_firmware/analysis/recover_app_methods.py",
+      "sha256": "44c4d670611b198f9360a0467e52dc3ac1874db3a35af70c68112e4015d57ce2",
+      "unchanged": true,
+      "source_sha256": "44c4d670611b198f9360a0467e52dc3ac1874db3a35af70c68112e4015d57ce2"
+    },
+    {
+      "source": "src/tools/x2d2_wifi_firmware/analysis/recover_dex_tables.py",
+      "destination": "src/tools/x2d2_wifi_firmware/analysis/recover_dex_tables.py",
+      "sha256": "f65334d1dbe2bfe58d7cf7ebcaaebe22ccbc9937577f36f9123503e1eab1c76b",
+      "unchanged": true,
+      "source_sha256": "f65334d1dbe2bfe58d7cf7ebcaaebe22ccbc9937577f36f9123503e1eab1c76b"
+    },
+    {
+      "source": "tests/x2d2_wifi_firmware/test_phone_id.py",
+      "destination": "tests/x2d2_wifi_firmware/test_phone_id.py",
+      "sha256": "eba3fa25168a061d9d7a8d96c3cb66056def8926f04a48c7adea6871fb61c681",
+      "unchanged": false,
+      "adaptation": "Add repository-relative import path for default unittest discovery; test assertions unchanged",
+      "source_sha256": "b8288f772dcff0e1394cae57e453e2bb3118b7512effaf46e4a60112a4305dea"
+    }
+  ],
+  "license": "Source license preserved at src/tools/x2d2_wifi_firmware/LICENSE.beta-original",
+  "historical_manifest": "ORIGINAL_MANIFEST.json retains original beta paths/hashes; they are provenance, not current navigation"
+}

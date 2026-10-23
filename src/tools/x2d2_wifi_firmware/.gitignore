@@ -1,0 +1,7 @@
+# Operator-generated authorization and captures must remain local.
+session.json
+phone-client-id.json
+upload-result-*.json
+*.har
+*.pcap
+*.pcapng

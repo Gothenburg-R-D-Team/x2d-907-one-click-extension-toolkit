@@ -1,0 +1,183 @@
+{
+  "case_date": "2026-10-14",
+  "case": "../../X2DII-WIFI-FIRMWARE-CASE-2026-10-14.md",
+  "vendor_inputs_and_reconstruction": {
+    "phocus_mobile_android_1.1.0": {
+      "size": 183221046,
+      "sha256": "5ee52bbb2b7a3fa708628ba251b409a551ae099697668427cf54b523328ccf68"
+    },
+    "local_x2dii_1.3.16.2_phocus": {
+      "size": 4329248,
+      "sha256": "18277451dd784610ea67561f55db7caf10073e29ae434122172715092e6b77fb"
+    },
+    "local_x2dii_1.3.16.2_camera_upgrade": {
+      "size": 1999344,
+      "sha256": "9a257bed7d5bd04298ee38e66fb986837c6edce052092c9451e5c22fd810a857"
+    },
+    "official_cim_first_4096_bytes": {
+      "size": 4096,
+      "sha256": "c4213e9e59089a10508b4df244f1f8122aaae9b8279435ead7cacc87a5ab13a7"
+    },
+    "collect_phocus_client_id.py": {
+      "size": 7131,
+      "sha256": "3df4a95a265ef798f041fa4ba6e57b40f2f269103f8f9731495199fbc475c157"
+    },
+    "collect_iphone_usb_id.py": {
+      "size": 10371,
+      "sha256": "19f84df361d5f3fb20f733cdb4226f30e609a84a4679a68f2993618f99190ed3"
+    },
+    "x2d2_reuse_session.py": {
+      "size": 15547,
+      "sha256": "43fd175e2525661ff8c14cd8859af973f1beb5db835a6cea2619feb0db7093f4"
+    },
+    "dex-reconstruction.json": {
+      "source_sha256": "9c551ee4c12f479d8868ccdf04c5ed7c4cf9464b68ff907448802c8fb86e4a8e",
+      "original_container_offset": 23180,
+      "table_shift_removed": 4096,
+      "clear_string_pointers_matched": 15011,
+      "string_count": 47751,
+      "size": 14049280,
+      "rebuilt_sha256": "481b25903a21d42b37abfd4b17286f472f65e715d7ad0db9667049debbd29f47",
+      "note": "Analysis reconstruction, not a runnable or signed App; code items may remain protected."
+    },
+    "method-reconstruction.json": {
+      "recovered_method_count": 16340,
+      "source_blob": "classes.dex.dgc2",
+      "relocation_record_size": 24,
+      "blob_offset": "0xa1f520",
+      "output_sha256": "11de261084209ea8c9cd06df16629fb28ed34c4bda385c3d94e64b0090678114",
+      "note": "Static analysis copy only; native App protection still exists and this is not a runnable app."
+    }
+  },
+  "firmware_user_reported": {
+    "filename": "X2DII_100C_v1_3_16_2(1).cim",
+    "size": 364814336,
+    "sha1": "17eb99daff82d22b53ef31aaca91dfd7f611e141",
+    "sha256": "9789d6a9843d388034bc12341ad9a97585c25cb98cf11a0da8b768399b4842f6",
+    "provenance": "Owner offline inspection output; complete CIM not independently downloaded/hashed in this task"
+  },
+  "delivered_local_package": {
+    "version": "0.2.1",
+    "sha256": "cd7d6668b4e97407d778218457198fe791cc47e4537403fb88ca5e5c47c22e30",
+    "bytes": 37332,
+    "stored_in_git": false,
+    "note": "Archive recreation recipe uses current source/document layout, not byte-identical ZIP reproduction"
+  },
+  "archival_validation": {
+    "python": "3.15.0",
+    "offline_tests": 12,
+    "opt_in_localhost_http_checks": 10,
+    "all_passed": true,
+    "analysis_helper_validation": "Syntax checked only; vendor reconstruction not rerun during archival"
+  },
+  "physical_evidence": {
+    "operator": "user on remote Windows",
+    "http_probe": "accepted by /v1/parameters",
+    "uploaded_bytes": 364814336,
+    "response_http": 204,
+    "state": "start_requested",
+    "owner_followup": [
+      "正在升级",
+      "成功了"
+    ],
+    "result_json_contents_supplied": false,
+    "before_after_version_screens_supplied": false,
+    "per_module_same_version_rewrite_proven": false,
+    "usb_collector_target_validated": false,
+    "independent_ble_target_validated": false
+  },
+  "archive_adaptations": {
+    "operational_sources": "unchanged from local case tools",
+    "analysis_helpers": "Explicit X2DII_ANALYSIS_WORKDIR replaces script-relative working directory; LLVM_OBJDUMP or PATH replaces host-specific executable path",
+    "http_checks": "Moved outside default offline tests discovery; content unchanged"
+  },
+  "files": {
+    "src/tools/x2d2_wifi_firmware/analysis/annotate_elf.py": {
+      "size": 3434,
+      "sha256": "f20f7977a00220619d632f35c9c04ea1a1589827ce07e9a7d40f779b57b32200"
+    },
+    "src/tools/x2d2_wifi_firmware/analysis/app_field_xrefs.py": {
+      "size": 863,
+      "sha256": "ccfc759d2acecfb1aa29ac957ef0a549e496b1823e1b2aed4fb41e3a53b4d084"
+    },
+    "src/tools/x2d2_wifi_firmware/analysis/app_index.py": {
+      "size": 1428,
+      "sha256": "e3be0e982bbd56ff4a23ef322f4f32e6a921b3ad4aba8b34c1c9741f57591ed9"
+    },
+    "src/tools/x2d2_wifi_firmware/analysis/dump_app.py": {
+      "size": 730,
+      "sha256": "bf9ea3e5b7d61d2a830350d88d4ab80ec5a1effa5cd69b354889c76b79f356b4"
+    },
+    "src/tools/x2d2_wifi_firmware/analysis/recover_app_methods.py": {
+      "size": 1721,
+      "sha256": "44c4d670611b198f9360a0467e52dc3ac1874db3a35af70c68112e4015d57ce2"
+    },
+    "src/tools/x2d2_wifi_firmware/analysis/recover_dex_tables.py": {
+      "size": 2045,
+      "sha256": "f65334d1dbe2bfe58d7cf7ebcaaebe22ccbc9937577f36f9123503e1eab1c76b"
+    },
+    "src/tools/x2d2_wifi_firmware/collect_iphone_usb_id.py": {
+      "size": 10371,
+      "sha256": "19f84df361d5f3fb20f733cdb4226f30e609a84a4679a68f2993618f99190ed3"
+    },
+    "src/tools/x2d2_wifi_firmware/collect_phocus_client_id.py": {
+      "size": 7131,
+      "sha256": "3df4a95a265ef798f041fa4ba6e57b40f2f269103f8f9731495199fbc475c157"
+    },
+    "src/tools/x2d2_wifi_firmware/package_case.py": {
+      "size": 2281,
+      "sha256": "24332f0b971ddf7b315ae9df225527d6f97953d0ae7a634f8f199ce96b8c00cf"
+    },
+    "src/tools/x2d2_wifi_firmware/validation/check_http_simulation.py": {
+      "size": 8413,
+      "sha256": "83d13ea95dd16b4f71df9a597d789a121413bdd3f8b2f62f0a79f29eb16a12f4"
+    },
+    "src/tools/x2d2_wifi_firmware/x2d2_reuse_session.py": {
+      "size": 15547,
+      "sha256": "43fd175e2525661ff8c14cd8859af973f1beb5db835a6cea2619feb0db7093f4"
+    },
+    "src/tools/x2d2_wifi_firmware/x2d2_wifi_upgrade.py": {
+      "size": 19059,
+      "sha256": "1b9e0d4cab7a6144502326058d17d72ede8e42317294d6c922fbd78fc847aba9"
+    },
+    "tests/x2d2_wifi_firmware/test_phone_id.py": {
+      "size": 8776,
+      "sha256": "b8288f772dcff0e1394cae57e453e2bb3118b7512effaf46e4a60112a4305dea"
+    }
+  },
+  "failure_origin_sources": {
+    "owner_report_before_crash": {
+      "sha256": "25b6ece7865ecd034bafc9bf157111992976ee8423a27553d85bf1b36859ab6a",
+      "size": 5320,
+      "stored_in_git": false
+    },
+    "owner_report_post_crash_attempts": {
+      "sha256": "3482847caac78501e4606db8af11c59c45c5afb500a3b30ddf84a74a7943e5fc",
+      "size": 5942,
+      "stored_in_git": false
+    },
+    "earlier_asset_review": {
+      "sha256": "55ad07f425e240203343739e8f48481510f51ab1a3f13ac2270f21f8818f2fa8",
+      "size": 6915,
+      "stored_in_git": false
+    },
+    "earlier_recovery_plan": {
+      "sha256": "9875c243b011beb5c69dc7757da86f61c55de5fc7a27c8ae66403bfa9c190a8e",
+      "size": 12717,
+      "stored_in_git": false
+    },
+    "earlier_winusb_review": {
+      "sha256": "988bf92510d1101674d9700158460a3e7ef8794549aa14125a320d067415421e",
+      "size": 13954,
+      "stored_in_git": false
+    }
+  },
+  "failure_origin": {
+    "reported_trigger": "WorkBuddy persistent time-watermark preload deployment, 2026-10-13",
+    "precise_runtime_crash_cause": "unconfirmed",
+    "earlier_rollback_executed": false,
+    "pre_recovery_ordinary_usb_version": "1.3.16.2",
+    "evidence_note": "Owner-provided AI summaries, later static source/asset review and owner-operated remote diagnostics have distinct evidence levels"
+  },
+  "case_organization": "One complete bilingual case contains failure origin, unsuccessful diagnostic recovery and successful firmware recovery; standalone origin document removed."
+}

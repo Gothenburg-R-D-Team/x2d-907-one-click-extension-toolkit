@@ -4,6 +4,14 @@
 
 An independent, experimental camera-extension utility for the first-generation **X2D 100C / 907X & CFV 100C**, running stock firmware **4.2.0**. Free to download and use.
 
+## 案例与恢复教程 / Cases and recovery guides
+
+[**浏览案例库 / Browse all cases**](docs/cases/README.md) · [**X2D II Wi-Fi 原厂固件恢复教程 / X2D II firmware recovery**](docs/cases/2026-10-14-x2d-ii-wifi-firmware-recovery/README.md)
+
+案例库按日期、机型与问题分别归档，包含原理、适用条件、操作步骤、脚本和验证结果，后续案例会持续加入。首个案例提供 Windows + 已授权 iPhone 的完整恢复流程，以及可打包下载的独立源码。**X2D II 案例工具独立于一代桌面安装器；已记录一次用户操作成功，不代表支持所有故障或固件版本。**
+
+Each case has its own explanation, requirements, instructions, tools and evidence. The first guide provides the Windows + already-authorized iPhone recovery procedure and a portable source-package recipe. **The X2D II case tools are separate from the first-generation desktop installer; one reported recovery does not establish support for every fault or firmware version.**
+
 ## 升级前必读 / Read before upgrading
 
 **相机已安装本工具扩展时，升级软件前务必、务必、务必先使用原电脑、原软件版本执行“一键恢复原状”，确认恢复完成后，再升级电脑端软件并重新安装相机扩展。** 恢复完成前，不要卸载、覆盖或删除原软件及备份。同版本跨电脑恢复的支持，不代表可以任意跨版本恢复。
