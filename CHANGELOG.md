@@ -11,7 +11,7 @@
 - 新增中英双语全球用户风险告知与免责声明，以及供接入的安装／更新／恢复提示文案；保留适用法定权利及各发行版原有许可。
 - 已安装相机扩展的用户，在手动或 App 内升级电脑端软件前，务必、务必、务必先使用原电脑原软件版本恢复。说明同版本跨电脑恢复的支持、升级顺序及原环境不可用时的处理，并同步首页、升级指南及最新版发行说明。本次仅更新文档，不改变 App、安装包或相机。
 
-## [0.5.6 · Restore fix 1](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) — 2026-10-16
+## [0.5.6 · Restore fix 1](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) — 2026-10-16
 
 - Replace the earlier 0.5.6 Mac/Windows archives with Restore fix 1 and refresh checksums and validation metadata. Wait for capture, leave continuous AF through the stock interface and verify idle before the existing guarded withdrawal. Preserve exact camera payloads, known recovery catalogues, backups and incomplete-operation records; report R01–R12 diagnostics and avoid automatic redispatch after a lost USB reply.
 - Recognized older installations can restore directly without installing newer features. Pass 380 of 382 offline regressions (two stock-region simulations unavailable), additional UI/package checks, 49 recovery regressions, 1,369 recognition combinations and 108 host/file-restore fixture cases. Physical-camera and native Windows/driver validation remain pending.
@@ -20,7 +20,7 @@
 - 已识别旧版可直接恢复，无需安装新版功能。382 项离线回归中 380 项通过（两项原厂区域仿真不可用），另有界面／解压包检查、49 项恢复回归、1,369 个识别组合、108 个桌面／文件恢复替身用例通过；相机和 Windows 原生／驱动实测待完成。
 - 眼部布局拒绝及其连带阻止追踪自动对焦开启的问题尚未解决。继续手动预发布，稳定更新通道不变；公开源码与安装包构建源码仍分别说明。
 
-## [0.5.6](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) — 2026-10-15
+## [0.5.6](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) — 2026-10-15
 
 - Publicly distribute the verified macOS Universal and Windows x64 0.5.6 packages, with SHA-256 checksums and their validation record. Keep 0.4.17 as the stable updater entry. The new public release is marked as a prerelease and is downloaded manually.
 - Limit Pixel Shift to verified X2D 100C cameras and require manually selected RAW, excluding RAW+JPEG. Disable non-RAW settings without changing the photo format automatically. Both desktop apps include the full three-language version 1.1 notice in a larger dialog, with end-of-document and explicit acknowledgement gates; Restore uses a separate notice.
@@ -31,7 +31,7 @@
 - 发布包构建记录为 364 项离线回归零跳过、Mac 原生界面与解压包核验，其中 Windows 解压包回归 112 项；Windows 原生、真实驱动和相机验证仍待完成。
 - 同步 README 的主要下载、功能说明、升级顺序与 Mac 原生声明截图，移除当前指南中的旧测试包链接及过时的 RAW Bug／不含人眼识别表述。本次文档更新不重建或替换安装包、不操作相机，也不公开私有构建源码；公开源码与安装包构建源码仍分别说明。
 
-## [0.5.0 test builds — macOS Test3 / Windows Test4](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.0-pixel-shift-test) — 2026-10-15
+## [0.5.0 test builds — macOS Test3 / Windows Test4](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.0-pixel-shift-test) — 2026-10-15
 
 - Publish the existing macOS Universal Test3 and Windows x64 Test4 packages as a prerelease, preserving the original archives and adding SHA-256 checksums. Keep 0.4.17 as the stable release. Recheck archive SHA-256, byte counts and ZIP CRC for publication; historical build checks and device-validation limits are stated separately in the release notes.
 - Document the known Pixel Shift bug below both platform downloads: photo format changes to RAW and does not automatically return to its previous setting; a fix is in progress. No application rebuild or bug fix is included in this publication.
@@ -43,7 +43,7 @@
 - Replace fundraising entry points with invitations to discuss findings, open Issues and submit Pull Requests. This is a documentation-only update; published application packages and license terms are unchanged.
 - 将项目入口改为欢迎交流、通过 Issue 反馈问题与建议，以及提交 PR 改进代码、文档和测试；仅更新文档，已发布软件包与许可条款不变。
 
-## [0.4.17](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17) — 2026-10-10
+## [0.4.17](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.17) — 2026-10-10
 
 - Provide three selectable Focus Speed levels, giving older-lens users a gentler acceleration option: Low 1.5/1.5/1.5, Medium (default) 2.5/2/1.5, High 3/3/2 for Type 0/1/2. These are motor-control multipliers, not measured overall autofocus gains or a lens-safety guarantee.
 - Use the original vertical scrolling selector with orange highlighting. Keep speed selection gray and unavailable when acceleration is off; remember the selected level across disabling and restart, and clear it on Restore.
@@ -59,13 +59,13 @@
 - Keep 0.4.12 as the latest stable public release. Describe 0.5.0 only as a private beta; its latest development and updates remain in a separate private repository. Update the Chinese download links to 0.4.12. Documentation only; no application or camera changes.
 - 保持 0.4.12 为公开库最新稳定版；0.5.0 仅描述为内测版，最新开发与更新留在独立私库。修正中文下载链接为 0.4.12。本次只修改说明，不改变软件或相机功能。
 
-## [0.4.12](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.12) — 2026-10-06
+## [0.4.12](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.12) — 2026-10-06
 
 - Keep the original focus popup, model objects, liveview indicator and control-screen badge while the master or AF-C switch is off. Stop replacing stock focus compiled caches/AOT tables at GUI startup. Load the private three-mode popup and reversible icon bindings only when both switches are on; update AF-S/AF-C/MF and disabled icons together, and restore the original dynamic bindings when disabled.
 - Preserve the exact 0.4.11 manifest and all language bytes for recognized upgrade/restoration of every feature selection. Add only the private focus popup to the exact extension target allowlist.
 - Publish Mac universal and Windows x64 packages. All 202 offline tests pass with local payloads; clean source passes 172 and skips 30. Qt 6.4.1 checks verify three languages, the actual two-switch gate, original stock popup/indicator sources, repeated switching, all mode/disabled icons and restored dynamic bindings. Mac native launch, 76 Mach-O and 38 PE dependency audits, package/recovery-byte checks and updater extraction checks pass. Camera installation/visual behavior and native Windows execution remain pending.
 
-## [0.4.11](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.11) — 2026-10-06
+## [0.4.11](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.11) — 2026-10-06
 
 - Implement the confirmed desktop design on Mac and Windows: a log card on the left, independently selectable feature rows with dividers, a selection count, a gray installation summary and matching rounded controls. Both use a shared layout/color specification; Settings retains rounded language selection.
 - Carry selected AF-C, focus acceleration and rear brightness through the installation manifest and boot configuration. Hide unselected camera rows, reject unavailable worker commands, omit the brightness runtime when unselected, and leave stock focus caches/resources untouched when AF-C is unselected. Preserve the exact 0.4.9/0.4.10 recovery manifest and language bytes.
@@ -73,7 +73,7 @@
 - Publish Mac universal and Windows x64 packages. 201 tests pass with local payloads; a clean source copy passes 172 and skips 29. Native Mac selection/Settings checks, nine Windows shared-layout previews, three-language/seven-mask Qt page checks, package/dependency/recovery audits and updater extraction checks pass. Native Windows execution and camera installation/restart/menu loading remain pending.
 
 
-## [0.4.10](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.10) — 2026-10-06
+## [0.4.10](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.10) — 2026-10-06
 
 - Strengthen the shared Mac/Windows preflight: verify stock focus/display binaries and the camera-service startup configuration, check both stock startup configurations and orphan extension targets before a first install, and verify a recognized installation's backup/configuration hashes, file ledger and actual payload hashes before accepting its service or menu receipt. Unknown modifications stop before ADB setup, upload or reboot.
 - Report a modified camera GUI as a non-stock configuration with instructions to restore using the original modification tool, rather than a generic USB communication error. The toolkit does not overwrite or restore unknown modifications.
@@ -86,14 +86,14 @@
 - 在 README 顶部突出最新版下载及 PayPal／支付宝自愿赞助入口，与研究仓库保持一致。保留平台下载链接、使用说明和验证范围，已发布安装包不变。
 
 
-## [0.4.9](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.9) — 2026-10-06
+## [0.4.9](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.9) — 2026-10-06
 
 - Port the reviewed focus popup and liveview mode icons into the existing App preload route. Use the second-generation focus icons, popup frame size and spacing while retaining first-generation fonts and borders. The popup adapts to AF-S/MF or AF-S/AF-C/MF according to the AF-C availability switch; installing or enabling the extension does not select AF-C.
 - Preserve Simplified Chinese, Traditional Chinese and English headings and mode captions. Retain the accepted AF badge appearance in liveview, including the S without an extra white background.
 - Keep public installation within the existing extension file targets and startup configuration changes. Reject vendor/raw partition targets and stock GUI replacement. Keep the exact 0.4.8 manifests and all language bytes for recognized upgrade/restoration.
 - Publish Mac universal and Windows x64 packages. 184 tests pass with private payloads; clean source passes 155 and skips 29. Qt 6.4.1 checks load the new compiled popup from an empty-source resource and verify three languages, 18 private icon aliases, two/three-mode switching and mode-selection guards. Both packages pass dependency and archive audits; the Mac ZIP extraction also passes signature/runtime checks. The new App preload route has not been tested on a physical camera; the separately accepted direct-GUI installation does not establish that result.
 
-## [0.4.8](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.8) — 2026-10-05
+## [0.4.8](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.8) — 2026-10-05
 
 - Replace the desktop lens-change warning with guidance that focus acceleration works by tripling lens motor speed and is not recommended for older lenses. Update both bundled instructions and the README in Simplified Chinese, Traditional Chinese and English.
 - Rename the Chinese focus-speed label to 对焦加速 / 對焦加速; keep the English names unchanged. Add the same guidance below the camera switch using the stock SettingDescription font, gray appearance and wrapping layout.
@@ -105,13 +105,13 @@
 
 - Put direct Windows and macOS 0.4.7 installer downloads at the top of the README and release notes, with platform requirements and extraction guidance. Published application archives are unchanged.
 
-## [0.4.7](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.7) — 2026-10-05
+## [0.4.7](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.7) — 2026-10-05
 
 - Add Traditional Chinese as a third language in Mac and Windows Settings. Desktop buttons, guidance, status, logs and remembered language follow the selection.
 - Install hashed Traditional Chinese camera menu overlays, including feature labels and camera-side messages. Existing Simplified Chinese and English installs remain recognizable for upgrade and restoration. Switching camera language requires Connected → Install and, for a different existing installation, restore/reinstall confirmation in the selected language.
 - Package the new catalog and camera overlays in both desktop distributions. Offline tests pass with local payloads; native Windows rendering and installation on a physical camera still require validation.
 
-## [0.4.6](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.6) — 2026-10-04
+## [0.4.6](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.6) — 2026-10-04
 
 - Fix Windows private ADB startup: use the supported `tcp:localhost:<port>` listener while probing IPv4 loopback directly. The numeric listen-host form used in 0.4.5 was rejected by ADB before camera installation started.
 - Distinguish unsupported listen parameters, Windows access refusal and port conflicts instead of classifying every smart-socket failure as a network permission issue. Keep private-server ownership and cleanup.
@@ -119,7 +119,7 @@
 - 169 offline tests passed with local inputs; clean source: 143 passed, 26 skipped. Mac dependency, 38 Windows PE and archive checks passed; see [validation details](docs/VALIDATION.md).
 - Add an Alipay donation QR code alongside PayPal in the English/Chinese README and link the donation section from the repository Sponsor button. Documentation only; published application packages are unchanged.
 
-## [0.4.5](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.5) — 2026-10-04
+## [0.4.5](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.5) — 2026-10-04
 
 - Allow the Windows window to close during automatic or manual update checks. Cancel and reap only the owned read-only check process, including checks that have not started yet; retain exit protection during camera/driver operations and update installation.
 - Use a foreground Windows ADB server on a private loopback socket for camera install/restore. Reap it at operation completion or failure, with Windows job-object cleanup if the owner crashes. Other applications' ADB servers are not stopped.
@@ -127,14 +127,14 @@
 - 166 offline tests passed with local inputs; clean source: 140 passed, 26 skipped. Package audits passed. Native Windows shutdown, directory movement and abnormal-owner cleanup still need Windows validation.
 - If an older version already left its ADB process running, close the app and finish camera work before ending only `adb.exe` whose executable location is inside that old toolkit folder, or restart Windows before upgrading.
 
-## [0.4.4](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.4) — 2026-10-04
+## [0.4.4](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.4) — 2026-10-04
 
 - Align the Windows interface with Mac: a white layout, rounded feature card with vector icons, gray descriptions, blue primary action, rounded controls and consistent typography. Restyle Settings and reinstall confirmation while retaining native input/accessibility and operation gates.
 - Scale fonts and layout for each monitor, scroll the main page on short displays and reveal controls reached by keyboard.
 - Publish Windows x64 and Mac universal packages at 0.4.4. The Mac interface and camera payload are unchanged from 0.4.3; an existing 0.4.3 camera extension does not need reinstallation.
 - 153 offline tests passed with local inputs; source-only: 127 passed, 26 skipped. Six bilingual layout previews and package audits passed. Native Windows rendering, accessibility and monitor scaling still require Windows validation; see [validation details](docs/VALIDATION.md).
 
-## [0.4.3](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.3) — 2026-10-04
+## [0.4.3](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.3) — 2026-10-04
 
 - Replace the project license for subsequent versions with X2D/907 Noncommercial Distribution License 1.0: allow professional photography and free sharing/modification, prohibit software sales and paid installation without separate permission, and retain prior MIT and third-party permissions. Include the project license and third-party notices in newly built desktop packages; published archives remain unchanged.
 - Add Auto Rear Screen Brightness to the Mac/Windows feature overview in both languages. Match the camera hint to the stock switch-description font, opacity and spacing, with wrapping for English.
@@ -150,7 +150,7 @@
 
 English first; [中文更新日志](#中文更新日志) follows below. Versions are listed newest first. Documentation-only changes do not imply a new application package.
 
-## [0.4.2](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.2) — 2026-10-04
+## [0.4.2](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.2) — 2026-10-04
 
 ### Added
 
@@ -169,7 +169,7 @@ English first; [中文更新日志](#中文更新日志) follows below. Versions
 - Add this changelog and links from the README. Future releases will record changes here.
 - Add a PayPal support link to the repository Sponsor button and the English/Chinese README.
 
-## [0.4.1](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.1) — 2026-10-03
+## [0.4.1](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.1) — 2026-10-03
 
 ### Fixed
 
@@ -183,7 +183,7 @@ English first; [中文更新日志](#中文更新日志) follows below. Versions
 - Install 0.4.1 manually when upgrading from 0.3.3 or 0.4.0. Future desktop updates can use the update button. Updating the camera extension still requires **Connected → Install**.
 - 122 offline tests passed with local inputs; a clean source checkout passes 97 and skips 25 tests requiring excluded inputs. Mac package replacement, backup and relaunch were checked. Windows self-update and the camera-side receipt fix still require device/user confirmation. See [validation details](docs/VALIDATION.md).
 
-## [0.4.0](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.0) — 2026-10-03
+## [0.4.0](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.0) — 2026-10-03
 
 ### Added
 
@@ -211,20 +211,20 @@ English first; [中文更新日志](#中文更新日志) follows below. Versions
 
 # 中文更新日志
 
-## [0.4.12](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.12) — 2026-10-06
+## [0.4.12](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.12) — 2026-10-06
 
 - 当“耍起功能”或 AF-C 开关关闭时，保留原厂对焦弹窗、列表对象、实时取景指示和主页图标。启动时不再替换原厂对焦缓存；仅在两个开关都开启时加载三模式弹窗并同步 AF-S／AF-C／MF 及灰色图标，关闭后恢复原厂动态绑定。
 - 保留 0.4.11 的精确清单和三种语言字节，支持所有已选功能组合的升级与恢复；安装白名单仅新增私有对焦弹窗。
 - 发布 Mac 通用和 Windows x64 安装包。完整离线测试 202 项通过；干净源码 172 项通过、30 项跳过。Qt 6.4.1 验证三种语言、实际双开关逻辑、原厂弹窗与取景控件源文件、反复切换、全部模式及灰色图标、动态绑定恢复。Mac 原生启动、76 个 Mach-O／38 个 PE 依赖审计、安装包与恢复字节、更新解压检查通过。相机安装及视觉行为、Windows 原生运行仍待验证。
 
-## [0.4.11](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.11) — 2026-10-06
+## [0.4.11](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.11) — 2026-10-06
 
 - Mac 与 Windows 正式采用已确认的界面：左侧日志卡片、可独立勾选的功能行与分隔线、选择数量、浅灰安装摘要和统一圆角按钮。两端共用尺寸与配色配置，设置里的语言选择保持圆角。
 - 选择结果进入安装记录及开机配置；未选择的相机功能行隐藏，服务拒绝开启未安装功能。不选择自动亮度时不安装亮度运行库；不选择 AF-C 时保留原厂对焦缓存及资源。保留 0.4.9／0.4.10 的精确恢复记录和三种语言字节。
 - 针对用户反馈的 `FOCUS_RESOURCE_API_MISSING` 补上原厂 Qt 本地静态函数定位及代码指纹核验。指纹不匹配继续停止加载。用户反馈的失败安装不能视为成功，新预载修复仍待实机验证。
 - 发布 Mac 通用与 Windows x64 包。201 项本地载荷测试通过，纯源码 172 项通过、29 项跳过。Mac 原生勾选与设置、Windows 九份共用布局、三种语言七种掩码的 Qt 功能行、安装包依赖／恢复文件／更新解压检查通过；Windows 原生运行与相机安装、重启和实际菜单仍待验证。
 
-## [0.4.10](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.10) — 2026-10-06
+## [0.4.10](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.10) — 2026-10-06
 
 - 加强 Mac／Windows 共用的安装前检查：核验原厂对焦、显示程序与 camera-service 启动配置；首次安装前检查两份原厂启动配置及残留扩展文件；已有安装在接受服务与菜单回执前，核验已识别版本的备份、启动配置、文件记录和实际文件哈希。未知修改会在启用 ADB、上传或重启前停止操作。
 - 修改过的相机 GUI 改为明确提示非原厂状态，并提示先用原修改工具恢复，不再笼统显示 USB 通信错误。本应用不会覆盖或恢复未知修改。
@@ -238,7 +238,7 @@ English first; [中文更新日志](#中文更新日志) follows below. Versions
 - 公开版只允许现有扩展文件和启动配置的修改，拒绝 vendor/原始分区及原厂 GUI 替换。保留 0.4.8 精确清单与全部语言字节，用于识别旧版、升级及恢复。
 - 发布 Mac 通用版和 Windows x64 安装包。带本地载荷的 184 项测试通过；纯源码为 155 项通过、29 项跳过。Qt 6.4.1 从空源码资源加载新编译弹窗，检查三种语言、18 个私有图标、两项/三项切换及模式选择保护。两份安装包的依赖及包内文件检查通过，Mac 解压后的签名和运行库检查也通过。新的 App 预载路径尚未在相机上验证；此前直接替换 GUI 的实机验收不能替代这项验证。
 
-## [0.4.8](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.8) — 2026-10-05
+## [0.4.8](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.8) — 2026-10-05
 
 - 删除电脑端换镜头警告，改为“对焦加速通过将镜头转速提高三倍实现，不建议老镜头用户开启。”；同步简体、繁体、英文、包内说明及 README。
 - 中文名称改为“对焦加速 / 對焦加速”，英文名称不变；相机开关下方加入同样的提示，使用原厂说明字号、灰度和自动换行布局。
@@ -250,13 +250,13 @@ English first; [中文更新日志](#中文更新日志) follows below. Versions
 
 - 在 README 与发布说明开头提供 Windows 和 Mac 0.4.7 安装包直达链接，写明系统要求及完整解压提示；已发布的软件压缩包保持不变。
 
-## [0.4.7](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.7) — 2026-10-05
+## [0.4.7](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.7) — 2026-10-05
 
 - Mac 与 Windows 设置页新增“繁體中文”，界面按钮、引导、状态、日志和保存的语言选择会一起切换。
 - 安装时写入经过哈希校验的繁体相机菜单文件，覆盖功能名称和相机内提示。已安装的简体中文、英文版本仍可识别并恢复。改变相机语言需点击“已连接 → 一键安装”；若当前已安装其他语言，会先按目标语言提示恢复和重新安装。
 - 双平台安装包包含新翻译表与相机文件；带本地载荷的离线测试已通过。Windows 原生显示和相机实装仍待验证。
 
-## [0.4.6](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.6) — 2026-10-04
+## [0.4.6](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.6) — 2026-10-04
 
 - 修复 Windows 独立 ADB 启动：监听参数使用 ADB 支持的 `tcp:localhost:<端口>`，就绪检查仍直连本机 IPv4。0.4.5 使用的数字监听地址被 ADB 拒绝，此时相机安装尚未开始。
 - 区分监听参数不兼容、Windows 拒绝访问和端口冲突，不再把所有 smart-socket 错误误报为网络权限问题；保留独立进程及退出清理。
@@ -264,7 +264,7 @@ English first; [中文更新日志](#中文更新日志) follows below. Versions
 - 完整离线测试 169 项通过；纯源码为 143 项通过、26 项跳过；Mac 依赖、38 份 Windows PE 和安装包检查通过，详见 [验证说明](docs/VALIDATION.md)。
 - 在中英文 README 的 PayPal 赞助链接旁加入支付宝收款码，并从仓库赞助按钮链接到捐赠说明。仅修改文档，已发布安装包保持不变。
 
-## [0.4.5](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.5) — 2026-10-04
+## [0.4.5](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.5) — 2026-10-04
 
 - Windows 自动或手动检查更新期间允许关闭窗口，取消并回收本次只读检查进程，也覆盖关闭时检查尚未启动的情况；相机/驱动操作及软件更新安装期间仍保留退出保护。
 - Windows 相机安装/恢复改用独立本机端口上的前台 ADB 服务，操作完成或失败后回收；所属进程异常退出时由 Windows Job Object 清理，不结束其他软件的 ADB 服务。
@@ -272,14 +272,14 @@ English first; [中文更新日志](#中文更新日志) follows below. Versions
 - 完整离线测试 166 项通过；纯源码为 140 项通过、26 项跳过，安装包校验通过；Windows 原生退出、目录移动及异常退出清理仍待 Windows 验证。
 - 若旧版已经残留 ADB，先关闭窗口并等待相机操作完成，再在任务管理器确认文件位置后仅结束该旧软件目录下的 `adb.exe`，或重启 Windows 后升级。
 
-## [0.4.4](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.4) — 2026-10-04
+## [0.4.4](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.4) — 2026-10-04
 
 - Windows 界面对齐 Mac：白色布局、带图标的圆角功能卡片、灰色说明、蓝色主按钮及统一字体间距；设置页和重新安装确认也同步调整，保留原生输入、可访问性及操作门控。
 - 按每个显示器的 DPI 缩放字体和布局，小屏幕可滚动并自动显示键盘导航选中的控件。
 - 发布 0.4.4 Windows x64 与 Mac 通用安装包。Mac 界面及相机载荷与 0.4.3 相同，已安装 0.4.3 相机扩展无需重新安装。
 - 完整离线测试 153 项通过；纯源码为 127 项通过、26 项跳过。六份中英文布局预览和安装包校验通过；Windows 原生显示、可访问性和显示器缩放仍待 Windows 验证，详见 [验证说明](docs/VALIDATION.md)。
 
-## [0.4.3](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.3) — 2026-10-04
+## [0.4.3](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.3) — 2026-10-04
 
 - 后续版本改用 X2D/907 非商业分发许可证 1.0：允许职业摄影、修改和免费分享；出售软件、改版及收费安装须另获授权。保留历史 MIT 和第三方许可，新构建的桌面包附带项目许可与第三方说明，已发布包保持不变。
 - Mac/Windows 中英文功能介绍新增后屏自动亮度；相机引导文字复用原厂开关说明的字号、灰度和间距，英文自动换行。
@@ -295,7 +295,7 @@ English first; [中文更新日志](#中文更新日志) follows below. Versions
 
 版本按从新到旧排列。仅修改文档不代表发布了新安装包。
 
-## [0.4.2](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.2) — 2026-10-04
+## [0.4.2](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.2) — 2026-10-04
 
 ### 新增
 
@@ -314,7 +314,7 @@ English first; [中文更新日志](#中文更新日志) follows below. Versions
 - 新增本更新日志及 README 入口，后续版本在此记录改动。
 - 在仓库赞助按钮及中英文 README 中加入 PayPal 赞助链接。
 
-## [0.4.1](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.1) — 2026-10-03
+## [0.4.1](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.1) — 2026-10-03
 
 ### 修复
 
@@ -328,7 +328,7 @@ English first; [中文更新日志](#中文更新日志) follows below. Versions
 - 从 0.3.3 或 0.4.0 升级时，先手动安装 0.4.1；后续电脑端更新可使用更新按钮。相机扩展仍需点击 **已连接 → 一键安装** 更新。
 - 含本地输入的离线测试 122 项通过；纯源码环境为 97 项通过、25 项因缺少私有输入跳过。Mac 应用替换、备份及重开已验证；Windows 软件自动更新和相机菜单回执修复仍待实机或用户确认。详见 [验证说明](docs/VALIDATION.md)。
 
-## [0.4.0](https://github.com/radium-wang/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.0) — 2026-10-03
+## [0.4.0](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.4.0) — 2026-10-03
 
 ### 新增
 
