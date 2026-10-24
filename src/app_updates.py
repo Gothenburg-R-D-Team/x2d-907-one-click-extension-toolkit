@@ -18,7 +18,7 @@ import urllib.request
 import zipfile
 from pathlib import Path, PurePosixPath
 
-REPO = 'radium-wang/x2d-907-one-click-extension-toolkit'
+REPO = 'Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit'
 API = 'https://api.github.com/repos/' + REPO + '/releases/latest'
 BASE = 'x2d-907一键扩展功能-工具包'
 ARCHIVE_BASE = 'x2d-907-extension-toolkit'
