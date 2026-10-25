@@ -2,10 +2,12 @@
 
 ## Unreleased
 
+- Reorganize the public README into separate Chinese and English sections with matching seven-part navigation. Present 0.5.6 Restore fix 1 as the latest public prerelease and remove the older stable-version recommendation from the homepage; preserve download links, recovery guidance, known limitations and license summaries. Documentation only; release assets and update behavior are unchanged.
 - Add an expandable case library and README entry, with the 2026-10-14 X2D II Wi-Fi firmware recovery migrated from beta. Include complete English/Chinese user instructions, unchanged operational scripts, original licensing/provenance, offline tests and a portable source-package recipe. Keep HTTP acceptance separate from installation completion; optional USB/BLE methods remain device-unverified. No desktop release or camera operation is performed.
 - Adopt X2D/907 No-Charge Distribution License 1.1 and project/contribution policies. Remove the written-permission exception for software charges, specify paid-feature restrictions and corresponding-source duties, and preserve commercial photography, historical permissions and contributor ownership. No retroactive relicensing is implied; existing release packages are unchanged.
 - Add English and Chinese global risk notices, plus proposed installation/update/recovery prompt text. Preserve applicable statutory rights and each release's existing license.
 - Require users with an installed camera extension to restore it using the original computer and original Software version before either manual or in-app desktop upgrades. Explain same-version recovery on another computer, the required upgrade sequence and what to do if the original setup is unavailable. Update the README, upgrade guide and latest release notes. Documentation only; no application, installer or camera changes.
+- 公开 README 拆分为中文、英文两个部分，均按项目简介、安装（升级）前必读、功能介绍、下载安装包、案例与恢复教程、欢迎交流、许可七个章节组织。将 0.5.6 恢复修复版 1 标为最新公开预发布版，移除首页的旧稳定版推荐，保留下载、恢复要求、已知限制与许可说明。本次仅调整文档，不修改发行附件或更新行为。
 - 新增可扩展案例库及 README 入口，将 beta 中 2026-10-14 的 X2D II Wi-Fi 固件恢复案例公开归档，提供中英文完整操作指南、原样迁移的操作脚本、原许可与来源记录、离线测试及独立源码打包方法。区分 HTTP 接收与安装完成；USB／BLE 备用路线仍未实机验证。本次不发布桌面版本，不操作相机。
 - 采用 X2D/907 免费分发许可证 1.1、项目政策和贡献规则；删除软件收费的书面例外，明确付费功能限制和对应源码义务，保留商业摄影、历史许可和贡献者版权。不追溯改变既有授权，不修改既有安装包。
 - 新增中英双语全球用户风险告知与免责声明，以及供接入的安装／更新／恢复提示文案；保留适用法定权利及各发行版原有许可。
