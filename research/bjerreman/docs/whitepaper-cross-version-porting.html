@@ -1,0 +1,830 @@
+<title>Cross-Version Mod Porting</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #fafaf9;
+    --fg: #1c1917;
+    --fg-muted: #78716c;
+    --surface: #ffffff;
+    --surface-alt: #f5f5f4;
+    --border: #e7e5e4;
+    --accent: #0e7490;
+    --accent-light: #ecfeff;
+    --accent-border: #a5f3fc;
+    --danger: #b91c1c;
+    --danger-bg: #fef2f2;
+    --danger-border: #fecaca;
+    --success: #15803d;
+    --success-bg: #f0fdf4;
+    --warn: #a16207;
+    --warn-bg: #fefce8;
+    --warn-border: #fde68a;
+    --code-bg: #f5f5f4;
+    --code-fg: #292524;
+    --link: #0e7490;
+    --heading: #0c0a09;
+    --diff-add: #dcfce7;
+    --diff-del: #fee2e2;
+    --diff-add-fg: #166534;
+    --diff-del-fg: #991b1b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0c0a09;
+      --fg: #e7e5e4;
+      --fg-muted: #a8a29e;
+      --surface: #1c1917;
+      --surface-alt: #292524;
+      --border: #44403c;
+      --accent: #22d3ee;
+      --accent-light: #083344;
+      --accent-border: #155e75;
+      --danger: #f87171;
+      --danger-bg: #450a0a40;
+      --danger-border: #7f1d1d;
+      --success: #4ade80;
+      --success-bg: #05290940;
+      --warn: #facc15;
+      --warn-bg: #422006;
+      --warn-border: #854d0e;
+      --code-bg: #292524;
+      --code-fg: #d6d3d1;
+      --link: #22d3ee;
+      --heading: #fafaf9;
+      --diff-add: #052e1640;
+      --diff-del: #450a0a40;
+      --diff-add-fg: #86efac;
+      --diff-del-fg: #fca5a5;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0c0a09;
+    --fg: #e7e5e4;
+    --fg-muted: #a8a29e;
+    --surface: #1c1917;
+    --surface-alt: #292524;
+    --border: #44403c;
+    --accent: #22d3ee;
+    --accent-light: #083344;
+    --accent-border: #155e75;
+    --danger: #f87171;
+    --danger-bg: #450a0a40;
+    --danger-border: #7f1d1d;
+    --success: #4ade80;
+    --success-bg: #05290940;
+    --warn: #facc15;
+    --warn-bg: #422006;
+    --warn-border: #854d0e;
+    --code-bg: #292524;
+    --code-fg: #d6d3d1;
+    --link: #22d3ee;
+    --heading: #fafaf9;
+    --diff-add: #052e1640;
+    --diff-del: #450a0a40;
+    --diff-add-fg: #86efac;
+    --diff-del-fg: #fca5a5;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.7;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 2rem;
+  }
+
+  .container { max-width: 72ch; margin: 0 auto; }
+
+  h1, h2, h3, h4 {
+    color: var(--heading);
+    font-weight: 700;
+    text-wrap: balance;
+    line-height: 1.25;
+  }
+  h1 { font-size: 1.75rem; margin: 0 0 0.5rem; letter-spacing: -0.02em; }
+  h2 { font-size: 1.35rem; margin: 2.5rem 0 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--border); }
+  h3 { font-size: 1.1rem; margin: 2rem 0 0.75rem; }
+  h4 { font-size: 0.95rem; margin: 1.5rem 0 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-muted); }
+
+  .subtitle { color: var(--fg-muted); font-size: 0.95rem; margin: 0 0 0.25rem; }
+  .version {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid var(--accent-border);
+    padding: 0.15em 0.5em;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+
+  p { margin: 0.75rem 0; }
+  a { color: var(--link); }
+
+  code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85em;
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 0.15em 0.35em;
+    border-radius: 3px;
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    margin: 1rem 0;
+    border: 1px solid var(--border);
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  .callout {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.25rem 0;
+    font-size: 0.92rem;
+  }
+  .callout-danger {
+    background: var(--danger-bg);
+    border-left-color: var(--danger);
+  }
+  .callout-warn {
+    background: var(--warn-bg);
+    border-left-color: var(--warn);
+  }
+  .callout-success {
+    background: var(--success-bg);
+    border-left-color: var(--success);
+  }
+  .callout strong { display: block; margin-bottom: 0.25rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  th { font-weight: 600; color: var(--heading); background: var(--surface-alt); }
+  td code { font-size: 0.82em; }
+
+  .matrix {
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+  .matrix table { min-width: 580px; }
+  .matrix .yes { color: var(--success); font-weight: 600; }
+  .matrix .no { color: var(--danger); }
+  .matrix .partial { color: var(--warn); font-weight: 500; }
+
+  .technique-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+  }
+  .technique-card h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .technique-card .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .technique-card .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.15em 0.5em;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: var(--surface-alt);
+  }
+  .technique-card .tag.locked { border-color: var(--danger); color: var(--danger); }
+  .technique-card .tag.portable { border-color: var(--success); color: var(--success); }
+  .technique-card .tag.semi { border-color: var(--warn); color: var(--warn); }
+
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.35rem 0; }
+
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .toc h4 { margin: 0 0 0.75rem; text-transform: none; letter-spacing: 0; color: var(--heading); font-size: 0.95rem; }
+  .toc ol { padding-left: 1.25rem; margin: 0; }
+  .toc li { margin: 0.3rem 0; font-size: 0.9rem; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  .diff-line { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; padding: 0.15em 0.5em; border-radius: 3px; display: block; margin: 0.1rem 0; }
+  .diff-add { background: var(--diff-add); color: var(--diff-add-fg); }
+  .diff-del { background: var(--diff-del); color: var(--diff-del-fg); }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 0.82rem;
+    margin-right: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 1.4rem; }
+    h2 { font-size: 1.15rem; }
+    pre { padding: 0.75rem; font-size: 0.78rem; }
+  }
+</style>
+
+<div class="container">
+
+<h1>Cross-Version Mod Porting</h1>
+<p class="subtitle">Comparing, validating, and adapting mods across camera models and firmware versions</p>
+<span class="version">X System Toolkit &bull; October 2026</span>
+
+<div class="callout callout-danger">
+  <strong>Safety invariants &mdash; always in effect</strong>
+  Never contact a camera without explicit owner approval. Vendor-derived bytes must never be published &mdash; only hashes and metadata in profiles. All porting work is offline against stock profiles, never against live firmware.
+</div>
+
+<nav class="toc">
+  <h4>Contents</h4>
+  <ol>
+    <li><a href="#landscape">The X System Landscape</a></li>
+    <li><a href="#profiles">Stock Profiles as the Comparison Baseline</a></li>
+    <li><a href="#techniques">Mod Techniques &amp; Their Portability</a></li>
+    <li><a href="#binary-porting">Binary Patch Porting (Step by Step)</a></li>
+    <li><a href="#text-porting">Text &amp; Config Mod Porting</a></li>
+    <li><a href="#cross-model">Cross-Model Feasibility Analysis</a></li>
+    <li><a href="#validation">Automated Validation Pipeline</a></li>
+    <li><a href="#version-matrix">Building a Version Compatibility Matrix</a></li>
+    <li><a href="#case-study">Case Study: Video Mode Restore</a></li>
+    <li><a href="#workflow">Porting Workflow Checklist</a></li>
+  </ol>
+</nav>
+
+
+<h2 id="landscape">1. The X System Landscape</h2>
+
+<p>The toolkit maintains stock profiles for every firmware version we've analyzed. These span four camera families across many firmware generations:</p>
+
+<div class="matrix">
+<table>
+  <tr>
+    <th>Camera</th>
+    <th>Profiles</th>
+    <th>Firmware range</th>
+    <th>Platform</th>
+  </tr>
+  <tr>
+    <td>X1D 50C</td>
+    <td>6</td>
+    <td>v1.20.0 &ndash; v1.25.0</td>
+    <td>Android, ARM64</td>
+  </tr>
+  <tr>
+    <td>X1D II 50C</td>
+    <td>7</td>
+    <td>v1.0.1 &ndash; v1.5.2</td>
+    <td>Android, ARM64</td>
+  </tr>
+  <tr>
+    <td>X2D 100C</td>
+    <td>11</td>
+    <td>v1.0.5 &ndash; v4.2.0</td>
+    <td>Android, ARM64</td>
+  </tr>
+  <tr>
+    <td>X2D II 100C</td>
+    <td>7</td>
+    <td>v1.1.8.6 &ndash; v1.3.18.1</td>
+    <td>Android, ARM64</td>
+  </tr>
+</table>
+</div>
+
+<p>All four share the same base platform (Android on ARM64) and the same GUI binary (<code>camera-gui-software</code>), but the binaries diverge significantly between models and even between major firmware versions within a model. Minor version bumps (e.g., 1.3.16.2 to 1.3.18.1 on X2D II) tend to preserve function addresses and instruction sequences.</p>
+
+
+<h2 id="profiles">2. Stock Profiles as the Comparison Baseline</h2>
+
+<p>A stock profile contains the SHA-256 hash, size, permissions, and SELinux context of every file in a firmware image. Two profiles can be compared to answer three questions:</p>
+
+<ol>
+  <li><strong>Did a specific file change?</strong> &mdash; Compare its SHA-256 across versions. Identical hash = identical file = mod applies without changes.</li>
+  <li><strong>Does the target file exist?</strong> &mdash; A mod for a file that doesn't exist in the target firmware needs a different approach or isn't applicable.</li>
+  <li><strong>Did surrounding files change?</strong> &mdash; Even if the target file is identical, changes in files it depends on (libraries, configs, QML imports) may affect behavior.</li>
+</ol>
+
+<h3>Profile comparison with the toolkit</h3>
+
+<pre><code># Compare a specific file across two firmware versions
+from mod_install import FirmwareProfile
+
+profile_a = FirmwareProfile(Path("profiles/X2DII_100C_v1_3_16_2.json"))
+profile_b = FirmwareProfile(Path("profiles/X2DII_100C_v1_3_18_1.json"))
+
+path = "/bin/camera-gui-software"
+
+hash_a = profile_a.stock_hash(path)
+hash_b = profile_b.stock_hash(path)
+
+if hash_a == hash_b:
+    print("Identical binary &mdash; mod applies as-is")
+elif hash_a and hash_b:
+    print("Binary changed &mdash; re-analysis needed")
+elif hash_b is None:
+    print("File removed in target firmware")
+else:
+    print("File added in target firmware")</code></pre>
+
+<h3>Batch profile diffing</h3>
+
+<pre><code># Find all files that changed between two versions
+def diff_profiles(a: FirmwareProfile, b: FirmwareProfile) -> dict:
+    all_paths = set(a._entries) | set(b._entries)
+    changed, added, removed = [], [], []
+    for p in sorted(all_paths):
+        ha, hb = a.stock_hash(p), b.stock_hash(p)
+        if ha and hb and ha != hb:
+            changed.append(p)
+        elif ha and not hb:
+            removed.append(p)
+        elif not ha and hb:
+            added.append(p)
+    return {"changed": changed, "added": added, "removed": removed}</code></pre>
+
+
+<h2 id="techniques">3. Mod Techniques &amp; Their Portability</h2>
+
+<p>Different mod techniques have very different portability characteristics. Understanding this determines how much work a port requires.</p>
+
+<div class="technique-card">
+  <h3>Binary ELF Patch (code cave trampoline)</h3>
+  <div class="meta">
+    <span class="tag locked">version-locked</span>
+    <span class="tag">camera-gui-software</span>
+  </div>
+  <p>Modifies specific instruction offsets in the compiled binary. A function's address, instruction encoding, and epilogue layout must all match exactly. Any recompilation of the binary invalidates the patch.</p>
+  <p><strong>Portability:</strong> Must re-locate every address when the binary changes. Same technique may work but offsets will differ. Within minor versions (e.g., 1.3.16.2 and 1.3.18.1), addresses are often identical.</p>
+  <p><strong>Tools:</strong> <code>elf_patcher.py</code> (ELF analysis, code cave discovery, PLT parsing), <code>llvm-objdump</code> for disassembly verification.</p>
+</div>
+
+<div class="technique-card">
+  <h3>Binary String Patch (same-length replacement)</h3>
+  <div class="meta">
+    <span class="tag semi">semi-portable</span>
+    <span class="tag">camera-gui-software</span>
+  </div>
+  <p>Replaces embedded strings (menu labels, about-page text) with same-length or shorter strings, null-padded to preserve all offsets. No instruction changes.</p>
+  <p><strong>Portability:</strong> Portable across versions where the string exists at any offset. The <code>BinaryPatcher.find_string()</code> method locates strings dynamically. Breaks only if the string was removed or reworded.</p>
+  <p><strong>Tools:</strong> <code>binary_patcher.py</code> (string search, safe replacement, QML block analysis).</p>
+</div>
+
+<div class="technique-card">
+  <h3>Text/Config Transform (awk, sed, init scripts)</h3>
+  <div class="meta">
+    <span class="tag portable">portable</span>
+    <span class="tag">*.rc, *.conf, *.qml</span>
+  </div>
+  <p>Modifies text configuration files or init scripts. Transforms are specified as patterns (find line X, change to Y) rather than absolute offsets.</p>
+  <p><strong>Portability:</strong> Highly portable. Patterns match across versions as long as the target file's structure is preserved. Validate by checking that the expected pattern exists in the new version.</p>
+</div>
+
+<div class="technique-card">
+  <h3>dlsym Interposition (LD_PRELOAD)</h3>
+  <div class="meta">
+    <span class="tag semi">semi-portable</span>
+    <span class="tag">custom .so</span>
+  </div>
+  <p>Loads a custom shared library that intercepts function calls via <code>LD_PRELOAD</code>. No modifications to existing binaries.</p>
+  <p><strong>Portability:</strong> Survives minor updates as long as the intercepted symbol names and calling conventions haven't changed. Verify symbol existence with <code>nm</code> or the ELF analyzer's PLT parser.</p>
+</div>
+
+
+<h2 id="binary-porting">4. Binary Patch Porting (Step by Step)</h2>
+
+<p>When a binary patch's target binary has changed (different SHA-256), here's the systematic process to port it:</p>
+
+<h3><span class="step-num">1</span> Compare binaries at profile level</h3>
+
+<pre><code>python tools/mod_install.py validate mods/your-mod.json profiles/NEW_PROFILE.json</code></pre>
+
+<p>This immediately tells you whether the stock hashes match. A hash mismatch on the target binary means the patch must be re-derived.</p>
+
+<h3><span class="step-num">2</span> Locate the target function in the new binary</h3>
+
+<p>For named C++ symbols, search by the mangled name:</p>
+
+<pre><code># Find the camera_capabilities getter in the new binary
+$(xcrun -f llvm-objdump) --syms new-binary | grep camera_capabilities
+
+# Or disassemble around the known symbol
+$(xcrun -f llvm-objdump) --triple=aarch64 -d \
+  --start-address=0xSOME_ADDR --stop-address=0xSOME_ADDR+0x40 \
+  new-binary</code></pre>
+
+<p>For stripped binaries without symbols, use pattern matching on the instruction sequence:</p>
+
+<pre><code># Search for the known instruction pattern of the getter epilogue
+# (LDR X19, [SP, #16] ; LDP X29, X30, [SP], #32 ; RET)
+# Hex: F3 0B 40 F9  FD 7B C2 A8  C0 03 5F D6
+python -c "
+import sys
+data = open(sys.argv[1], 'rb').read()
+pattern = bytes.fromhex('f30b40f9fd7bc2a8c0035fd6')
+off = 0
+while True:
+    off = data.find(pattern, off)
+    if off < 0: break
+    print(f'  0x{off:08x}')
+    off += 1
+" new-binary</code></pre>
+
+<h3><span class="step-num">3</span> Find a code cave in the new binary</h3>
+
+<pre><code># Use the ELF analyzer to find usable zero-filled regions
+python tools/elf_patcher.py new-binary --json | python -m json.tool</code></pre>
+
+<p>The analyzer finds inter-section gaps and runs of zero bytes within <code>.text</code>, ranked by size. Pick a cave that's large enough for your trampoline and in range of a B instruction (128 MB for unconditional branch).</p>
+
+<h3><span class="step-num">4</span> Verify the instruction context</h3>
+
+<p>Disassemble a window around the located function to verify the instruction sequence matches what the patch expects. The patch must:</p>
+<ul>
+  <li>Replace the exact instruction at the redirect offset</li>
+  <li>The trampoline must reproduce any instructions it displaced</li>
+  <li>Register usage must match (the trampoline saves/restores the same registers)</li>
+</ul>
+
+<h3><span class="step-num">5</span> Recompute branch offsets</h3>
+
+<pre><code># ARM64 B instruction encoding
+from elf_patcher import arm64_branch
+
+redirect_addr = 0x_NEW_GETTER_EPILOGUE
+cave_addr = 0x_NEW_CAVE
+
+branch_bytes = arm64_branch(redirect_addr, cave_addr)
+print(f"Redirect instruction: {branch_bytes.hex()}")</code></pre>
+
+<h3><span class="step-num">6</span> Update the mod manifest</h3>
+
+<p>Add the new firmware version entry with updated offsets, hashes, and instruction bytes. Keep the old version entry &mdash; mods can support multiple firmware versions simultaneously.</p>
+
+<h3><span class="step-num">7</span> Validate with the toolkit</h3>
+
+<pre><code>python tools/mod_install.py validate mods/updated-mod.json profiles/NEW_PROFILE.json</code></pre>
+
+<p>Then optionally verify in QEMU if a DevKit image is available for that firmware.</p>
+
+
+<h2 id="text-porting">5. Text &amp; Config Mod Porting</h2>
+
+<p>Text-based mods are simpler to port because they operate on patterns, not offsets:</p>
+
+<h3>Verification checklist</h3>
+
+<ol>
+  <li><strong>File exists?</strong> &mdash; <code>profile.has_file(path)</code></li>
+  <li><strong>File hash changed?</strong> &mdash; compare <code>profile.stock_hash(path)</code> across versions</li>
+  <li><strong>Pattern still matches?</strong> &mdash; if hash changed, extract the file from the new firmware and check if the awk/sed pattern still hits</li>
+  <li><strong>Update stock_sha256 in manifest</strong> &mdash; even if the pattern matches, the new version's hash must be recorded for journal integrity</li>
+</ol>
+
+<div class="callout">
+  <strong>Hash changed but pattern matches?</strong>
+  This is the most common case for text mods across minor versions. A config file gets a new option or comment, but the lines your mod targets are unchanged. Update the stock hash in the manifest and you're done.
+</div>
+
+
+<h2 id="cross-model">6. Cross-Model Feasibility Analysis</h2>
+
+<p>Porting between camera <em>models</em> (e.g., X2D II to X2D, or X2D to X1D II) is fundamentally different from porting between firmware versions of the same model. The binary is recompiled for each model, and feature sets diverge.</p>
+
+<h3>Feasibility tiers</h3>
+
+<div class="matrix">
+<table>
+  <tr>
+    <th>Tier</th>
+    <th>Meaning</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td><span class="yes">IDENTICAL_PATCH</span></td>
+    <td>Same offsets, same instructions, same cave. Applies byte-for-byte.</td>
+    <td>Video restore across X2D II 1.3.16.2 and 1.3.18.1</td>
+  </tr>
+  <tr>
+    <td><span class="partial">SAME_TECHNIQUE</span></td>
+    <td>Same function exists, same approach works, but offsets differ. Requires re-derivation.</td>
+    <td>About-page string mod across firmware major versions</td>
+  </tr>
+  <tr>
+    <td><span class="partial">PARTIAL_PORT</span></td>
+    <td>Some components exist in the target model, others are missing. Mod scope must be reduced.</td>
+    <td>BT enhancements: shared infrastructure, minor differences</td>
+  </tr>
+  <tr>
+    <td><span class="no">NOT_FEASIBLE</span></td>
+    <td>Target lacks required hardware/firmware infrastructure entirely.</td>
+    <td>Object detection AF on X2D (requires ML hardware absent from X2D)</td>
+  </tr>
+  <tr>
+    <td><span class="no">NOT_APPLICABLE</span></td>
+    <td>Feature gate doesn't exist in the target model's binary.</td>
+    <td>Video mode on X2D (no <code>E_CameraMode_Video</code> enum)</td>
+  </tr>
+</table>
+</div>
+
+<h3>How to determine feasibility</h3>
+
+<p>The toolkit's approach is <strong>binary string comparison</strong> &mdash; searching both binaries for the feature's symbols, enums, D-Bus properties, and QML components. The <code>feature-claims-analysis.json</code> document shows this methodology applied to X2D II vs X2D:</p>
+
+<pre><code># Check if a feature's infrastructure exists in a different model's binary
+# Example: Does X2D have E_CameraMode_Video?
+
+strings camera-gui-software-x2d | grep -i "CameraMode_Video"
+# No results = feature infrastructure absent
+
+strings camera-gui-software-x2dii | grep -i "CameraMode_Video"
+# E_CameraMode_Video, E_CameraMode_Image = present</code></pre>
+
+<h3>Cross-model comparison matrix</h3>
+
+<p>For a specific mod, build a matrix of which required symbols/features exist in each target:</p>
+
+<div class="matrix">
+<table>
+  <tr>
+    <th>Required component</th>
+    <th>X2D II</th>
+    <th>X2D</th>
+    <th>X1D II</th>
+  </tr>
+  <tr>
+    <td><code>capability_VideoMode</code> (bit 3)</td>
+    <td class="yes">Present</td>
+    <td class="yes">Present</td>
+    <td class="yes">Present (enabled)</td>
+  </tr>
+  <tr>
+    <td><code>E_CameraMode_Video</code></td>
+    <td class="yes">Present (gated)</td>
+    <td class="no">Absent</td>
+    <td class="yes">Present (active)</td>
+  </tr>
+  <tr>
+    <td><code>ExpModeSelector.qml</code></td>
+    <td class="yes">Has Photo/Video toggle</td>
+    <td class="no">Photo only</td>
+    <td class="yes">Has Photo/Video toggle</td>
+  </tr>
+  <tr>
+    <td>Video recording pipeline</td>
+    <td class="partial">Infrastructure present, gate only</td>
+    <td class="no">No mode switching</td>
+    <td class="yes">Fully active</td>
+  </tr>
+  <tr>
+    <td><strong>Verdict</strong></td>
+    <td class="yes"><strong>Patchable</strong></td>
+    <td class="no"><strong>Not feasible</strong></td>
+    <td><em>N/A (already works)</em></td>
+  </tr>
+</table>
+</div>
+
+
+<h2 id="validation">7. Automated Validation Pipeline</h2>
+
+<p>The <code>mod_install.py</code> tool validates a mod manifest against any firmware profile. Running it across multiple profiles produces a compatibility report:</p>
+
+<pre><code># Validate one mod against all X2D II profiles
+for profile in profiles/X2DII_100C_v*.json; do
+  echo "=== $(basename $profile) ==="
+  python tools/mod_install.py validate \
+    mods/video-mode-restore.json "$profile" --json 2>/dev/null \
+    | python -c "
+import sys, json
+d = json.load(sys.stdin)
+status = 'OK' if d['compatible'] else 'FAIL'
+issues = ', '.join(d['issues']) if d['issues'] else 'none'
+print(f\"  {status}: {d['firmware']} ({len(d['steps'])} ops, issues: {issues})\")
+"
+done</code></pre>
+
+<h3>What the validator checks</h3>
+
+<table>
+  <tr><th>Check</th><th>How it works</th><th>Failure mode</th></tr>
+  <tr>
+    <td>Firmware version match</td>
+    <td>Compares <code>target_firmware</code> in manifest against profile's firmware filename and build string</td>
+    <td>Blocker &mdash; wrong firmware</td>
+  </tr>
+  <tr>
+    <td>Model match</td>
+    <td>Normalizes model names and compares</td>
+    <td>Blocker &mdash; wrong camera</td>
+  </tr>
+  <tr>
+    <td>Stock hash verification</td>
+    <td>Compares mod's declared <code>stock_sha256</code> against profile's hash for that file</td>
+    <td>Blocker &mdash; binary mismatch means patch offsets are wrong</td>
+  </tr>
+  <tr>
+    <td>Porting status</td>
+    <td>Reads <code>porting_status.{model_key}</code> from manifest</td>
+    <td>"not_started" is a blocker; "in_progress" is a warning</td>
+  </tr>
+  <tr>
+    <td>Technique warnings</td>
+    <td>Binary ELF patches get a "version-locked" warning; dlsym gets "verify symbols"</td>
+    <td>Advisory</td>
+  </tr>
+</table>
+
+
+<h2 id="version-matrix">8. Building a Version Compatibility Matrix</h2>
+
+<p>For a production-ready mod, build an explicit compatibility matrix in its manifest:</p>
+
+<pre><code>{
+  "mod_id": "video-mode-restore",
+  "firmware_versions": {
+    "x2dii_1.3.18.1": {
+      "stock_sha256": "8c5af67c...",
+      "patched_sha256": "07f4d058..."
+    },
+    "x2dii_1.3.16.2": {
+      "stock_sha256": "9fd63cd1...",
+      "patched_sha256": "f8dc67c5..."
+    }
+  },
+  "porting_status": {
+    "x2d_ii": "verified",
+    "x2d": "not_applicable",
+    "x1d_ii": "not_started"
+  }
+}</code></pre>
+
+<p>Each firmware version entry carries its own stock and patched SHA-256, so the journal engine can verify integrity regardless of which version is installed. The <code>porting_status</code> map gives humans and tools a quick answer on cross-model feasibility.</p>
+
+
+<h2 id="case-study">9. Case Study: Video Mode Restore</h2>
+
+<p>The video-mode-restore mod illustrates the full porting analysis workflow:</p>
+
+<h3>Same model, different firmware versions</h3>
+
+<table>
+  <tr><th></th><th>X2D II 1.3.16.2</th><th>X2D II 1.3.18.1</th></tr>
+  <tr>
+    <td>Getter address</td>
+    <td><code>0x010aefc8</code></td>
+    <td><code>0x010aefc8</code></td>
+  </tr>
+  <tr>
+    <td>Redirect offset</td>
+    <td><code>0x010aefec</code></td>
+    <td><code>0x010aefec</code></td>
+  </tr>
+  <tr>
+    <td>Code cave</td>
+    <td><code>0x029cf4bc</code></td>
+    <td><code>0x029cf4bc</code></td>
+  </tr>
+  <tr>
+    <td>Instructions</td>
+    <td>Identical sequence</td>
+    <td>Identical sequence</td>
+  </tr>
+  <tr>
+    <td>Patch bytes</td>
+    <td>Same 20 bytes</td>
+    <td>Same 20 bytes</td>
+  </tr>
+  <tr>
+    <td><strong>Verdict</strong></td>
+    <td colspan="2" style="text-align:center"><strong>IDENTICAL_PATCH</strong> &mdash; same 20 bytes apply to both</td>
+  </tr>
+</table>
+
+<div class="callout callout-success">
+  <strong>Why this happens</strong>
+  Minor firmware updates (1.3.16 to 1.3.18) typically fix bugs and add small features without recompiling core libraries from scratch. The linker places functions at the same addresses, and the code cave remains zero-filled. This is common within a minor version series.
+</div>
+
+<h3>Cross-model: X2D II vs X2D</h3>
+
+<table>
+  <tr><th>Component</th><th>X2D II</th><th>X2D</th></tr>
+  <tr>
+    <td><code>capability_VideoMode</code></td>
+    <td>Bit 3 exists, not set by backend</td>
+    <td>Bit 3 exists in enum</td>
+  </tr>
+  <tr>
+    <td><code>E_CameraMode_Video</code></td>
+    <td>Present &mdash; the mode switch target</td>
+    <td><strong>Absent</strong> &mdash; only <code>E_CameraMode_Image</code> + <code>_Max</code></td>
+  </tr>
+  <tr>
+    <td>Video QML UI</td>
+    <td>Full ExpModeSelector with Photo/Video</td>
+    <td>ExpModeSelector without Video option</td>
+  </tr>
+  <tr>
+    <td><strong>Verdict</strong></td>
+    <td>Patchable (20-byte gate lift)</td>
+    <td><strong>NOT_APPLICABLE</strong> &mdash; the enum value to switch <em>to</em> doesn't exist</td>
+  </tr>
+</table>
+
+<p>Setting <code>capability_VideoMode</code> on X2D would make the QML check pass, but the mode switch action (<code>setCamera_mode(E_CameraMode_Video)</code>) would fail because the enum value doesn't exist in the X2D binary. The entire video mode switching infrastructure was added for X2D II and never existed in X2D.</p>
+
+
+<h2 id="workflow">10. Porting Workflow Checklist</h2>
+
+<p>Use this when porting any mod to a new firmware version or camera model:</p>
+
+<h4>Phase 1: Profile comparison</h4>
+<ul>
+  <li>Build or obtain the stock profile for the target firmware</li>
+  <li>Compare target file hashes: identical = apply as-is</li>
+  <li>If hashes differ, determine if it's the same model (re-derive) or different model (feasibility check)</li>
+</ul>
+
+<h4>Phase 2: Feasibility (cross-model only)</h4>
+<ul>
+  <li>Search for all required symbols, enums, D-Bus properties, and QML components in the target binary</li>
+  <li>Build a component presence matrix (like section 6)</li>
+  <li>Determine tier: IDENTICAL_PATCH, SAME_TECHNIQUE, PARTIAL_PORT, NOT_FEASIBLE, NOT_APPLICABLE</li>
+</ul>
+
+<h4>Phase 3: Re-derivation (if hashes differ)</h4>
+<ul>
+  <li>For binary patches: locate function, find cave, verify instructions, recompute offsets</li>
+  <li>For string patches: search for string in new binary (usually just an offset change)</li>
+  <li>For text mods: verify pattern matches in new version of the file</li>
+</ul>
+
+<h4>Phase 4: Manifest update</h4>
+<ul>
+  <li>Add new firmware version entry with correct hashes</li>
+  <li>Update <code>porting_status</code> for the model</li>
+  <li>Update <code>target_models</code> and <code>firmware_versions_human</code></li>
+</ul>
+
+<h4>Phase 5: Validation</h4>
+<ul>
+  <li>Run <code>mod_install.py validate</code> against the new profile</li>
+  <li>Run the full test suite: <code>python -m pytest tests/</code></li>
+  <li>If QEMU DevKit image available: boot and verify</li>
+  <li>If different model: note any limitations discovered during analysis</li>
+</ul>
+
+<hr>
+
+<div class="callout">
+  <strong>Key principle</strong>
+  The stock profile is always the source of truth. Every porting decision starts and ends with comparing hashes against it. When in doubt, the profile settles it.
+</div>
+
+<p style="color: var(--fg-muted); font-size: 0.82rem; margin-top: 2rem; text-align: center;">
+  X System Firmware Mod Toolkit &bull; October 2026 &bull; For developer handoff &mdash; not for publication
+</p>
+
+</div>
