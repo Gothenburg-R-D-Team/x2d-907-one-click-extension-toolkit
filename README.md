@@ -1,12 +1,6 @@
 # X2D/907 One-Click Extension Toolkit
 
-## 自愿赞助 / Voluntary support
-
-[PayPal 赞助 / Support via PayPal](https://paypal.me/RadiumWang) · 支付宝请扫描下方收款码 / Scan the Alipay QR code below.
-
-<img src="docs/images/alipay-donation.png" alt="支付宝自愿赞助收款码 / Alipay voluntary donation QR code" width="220">
-
-赞助完全自愿，不影响软件下载或功能使用。Donations are voluntary and do not affect access to downloads or features.
+**[支持开发 / Support development](docs/SUPPORT.md)**
 
 [中文](#中文) · [English](#english)
 
