@@ -7,7 +7,7 @@ class StableUpdates(unittest.TestCase):
   name=updates.ARCHIVE_BASE+'-'+('macOS-Universal' if platform=='mac' else 'Windows-x64')+'-0.4.17.zip'
   return dict(tag_name='v0.4.17',draft=False,prerelease=False,assets=[dict(name=name,size=123,digest='sha256:'+'a'*64,browser_download_url='https://github.com/'+updates.REPO+'/releases/download/v0.4.17/'+name)])
  def test_original_stable_detects_new_version_and_beta_does_not(self):
-  self.assertEqual(updates.REPO,'radium-wang/x2d-907-one-click-extension-toolkit')
+  self.assertEqual(updates.REPO,'Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit')
   for platform in ('win','mac'):
    opener=lambda url:io.BytesIO(json.dumps(self.release(platform)).encode())
    self.assertEqual(updates.latest('0.4.12',platform,opener)['version'],'0.4.17')
