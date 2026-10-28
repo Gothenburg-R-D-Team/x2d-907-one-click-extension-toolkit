@@ -1,7 +1,5 @@
 # X2D/907 One-Click Extension Toolkit
 
-**[支持开发 / Support development](docs/SUPPORT.md)**
-
 [中文](#中文) · [English](#english)
 
 ---
@@ -72,6 +70,8 @@
 | --- | --- |
 | macOS 13+ · Apple silicon / Intel | [**下载 Mac 通用版**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-macOS-Universal-0.5.6-restore-fix-1.zip) |
 | Windows 10 / 11 · x64 | [**下载 Windows x64 版**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-Windows-x64-0.5.6-restore-fix-1.zip) |
+
+**[支持开发](docs/SUPPORT.md)**
 
 [发行说明](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) · [SHA-256 校验](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/SHA256SUMS) · [验证记录](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json) · [更新日志](CHANGELOG.md)
 
@@ -218,6 +218,8 @@ Focus Speed Boost can be installed, but users of older lenses are advised agains
 | --- | --- |
 | macOS 13+ · Apple silicon / Intel | [**Download macOS Universal**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-macOS-Universal-0.5.6-restore-fix-1.zip) |
 | Windows 10 / 11 · x64 | [**Download Windows x64**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-Windows-x64-0.5.6-restore-fix-1.zip) |
+
+**[Support development](docs/SUPPORT.md)**
 
 [Release notes](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) · [SHA-256 checksums](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/SHA256SUMS) · [Validation record](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json) · [Changelog](CHANGELOG.md)
 
