@@ -1,0 +1,861 @@
+<title>Journaling and Slot Handling</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #fafaf9;
+    --fg: #1c1917;
+    --fg-muted: #78716c;
+    --surface: #ffffff;
+    --surface-alt: #f5f5f4;
+    --border: #e7e5e4;
+    --accent: #b45309;
+    --accent-bg: #fffbeb;
+    --accent-border: #fde68a;
+    --danger: #b91c1c;
+    --danger-bg: #fef2f2;
+    --danger-border: #fecaca;
+    --success: #15803d;
+    --success-bg: #f0fdf4;
+    --code-bg: #f5f5f4;
+    --code-fg: #292524;
+    --link: #b45309;
+    --heading: #0c0a09;
+    --callout-bg: #fefce8;
+    --callout-border: #fde047;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0c0a09;
+      --fg: #e7e5e4;
+      --fg-muted: #a8a29e;
+      --surface: #1c1917;
+      --surface-alt: #292524;
+      --border: #44403c;
+      --accent: #f59e0b;
+      --accent-bg: #451a0310;
+      --accent-border: #92400e;
+      --danger: #f87171;
+      --danger-bg: #450a0a40;
+      --danger-border: #7f1d1d;
+      --success: #4ade80;
+      --success-bg: #05290940;
+      --code-bg: #292524;
+      --code-fg: #d6d3d1;
+      --link: #fbbf24;
+      --heading: #fafaf9;
+      --callout-bg: #422006;
+      --callout-border: #854d0e;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0c0a09;
+    --fg: #e7e5e4;
+    --fg-muted: #a8a29e;
+    --surface: #1c1917;
+    --surface-alt: #292524;
+    --border: #44403c;
+    --accent: #f59e0b;
+    --accent-bg: #451a0310;
+    --accent-border: #92400e;
+    --danger: #f87171;
+    --danger-bg: #450a0a40;
+    --danger-border: #7f1d1d;
+    --success: #4ade80;
+    --success-bg: #05290940;
+    --code-bg: #292524;
+    --code-fg: #d6d3d1;
+    --link: #fbbf24;
+    --heading: #fafaf9;
+    --callout-bg: #422006;
+    --callout-border: #854d0e;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.7;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 2rem;
+  }
+
+  .container {
+    max-width: 72ch;
+    margin: 0 auto;
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--heading);
+    font-weight: 700;
+    text-wrap: balance;
+    line-height: 1.25;
+  }
+  h1 {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: 1.35rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 {
+    font-size: 1.1rem;
+    margin: 2rem 0 0.75rem;
+  }
+  h4 {
+    font-size: 0.95rem;
+    margin: 1.5rem 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--fg-muted);
+  }
+
+  .subtitle {
+    color: var(--fg-muted);
+    font-size: 0.95rem;
+    margin: 0 0 0.25rem;
+  }
+  .version {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-border);
+    padding: 0.15em 0.5em;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+
+  p { margin: 0.75rem 0; }
+  a { color: var(--link); }
+
+  code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85em;
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 0.15em 0.35em;
+    border-radius: 3px;
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    margin: 1rem 0;
+    border: 1px solid var(--border);
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  .callout {
+    background: var(--callout-bg);
+    border-left: 4px solid var(--callout-border);
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.25rem 0;
+    font-size: 0.92rem;
+  }
+  .callout-danger {
+    background: var(--danger-bg);
+    border-left-color: var(--danger);
+  }
+  .callout-success {
+    background: var(--success-bg);
+    border-left-color: var(--success);
+  }
+  .callout strong { display: block; margin-bottom: 0.25rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    font-weight: 600;
+    color: var(--heading);
+    background: var(--surface-alt);
+  }
+  td code { font-size: 0.82em; }
+
+  .phase-diagram {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 1.25rem 0;
+    font-size: 0.85rem;
+  }
+  .phase-box {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 0.82rem;
+  }
+  .phase-box.active {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .phase-box.danger {
+    border-color: var(--danger);
+    color: var(--danger);
+  }
+  .phase-arrow {
+    color: var(--fg-muted);
+    font-size: 1.1rem;
+  }
+
+  .file-tree {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+  }
+  .file-tree .dir { color: var(--accent); font-weight: 600; }
+  .file-tree .file { color: var(--fg); }
+  .file-tree .comment { color: var(--fg-muted); }
+
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.35rem 0; }
+  li code { font-size: 0.82em; }
+
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .toc h4 { margin: 0 0 0.75rem; text-transform: none; letter-spacing: 0; color: var(--heading); font-size: 0.95rem; }
+  .toc ol { padding-left: 1.25rem; margin: 0; }
+  .toc li { margin: 0.3rem 0; font-size: 0.9rem; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 1.4rem; }
+    h2 { font-size: 1.15rem; }
+    pre { padding: 0.75rem; font-size: 0.78rem; }
+    .phase-diagram { gap: 0.35rem; font-size: 0.78rem; }
+  }
+</style>
+
+<div class="container">
+
+<h1>Journaling &amp; A/B Slot Handling</h1>
+<p class="subtitle">X System Firmware Modification Toolkit &mdash; Architecture Handoff</p>
+<span class="version">Manifest Schema v4 &bull; October 2026</span>
+
+<div class="callout callout-danger">
+  <strong>Safety invariants &mdash; never violate these</strong>
+  Never contact a camera without explicit owner approval. Vendor-derived bytes must never be published &mdash; only hashes and metadata in profiles. Firmware images and extracted partitions stay in <code>firmware/</code> (git-ignored, never committed).
+</div>
+
+<nav class="toc">
+  <h4>Contents</h4>
+  <ol>
+    <li><a href="#overview">Overview &amp; Design Goals</a></li>
+    <li><a href="#ab-slots">A/B Partition Scheme</a></li>
+    <li><a href="#journal-lifecycle">Journal Lifecycle &amp; Phases</a></li>
+    <li><a href="#manifest-schema">Manifest Schema (v4)</a></li>
+    <li><a href="#install-flow">Install Flow</a></li>
+    <li><a href="#restore-flow">Restore Flow &amp; LIFO Ordering</a></li>
+    <li><a href="#slot-restore">Emergency Slot Restore</a></li>
+    <li><a href="#stock-profiles">Stock Profiles</a></li>
+    <li><a href="#mod-manifests">Mod Manifests &amp; Validation</a></li>
+    <li><a href="#cli-reference">CLI Reference</a></li>
+    <li><a href="#test-harness">Test Harness</a></li>
+    <li><a href="#filesystem-layout">Filesystem Layout</a></li>
+    <li><a href="#extending">Extending the System</a></li>
+  </ol>
+</nav>
+
+<h2 id="overview">1. Overview &amp; Design Goals</h2>
+
+<p>The toolkit provides a <strong>safe, reversible</strong> mechanism for applying firmware modifications to Hasselblad X System cameras. Every modification is wrapped in a journal transaction that records exactly what changed, backs up every replaced file, and can restore the camera to its original state at any time.</p>
+
+<p>Design principles:</p>
+<ul>
+  <li><strong>Offline-first</strong> &mdash; all planning, validation, and dry-run operations work on a desktop against firmware profiles. No camera contact unless explicitly executing an install or restore.</li>
+  <li><strong>Atomic writes</strong> &mdash; every file operation uses <code>write-to-tmp + os.replace()</code>. A crash at any point leaves either the old file or the new file, never a half-written one.</li>
+  <li><strong>SHA-256 at every step</strong> &mdash; before-and-after hashes for every file. Restore verifies the current hash matches the expected modded hash before overwriting. Tamper detection is immediate.</li>
+  <li><strong>A/B slot awareness</strong> &mdash; the journal knows which boot slot was active when mods were installed and refuses to operate if slots have been swapped (e.g., by an official firmware update).</li>
+  <li><strong>LIFO restore ordering</strong> &mdash; if mod B modifies a file that mod A already touched, mod B <em>must</em> be restored before mod A. This is enforced, not advisory.</li>
+  <li><strong>Self-describing manifests</strong> &mdash; schema version in every manifest so any version of the engine can read any journal.</li>
+</ul>
+
+<h2 id="ab-slots">2. A/B Partition Scheme</h2>
+
+<p>X System cameras run a modified Android system with an A/B partition layout. Two complete system slots exist; one is active, one is inactive. Official firmware updates write the inactive slot and flip on reboot.</p>
+
+<h3>On-camera utilities</h3>
+
+<table>
+  <tr><th>Utility</th><th>Purpose</th><th>Key arguments</th></tr>
+  <tr>
+    <td><code>/sbin/unrd</code></td>
+    <td>Read/write boot slot status in non-volatile storage</td>
+    <td><code>unrd &lt;key&gt;</code> to read, <code>unrd &lt;key&gt; &lt;value&gt;</code> to write</td>
+  </tr>
+  <tr>
+    <td><code>boot_control</code></td>
+    <td>Mark slot as bootable / successful</td>
+    <td><code>boot_control -m</code> to mark current slot</td>
+  </tr>
+</table>
+
+<h3>Key <code>unrd</code> properties</h3>
+
+<table>
+  <tr><th>Key</th><th>Values</th><th>Meaning</th></tr>
+  <tr>
+    <td><code>slot_N.status_active</code></td>
+    <td><code>0</code> / <code>1</code></td>
+    <td>Whether slot N is the active boot target. Exactly one slot should be <code>1</code>.</td>
+  </tr>
+  <tr>
+    <td><code>crash_counter</code></td>
+    <td>integer string</td>
+    <td>Boot failure tracking. If set (even to <code>"0"</code>), the system is in a verified-boot cycle. <strong>Journal refuses all operations.</strong></td>
+  </tr>
+  <tr>
+    <td><code>hbl_upgrading</code></td>
+    <td>slot number string</td>
+    <td>Firmware upgrade in progress to this slot. <strong>Journal refuses all operations.</strong></td>
+  </tr>
+</table>
+
+<h3>Why mods write the active slot only</h3>
+
+<p>Official updates write the <em>inactive</em> slot then flip. Mods do the opposite: they write the <em>active</em> slot only. This means:</p>
+<ul>
+  <li>An official update after modding writes a clean image to the inactive slot and flips to it &mdash; <strong>mods are automatically left behind</strong>, not carried forward.</li>
+  <li>If something goes wrong, the inactive slot still has clean stock firmware. The emergency <a href="#slot-restore">slot restore</a> flips back to it.</li>
+  <li>The journal records which slot was active at install time and blocks operations if the slot has changed.</li>
+</ul>
+
+<h3>SlotInfo data structure</h3>
+
+<pre><code>@dataclass
+class SlotInfo:
+    active: int | None = None       # 1 or 2
+    inactive: int | None = None     # the other one
+    crash_counter: str | None = None
+    hbl_upgrading: str | None = None</code></pre>
+
+<p>Populated by parsing the output of <code>/sbin/unrd</code> for <code>slot_1.status_active</code>, <code>slot_2.status_active</code>, <code>crash_counter</code>, and <code>hbl_upgrading</code>. When <code>None</code> (desktop testing without a camera), slot safety checks are skipped.</p>
+
+<h2 id="journal-lifecycle">3. Journal Lifecycle &amp; Phases</h2>
+
+<p>A journal progresses through a strict phase state machine. The phase is stored in the manifest and checked on every operation.</p>
+
+<div class="phase-diagram">
+  <span class="phase-box">(no journal)</span>
+  <span class="phase-arrow">&rarr;</span>
+  <span class="phase-box active">PREPARED</span>
+  <span class="phase-arrow">&rarr;</span>
+  <span class="phase-box active">INSTALLED</span>
+  <span class="phase-arrow">&rarr;</span>
+  <span class="phase-box active">RESTORING</span>
+  <span class="phase-arrow">&rarr;</span>
+  <span class="phase-box active">RESTORED</span>
+</div>
+<div class="phase-diagram">
+  <span style="visibility:hidden" class="phase-box">(no journal)</span>
+  <span style="visibility:hidden" class="phase-arrow">&rarr;</span>
+  <span style="visibility:hidden" class="phase-box">PREPARED</span>
+  <span style="visibility:hidden" class="phase-arrow">&rarr;</span>
+  <span style="visibility:hidden" class="phase-box">INSTALLED</span>
+  <span class="phase-arrow" style="visibility:hidden">&rarr;</span>
+  <span class="phase-box danger">FAILED</span>
+  <span class="phase-arrow">&larr;</span>
+  <span class="phase-box" style="font-size:0.72rem; padding: 0.3rem 0.5rem">(slot&nbsp;restore)</span>
+</div>
+
+<table>
+  <tr><th>Phase</th><th>Meaning</th><th>Allowed operations</th></tr>
+  <tr>
+    <td><code>PREPARED</code></td>
+    <td>Manifest created, backups written, but mod files not yet copied to system. Indicates a possible interrupted install.</td>
+    <td>Install (resume or new), verify</td>
+  </tr>
+  <tr>
+    <td><code>INSTALLED</code></td>
+    <td>One or more mods are active on the system.</td>
+    <td>Install more mods, restore (individual or all), verify, export, snapshot</td>
+  </tr>
+  <tr>
+    <td><code>RESTORING</code></td>
+    <td>A restore is in progress. <strong>No installs allowed.</strong></td>
+    <td>Restore (continue/retry), verify</td>
+  </tr>
+  <tr>
+    <td><code>RESTORED</code></td>
+    <td>All mods successfully restored. System matches stock.</td>
+    <td>Fresh install cycle, verify</td>
+  </tr>
+  <tr>
+    <td><code>FAILED</code></td>
+    <td>Emergency slot restore was performed. Mods on the old slot are abandoned.</td>
+    <td>Read-only. Manual intervention needed.</td>
+  </tr>
+</table>
+
+<h2 id="manifest-schema">4. Manifest Schema (v4)</h2>
+
+<p>The journal manifest is a self-describing JSON file at <code>/blackbox/modjournal/manifest.json</code> on the camera (or at any local path for desktop testing).</p>
+
+<pre><code>{
+  "schema": "hasselblad-mod-journal-v4",
+  "phase": "installed",
+  "firmware_sha256": "8c5af67c...the firmware file hash",
+  "profile_version": "X2DII_100C_v1_3_18_1",
+  "active_slot": 1,
+  "inactive_slot": 2,
+  "created": 1729900000.0,
+  "updated": 1729900123.0,
+  "entries": [
+    {
+      "path": "/system/bin/camera-gui-software",
+      "action": "replaced",
+      "hash_before": "8c5af67c...stock SHA-256",
+      "hash_after": "07f4d058...modded SHA-256",
+      "backup_path": "video-mode-restore__system__bin__camera-gui-software",
+      "mod_id": "video-mode-restore",
+      "timestamp": 1729900100.0
+    }
+  ]
+}</code></pre>
+
+<h3>JournalEntry fields</h3>
+
+<table>
+  <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+  <tr><td><code>path</code></td><td>string</td><td>Absolute path on the camera filesystem</td></tr>
+  <tr><td><code>action</code></td><td><code>"replaced"</code> | <code>"created"</code></td><td>Whether the file existed before (replaced) or is new (created)</td></tr>
+  <tr><td><code>hash_before</code></td><td>string | null</td><td>SHA-256 of the file before modification. <code>null</code> for created files.</td></tr>
+  <tr><td><code>hash_after</code></td><td>string</td><td>SHA-256 of the installed mod file</td></tr>
+  <tr><td><code>backup_path</code></td><td>string | null</td><td>Filename in <code>backups/</code> directory. <code>null</code> for created files (nothing to back up).</td></tr>
+  <tr><td><code>mod_id</code></td><td>string</td><td>Which mod this entry belongs to</td></tr>
+  <tr><td><code>timestamp</code></td><td>float</td><td>Unix timestamp when this entry was written</td></tr>
+</table>
+
+<h3>Action enum semantics</h3>
+
+<table>
+  <tr><th>Action</th><th>Install behavior</th><th>Restore behavior</th></tr>
+  <tr>
+    <td><code>REPLACED</code></td>
+    <td>Back up original to <code>backups/</code>, copy mod file in</td>
+    <td>Verify current hash matches <code>hash_after</code>, copy backup back</td>
+  </tr>
+  <tr>
+    <td><code>CREATED</code></td>
+    <td>Copy mod file in (no backup needed)</td>
+    <td>Delete the file</td>
+  </tr>
+</table>
+
+
+<h2 id="install-flow">5. Install Flow</h2>
+
+<p>The install sequence for <code>Journal.install_mod(mod_id, files)</code>:</p>
+
+<ol>
+  <li><strong>Pre-flight checks</strong>
+    <ul>
+      <li>Load existing manifest (or create new one)</li>
+      <li>Reject if phase is <code>RESTORING</code> (mid-restore, cannot install)</li>
+      <li>Reject if <code>mod_id</code> already has entries (must uninstall first)</li>
+      <li>Run <code>_check_slot_safety()</code>: reject if <code>hbl_upgrading</code> is set, if <code>crash_counter</code> is set, or if active slot differs from the slot recorded in the manifest</li>
+    </ul>
+  </li>
+  <li><strong>Set phase to <code>PREPARED</code></strong> and write manifest (crash-safe checkpoint)</li>
+  <li><strong>For each file in the mod:</strong>
+    <ul>
+      <li>If the file exists on the system:
+        <ul>
+          <li>Compute SHA-256 of the current file (<code>hash_before</code>)</li>
+          <li>Atomic-copy it to <code>backups/{mod_id}__{sanitized_path}</code></li>
+          <li>Create entry with action <code>REPLACED</code></li>
+        </ul>
+      </li>
+      <li>If the file does not exist:
+        <ul>
+          <li>Create parent directories</li>
+          <li>Create entry with action <code>CREATED</code>, <code>hash_before=None</code>, <code>backup_path=None</code></li>
+        </ul>
+      </li>
+      <li>Atomic-copy the mod file to the system path</li>
+      <li>Compute SHA-256 of the installed file (<code>hash_after</code>)</li>
+      <li>Record overlap warnings if this file was touched by another mod</li>
+    </ul>
+  </li>
+  <li><strong>Set phase to <code>INSTALLED</code></strong>, record <code>active_slot</code> and <code>inactive_slot</code>, write manifest</li>
+</ol>
+
+<h3>Atomic file operations</h3>
+
+<pre><code>def atomic_copy(src: Path, dst: Path) -> None:
+    """Copy src to dst via a temporary file + os.replace().
+    If we crash mid-write, the temp file is orphaned but
+    dst is never left in a partial state."""
+    tmp = dst.with_suffix(dst.suffix + ".tmp")
+    shutil.copy2(src, tmp)
+    os.replace(tmp, dst)
+
+def atomic_write_json(path: Path, data: dict) -> None:
+    """Write JSON atomically."""
+    tmp = path.with_suffix(".tmp")
+    tmp.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    os.replace(tmp, path)</code></pre>
+
+<h2 id="restore-flow">6. Restore Flow &amp; LIFO Ordering</h2>
+
+<h3>Single-mod restore: <code>Journal.restore_mod(mod_id)</code></h3>
+
+<ol>
+  <li><strong>LIFO check</strong> &mdash; for every file this mod touches, check if any <em>later</em> mod (installed after this one) also touches it. If so, that mod must be restored first. This prevents restoring an earlier backup over a later mod's changes.</li>
+  <li><strong>Slot safety</strong> &mdash; reject if active slot has changed since install.</li>
+  <li><strong>Set phase to <code>RESTORING</code></strong></li>
+  <li><strong>For each entry belonging to this mod:</strong>
+    <ul>
+      <li>If action was <code>REPLACED</code>:
+        <ul>
+          <li>Compute SHA-256 of the current file</li>
+          <li>Verify it matches <code>hash_after</code> &mdash; if not, the file was <strong>modified outside the journal</strong> and restore is blocked (tamper detection)</li>
+          <li>Atomic-copy the backup file back to the system path</li>
+        </ul>
+      </li>
+      <li>If action was <code>CREATED</code>:
+        <ul>
+          <li>Delete the file</li>
+          <li>Remove empty parent directories</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Remove this mod's entries</strong> from the manifest</li>
+  <li><strong>Set phase</strong> to <code>RESTORED</code> (if no entries remain) or <code>INSTALLED</code> (if other mods still active)</li>
+</ol>
+
+<h3>Restore-all: <code>Journal.restore_all()</code></h3>
+
+<p>Restores all mods in reverse installation order. This inherently satisfies LIFO constraints because it processes the most-recently-installed mod first.</p>
+
+<h3>LIFO example</h3>
+
+<div class="callout">
+  <strong>Scenario: Two mods, one overlapping file</strong>
+  Mod A replaces <code>/system/bin/camera-gui-software</code> (backs up stock). Then mod B replaces the same file (backs up mod A's version). Mod B's backup is mod A's file, not stock.
+  <br><br>
+  To get back to stock, you <strong>must</strong> restore B first (puts mod A's version back), then restore A (puts stock back). Restoring A first would overwrite B's changes with stock, losing the ability to cleanly undo B.
+  <br><br>
+  The journal enforces this: <code>restore_mod("mod-a")</code> raises <code>RuntimeError</code> citing mod-b as a blocker.
+</div>
+
+<h2 id="slot-restore">7. Emergency Slot Restore</h2>
+
+<p>When normal restore isn't possible (corrupted files, tampered state), the emergency slot restore abandons the modded slot entirely and boots into the clean inactive slot.</p>
+
+<h3>Pre-flight: <code>Journal.preflight_slot_restore()</code></h3>
+
+<p>Returns a dict with <code>viable</code> (bool), <code>issues</code> (list), <code>steps</code> (planned actions), and slot information. Checks:</p>
+<ul>
+  <li>Slot info must be available (must run on the camera)</li>
+  <li><code>hbl_upgrading</code> must not be set</li>
+  <li><code>crash_counter</code> must not be set</li>
+</ul>
+
+<h3>Execution: <code>Journal.slot_restore(dry_run=False)</code></h3>
+
+<p>The slot flip writes four values in sequence:</p>
+
+<pre><code># 1. Reset crash counter (required before slot changes)
+write_unrd("crash_counter", "0")
+
+# 2. Activate the inactive slot
+write_unrd("slot_2.status_active", "1")   # activate target
+
+# 3. Deactivate the current slot
+write_unrd("slot_1.status_active", "0")   # deactivate current
+
+# 4. Mark the new slot as bootable
+run_boot_control("-m")</code></pre>
+
+<p>After execution:</p>
+<ul>
+  <li>Journal phase is set to <code>FAILED</code> (the mods on the old slot are abandoned)</li>
+  <li>The camera must be rebooted to complete the restore</li>
+  <li>After reboot, the camera runs stock firmware from the other slot</li>
+</ul>
+
+<div class="callout callout-danger">
+  <strong>Slot restore is a one-way operation</strong>
+  The journal on the old slot is marked FAILED and cannot be used for further operations. The modded files still exist on the old slot's partition but are no longer active. A future official firmware update will overwrite them.
+</div>
+
+
+<h2 id="stock-profiles">8. Stock Profiles</h2>
+
+<p>A <code>StockProfile</code> is a JSON file containing the SHA-256 hash, size, permissions, and SELinux context of every file in a stock firmware image. It serves as the ground truth for "what is stock?"</p>
+
+<pre><code>{
+  "firmware": {
+    "file": "X2DII_100C_1_3_18_1.hif",
+    "sha256": "8c5af67c...",
+    "build": "1.3.18.1",
+    "product": "X2D II 100C"
+  },
+  "partitions": {
+    "system": {
+      "entries": [
+        {
+          "type": "file",
+          "path": "/bin/camera-gui-software",
+          "sha256": "...",
+          "size": 23456789,
+          "mode": "0755",
+          "selinux": "u:object_r:system_file:s0"
+        }
+      ]
+    }
+  }
+}</code></pre>
+
+<p>The <code>StockProfile</code> class provides:</p>
+<ul>
+  <li><code>stock_hash(path)</code> &mdash; SHA-256 of a file in stock firmware</li>
+  <li><code>has_file(path)</code> &mdash; whether a path exists in stock</li>
+  <li>Automatic path normalization (strips <code>/system</code>, <code>/vendor</code>, <code>/blackbox</code> prefixes)</li>
+</ul>
+
+
+<h2 id="mod-manifests">9. Mod Manifests &amp; Validation</h2>
+
+<p>Each mod is described by a JSON manifest (e.g., <code>mods/video-mode-restore.json</code>) that declares its target models, firmware versions, technique, files, and safety assessment. The <code>mod_install.py</code> tool validates these against a stock profile before any install attempt.</p>
+
+<h3>Validation checks (<code>validate_mod()</code>)</h3>
+
+<table>
+  <tr><th>Check</th><th>Result if failed</th></tr>
+  <tr><td>Firmware version match</td><td>Blocker &mdash; install rejected</td></tr>
+  <tr><td>Model match</td><td>Blocker &mdash; install rejected</td></tr>
+  <tr><td>Stock hash match (mod's declared hash vs. profile)</td><td>Blocker &mdash; binary mismatch</td></tr>
+  <tr><td>Porting status not_started</td><td>Blocker</td></tr>
+  <tr><td>Porting status in_progress</td><td>Warning</td></tr>
+  <tr><td>File not in profile</td><td>Warning</td></tr>
+  <tr><td>Binary ELF patch technique</td><td>Warning &mdash; version-locked</td></tr>
+</table>
+
+<h3>Install plan output</h3>
+
+<p><code>mod_install.py plan &lt;mod.json&gt; &lt;profile.json&gt;</code> generates a dry-run install plan showing every operation, its risk level, and the journal entries that would be created &mdash; all without touching any files.</p>
+
+
+<h2 id="cli-reference">10. CLI Reference</h2>
+
+<p>The <code>hbjournal.py</code> CLI wraps the journal engine for command-line use:</p>
+
+<table>
+  <tr><th>Command</th><th>Camera?</th><th>Description</th></tr>
+  <tr>
+    <td><code>status &lt;journal&gt; &lt;profile&gt;</code></td>
+    <td>No</td>
+    <td>Show journal phase, firmware, slot info, installed mods</td>
+  </tr>
+  <tr>
+    <td><code>verify &lt;journal&gt; &lt;root&gt; &lt;profile&gt;</code></td>
+    <td>No*</td>
+    <td>Non-destructive integrity check (files + backups + hashes)</td>
+  </tr>
+  <tr>
+    <td><code>health &lt;journal&gt; &lt;profile&gt;</code></td>
+    <td><strong>Yes</strong></td>
+    <td>Pre-flight slot check (reads <code>unrd</code>)</td>
+  </tr>
+  <tr>
+    <td><code>list &lt;journal&gt; &lt;profile&gt;</code></td>
+    <td>No</td>
+    <td>List installed mods with file details</td>
+  </tr>
+  <tr>
+    <td><code>export &lt;journal&gt; &lt;profile&gt; &lt;dest&gt;</code></td>
+    <td>No</td>
+    <td>Export manifest + backups as a portable restore kit</td>
+  </tr>
+  <tr>
+    <td><code>backup &lt;journal&gt; &lt;profile&gt;</code></td>
+    <td>No</td>
+    <td>Timestamped snapshot of the journal directory</td>
+  </tr>
+  <tr>
+    <td><code>dry-run &lt;mod.json&gt; &lt;profile&gt;</code></td>
+    <td>No</td>
+    <td>Preview what a mod installation would do</td>
+  </tr>
+  <tr>
+    <td><code>slot-restore &lt;journal&gt; &lt;profile&gt;</code></td>
+    <td><strong>Yes</strong></td>
+    <td>Emergency A/B slot flip (requires confirmation)</td>
+  </tr>
+</table>
+
+<p><small>*<code>verify</code> needs the system root to check file hashes &mdash; can be a mounted image or the live camera filesystem.</small></p>
+
+
+<h2 id="test-harness">11. Test Harness</h2>
+
+<p>The test suite (<code>tests/test_journal.py</code>) runs entirely on the desktop with no camera. It builds a fake <code>/system</code> from stock profile entries and exercises:</p>
+
+<table>
+  <tr><th>Test class</th><th>What it covers</th></tr>
+  <tr><td><code>TestJournalBasicCycle</code></td><td>Install &rarr; verify &rarr; restore round-trip</td></tr>
+  <tr><td><code>TestJournalNewFile</code></td><td>Create action (new file, removed on restore)</td></tr>
+  <tr><td><code>TestMultiModStack</code></td><td>Two mods on same file, individual &amp; batch restore</td></tr>
+  <tr><td><code>TestTamperDetection</code></td><td>Out-of-band modification blocks restore &amp; flagged by verify</td></tr>
+  <tr><td><code>TestMissingBackup</code></td><td>Corrupted journal (deleted backup) detected on verify</td></tr>
+  <tr><td><code>TestInterruptedInstall</code></td><td>PREPARED phase recovery after simulated crash</td></tr>
+  <tr><td><code>TestExportRestoreKit</code></td><td>Export/import of manifest + backups</td></tr>
+  <tr><td><code>TestSchemaRoundTrip</code></td><td>Manifest serialize/deserialize fidelity</td></tr>
+  <tr><td><code>TestDuplicateModRejected</code></td><td>Same mod_id cannot be installed twice</td></tr>
+  <tr><td><code>TestRestoreDuringRestore</code></td><td>RESTORING phase blocks new installs</td></tr>
+  <tr><td><code>TestSlotAwareness</code></td><td>Slot recording, swap detection, upgrade/crash blocking</td></tr>
+  <tr><td><code>TestOverlappingFiles</code></td><td>LIFO enforcement, overlap warnings, correct-order success</td></tr>
+  <tr><td><code>TestSlotRestore</code></td><td>Preflight checks, dry run, unrd/boot_control call sequence, FAILED phase</td></tr>
+</table>
+
+<p>Run with:</p>
+<pre><code>cd /path/to/project && python -m pytest tests/test_journal.py -v</code></pre>
+
+<h2 id="filesystem-layout">12. Filesystem Layout</h2>
+
+<h4>On-camera</h4>
+<div class="file-tree">
+<span class="dir">/blackbox/modjournal/</span><br>
+&nbsp;&nbsp;<span class="file">manifest.json</span> <span class="comment">&larr; journal state, entries, slot info</span><br>
+&nbsp;&nbsp;<span class="dir">backups/</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="file">video-mode-restore__system__bin__camera-gui-software</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="file">about-page-mod__system__app__qml__settings__About.qml</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">&hellip;one backup per replaced file, named {mod_id}__{sanitized_path}</span>
+</div>
+
+<h4>Project repository</h4>
+<div class="file-tree">
+<span class="dir">tools/</span><br>
+&nbsp;&nbsp;<span class="file">journal.py</span> <span class="comment">&larr; core engine (Journal, JournalManifest, SlotInfo, StockProfile)</span><br>
+&nbsp;&nbsp;<span class="file">hbjournal.py</span> <span class="comment">&larr; CLI wrapper</span><br>
+&nbsp;&nbsp;<span class="file">mod_install.py</span> <span class="comment">&larr; mod validation &amp; install planning</span><br>
+&nbsp;&nbsp;<span class="file">binary_patcher.py</span> <span class="comment">&larr; ELF binary patching</span><br>
+&nbsp;&nbsp;<span class="file">elf_patcher.py</span> <span class="comment">&larr; ELF section analysis</span><br>
+<span class="dir">mods/</span><br>
+&nbsp;&nbsp;<span class="file">video-mode-restore.json</span> <span class="comment">&larr; mod manifests</span><br>
+<span class="dir">profiles/</span><br>
+&nbsp;&nbsp;<span class="file">X2DII_100C_v1_3_18_1.json</span> <span class="comment">&larr; stock firmware profiles</span><br>
+<span class="dir">tests/</span><br>
+&nbsp;&nbsp;<span class="file">test_journal.py</span> <span class="comment">&larr; full desktop test suite</span><br>
+<span class="dir">firmware/</span> <span class="comment">&larr; .gitignored, never published</span><br>
+&nbsp;&nbsp;<span class="file">*.hif, extracted images</span>
+</div>
+
+
+<h2 id="extending">13. Extending the System</h2>
+
+<h3>Adding a new mod</h3>
+<ol>
+  <li>Create a JSON manifest in <code>mods/</code> with <code>mod_id</code>, target models/firmware, technique, files, and safety assessment</li>
+  <li>Validate with <code>python tools/mod_install.py validate mods/your-mod.json profiles/X2DII_100C_v1_3_18_1.json</code></li>
+  <li>The journal engine handles the rest &mdash; backup, install, hash tracking, and restore</li>
+</ol>
+
+<h3>Supporting a new camera model</h3>
+<ol>
+  <li>Extract the firmware and build a stock profile (same JSON schema)</li>
+  <li>Existing mods can declare the new model in <code>target_models</code> and add porting status</li>
+  <li>The journal engine is model-agnostic &mdash; it works against any stock profile</li>
+</ol>
+
+<h3>Porting to a new firmware version</h3>
+<ol>
+  <li>Build a new stock profile for the firmware</li>
+  <li>Run <code>mod_install.py validate</code> against it &mdash; hash mismatches will reveal which binaries changed</li>
+  <li>For binary patches (like video-mode-restore): re-locate the function addresses in the new binary, verify the instruction sequences match, update the mod manifest</li>
+  <li>For text-based mods (awk transforms, config edits): usually just adding the new firmware version hash to the manifest</li>
+</ol>
+
+<h3>Integration points for GUI/orchestration</h3>
+<p>The journal engine is a pure Python library with no UI dependencies. The <code>Journal</code> class is the primary interface:</p>
+
+<pre><code>from journal import Journal, StockProfile, read_slot_info
+
+profile = StockProfile(Path("profiles/X2DII_100C_v1_3_18_1.json"))
+slot_info = read_slot_info()  # on camera only
+
+j = Journal(
+    journal_dir=Path("/blackbox/modjournal"),
+    system_root=Path("/system"),
+    stock_profile=profile,
+    slot_info=slot_info,
+)
+
+# Install
+manifest = j.install_mod("video-mode-restore", {
+    "/system/bin/camera-gui-software": Path("patched-binary"),
+})
+
+# Verify
+issues = j.verify()
+
+# Restore one mod
+j.restore_mod("video-mode-restore")
+
+# Or restore all
+j.restore_all()
+
+# Emergency: flip to clean slot
+result = j.slot_restore(dry_run=False)</code></pre>
+
+<hr>
+
+<div class="callout callout-success">
+  <strong>Key takeaway for implementers</strong>
+  The journal is the single source of truth for system state. Every file operation goes through it. Every restore is verified against SHA-256 hashes. The A/B slot scheme provides a nuclear option when all else fails. Build on top of these primitives &mdash; don't work around them.
+</div>
+
+<p style="color: var(--fg-muted); font-size: 0.82rem; margin-top: 2rem; text-align: center;">
+  X System Firmware Mod Toolkit &bull; October 2026 &bull; For developer handoff &mdash; not for publication
+</p>
+
+</div>
+</code></pre>
