@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.0 Beta · 2026-10-31](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v1.0.0-beta-20261031)
+
+- Publish the HRAP macOS Universal and Windows x64 beta packages with SHA-256 checksums, the exact corresponding build-source snapshot and a scoped validation record. Keep this release marked as a prerelease; do not change the stable update channel.
+- Include the shared AF-C/AF-T rejected-capture cleanup candidate, automatic No Crop before disabling crop, X2D/907 brightness menu identification and diagnostic improvements, Pixel Shift startup changes, deferred Focus Speed settings, and the HRAP name/icons.
+- Put a clear beta notice above the Chinese and English platform download tables, and invite users to open Issues directly, without adding a separate feedback entry. The team has worked through many bugs; further reproducible reports are welcome.
+- The AF change passes six instruction-replay tests covering 550 paths and 127 related regressions. Checks include 42 injected write failures, 1,023 feature selections, seven simulated Restore transactions, package integrity and Mac signing. Physical acceptance of the AF fix, capture timing and optical results remains pending.
+
+- 公开 HRAP 的 macOS 通用版与 Windows x64 Beta 安装包，同时提供 SHA-256、准确对应的构建源码快照和限定范围的验证记录；保持预发布标记，不改变稳定更新通道。
+- 包含 AF-C／AF-T 拒拍收尾候选修复、关闭裁切自动回到无裁切、X2D／907 自动亮度菜单定位与诊断改进、像素位移启动调整、对焦加速下次开机生效，以及 HRAP 名称与图标。
+- 中英文下载表上方突出 Beta 状态，说明中邀请大家直接提 Issue，不添加单独的反馈入口。团队已处理许多 Bug，仍欢迎大家提交问题、复现步骤与建议。
+- AF 调整通过 6 项指令回放（550 个路径场景）及 127 项相关回归；另验证 42 次写入故障、1,023 种选择组合、7 次模拟恢复、包完整性和 Mac 签名。本次 AF 修复、正常拍摄时序与光学效果仍待实机验收。
+
 ## Unreleased
 
 - Reorganize the public README into separate Chinese and English sections with matching seven-part navigation. Present 0.5.6 Restore fix 1 as the latest public prerelease and remove the older stable-version recommendation from the homepage; preserve download links, recovery guidance, known limitations and license summaries. Documentation only; release assets and update behavior are unchanged.
