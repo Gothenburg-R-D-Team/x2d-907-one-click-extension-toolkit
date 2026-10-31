@@ -1,0 +1,70 @@
+{
+  "version": "1.0.0-beta",
+  "releaseTag": "v1.0.0-beta-20261031",
+  "date": "2026-10-31",
+  "prerelease": true,
+  "cameraModels": [
+    "X2D 100C",
+    "907X & CFV 100C"
+  ],
+  "firmware": "4.2.0",
+  "archives": [
+    {
+      "name": "hrap-Windows-x64-1.0.0-beta.zip",
+      "bytes": 181545512,
+      "sha256": "4c385b7703fe4ad477d52c85aee36cffbea41b9021c95a09a14442c86a1babb4",
+      "crc": "passed",
+      "downloadUrl": "https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/hrap-Windows-x64-1.0.0-beta.zip"
+    },
+    {
+      "name": "hrap-macOS-Universal-1.0.0-beta.zip",
+      "bytes": 262848223,
+      "sha256": "09710d9a36470a1ab4f42cb9df48caa32d39c056a88bc2fae4472fda1f72ee8b",
+      "crc": "passed",
+      "downloadUrl": "https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/hrap-macOS-Universal-1.0.0-beta.zip"
+    }
+  ],
+  "correspondingSource": {
+    "name": "hrap-source-1.0.0-beta-20261031.zip",
+    "bytes": 4507808,
+    "sha256": "ed90690c234ef72cb84175e68302e2dfadd1ba1b90b25d9d56074498fb8838eb",
+    "downloadUrl": "https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/hrap-source-1.0.0-beta-20261031.zip",
+    "projectFiles": 453
+  },
+  "validation": {
+    "scope": "Local AF-C/AF-T rejected-capture cleanup candidate; device verification pending",
+    "librarySha256": "e2c4b375d9bb2411aead03b1e63ece1377ea0075033b01c02d1e04078d4a0f0e",
+    "libraryBytes": 10016,
+    "sites": 14,
+    "unicornTests": 6,
+    "instructionPathScenarios": 550,
+    "writeFailureScenarios": 42,
+    "targetedTests": 127,
+    "selectionMasksChecked": 1023,
+    "acceptedMasks": 511,
+    "simulatedRestoreTransactions": 7,
+    "changedTargets": [
+      "/system/lib64/libx2d_aft.so"
+    ],
+    "deviceValidated": false,
+    "sourceCommit": "7e43ca9b93ae1ce0cd511e2e35c92980e9e29170",
+    "status": "local uncommitted candidate"
+  },
+  "deviceAccessed": false,
+  "limits": "Offline checks and simulated Restore only; physical camera acceptance of the new AF fix and optical results remain pending",
+  "changes": [
+    "AF-C/AF-T rejected capture cleanup",
+    "automatic No Crop before disabling crop",
+    "X2D/907 brightness menu identity and diagnostics",
+    "Pixel Shift startup receipts/dependencies",
+    "focus speed preferences apply next startup",
+    "HRAP name and icons"
+  ],
+  "stableUpdateChannelChanged": false,
+  "publicPackaging": {
+    "windowsDllSha256": "60de66523dc97eef63df96e486a5333a8cb082fe6a7a4d2ea9820f3781dc1fca",
+    "windowsReadOnlyRanges": 1,
+    "macDylibIdentity": "@rpath/libusb-1.0.0.dylib",
+    "cameraPayloadChanged": false
+  }
+}

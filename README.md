@@ -14,7 +14,7 @@
 
 面向第一代 **X2D 100C / 907X & CFV 100C**、原厂固件 **4.2.0** 的实验性 Mac / Windows 扩展工具。本项目完全免费，是独立研究项目，非哈苏官方软件。
 
-**最新公开版本：[0.5.6 · 恢复修复版 1](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6)（预发布）。** 针对已识别旧版安装的恢复失败，先等待拍摄结束、安全退出连续对焦并确认空闲，再执行严格撤回。
+**最新公开下载：[哈苏补完计划 HRAP · 1.0.0 Beta · 2026-10-31](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v1.0.0-beta-20261031)。** 支持 Mac 与 Windows，下载入口与反馈方式见下方。
 
 <a id="zh-before-installing"></a>
 
@@ -48,7 +48,7 @@
 | AF-C 连续自动对焦 | 在相机中提供可选的连续对焦模式。 |
 | 追踪自动对焦 | 提供 AF-T 人脸追踪对焦模式。 |
 | 人眼识别 | 提供独立的人眼识别开关；选择 AF-T 时暂停该识别状态，返回 AF-S／AF-C 后按原开关选择恢复。 |
-| 对焦加速 | 低／中／高三档可选，关闭后恢复原厂速度。 |
+| 对焦加速 | 低／中／高三档可选；开关与档位只保存设置，下次开机生效。 |
 | 后屏自动亮度 | 根据环境光调整后屏亮度，可设置最高亮度。 |
 | 像素位移 | **仅 X2D 100C**，通过驱动模式使用，支持 4／6／16 张 RAW 序列、初始延迟、帧间等待与倒计时提示；电脑合成需另行进行。 |
 
@@ -58,22 +58,24 @@
 
 对焦加速可安装，但不建议老镜头用户在相机内开启该功能。档位倍率描述镜头电机控制参数，不代表实测整体对焦速度提升或镜头安全保证。
 
-**已知未修复：眼部布局校验失败可能连带阻止追踪自动对焦开启。恢复修复版 1 只修恢复流程，相机载荷未改动；请勿反复重装同一版本尝试解决该问题。**
+旧版 0.5.6 的眼部布局校验失败可能连带阻止追踪自动对焦开启；该版“恢复修复版 1”只调整恢复流程。新版的改动与验证边界以对应发行说明为准。
 
 <a id="zh-download"></a>
 
 ### 下载安装包
 
-**最新公开版本：0.5.6 · 恢复修复版 1（预发布）。**
+**哈苏补完计划 HRAP · 1.0.0 Beta · 2026-10-31**
 
-| 平台 | 安装包 |
-| --- | --- |
-| macOS 13+ · Apple silicon / Intel | [**下载 Mac 通用版**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-macOS-Universal-0.5.6-restore-fix-1.zip) |
-| Windows 10 / 11 · x64 | [**下载 Windows x64 版**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-Windows-x64-0.5.6-restore-fix-1.zip) |
+> **目前仍为 Beta 测试版。** 我和小伙伴们已经陆续排查、处理了许多 Bug，但仍可能遇到尚未发现的问题。欢迎大家试用；有问题或建议，欢迎直接提 Issue。
+
+| 平台 | 安装包 | 大小 |
+| --- | --- | --- |
+| macOS 13+ · Apple silicon / Intel | [**下载 Mac 通用版**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/hrap-macOS-Universal-1.0.0-beta.zip) | 约 251 MiB |
+| Windows 10 / 11 · x64 | [**下载 Windows x64 版**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/hrap-Windows-x64-1.0.0-beta.zip) | 约 173 MiB |
 
 **[支持开发](docs/SUPPORT.md)**
 
-[发行说明](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) · [SHA-256 校验](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/SHA256SUMS) · [验证记录](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json) · [更新日志](CHANGELOG.md)
+[发行说明](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v1.0.0-beta-20261031) · [SHA-256 校验](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/SHA256SUMS) · [验证记录](docs/test-builds/1.0.0-beta-20261031.json) · [对应构建源码](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/hrap-source-1.0.0-beta-20261031.zip) · [更新日志](CHANGELOG.md)
 
 请从本页**手动下载并完整解压**后启动。App 启动时的更新检查不会自动下载安装此预发布版。Mac App 使用临时签名、未经公证；Windows 启动器未经代码签名。
 
@@ -84,7 +86,7 @@
 3. 点击 **“已连接”**，等待型号、固件和文件检查完成。Windows 若出现管理员授权提示，请按提示处理。
 4. 选择要安装的功能。907X／CFV 100C 不可选择像素位移；X2D 的像素位移默认不勾选。
 5. 点击 **“安装所选功能”**，阅读完整风险声明、手动勾选并确认，保持连接直到 App 明确提示完成。
-6. 在相机主菜单末尾打开 **“耍起功能”**，开启总开关及所需功能。像素位移从**驱动模式**进入，使用前手动选择**纯 RAW**；其序列需另在电脑合成。
+6. 在相机主菜单末尾打开 **“耍起功能”**，按需开启已安装的功能；开关如提示下次开机生效，请按提示操作。像素位移从**驱动模式**进入，使用前手动选择**纯 RAW**；其序列需另在电脑合成。
 7. 撤回时连接相机，点击 **“已连接 → 一键恢复原状”**，按独立恢复提示操作并等待完成。
 
 App 设置提供简体中文、繁體中文和 English；更换相机菜单语言需要按升级／重新安装流程处理。
@@ -92,12 +94,12 @@ App 设置提供简体中文、繁體中文和 English；更换相机菜单语�
 <details>
 <summary>验证范围与限制</summary>
 
-- 382 项离线回归中 **380 项通过、两项原厂区域仿真不可用**，未将跳过项计为通过。
-- 另有 23 项界面／本地化回归、Mac 原生界面检查和 Windows 解压包 130 项回归通过。
-- 补充验证 49 项恢复回归、1,369 个当前／旧版清单组合，以及 108 个桌面／文件恢复替身用例。
-- Windows 原生运行、真实驱动安装、相机安装／恢复／拍摄和光学效果仍待相应实机验证。
+- 本次 AF-C／AF-T 调整通过 6 项离线指令回放（550 个路径场景），并通过 127 项相关回归。
+- 对全部 14 个补丁站点注入 42 次写入故障，验证失败回滚；检查 1,023 种功能选择组合，并通过 7 次模拟恢复。
+- 两个平台安装包的文件校验、ZIP CRC、Mac 签名和包内后端预检通过。
+- 上述离线与模拟检查不等于实机验收；本次拒拍后对焦修复、正常拍摄时序及光学效果仍待实机确认。
 
-具体记录与限制见 [0.5.6 验证记录](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json)。
+具体记录与限制见 [本版验证记录](docs/test-builds/1.0.0-beta-20261031.json)，旧版记录保留在各自发行页。
 
 </details>
 
@@ -119,7 +121,7 @@ App 设置提供简体中文、繁體中文和 English；更换相机菜单语�
 
 贡献者保留各自贡献的版权，不要求版权转让。贡献授权、既有贡献许可和许可变更规则见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-Git 中保存源码、测试、文档和软件截图；原厂固件、编译后的厂商组件、运行库与安装压缩包不提交到 Git。安装包以对应 [Release 附件](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6)为准；公开仓库当前源码与 0.5.6 安装包的构建源码并不同步。
+Git 中保存源码、测试、文档和软件截图；原厂固件、编译后的厂商组件、运行库与安装压缩包不提交到 Git。安装包及其对应构建源码以各版本的 [Release 附件](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v1.0.0-beta-20261031)为准；公开库主分支保留的历史源码不应作为本版安装包的源码替代。
 
 <a id="zh-license"></a>
 
@@ -162,7 +164,7 @@ Git 中保存源码、测试、文档和软件截图；原厂固件、编译后�
 
 An independent, experimental Mac / Windows camera-extension utility for the first-generation **X2D 100C / 907X & CFV 100C**, running stock firmware **4.2.0**. Free to download and use. This is an independent research project, not an official Hasselblad product.
 
-**Latest public release: [0.5.6 · Restore fix 1](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) (prerelease).** It addresses restoration failures in recognized older installations by waiting for capture to finish, safely leaving continuous AF and verifying idle before guarded withdrawal.
+**Latest public download: [HRAP · 1.0.0 Beta · 2026-10-31](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v1.0.0-beta-20261031).** Available for Mac and Windows; downloads and feedback links are below.
 
 <a id="en-before-installing"></a>
 
@@ -196,7 +198,7 @@ Native Mac 0.5.6 dialog captured during offline UI checks, before the end-of-doc
 | Continuous Autofocus | Adds continuous autofocus as a selectable camera mode. |
 | Tracking Autofocus | Adds an AF-T face-tracking focus mode. |
 | Eye Recognition | Provides an independent Eye switch; selected AF-T pauses Eye, while AF-S / AF-C resumes it according to the saved choice. |
-| Focus Speed Boost | Low / Medium / High levels; disabling restores stock speed. |
+| Focus Speed Boost | Low / Medium / High levels; switches and level changes save preferences and apply at the next camera startup. |
 | Auto Rear Brightness | Adjusts rear-display brightness to ambient light, with a configurable maximum. |
 | Pixel Shift | **X2D 100C only**: Drive Mode entry for 4 / 6 / 16 RAW sequences, initial delay, frame interval and countdown; desktop merging is separate. |
 
@@ -206,22 +208,24 @@ Unselected features are omitted from the corresponding camera menus. Camera text
 
 Focus Speed Boost can be installed, but users of older lenses are advised against enabling it in the camera. Its multipliers describe motor-control parameters, not measured overall autofocus gains or a lens-safety guarantee.
 
-**Known unresolved issue: Eye layout validation failure can also block Tracking Autofocus activation. Restore fix 1 changes recovery preparation only; camera payloads are unchanged. Reinstalling the same build does not fix that issue.**
+In the older 0.5.6 build, Eye layout validation failure can also block Tracking Autofocus activation; its Restore fix 1 changes recovery preparation only. See each newer release's notes for its changes and validation limits.
 
 <a id="en-download"></a>
 
 ### Downloads
 
-**Latest public release: 0.5.6 · Restore fix 1 (prerelease).**
+**HRAP · 1.0.0 Beta · 2026-10-31**
 
-| Platform | Download |
-| --- | --- |
-| macOS 13+ · Apple silicon / Intel | [**Download macOS Universal**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-macOS-Universal-0.5.6-restore-fix-1.zip) |
-| Windows 10 / 11 · x64 | [**Download Windows x64**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/x2d-907-extension-toolkit-Windows-x64-0.5.6-restore-fix-1.zip) |
+> **This is still a beta release.** My teammates and I have worked through many bugs, but there may be issues we have not found yet. Please open an Issue for bugs, suggestions or reproducible reports.
+
+| Platform | Download | Size |
+| --- | --- | --- |
+| macOS 13+ · Apple silicon / Intel | [**Download macOS Universal**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/hrap-macOS-Universal-1.0.0-beta.zip) | ~251 MiB |
+| Windows 10 / 11 · x64 | [**Download Windows x64**](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/hrap-Windows-x64-1.0.0-beta.zip) | ~173 MiB |
 
 **[Support development](docs/SUPPORT.md)**
 
-[Release notes](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) · [SHA-256 checksums](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/SHA256SUMS) · [Validation record](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json) · [Changelog](CHANGELOG.md)
+[Release notes](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v1.0.0-beta-20261031) · [SHA-256 checksums](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/SHA256SUMS) · [Validation record](docs/test-builds/1.0.0-beta-20261031.json) · [Corresponding build source](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v1.0.0-beta-20261031/hrap-source-1.0.0-beta-20261031.zip) · [Changelog](CHANGELOG.md)
 
 **Download manually from this page and extract the entire ZIP** before opening the app. Startup update checks do not automatically download or install this prerelease. The Mac app uses an ad-hoc signature and is not notarized; the Windows launcher is unsigned.
 
@@ -232,7 +236,7 @@ Focus Speed Boost can be installed, but users of older lenses are advised agains
 3. Click **Connected** and wait for model, firmware and file checks. Handle administrator prompts on Windows if requested.
 4. Select the features to install. Pixel Shift is disabled on 907X / CFV 100C and unchecked by default on X2D.
 5. Click **Install selected features**, read the full risk notice, explicitly check the acknowledgement and confirm. Keep connected until the app reports completion.
-6. Open **Tweaks** at the end of the camera's main menu, enable the master switch and choose the required features. Pixel Shift is accessed through **Drive Mode** and requires manually selected **RAW**, without JPEG. Merge the resulting sequence separately on a computer.
+6. Open **Tweaks** at the end of the camera's main menu and enable the installed features you need. Follow any next-startup notice shown by a switch. Pixel Shift is accessed through **Drive Mode** and requires manually selected **RAW**, without JPEG. Merge the resulting sequence separately on a computer.
 7. To withdraw the extension, reconnect and use **Connected → Restore original**, following the separate recovery prompt until completion.
 
 Settings offers Simplified Chinese, Traditional Chinese and English. Changing camera-menu text requires the restoration/reinstallation procedure.
@@ -240,12 +244,12 @@ Settings offers Simplified Chinese, Traditional Chinese and English. Changing ca
 <details>
 <summary>Validation scope and limits</summary>
 
-- **380 of 382 offline regressions pass; two unavailable stock-region simulations are not counted as passes.**
-- Additional checks pass: 23 UI/localization regressions, native Mac UI checks and 130 extracted Windows regressions.
-- Further validation covers 49 focused recovery regressions, 1,369 current/older manifest combinations and 108 host/file-restore fixture cases.
-- Native Windows execution, actual driver installation, camera installation / restoration / capture and optical results still require the respective device validation.
+- The AF-C / AF-T change passes six offline instruction-replay tests covering 550 paths, plus 127 related regressions.
+- Forty-two injected write failures across all 14 patch sites verify rollback; 1,023 feature-selection combinations and seven simulated Restore transactions are checked.
+- Both packages pass file/checksum and ZIP CRC checks, Mac signature verification and packaged-backend preflight.
+- Offline and simulated checks do not establish camera acceptance. The rejected-capture AF fix, normal capture timing and optical results still require physical verification.
 
-See the [0.5.6 validation record](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/download/v0.5.6/0.5.6.json) for the exact evidence and limits.
+See the [current validation record](docs/test-builds/1.0.0-beta-20261031.json) for the exact evidence and limits. Older records remain on their respective release pages.
 
 </details>
 
@@ -267,7 +271,7 @@ Feedback, research findings and developer contributions are welcome. Open an [Is
 
 Contributors retain copyright; no assignment is required. Contribution licensing, existing-contribution and license-change rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Git contains source, tests, documentation and software screenshots; vendor firmware, compiled vendor components, runtimes and installer archives are excluded. Use the corresponding [Release assets](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v0.5.6) for installers; the public repository's current source does not yet match the 0.5.6 package build source.
+Git contains source, tests, documentation and software screenshots; vendor firmware, compiled vendor components, runtimes and installer archives are excluded. Use the corresponding [Release assets](https://github.com/Gothenburg-R-D-Team/x2d-907-one-click-extension-toolkit/releases/tag/v1.0.0-beta-20261031) for installers and their exact build-source snapshot. Historical source on the public main branch is not a substitute for this release's corresponding source.
 
 <a id="en-license"></a>
 
